@@ -39,7 +39,7 @@ public class LoginController extends HttpServlet {
                 // get role
                 // Reviewer => home
                 // admin => index
-                // show
+                // shop => shop
                 response.sendRedirect("account.jsp");
 
             } else {
