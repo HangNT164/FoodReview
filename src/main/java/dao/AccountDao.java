@@ -120,4 +120,65 @@ public class AccountDao {
         return check > 0;
     }
 
+
+    public boolean addAccount(Account account) {
+        int check = 0;
+        String query = "INSERT INTO account (`name`, `dob`, `address`, `email`, `phone_number`, `password`) " +
+                " VALUES (?,?,?,?,?,?)";
+
+        try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, account.getName());
+                ps.setObject(2, account.getDob());
+                ps.setObject(3, account.getAddress());
+                ps.setObject(4, account.getEmail());
+                ps.setObject(5, account.getPhoneNumber());
+                ps.setObject(6, BCrypt.hashpw(account.getPassword(), BCrypt.gensalt()));
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
+
+    public boolean isDulicapteEmail(String email) {
+        String sql = "SELECT * FROM account WHERE email = ? ";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);) {
+            if (ps != null) {
+                ps.setObject(1, email);
+            }
+            ResultSet rs = ps != null ? ps.executeQuery() : null;
+
+            if (rs != null) {
+                return rs.next();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return false;
+    }
+
+    public boolean isDulicaptePhone(String phone) {
+        String sql = "SELECT * FROM account WHERE phone_number = ? ";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);) {
+            if (ps != null) {
+                ps.setObject(1, phone);
+            }
+            ResultSet rs = ps != null ? ps.executeQuery() : null;
+
+            if (rs != null) {
+                return rs.next();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return false;
+    }
+
 }
