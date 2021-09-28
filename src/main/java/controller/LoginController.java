@@ -3,7 +3,7 @@ package controller;
 import bean.Account;
 import constant.RoleEnum;
 import constant.StatusAccountEnum;
-import service.AccountService;
+import dao.AccountDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +19,7 @@ import static util.ValidateHelper.isEmail;
 @WebServlet(name = "LoginController", value = "/login")
 public class LoginController extends HttpServlet {
 
-    private AccountService accountService = new AccountService();
+    private AccountDao accountDao = new AccountDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,7 +41,7 @@ public class LoginController extends HttpServlet {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
             String password = request.getParameter("password");
-            Account user = accountService.login(email, password);
+            Account user = accountDao.login(email, password);
             HttpSession session = request.getSession(true);
             if (user != null) {
                 if (user.getStatus().equals(StatusAccountEnum.active.toString())) {

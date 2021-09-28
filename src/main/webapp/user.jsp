@@ -217,7 +217,7 @@
                                                         <td>${a.status}</td>
                                                         <td>${a.createdDate}</td>
                                                         <td>${a.updatedDate}</td>
-                                                        <td>Note</td>
+                                                        <td></td>
                                                         <td style="text-align: center">
                                                             <a href="#" class="view mr-1" data-toggle="modal"
                                                                data-target="#detail${a.accountId}" title="Xem chi tiết">
@@ -227,9 +227,11 @@
                                                                data-target="#update${a.accountId}" title="Xem chi tiết">
                                                                 <i
                                                                         class="fas fa-pen fa-fw"></i></a>
-                                                            <a href="delete?id=${a.accountId}" class="remove"
-                                                               title="Xóa"><i
-                                                                    class="fas fa-trash fa-fw"></i></a>
+                                                            <a href="#" class="remove mr-1" data-toggle="modal"
+                                                               data-target="#remove${a.accountId}"
+                                                               title="Xem chi tiếtXóa">
+                                                                <i
+                                                                        class="fas fa-trash fa-fw"></i></a>
                                                         </td>
                                                     </tr>
 
@@ -237,7 +239,8 @@
                                                     <div class="modal fade" id="detail${a.accountId}" tabindex="-1"
                                                          role="dialog" aria-labelledby="detail${a.accountId}"
                                                          aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-dialog modal-dialog-centered modal-lg"
+                                                             role="document">
                                                             <div class="modal-content">
                                                                 <div class="card">
                                                                     <div class="card-body">
@@ -261,11 +264,11 @@
                                                                                     <div class="col-sm-12">
                                                                                         <label>Gender </label>
                                                                                         <c:choose>
-                                                                                            <c:when test = "${a.gender ==true}">
+                                                                                            <c:when test="${a.gender ==true}">
                                                                                                 <span class="form-control">Male</span>
                                                                                             </c:when>
                                                                                             <c:otherwise>
-                                                                                                Female
+                                                                                                <span class="form-control">Female</span>
                                                                                             </c:otherwise>
                                                                                         </c:choose>
 
@@ -288,7 +291,7 @@
                                                                             <div class="col-6 pr-4">
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
-                                                                                        <label>User Name</label>
+                                                                                        <label>Status</label>
                                                                                         <span class="form-control">${a.status} </span>
                                                                                     </div>
                                                                                 </div>
@@ -310,11 +313,87 @@
 
                                                                             <div class="modal-footer">
                                                                                 <button type="button"
-                                                                                        class="btn btn-md btn-white"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
                                                                                         data-dismiss="modal">Close
                                                                                 </button>
                                                                             </div>
                                                                         </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <%--  Su kien update--%>
+                                                    <div class="modal fade" id="update${a.accountId}" tabindex="-1"
+                                                         role="dialog" aria-labelledby="update${a.accountId}"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-sm"
+                                                             role="document">
+                                                            <div class="modal-content">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Update Role User </h5>
+                                                                        <form action="update-user-management?accountId=${a.accountId}"
+                                                                              method="post">
+                                                                            <p style="text-align: center;color: red;">${message}</p>
+                                                                            <select class="form-control"
+                                                                                    name="listRole">
+                                                                                <option value="Reviewer">Reviewer
+                                                                                </option>
+                                                                                <option value="ShopOwner">Shop Owner
+                                                                                </option>
+                                                                                <option value="Admin">Admin</option>
+                                                                            </select>
+                                                                            <br/>
+                                                                            <div style="display: flex;justify-content: space-evenly">
+                                                                                <button type="submit"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success">
+                                                                                    Change
+                                                                                </button>
+                                                                                <button type="button"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
+                                                                                        data-dismiss="modal">Close
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <%--  Su kien remove--%>
+                                                    <div class="modal fade" id="remove${a.accountId}" tabindex="-1"
+                                                         role="dialog" aria-labelledby="remove${a.accountId}"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-sm"
+                                                             role="document">
+                                                            <div class="modal-content">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Remove User </h5>
+                                                                        <p style="text-align: center;color: red;">${message}</p>
+                                                                        <form action="remove-user-management?accountId=${a.accountId}"
+                                                                              method="post">
+                                                                            <p>Bạn có muốn xóa tài khoản này không?</p>
+                                                                            <br/>
+                                                                            <div style="display: flex;justify-content: space-between">
+                                                                                <button type="submit"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success">
+                                                                                    Có
+                                                                                </button>
+                                                                                <button type="button"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
+                                                                                        data-dismiss="modal">Không
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>

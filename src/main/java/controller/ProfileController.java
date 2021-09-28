@@ -12,6 +12,7 @@ import java.io.IOException;
 
 @WebServlet(name = "ProfileController", value = "/profile")
 public class ProfileController extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();

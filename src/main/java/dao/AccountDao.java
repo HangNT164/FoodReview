@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AccountDao {
@@ -36,31 +37,16 @@ public class AccountDao {
         return null;
     }
 
-    private boolean setValueAccount(Account account, PreparedStatement ps) {
-        if (ps != null) {
-            try {
-                ps.setObject(1, account.getEmail());
-                ps.setObject(2, BCrypt.hashpw(account.getPassword(), BCrypt.gensalt()));
-                return true;
-            } catch (SQLException e) {
-                e.printStackTrace(System.out);
-            }
-        }
-        return false;
-    }
-
-
     public Account login(String email, String password) {
         String query = "SELECT * FROM account where email = ? ";
 
-        try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
+        try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
                 ps.setObject(1, email);
                 ResultSet rs = ps.executeQuery();
                 if (rs != null && rs.next()) {
                     Account account = getValueAccount(rs);
-                    // System.out.println(account.getPassword());
                     if (BCrypt.checkpw(password, account.getPassword())) {
                         return account;
                     }
@@ -75,11 +61,12 @@ public class AccountDao {
     }
 
     public List<Account> searchAccountByName(String name) {
-        String query = "SELECT * FROM account WHERE email like '%" + name + "%'";
+        String query = "SELECT * FROM account WHERE email like '%" + name + "%' AND status = ?";
 
-        try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
+        try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
+                ps.setObject(1, StatusAccountEnum.active.toString());
                 ResultSet rs = ps.executeQuery();
                 List<Account> list = new ArrayList<>();
                 while (rs != null && rs.next()) {
@@ -93,7 +80,44 @@ public class AccountDao {
         return null;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new AccountDao().login("hangnt16499@gmail.com", "123456aA@"));
+    public boolean changeRoleAccount(int accountId, String role) {
+        int check = 0;
+        String query = "UPDATE account SET role = ? , updated_date =?"
+                + "WHERE account_id = ? AND status =?";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
+            if (ps != null) {
+                ps.setObject(1, role);
+                ps.setObject(2, new Date());
+                ps.setObject(3, accountId);
+                ps.setObject(4, StatusAccountEnum.active.toString());
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
     }
+
+    public boolean removeAccount(int accountId) {
+        int check = 0;
+        String query = "UPDATE account SET status = ?, updated_date =?"
+                + "WHERE account_id = ? AND status =?";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
+            if (ps != null) {
+                ps.setObject(1, StatusAccountEnum.inactive.toString());
+                ps.setObject(2, new Date());
+                ps.setObject(3, accountId);
+                ps.setObject(4, StatusAccountEnum.active.toString());
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
+
 }

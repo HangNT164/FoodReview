@@ -58,4 +58,14 @@ public class ValidateHelper {
     public static boolean isDate(String date) {
         return date.matches(REGEX_DATE);
     }
+
+    public static int getValidateID(String strID) {
+        int number = -1;
+        try {
+            number = Integer.parseInt(strID.trim());
+        } catch (NumberFormatException e) {
+            e.printStackTrace(System.out);
+        }
+        return number;
+    }
 }
