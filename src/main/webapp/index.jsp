@@ -45,11 +45,11 @@
                                                                         alt="Avatar" style="border-radius: 50%;">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
-                                <li><a class="dropdown-item" href="account.jsp">Account</a></li>
+                                <li><a class="dropdown-item" href="profile">Account</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="login.jsp">Log Out</a></li>
+                                <li><a class="dropdown-item" href="login">Log Out</a></li>
                             </ul>
                         </div>
                         <!--//app-user-dropdown-->
@@ -93,7 +93,7 @@
                     <!--//nav-item-->
 
                     <li class="nav-item">
-                        <a class="nav-link" href="user.jsp">
+                        <a class="nav-link" href="search-user-management">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">

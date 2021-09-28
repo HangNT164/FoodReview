@@ -1,6 +1,7 @@
 package dao;
 
 import bean.Account;
+import constant.StatusAccountEnum;
 import jdbc.MySqlConnection;
 import util.BCrypt;
 
@@ -8,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountDao {
 
@@ -15,18 +18,17 @@ public class AccountDao {
         try {
             return Account.builder()
                     .accountId(rs.getInt(1))
-                    .email(rs.getString(2))
-                    .password(rs.getString(3))
-                    .firstName(rs.getString(4))
-                    .lastName(rs.getString(5))
-                    .birthDay(rs.getString(6))
-                    .gender(rs.getBoolean(7))
-                    .role(rs.getString(8))
-                    .phoneNumber(rs.getString(9))
-                    .address(rs.getString(10))
-                    .status(rs.getString(11))
-                    .createdDate(rs.getDate(12))
-                    .updatedDate(rs.getDate(13))
+                    .name(rs.getString(2))
+                    .dob(rs.getString(3))
+                    .gender(rs.getBoolean(4))
+                    .address(rs.getString(5))
+                    .role(rs.getString(6))
+                    .email(rs.getString(7))
+                    .phoneNumber(rs.getString(8))
+                    .password(rs.getString(9))
+                    .status(rs.getString(10))
+                    .createdDate(rs.getDate(11))
+                    .updatedDate(rs.getDate(12))
                     .build();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
@@ -49,7 +51,7 @@ public class AccountDao {
 
 
     public Account login(String email, String password) {
-        String query = "SELECT * FROM account where email = ?";
+        String query = "SELECT * FROM account where email = ? ";
 
         try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
@@ -72,7 +74,26 @@ public class AccountDao {
         return null;
     }
 
+    public List<Account> searchAccountByName(String name) {
+        String query = "SELECT * FROM account WHERE email like '%" + name + "%'";
+
+        try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Account> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueAccount(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
-        System.out.println(new AccountDao().login("abcd@gmail.com","123456aA@"));
+        System.out.println(new AccountDao().login("hangnt16499@gmail.com", "123456aA@"));
     }
 }

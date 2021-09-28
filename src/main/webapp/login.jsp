@@ -34,6 +34,7 @@
                 </a><br/><br/>
             </div>
             <form class="account" action="login" method="post">
+                <p style="text-align: center;color: white;">${message}</p>
                 <div class="form-group">
                     <label>
                         <i class="fas fa-user fa-fw"></i>
@@ -46,12 +47,12 @@
                         <i class="fas fa-key fa-fw"></i>
                     </label>
                     <input type="password" class="form-control" placeholder="Password" name="password"
-                           id="InputPassword"  required/>
+                           id="InputPassword" required/>
                 </div>
                 <br>
                 <div class="form-group">
                     <div class="col">
-                        <input type="hidden" name="action" value="signIn" />
+                        <input type="hidden" name="action" value="signIn"/>
                         <button type="submit" class="btn btn-sm">
                             <i class="fas fa-sign-in-alt fa-fw mr-1"></i>Login
                         </button>

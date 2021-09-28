@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,10 +20,9 @@
 
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
-    <link rel="stylesheet" href="resources/css/custom/notficaition-table.css">
     <link rel="stylesheet" href="resources/css/custom/footer.css">
     <link rel="stylesheet" href="resources/css/plugin/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="resources/css/custom/apartment-card.css">
+    <link rel="stylesheet" href="resources/css/custom/user.css">
     <link rel="stylesheet" type="text/css" href="resources/css/plugin/query-ui.css">
 
 </head>
@@ -52,7 +52,7 @@
                                                                         alt="Avatar" style="border-radius: 50%;">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
-                                <li><a class="dropdown-item" href="account.jsp">Account</a></li>
+                                <li><a class="dropdown-item" href="profile">Account</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -100,7 +100,7 @@
                     <!--//nav-item-->
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="employee.html">
+                        <a class="nav-link active" href="search-user-management">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -167,71 +167,161 @@
                         <div class="card">
 
                             <div class="card-body">
-                                <div class="row mt-3 mb-3">
-                                    <div class="row" style="padding: 0px;margin: 0px;">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="name">Name:</label><br>
-                                                <input id="name" name="name" type="text" class="form-control">
+                                <form action="search-user-management">
+                                    <div class="row mt-3 mb-3">
+                                        <div class="row" style="padding: 0px;margin: 0px;">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="name">Name:</label><br>
+                                                    <input id="name" name="name" type="text" class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="phoneNumber">Phone Number:</label><br>
-                                                <input id="phoneNumber" name="phoneNumber" type="text"
-                                                       class="form-control">
+                                            <div class="col-md-1" style="margin-top: 30px;">
+                                                <button type="submit"
+                                                        style="background-color: transparent;border-color: transparent;">
+                                                    <img src="resources/images/search.png" alt="Search"></button>
                                             </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="identifyCard">Identify Card:</label><br>
-                                                <input id="identifyCard" name="identifyCard" type="text"
-                                                       class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="codeCard">Code Card:</label><br>
-                                                <input id="codeCard" name="codeCard" type="text"
-                                                       class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="status">Status:</label><br>
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option selected>--------</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1" style="margin-top: 30px;">
-                                            <button type="button"
-                                                    style="background-color: transparent;border-color: transparent;">
-                                                <img
-                                                        src="resources/images/search.png" alt="Search"></button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 <br/>
-                                <div class="row">
-                                    <div class="col-md-11"></div>
-                                    <div class="col-md-1" style="display: grid;">
-                                        <button type="button" class="btn btn-success collapsed"
-                                                onclick="openDialogApartmentAdd();">
-                                            Add Card
-                                        </button>
-                                    </div>
-                                </div>
+
                                 <br/>
                                 <div class="row">
                                     <div style="max-height: 600px; overflow: auto;">
                                         <div class="table-responsive">
-                                            <table id="apartment-card-table"
-                                                   class="table table-striped table-bordered" cellspacing="0"
-                                                   width="100%">
+                                            <table id="user-management-table" class="table table-bordered w-100">
+                                                <thead>
+                                                <tr>
+                                                    <th class="w-stt">No</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>Role</th>
+                                                    <th>Status</th>
+                                                    <th>Created Date</th>
+                                                    <th>Update Date</th>
+                                                    <th>Note</th>
+
+                                                    <th class="w-action-3">Function</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <c:forEach items="${accountList}" var="a" varStatus="loop">
+                                                    <tr>
+                                                        <td>${loop.count}</td>
+                                                        <td>${a.name}</td>
+                                                        <td>${a.email}</td>
+                                                        <td>${a.phoneNumber}</td>
+                                                        <td>${a.role}</td>
+                                                        <td>${a.status}</td>
+                                                        <td>${a.createdDate}</td>
+                                                        <td>${a.updatedDate}</td>
+                                                        <td>Note</td>
+                                                        <td style="text-align: center">
+                                                            <a href="#" class="view mr-1" data-toggle="modal"
+                                                               data-target="#detail${a.accountId}" title="Xem chi tiết">
+                                                                <i
+                                                                        class="fas fa-eye fa-fw"></i></a>
+                                                            <a href="#" class="edit mr-1" data-toggle="modal"
+                                                               data-target="#update${a.accountId}" title="Xem chi tiết">
+                                                                <i
+                                                                        class="fas fa-pen fa-fw"></i></a>
+                                                            <a href="delete?id=${a.accountId}" class="remove"
+                                                               title="Xóa"><i
+                                                                    class="fas fa-trash fa-fw"></i></a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <!-- Su kien show chi tiet -->
+                                                    <div class="modal fade" id="detail${a.accountId}" tabindex="-1"
+                                                         role="dialog" aria-labelledby="detail${a.accountId}"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Detail User</h5>
+                                                                        <div class="row">
+                                                                            <div class="col-6 pr-4">
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>User Name</label>
+                                                                                        <span class="form-control">${a.name} </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Date of Birth</label>
+                                                                                        <span class="form-control">${a.dob}</span>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Gender </label>
+                                                                                        <c:choose>
+                                                                                            <c:when test = "${a.gender ==true}">
+                                                                                                <span class="form-control">Male</span>
+                                                                                            </c:when>
+                                                                                            <c:otherwise>
+                                                                                                Female
+                                                                                            </c:otherwise>
+                                                                                        </c:choose>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Address </label>
+                                                                                        <span class="form-control">${a.address}</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Role</label>
+                                                                                        <span class="form-control">${a.role}</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-6 pr-4">
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>User Name</label>
+                                                                                        <span class="form-control">${a.status} </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Date of Birth</label>
+                                                                                        <span class="form-control">${a.updatedDate}</span>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Updated Date </label>
+                                                                                        <span class="form-control">${a.updatedDate}</span>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                        class="btn btn-md btn-white"
+                                                                                        data-dismiss="modal">Close
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </c:forEach>
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -247,183 +337,6 @@
     </div>
     <!--//app-content-->
 </div>
-<!-- Add Modal -->
-<div class="modal fade" id="apartment-card-add" tabindex="-1" role="dialog"
-     aria-labelledby="apartment-card-add-title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="apartment-card-add-title">Add Apartment Card</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="removeDataAdd();">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Name:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="name" name="name"/>
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Phone Number:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="phone-number" name="phone-number"/>
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Identify Card:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="identify-card" name="identify-card"/>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary"
-                        onclick="closeDialog($(`#apartment-card-add`));">Close
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Add Modal -->
-
-<!-- Detail Modal -->
-<div class="modal fade" id="apartment-card-detail" tabindex="-1" role="dialog"
-     aria-labelledby="apartment-card-detail-title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="apartment-card-detail-title">Detail Apartment Card</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="closeDialog($(`#apartment-card-detail`));">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Name:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="name" name="name"/>
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Phone Number:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="phone-number-detail" name="phone-number"/>
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Identify Card:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="identify-card-detail" name="identify-card"/>
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Code Card :</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="code-card-detail" name="code-card"/>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                        onclick="closeDialog($(`#apartment-card-detail`));">Close
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Detail Modal -->
-
-<!-- Update Modal -->
-<div class="modal fade" id="apartment-card-update" tabindex="-1" role="dialog"
-     aria-labelledby="apartment-card-update-title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="apartment-card-update-title">Update Apartment Card</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="closeDialog($(`#apartment-card-update`));">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Status:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <select class="form-select" aria-label="Default select example">
-                            <option select value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary"
-                        onclick="closeDialog($(`#apartment-card-update`));">Close
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Update Modal -->
-
-<!-- Remove Modal -->
-<div class="modal fade" id="apartment-card-remove" tabindex="-1" role="dialog"
-     aria-labelledby="apartment-card-remove-title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="apartment-card-remove-title">Remove Apartment Card</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="closeDialog($(`#apartment-card-remove`));">
-                    <span aria-hidden="true ">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body ">
-                <div class="container">
-                    <p style=" text-align: center;
-                        font-size: 20px;
-                        color: black;">Do you want to remove this card?</p>
-                </div>
-            </div>
-            <div class="modal-footer ">
-                <button type="button " class="btn btn-danger ">Yes</button>
-                <button type="button " class="btn btn-secondary "
-                        onclick="closeDialog($(`#apartment-card-remove`));">No
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Remove Modal -->
 
 <footer class="footer ">
     <div class="container text-center py-3 ">
@@ -444,21 +357,26 @@
 <script src="resources/js/plugin/jquery-3.3.1.slim.min.js " type="text/javascript "></script>
 <script src="resources/js/plugin/jquery.min.js "></script>
 <script src="resources/js/plugin/popper.min.js "></script>
-<script src="resources/js/plugin/jquery-3.5.1.js "></script>
-<script src="resources/js/plugin/jquery.dataTables.min.js "></script>
-<script src="resources/js/plugin/dataTables.bootstrap4.min.js "></script>
 <script src="resources/plugins/popper.min.js "></script>
-<script src="resources/plugins/bootstrap/js/bootstrap.min.js "></script>
-
-<!-- Charts JS -->
-<script src="resources/plugins/chart.js/chart.min.js "></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
 <!-- Page Specific JS -->
 <script src="resources/js/custom/app.js "></script>
 
-<script src="resources/js/custom/apartment-card-table.js "></script>
 <!--Bootstrap Datepicker [ OPTIONAL ]-->
-<script src="resources/js/plugin/bootstrap-datepicker.min.js "></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#user-management-table').DataTable();
+    });
+
+</script>
 </body>
 
 </html>
