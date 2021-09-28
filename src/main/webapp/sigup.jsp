@@ -16,7 +16,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="resources/css/custom/form.css">
 
-    <title>Login | Food Review</title>
+    <title>Register | Food Review</title>
 
     <link rel="shortcut icon" href="resources/images/avatar.png">
 
@@ -37,19 +37,25 @@
                 <label>
                     <i class="fas fa-user fa-fw"></i>
                 </label>
-                <input type="text" class="form-control" placeholder="Employee Name" name="txtName" required/>
+                <input type="text" class="form-control" placeholder="Employee Name" name="firstname" required/>
             </div>
             <div class="form-group">
                 <label>
                     <i class="fas fa-user fa-fw"></i>
                 </label>
-                <input type="text" class="form-control" placeholder="Phone Number" name="txtPhone" required/>
+                <input type="text" class="form-control" placeholder="Employee Name" name="lastname" required/>
             </div>
             <div class="form-group">
                 <label>
                     <i class="fas fa-user fa-fw"></i>
                 </label>
-                <input type="text" class="form-control" placeholder="Address" name="txtAddress" required/>
+                <input type="text" class="form-control" placeholder="Phone Number" name="phone" required/>
+            </div>
+            <div class="form-group">
+                <label>
+                    <i class="fas fa-user fa-fw"></i>
+                </label>
+                <input type="text" class="form-control" placeholder="Address" name="address" required/>
             </div>
             <div class="form-group">
                 <label>

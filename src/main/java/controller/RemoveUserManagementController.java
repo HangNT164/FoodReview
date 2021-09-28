@@ -1,6 +1,7 @@
 package controller;
 
 import dao.AccountDao;
+import util.ValidateHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,18 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "RegisterController", value = "/register")
-public class RegisterController extends HttpServlet {
+@WebServlet(name = "UpdateStatusUserManagement", value = "/remove-user-management")
+public class RemoveUserManagementController extends HttpServlet {
 
     private AccountDao accountDao = new AccountDao();
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
-        }
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +22,17 @@ public class RegisterController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            int accountId = ValidateHelper.getValidateID(request.getParameter("accountId"));
+            boolean update = accountDao.removeAccount(accountId);
+            if (!update) {
+                request.setAttribute("message", "Xóa tài khoản thất bại");
+                request.getRequestDispatcher("user.jsp").forward(request, response);
+            } else {
+                response.sendRedirect("search-user-management");
+            }
 
         }
     }
+
 }
+

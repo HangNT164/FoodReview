@@ -12,15 +12,14 @@ import java.sql.Date;
 public class Account {
 
     private int accountId;
-    private String email;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String birthDay;
+    private String name;
+    private String dob;
     private Boolean gender;
-    private String role;
-    private String phoneNumber;
     private String address;
+    private String role;
+    private String email;
+    private String phoneNumber;
+    private String password;
     private String status;
     private Date createdDate;
     private Date updatedDate;

@@ -1,34 +1,34 @@
-#employee-table tr td a {
+#user-management-table tr td a {
     padding: 5px;
     color: #fff;
     border-radius: .15rem;
 }
 
-#employee-table tr td .view {
+#user-management-table tr td .view {
     background-color: #3bac47;
 }
 
-#employee-table tr td .view:hover {
+#user-management-table tr td .view:hover {
     color: #fff;
     background-color: #308e3a;
     text-decoration: none;
 }
 
-#employee-table tr td .edit {
+#user-management-table tr td .edit {
     background-color: #ffc107;
 }
 
-#employee-table tr td .edit:hover {
+#user-management-table tr td .edit:hover {
     color: #fff;
     background-color: #e0a800;
     text-decoration: none;
 }
 
-#employee-table tr td .remove {
+#user-management-table tr td .remove {
     background-color: #dc3545;
 }
 
-#employee-table tr td .remove:hover {
+#user-management-table tr td .remove:hover {
     color: #fff;
     background-color: #c82333;
     text-decoration: none;
@@ -44,4 +44,8 @@
 
 .customer-more-info a {
     color: #28a745;
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+    width: 70px !important;
 }

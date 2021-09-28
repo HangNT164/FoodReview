@@ -45,7 +45,7 @@
                                                                         alt="Avatar" style="border-radius: 50%;">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
-                                <li><a class="dropdown-item" href="account.jsp">Account</a></li>
+                                <li><a class="dropdown-item" href="profile">Account</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -76,7 +76,7 @@
             <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
                 <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                     <li class="nav-item ">
-                        <a class="nav-link active " href="index.jsp">
+                        <a class="nav-link  " href="index.jsp">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +93,7 @@
                     <!--//nav-item-->
 
                     <li class="nav-item">
-                        <a class="nav-link" href="user.jsp">
+                        <a class="nav-link" href="search-user-management">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -180,145 +180,99 @@
             </div>
             <!--//app-card-header-->
             <div class="app-card-body px-4 w-100">
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label mb-2"><strong>Photo</strong></div>
-                            <div class="item-data"><img class="profile-image" src="resources/images/users/hangnt.png"
-                                                        alt="Avatar" style="border-radius: 50%;"></div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                                 alt=""/>
+
                         </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
                     </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>Name</strong></div>
-                            <div class="item-data">Nguyễn Thúy Hằng</div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                            <h5>
+                                <span>${account.name}</span>
+                            </h5>
+
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                       aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                       aria-controls="profile" aria-selected="false">Timeline</a>
+                                </li>
+                            </ul>
                         </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
                     </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>Email</strong></div>
-                            <div class="item-data">hangnt16499@gmail.com</div>
-                        </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
+                    <div class="col-md-2">
                     </div>
-                    <!--//row-->
                 </div>
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>DOB</strong></div>
-                            <div class="item-data">
-                                16/04/1999
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab p-3" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Name</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><span>${account.name}</span></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>${account.email}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Phone</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>${account.phoneNumber}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Role</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>${account.role}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Address</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>${account.address}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>DOB</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>${account.dob}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                dfgdg
                             </div>
                         </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
                     </div>
-                    <!--//row-->
                 </div>
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>Address</strong></div>
-                            <div class="item-data">
-                                Hà Nội
-                            </div>
-                        </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
-                    </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>Home Town</strong></div>
-                            <div class="item-data">
-                                Nam Định
-                            </div>
-                        </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
-                    </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>Role</strong></div>
-                            <div class="item-data">
-                                Administrator
-                            </div>
-                        </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
-                    </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>Password</strong></div>
-                            <div class="item-data">
-                                *******
-                            </div>
-                        </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="change-password.jsp">Change</a>
-                        </div>
-                        <!--//col-->
-                    </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
             </div>
-            <!--//app-card-body-->
-            <div class="app-card-footer p-4 mt-auto">
-            </div>
-            <!--//app-card-footer-->
 
         </div>
         <!--//row-->
