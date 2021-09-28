@@ -181,4 +181,42 @@ public class AccountDao {
         return false;
     }
 
+    public boolean updateAccount(int id, Account account) {
+        int check = 0;
+        String query = "UPDATE account SET name=?, phone_number=?, email=?, address=?, dob=?, updated_date =?  WHERE account_id =?";
+
+        try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, account.getName());
+                ps.setObject(2, account.getPhoneNumber());
+                ps.setObject(3, account.getEmail());
+                ps.setObject(4, account.getAddress());
+                ps.setObject(5, account.getDob());
+                ps.setObject(6, new Date());
+                ps.setObject(7, id);
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
+
+    public boolean updatePassword(int id, String newPass) {
+        int check = 0;
+        String query = "UPDATE account SET password = ? WHERE account_id = ?";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, BCrypt.hashpw(newPass, BCrypt.gensalt()));
+                ps.setObject(2, id);
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
 }

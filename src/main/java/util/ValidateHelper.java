@@ -70,7 +70,16 @@ public class ValidateHelper {
         return convert;
     }
 
+    public static String convertFormatDateYYYYMMDD(String date) {
+        String convert = "";
+        String[] dates = date.split("/");
+        if (dates.length > 0) {
+            convert = dates[2] + "-" + dates[1] + "-" + dates[0];
+        }
+        return convert;
+    }
+
     public static void main(String[] args) {
-        System.out.println(isPhoneNumber("09425786857"));
+        System.out.println(convertFormatDateYYYYMMDD("16/04/1999"));
     }
 }

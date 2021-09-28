@@ -9,16 +9,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e05f9e78-227f-4d36-95e2-599cafc6b358" name="Default Changelist" comment="Finish UserManagement">
-      <change afterPath="$PROJECT_DIR$/src/main/db/data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/db/init.sql" afterDir="false" />
+    <list default="true" id="e05f9e78-227f-4d36-95e2-599cafc6b358" name="Default Changelist" comment="Finish Resgister Account">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ChangePassword.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/UpdateStatusUserManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/UpdateStatusUserManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProfileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/AccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AccountDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/BCrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/BCrypt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/ValidateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/ValidateHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/sigup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sigup.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -305,7 +303,7 @@
       <workItem from="1632738280521" duration="2887000" />
       <workItem from="1632747567989" duration="1900000" />
       <workItem from="1632763111117" duration="409000" />
-      <workItem from="1632763947491" duration="31908000" />
+      <workItem from="1632763947491" duration="38606000" />
     </task>
     <task id="LOCAL-00001" summary="Innit">
       <created>1632732475089</created>
@@ -328,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632836101585</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Finish Resgister Account">
+      <created>1632849602464</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1632849602464</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -364,68 +369,8 @@
     <MESSAGE value="Innit" />
     <MESSAGE value="UserManagement + User profile" />
     <MESSAGE value="Finish UserManagement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finish UserManagement" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/RemoveUserManagementController.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/RemoveUserManagementController.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/RegisterController.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/RegisterController.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/RegisterController.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/RegisterController.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/RegisterController.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/RegisterController.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/RegisterController.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/RegisterController.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/RegisterController.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Finish Resgister Account" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finish Resgister Account" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/boarding_house_backend$MySqlConnectionTest.ic" NAME="MySqlConnectionTest Coverage Results" MODIFIED="1561147205457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
