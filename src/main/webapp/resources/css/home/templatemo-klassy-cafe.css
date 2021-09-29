@@ -1017,7 +1017,7 @@ menu
 }
 
 .card1 {
-    background-image: url(../images/menu-item-01.jpg);
+    background-image: url(../../images/home/chefs-01.jpg);
 }
 
 .card2 {
@@ -1059,6 +1059,14 @@ menu
 }
 
 .description {
+    width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 25px;
+    -webkit-line-clamp: 3;
+    height: 75px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
     padding: 0px 30px;
     color: #fff;
 }

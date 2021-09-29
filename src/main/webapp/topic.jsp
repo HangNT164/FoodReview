@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,11 +20,11 @@
 
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
-    <link rel="stylesheet" href="resources/css/custom/notficaition-table.css">
     <link rel="stylesheet" href="resources/css/custom/footer.css">
     <link rel="stylesheet" href="resources/css/plugin/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="resources/css/custom/apartment-card.css">
+    <link rel="stylesheet" href="resources/css/custom/user.css">
     <link rel="stylesheet" type="text/css" href="resources/css/plugin/query-ui.css">
+
 
 </head>
 
@@ -120,7 +121,7 @@
                     <!--//nav-item-->
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="topic.jsp">
+                        <a class="nav-link " href="search-topic-status">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -163,75 +164,302 @@
 
                 <div class="row">
 
+
                     <div class="col-md-12">
                         <div class="card">
 
                             <div class="card-body">
-                                <div class="row mt-3 mb-3">
-                                    <div class="row" style="padding: 0px;margin: 0px;">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="name">Name:</label><br>
-                                                <input id="name" name="name" type="text" class="form-control">
+
+                                <form action="search-topic-status">
+                                    <div>
+                                        <span>Add new </span>
+                                        </br>
+                                        <a href="#" class="view mr-1" data-toggle="modal"
+                                           data-target="#add" title="">
+                                            <i class="fas fa-plus"></i></a>
+                                    </div>
+                                    <div class="row mt-3 mb-3">
+                                        <div class="row" style="padding: 0px;margin: 0px;">
+                                            <div class="col-md-2">
+
+                                                <div class="form-group">
+                                                    <label for="status">Search by status</label><br>
+                                                    <select id="status" class="form-control"
+                                                            name="status">
+                                                        <option value="">All
+                                                        </option>
+                                                        <option value="approved">Approved
+                                                        </option>
+                                                        <option value="pending">Pending
+                                                        </option>
+                                                        <option value="reject">Reject</option>
+                                                    </select>
+
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="phoneNumber">Phone Number:</label><br>
-                                                <input id="phoneNumber" name="phoneNumber" type="text"
-                                                       class="form-control">
+                                            <div class="col-md-1" style="margin-top: 30px;">
+                                                <button type="submit"
+                                                        style="background-color: transparent;border-color: transparent;">
+                                                    <img src="resources/images/search.png" alt="Search"></button>
                                             </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="identifyCard">Identify Card:</label><br>
-                                                <input id="identifyCard" name="identifyCard" type="text"
-                                                       class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="codeCard">Code Card:</label><br>
-                                                <input id="codeCard" name="codeCard" type="text"
-                                                       class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="status">Status:</label><br>
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option selected>--------</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1" style="margin-top: 30px;">
-                                            <button type="button"
-                                                    style="background-color: transparent;border-color: transparent;">
-                                                <img
-                                                        src="resources/images/search.png" alt="Search"></button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                                 <br/>
-                                <div class="row">
-                                    <div class="col-md-11"></div>
-                                    <div class="col-md-1" style="display: grid;">
-                                        <button type="button" class="btn btn-success collapsed"
-                                                onclick="openDialogApartmentAdd();">
-                                            Add Card
-                                        </button>
-                                    </div>
-                                </div>
+
                                 <br/>
                                 <div class="row">
                                     <div style="max-height: 600px; overflow: auto;">
                                         <div class="table-responsive">
-                                            <table id="apartment-card-table"
-                                                   class="table table-striped table-bordered" cellspacing="0"
-                                                   width="100%">
+                                            <table id="user-management-table" class="table table-bordered w-100">
+                                                <thead>
+                                                <tr>
+                                                    <th class="w-stt">No</th>
+                                                    <th>Title</th>
+                                                    <th>Status</th>
+                                                    <th>Created Date</th>
+                                                    <th>Update Date</th>
+                                                    <th class="w-action-3">Function</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <c:forEach items="${topicListByStatus}" var="l" varStatus="loop">
+                                                    <tr>
+                                                        <td>${loop.count}</td>
+                                                        <td>${l.title}</td>
+                                                        <td>${l.status}</td>
+                                                        <td>${l.createdDate}</td>
+                                                        <td>${l.updatedDate}</td>
+                                                        <td style="text-align: center">
+                                                            <a href="#" class="view mr-1" data-toggle="modal"
+                                                               data-target="#detail${l.topicId}" title="Xem chi tiết">
+                                                                <i
+                                                                        class="fas fa-eye fa-fw"></i></a>
+                                                            <a href="#" class="edit mr-1" data-toggle="modal"
+                                                               data-target="#update${l.topicId}" title="Xem chi tiết">
+                                                                <i
+                                                                        class="fas fa-pen fa-fw"></i></a>
+                                                            <a href="#" class="remove mr-1" data-toggle="modal"
+                                                               data-target="#remove${l.topicId}"
+                                                               title="Xóa">
+                                                                <i
+                                                                        class="fas fa-trash fa-fw"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <%-- Su kien add--%>
+                                                    <div class="modal fade" id="add" tabindex="-1"
+                                                         role="dialog" aria-labelledby=""
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-xl"
+                                                             role="document">
+                                                            <div class="modal-content">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Add New Topic</h5>
+                                                                        <form action="add-topic"
+                                                                              method="post">
+                                                                            <div class="form-group row">
+                                                                                <div class="col-sm-12">
+                                                                                    <label>Title</label>
+                                                                                    <input name="title"
+                                                                                           class="form-control"></input>
+                                                                                </div>
+                                                                                <div class="col-sm-12">
+                                                                                    <label>Content</label>
+                                                                                    <input name="content"
+                                                                                           class="form-control"></input>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div style="display: flex;justify-content: space-evenly">
+                                                                                <button type="submit"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success">
+                                                                                    Submit
+                                                                                </button>
+                                                                                <button type="button"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
+                                                                                        data-dismiss="modal">Close
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Su kien show chi tiet -->
+                                                    <div class="modal fade" id="detail${l.topicId}" tabindex="-1"
+                                                         role="dialog" aria-labelledby="detail${l.topicId}"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-xl"
+                                                             role="document">
+                                                            <div class="modal-content">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Detail Topic</h5>
+                                                                        <div class="row">
+                                                                            <div class="col-6 pr-4">
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Title</label>
+                                                                                        <textarea class="form-control"
+                                                                                                  disabled>${l.title} </textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Rate</label>
+                                                                                        <span class="form-control"
+                                                                                              disabled>${l.rate}</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Content</label>
+                                                                                        <textarea class="form-control"
+                                                                                                  disabled
+                                                                                                  style="height: 150px">${l.content}</textarea>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <div class="col-6 pr-4">
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Status</label>
+                                                                                        <span class="form-control"
+                                                                                              disabled>${l.status} </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Create Date</label>
+                                                                                        <span class="form-control"
+                                                                                              disabled>${l.createdDate}</span>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Updated Date </label>
+                                                                                        <span class="form-control"
+                                                                                              disabled>${l.updatedDate}</span>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
+                                                                                        data-dismiss="modal">Close
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <%--  Su kien update--%>
+                                                    <div class="modal fade" id="update${l.topicId}" tabindex="-1"
+                                                         role="dialog" aria-labelledby="update${l.topicId}"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-xl"
+                                                             role="document">
+                                                            <div class="modal-content">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Update Topic</h5>
+                                                                        <form action="update-status-topic?topicId=${l.topicId}"
+                                                                              method="post">
+                                                                            <p style="text-align: center;color: red;">${message}</p>
+                                                                            <div class="form-group row">
+                                                                                <div class="col-sm-12">
+                                                                                    <label>Title</label>
+                                                                                    <input class="form-control"
+                                                                                              name="title"
+                                                                                           value="${l.title}"
+                                                                                              > </input>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <div class="col-sm-12">
+                                                                                    <label>Title</label>
+                                                                                    <input class="form-control"
+                                                                                              name="content"
+                                                                                              value="${l.content}"> </input>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <select id="statu" class="form-control"
+                                                                                        name="status">
+
+                                                                                    <option value="approved">Approved
+                                                                                    </option>
+                                                                                    <option value="pending">Pending
+                                                                                    </option>
+                                                                                    <option value="reject">Reject
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div style="display: flex;justify-content: space-evenly">
+                                                                                <button type="submit"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success">
+                                                                                    Change
+                                                                                </button>
+                                                                                <button type="button"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
+                                                                                        data-dismiss="modal">Close
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <%--  Su kien remove--%>
+                                                    <div class="modal fade" id="remove${l.topicId}" tabindex="-1"
+                                                         role="dialog" aria-labelledby="remove${l.topicId}"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-sm"
+                                                             role="document">
+                                                            <div class="modal-content">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Remove Topic </h5>
+                                                                        <p style="text-align: center;color: red;">${message}</p>
+                                                                        <form action="remove-topic-management?topicId=${l.topicId}"
+                                                                              method="post">
+                                                                            <p>Bạn có muốn xóa topic này không?</p>
+                                                                            <br/>
+                                                                            <div style="display: flex;justify-content: space-between">
+                                                                                <button type="submit"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success">
+                                                                                    Có
+                                                                                </button>
+                                                                                <button type="button"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
+                                                                                        data-dismiss="modal">Không
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </c:forEach>
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -247,183 +475,6 @@
     </div>
     <!--//app-content-->
 </div>
-<!-- Add Modal -->
-<div class="modal fade" id="apartment-card-add" tabindex="-1" role="dialog"
-     aria-labelledby="apartment-card-add-title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="apartment-card-add-title">Add Apartment Card</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="removeDataAdd();">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Name:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="name" name="name"/>
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Phone Number:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="phone-number" name="phone-number"/>
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Identify Card:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="identify-card" name="identify-card"/>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary"
-                        onclick="closeDialog($(`#apartment-card-add`));">Close
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Add Modal -->
-
-<!-- Detail Modal -->
-<div class="modal fade" id="apartment-card-detail" tabindex="-1" role="dialog"
-     aria-labelledby="apartment-card-detail-title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="apartment-card-detail-title">Detail Apartment Card</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="closeDialog($(`#apartment-card-detail`));">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Name:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="name" name="name"/>
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Phone Number:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="phone-number-detail" name="phone-number"/>
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Identify Card:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="identify-card-detail" name="identify-card"/>
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Code Card :</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <input type="text" class="form-control" id="code-card-detail" name="code-card"/>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                        onclick="closeDialog($(`#apartment-card-detail`));">Close
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Detail Modal -->
-
-<!-- Update Modal -->
-<div class="modal fade" id="apartment-card-update" tabindex="-1" role="dialog"
-     aria-labelledby="apartment-card-update-title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="apartment-card-update-title">Update Apartment Card</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="closeDialog($(`#apartment-card-update`));">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-3 col-xs-3">
-                        <div class="custom-div-right">Status:</div>
-                    </div>
-                    <div class="col-sm-9 col-xs-9">
-                        <select class="form-select" aria-label="Default select example">
-                            <option select value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary"
-                        onclick="closeDialog($(`#apartment-card-update`));">Close
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Update Modal -->
-
-<!-- Remove Modal -->
-<div class="modal fade" id="apartment-card-remove" tabindex="-1" role="dialog"
-     aria-labelledby="apartment-card-remove-title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="apartment-card-remove-title">Remove Apartment Card</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="closeDialog($(`#apartment-card-remove`));">
-                    <span aria-hidden="true ">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body ">
-                <div class="container">
-                    <p style=" text-align: center;
-                        font-size: 20px;
-                        color: black;">Do you want to remove this card?</p>
-                </div>
-            </div>
-            <div class="modal-footer ">
-                <button type="button " class="btn btn-danger ">Yes</button>
-                <button type="button " class="btn btn-secondary "
-                        onclick="closeDialog($(`#apartment-card-remove`));">No
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Remove Modal -->
 
 <footer class="footer ">
     <div class="container text-center py-3 ">
@@ -444,12 +495,11 @@
 <script src="resources/js/plugin/jquery-3.3.1.slim.min.js " type="text/javascript "></script>
 <script src="resources/js/plugin/jquery.min.js "></script>
 <script src="resources/js/plugin/popper.min.js "></script>
-<script src="resources/js/plugin/jquery-3.5.1.js "></script>
-<script src="resources/js/plugin/jquery.dataTables.min.js "></script>
-<script src="resources/js/plugin/dataTables.bootstrap4.min.js "></script>
 <script src="resources/plugins/popper.min.js "></script>
-<script src="resources/plugins/bootstrap/js/bootstrap.min.js "></script>
-
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <!-- Charts JS -->
 <script src="resources/plugins/chart.js/chart.min.js "></script>
 
@@ -457,7 +507,15 @@
 <script src="resources/js/custom/app.js "></script>
 
 <!--Bootstrap Datepicker [ OPTIONAL ]-->
-<script src="resources/js/plugin/bootstrap-datepicker.min.js "></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('#user-management-table').DataTable();
+    });
+
+</script>
 </body>
 
 </html>

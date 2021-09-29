@@ -40,6 +40,7 @@ public class AccountDao {
     public Account login(String email, String password) {
         String query = "SELECT * FROM account where email = ? ";
 
+
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
@@ -47,6 +48,7 @@ public class AccountDao {
                 ResultSet rs = ps.executeQuery();
                 if (rs != null && rs.next()) {
                     Account account = getValueAccount(rs);
+
                     if (BCrypt.checkpw(password, account.getPassword())) {
                         return account;
                     }
@@ -139,6 +141,7 @@ public class AccountDao {
         }
         return check > 0;
     }
+
 
 
     public boolean addAccount(Account account) {

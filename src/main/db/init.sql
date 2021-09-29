@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `swp391_g2_project`.`topic`
     NULL
     AUTO_INCREMENT,
     `title`
-    INT
+    TEXT
     NOT
     NULL,
     `status`
@@ -128,8 +128,8 @@ CREATE TABLE IF NOT EXISTS `swp391_g2_project`.`topic`
 ) NULL DEFAULT 'inactive',
     `content` TEXT CHARACTER SET 'utf8' NULL DEFAULT NULL,
     `rate` INT NULL DEFAULT NULL,
-    `created_date` DATETIME NOT NULL,
-    `updated_date` DATETIME NULL DEFAULT NULL,
+    `created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY
 (
     `topic_id`
