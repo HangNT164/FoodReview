@@ -10,51 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e05f9e78-227f-4d36-95e2-599cafc6b358" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/bean/Topic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/constant/StatusAccountEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ProfileController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/RemoveUserManagementController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/SearchUserManagementController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/TopicManagementController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/UpdateStatusUserManagementController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/TopicDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/security/AuthenFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/custom/setting.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foodreview.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bean/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/constant/RoleEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constant/RoleEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AccountDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdbc/MySqlConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdbc/MySqlConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/AccountService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/ValidateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/ValidateHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/custom/employee.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/custom/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/TopicDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/TopicDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/custom/portal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/custom/portal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/absent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/apartment-card-table.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/apartment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/charts-demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/department.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/employee.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/fee-apartment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/fee-building.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/feedback.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/index-charts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/notification-table.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/parking-card-table.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/request-service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/resident.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/sigup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sigup.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/topic.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/topic.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

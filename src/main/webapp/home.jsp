@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -145,13 +146,10 @@
                 <div class="left-text-content">
                     <div class="section-heading">
                         <h6>New Post</h6>
-                        <a href="#" style="font-family: none;"><h2>Quán Thu Thảo – Quán cơm tấm Sài Gòn cực ngon</h2>
+                        <a href="#" style="font-family: none;"><h2>${top1.title}</h2>
                         </a>
                     </div>
-                    <p>Nhắc đến những quán cơm tấm Hồ Chí Minh xuất sắc nhất, chắc chắn bất cứ thực khách nào cũng chẳng
-                        thể bỏ qua cái tên Thu Thảo được đâu các bạn ạ. Cơm tấm Thu Thảo có hương vị đặc biệt thơm ngon,
-                        khác xa so với những quán cơm tấm bình thường khác. Sườn được ướp vừa miệng ăn, nướng không
-                        cháy, cơm mềm, tơi, quả thực không thể chê vào đâu được.
+                    <p>${top1.content}
                     </p>
                     <i>Địa chỉ: 459-461 Lê Đại Hành, Quận 11
                         <br>Giờ mở cửa: 9.00-19.00
@@ -194,96 +192,32 @@
             </div>
         </div>
     </div>
-    <div class="menu-item-carousel">
-        <div class="col-lg-12">
-            <div class="owl-menu-item owl-carousel">
-                <div class="item">
-                    <div class='card card1'>
-                        <div class="price"><h6><i class="fa fa-heart"></i></h6></div>
-                        <div class='info'>
-                            <h1 class='title'>Chocolate Cake - Azzan</h1>
-                            <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do
-                                eiusmod teme.</p>
-                            <div class="main-text-button">
-                                <div class="scroll-to-section"><a href="#">More.. <i class="fa fa-angle-down"></i></a>
+    <c:forEach items="${topicList}" var="l">
+        <div class="menu-item-carousel">
+            <div class="col-lg-12">
+                <div class="owl-menu-item owl-carousel">
+
+                    <div class="item">
+                        <div class='card card1'>
+                            <div class="price"><h6><i class="fa fa-heart"></i></h6></div>
+                            <div class='info'>
+                                <h1 class='title'>${l.title}</h1>
+                                <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do
+                                    eiusmod teme.</p>
+                                <div class="main-text-button">
+                                    <div class="scroll-to-section"><a href="#">More.. <i
+                                            class="fa fa-angle-down"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class='card card2'>
-                        <div class="price"><h6><i class="fa fa-heart"></i></h6></div>
-                        <div class='info'>
-                            <h1 class='title'>Suất cơm 30k - Quang Anh</h1>
-                            <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do
-                                eiusmod teme.</p>
-                            <div class="main-text-button">
-                                <div class="scroll-to-section"><a href="#">More.. <i class="fa fa-angle-down"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class='card card3'>
-                        <div class="price"><h6><i class="fa fa-heart"></i></h6></div>
-                        <div class='info'>
-                            <h1 class='title'>Bún bò Huế - Quang Anh</h1>
-                            <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do
-                                eiusmod teme.</p>
-                            <div class="main-text-button">
-                                <div class="scroll-to-section"><a href="#">More.. <i class="fa fa-angle-down"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class='card card4'>
-                        <div class="price"><h6>10 <i class="fa fa-heart"></i></h6></div>
-                        <div class='info'>
-                            <h1 class='title'>Mì xào - Simdo</h1>
-                            <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do
-                                eiusmod teme.</p>
-                            <div class="main-text-button">
-                                <div class="scroll-to-section"><a href="#">More.. <i class="fa fa-angle-down"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class='card card5'>
-                        <div class="price"><h6><i class="fa fa-heart"></i></h6></div>
-                        <div class='info'>
-                            <h1 class='title'>Bánh chưng rán - Quang Anh</h1>
-                            <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do
-                                eiusmod teme.</p>
-                            <div class="main-text-button">
-                                <div class="scroll-to-section"><a href="#">More.. <i class="fa fa-angle-down"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class='card card3'>
-                        <div class="price"><h6><i class="fa fa-heart"></i></h6></div>
-                        <div class='info'>
-                            <h1 class='title'>Suất cơm 30k - Simdo</h1>
-                            <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do
-                                eiusmod teme.</p>
-                            <div class="main-text-button">
-                                <div class="scroll-to-section"><a href="#">More.. <i class="fa fa-angle-down"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
         </div>
-    </div>
+    </c:forEach>
 </section>
 <!-- ***** Menu Area Ends ***** -->
 
@@ -490,9 +424,9 @@
                                         <li><a href='#tabs-1'><img src="resources/images/home/tab-icon-01.png" alt="">Breakfast</a>
                                         </li>
                                         <li><a href='#tabs-2'><img src="resources/images/home/tab-icon-02.png"
-                                                                   alt="">Lunch</a></a></li>
+                                                                   alt="">Lunch</a></li>
                                         <li><a href='#tabs-3'><img src="resources/images/home/tab-icon-03.png"
-                                                                   alt="">Dinner</a></a></li>
+                                                                   alt="">Dinner</a></li>
                                     </ul>
                                 </div>
                             </div>

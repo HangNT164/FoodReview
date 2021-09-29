@@ -216,12 +216,12 @@
                                                                 <i
                                                                         class="fas fa-eye fa-fw"></i></a>
                                                             <a href="#" class="edit mr-1" data-toggle="modal"
-                                                               data-target="#update" title="Xem chi tiết">
+                                                               data-target="#update${l.topicId}" title="Xem chi tiết">
                                                                 <i
                                                                         class="fas fa-pen fa-fw"></i></a>
                                                             <a href="#" class="remove mr-1" data-toggle="modal"
-                                                               data-target="#remove"
-                                                               title="Xem chi tiếtXóa">
+                                                               data-target="#remove${l.topicId}"
+                                                               title="Xóa">
                                                                 <i
                                                                         class="fas fa-trash fa-fw"></i></a>
                                                         </td>
@@ -230,46 +230,54 @@
                                                     <div class="modal fade" id="detail${l.topicId}" tabindex="-1"
                                                          role="dialog" aria-labelledby="detail${l.topicId}"
                                                          aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-lg"
+                                                        <div class="modal-dialog modal-dialog-centered modal-xl"
                                                              role="document">
                                                             <div class="modal-content">
                                                                 <div class="card">
                                                                     <div class="card-body">
-                                                                        <h5 class="mb-3">Detail User</h5>
+                                                                        <h5 class="mb-3">Detail Topic</h5>
                                                                         <div class="row">
                                                                             <div class="col-6 pr-4">
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
-                                                                                        <label>User Name</label>
-                                                                                        <span class="form-control">${l.content} </span>
+                                                                                        <label>Title</label>
+                                                                                        <textarea class="form-control" disabled>${l.title} </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
-                                                                                        <label>Date of Birth</label>
-                                                                                        <span class="form-control">${l.title}</span>
+                                                                                        <label>Rate</label>
+                                                                                        <span class="form-control" disabled>${l.rate}</span>
                                                                                     </div>
                                                                                 </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Content</label>
+                                                                                        <textarea class="form-control" disabled
+                                                                                                  style="height: 150px">${l.content}</textarea>
+                                                                                    </div>
+                                                                                </div>
+
                                                                             </div>
 
                                                                             <div class="col-6 pr-4">
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label>Status</label>
-                                                                                        <span class="form-control">${l.status} </span>
+                                                                                        <span class="form-control" disabled>${l.status} </span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
-                                                                                        <label>Date of Birth</label>
-                                                                                        <span class="form-control">${l.updatedDate}</span>
+                                                                                        <label>Create Date</label>
+                                                                                        <span class="form-control" disabled>${l.createdDate}</span>
                                                                                     </div>
                                                                                 </div>
 
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label>Updated Date </label>
-                                                                                        <span class="form-control">${l.updatedDate}</span>
+                                                                                        <span class="form-control" disabled>${l.updatedDate}</span>
                                                                                     </div>
                                                                                 </div>
 
@@ -283,6 +291,80 @@
                                                                                 </button>
                                                                             </div>
                                                                         </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <%--  Su kien update--%>
+                                                    <div class="modal fade" id="update${l.topicId}" tabindex="-1"
+                                                         role="dialog" aria-labelledby="update${l.topicId}"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-xl"
+                                                             role="document">
+                                                            <div class="modal-content">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Update Topic</h5>
+                                                                        <form action="update-user-management?accountId=${l.topicId}"
+                                                                              method="post">
+                                                                            <p style="text-align: center;color: red;">${message}</p>
+
+                                                                            <select class="form-control"
+                                                                                    name="listRole">
+                                                                                <option value="Approve">Approve
+                                                                                </option>
+                                                                                <option value="Reject">Reject
+                                                                                </option>
+                                                                                <option value="Pending">Pending</option>
+                                                                            </select>
+                                                                            <br/>
+                                                                            <div style="display: flex;justify-content: space-evenly">
+                                                                                <button type="submit"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success">
+                                                                                    Change
+                                                                                </button>
+                                                                                <button type="button"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
+                                                                                        data-dismiss="modal">Close
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <%--  Su kien remove--%>
+                                                    <div class="modal fade" id="remove${l.topicId}" tabindex="-1"
+                                                         role="dialog" aria-labelledby="remove${l.topicId}"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-sm"
+                                                             role="document">
+                                                            <div class="modal-content">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Remove Topic </h5>
+                                                                        <p style="text-align: center;color: red;">${message}</p>
+                                                                        <form action="remove-user-management?accountId=${l.topicId}"
+                                                                              method="post">
+                                                                            <p>Bạn có muốn xóa topic này không?</p>
+                                                                            <br/>
+                                                                            <div style="display: flex;justify-content: space-between">
+                                                                                <button type="submit"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success">
+                                                                                    Có
+                                                                                </button>
+                                                                                <button type="button"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
+                                                                                        data-dismiss="modal">Không
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>

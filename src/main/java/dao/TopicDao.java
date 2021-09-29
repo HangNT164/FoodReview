@@ -29,6 +29,26 @@ public class TopicDao {
         }
         return null;
     }
+    public Topic getLastestPost(){
+        String query = "SELECT * FROM swp391_g2_project.topic ORDER BY created_date DESC LIMIT 1;";
+        try(Connection con = MySqlConnection.getConnection();
+            PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;){
+            if(ps!=null){
+                ResultSet rs = ps.executeQuery();
+                while (rs != null && rs.next()) {
+                    Topic topic = getValueTopic(rs);
+                    return topic;
+                }
+
+            } else{
+                return null;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
     public List<Topic> getListTopic(){
         String query = "SELECT * FROM topic;";
         try(Connection con = MySqlConnection.getConnection();
