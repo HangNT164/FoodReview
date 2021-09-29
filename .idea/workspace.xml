@@ -9,13 +9,44 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e05f9e78-227f-4d36-95e2-599cafc6b358" name="Default Changelist" comment="">
+    <list default="true" id="e05f9e78-227f-4d36-95e2-599cafc6b358" name="Default Changelist" comment="Finish Resgister Account">
+      <change afterPath="$PROJECT_DIR$/src/main/db/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/db/init.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AddNewTopicController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ChangePassword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/RemoveTopicManagement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/SearchTopicByStatusController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TopicManagementController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/UpdateStatusUserManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/UpdateStatusUserManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AccountDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/TopicDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/TopicDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/BCrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/BCrypt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/ValidateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/ValidateHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/custom/portal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/custom/portal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/home/flex-slider.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/home/flex-slider.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/home/font-awesome.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/home/font-awesome.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/home/owl-carousel.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/home/owl-carousel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/home/templatemo-klassy-cafe.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/home/templatemo-klassy-cafe.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/fonts/flexslider-icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/flexslider-icon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/fonts/slick.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/slick.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/accordions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/accordions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/datepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/datepicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/lightbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lightbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/owl-carousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/owl-carousel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/popper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/popper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/slick.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/slick.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sigup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sigup.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/topic.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/topic.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,11 +106,13 @@
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
       <map>
+        <entry key="JPA Palette" value="true" />
         <entry key="JPA Structure" value="true" />
       </map>
     </option>
     <option name="myId2Visible">
       <map>
+        <entry key="JPA Palette" value="false" />
         <entry key="JPA Structure" value="false" />
       </map>
     </option>
@@ -114,7 +147,7 @@
     <property name="create.test.in.the.same.root" value="true" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/util" />
-    <property name="last_opened_file_path" value="E:/1.FPTUniversity/Form 4-Fall 2019/Web-Based Java Applications(PRJ321)/PE/PaperNo_3/FinalQ2_HE130461+FinalQ3_HE130461" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SWP391-Group2-Project" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -153,12 +186,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TopicDao" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dao.TopicDao" />
+    <configuration name="ValidateHelper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="util.ValidateHelper" />
       <module name="FoodReview" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dao.*" />
+          <option name="PATTERN" value="util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -270,97 +303,15 @@
         </option>
       </method>
     </configuration>
-    <configuration name="topic.jsp (1)" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 9.0.22" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/topic.jsp" />
-      <deployment>
-        <artifact name="FoodReview:war">
-          <settings>
-            <option name="CONTEXT_PATH" value="/FoodReview_war" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="c0e903f4-529f-4c4e-94e8-745e7b99960a" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="FoodReview:war" />
-        </option>
-      </method>
-    </configuration>
-    <configuration name="topic.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 9.0.22" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/topic.jsp" />
-      <deployment>
-        <artifact name="FoodReview:war">
-          <settings>
-            <option name="CONTEXT_PATH" value="/FoodReview_war" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="17e38705-5beb-4aa8-80e7-7301b871f788" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="FoodReview:war" />
-        </option>
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="Tomcat Server.server" />
-      <item itemvalue="Tomcat Server.topic.jsp" />
-      <item itemvalue="Tomcat Server.topic.jsp (1)" />
-      <item itemvalue="Application.TopicDao" />
       <item itemvalue="Application.AccountDao" />
+      <item itemvalue="Application.ValidateHelper" />
+      <item itemvalue="Tomcat Server.server" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TopicDao" />
+        <item itemvalue="Application.ValidateHelper" />
         <item itemvalue="Application.AccountDao" />
-        <item itemvalue="Tomcat Server.topic.jsp (1)" />
-        <item itemvalue="Tomcat Server.topic.jsp" />
       </list>
     </recent_temporary>
   </component>
@@ -397,7 +348,7 @@
       <workItem from="1632738280521" duration="2887000" />
       <workItem from="1632747567989" duration="1900000" />
       <workItem from="1632763111117" duration="409000" />
-      <workItem from="1632763947491" duration="23750000" />
+      <workItem from="1632763947491" duration="38606000" />
     </task>
     <task id="LOCAL-00001" summary="Innit">
       <created>1632732475089</created>
@@ -413,7 +364,21 @@
       <option name="project" value="LOCAL" />
       <updated>1632829984252</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Finish UserManagement">
+      <created>1632836101585</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1632836101585</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Finish Resgister Account">
+      <created>1632849602464</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1632849602464</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -448,7 +413,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Innit" />
     <MESSAGE value="UserManagement + User profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="UserManagement + User profile" />
+    <MESSAGE value="Finish UserManagement" />
+    <MESSAGE value="Finish Resgister Account" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finish Resgister Account" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/boarding_house_backend$MySqlConnectionTest.ic" NAME="MySqlConnectionTest Coverage Results" MODIFIED="1561147205457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

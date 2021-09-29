@@ -192,18 +192,17 @@
             </div>
         </div>
     </div>
-    <c:forEach items="${topicList}" var="l">
+
         <div class="menu-item-carousel">
             <div class="col-lg-12">
                 <div class="owl-menu-item owl-carousel">
-
+                    <c:forEach items="${topicList}" var="l">
                     <div class="item">
                         <div class='card card1'>
-                            <div class="price"><h6><i class="fa fa-heart"></i></h6></div>
+                            <div class="price"><h6>${l.rate}</h6></div>
                             <div class='info'>
                                 <h1 class='title'>${l.title}</h1>
-                                <p class='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedii do
-                                    eiusmod teme.</p>
+                                <p class='description'>${l.content}</p>
                                 <div class="main-text-button">
                                     <div class="scroll-to-section"><a href="#">More.. <i
                                             class="fa fa-angle-down"></i></a>
@@ -212,12 +211,12 @@
                             </div>
                         </div>
                     </div>
-
+                    </c:forEach>
 
                 </div>
             </div>
         </div>
-    </c:forEach>
+
 </section>
 <!-- ***** Menu Area Ends ***** -->
 

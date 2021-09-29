@@ -121,7 +121,7 @@
                     <!--//nav-item-->
 
                     <li class="nav-item">
-                        <a class="nav-link " href="topic-management">
+                        <a class="nav-link " href="search-topic-status">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -164,17 +164,37 @@
 
                 <div class="row">
 
+
                     <div class="col-md-12">
                         <div class="card">
 
                             <div class="card-body">
-                                <form action="topic-management">
+
+                                <form action="search-topic-status">
+                                    <div>
+                                        <span>Add new </span>
+                                    </br>
+                                        <a href="#" class="view mr-1" data-toggle="modal"
+                                           data-target="#add" title="">
+                                            <i class="fas fa-plus"></i></a>
+                                    </div>
                                     <div class="row mt-3 mb-3">
                                         <div class="row" style="padding: 0px;margin: 0px;">
                                             <div class="col-md-2">
+
                                                 <div class="form-group">
-                                                    <label for="name">Name:</label><br>
-                                                    <input id="name" name="name" type="text" class="form-control">
+                                                    <label for="status">Search by status</label><br>
+                                                    <select id="status" class="form-control"
+                                                            name="status">
+                                                        <option value="">All
+                                                        </option>
+                                                        <option value="approved">Approved
+                                                        </option>
+                                                        <option value="pending">Pending
+                                                        </option>
+                                                        <option value="reject">Reject</option>
+                                                    </select>
+
                                                 </div>
                                             </div>
                                             <div class="col-md-1" style="margin-top: 30px;">
@@ -203,7 +223,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${topicList}" var="l" varStatus="loop">
+                                                <c:forEach items="${topicListByStatus}" var="l" varStatus="loop">
                                                     <tr>
                                                         <td>${loop.count}</td>
                                                         <td>${l.title}</td>
@@ -226,6 +246,47 @@
                                                                         class="fas fa-trash fa-fw"></i></a>
                                                         </td>
                                                     </tr>
+                                                    <%-- Su kien add--%>
+                                                    <div class="modal fade" id="add" tabindex="-1"
+                                                         role="dialog" aria-labelledby=""
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-xl"
+                                                             role="document">
+                                                            <div class="modal-content">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Add New Topic</h5>
+                                                                        <form action="add-topic"
+                                                                              method="post">
+                                                                            <div class="form-group row">
+                                                                                <div class="col-sm-12">
+                                                                                    <label>Title</label>
+                                                                                    <input name="title" class="form-control"></input>
+                                                                                </div>
+                                                                                <div class="col-sm-12">
+                                                                                    <label>Content</label>
+                                                                                    <input name="content" class="form-control"></input>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div style="display: flex;justify-content: space-evenly">
+                                                                                <button type="submit"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success">
+                                                                                    Submit
+                                                                                </button>
+                                                                                <button type="button"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
+                                                                                        data-dismiss="modal">Close
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <!-- Su kien show chi tiet -->
                                                     <div class="modal fade" id="detail${l.topicId}" tabindex="-1"
                                                          role="dialog" aria-labelledby="detail${l.topicId}"
@@ -241,19 +302,22 @@
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label>Title</label>
-                                                                                        <textarea class="form-control" disabled>${l.title} </textarea>
+                                                                                        <textarea class="form-control"
+                                                                                                  disabled>${l.title} </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label>Rate</label>
-                                                                                        <span class="form-control" disabled>${l.rate}</span>
+                                                                                        <span class="form-control"
+                                                                                              disabled>${l.rate}</span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label>Content</label>
-                                                                                        <textarea class="form-control" disabled
+                                                                                        <textarea class="form-control"
+                                                                                                  disabled
                                                                                                   style="height: 150px">${l.content}</textarea>
                                                                                     </div>
                                                                                 </div>
@@ -264,20 +328,23 @@
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label>Status</label>
-                                                                                        <span class="form-control" disabled>${l.status} </span>
+                                                                                        <span class="form-control"
+                                                                                              disabled>${l.status} </span>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label>Create Date</label>
-                                                                                        <span class="form-control" disabled>${l.createdDate}</span>
+                                                                                        <span class="form-control"
+                                                                                              disabled>${l.createdDate}</span>
                                                                                     </div>
                                                                                 </div>
 
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label>Updated Date </label>
-                                                                                        <span class="form-control" disabled>${l.updatedDate}</span>
+                                                                                        <span class="form-control"
+                                                                                              disabled>${l.updatedDate}</span>
                                                                                     </div>
                                                                                 </div>
 
@@ -348,7 +415,7 @@
                                                                     <div class="card-body">
                                                                         <h5 class="mb-3">Remove Topic </h5>
                                                                         <p style="text-align: center;color: red;">${message}</p>
-                                                                        <form action="remove-user-management?accountId=${l.topicId}"
+                                                                        <form action="remove-topic-management?topicId=${l.topicId}"
                                                                               method="post">
                                                                             <p>Bạn có muốn xóa topic này không?</p>
                                                                             <br/>

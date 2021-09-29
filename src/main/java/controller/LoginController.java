@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import static util.ValidateHelper.convertFormatDateYYYYMMDD;
 import static util.ValidateHelper.isEmail;
 
 @WebServlet(name = "LoginController", value = "/login")
@@ -46,6 +47,7 @@ public class LoginController extends HttpServlet {
             if (user != null) {
                 if (user.getStatus().equals(StatusAccountEnum.active.toString())) {
                     String role = user.getRole();
+                    user.setDob(convertFormatDateYYYYMMDD(user.getDob()));
                     session.setAttribute("account", user);
                     if (role.equals(RoleEnum.Admin.toString())) {
                         request.getRequestDispatcher("index.jsp").forward(request, response);
