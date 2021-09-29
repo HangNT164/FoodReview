@@ -77,3 +77,7 @@ const searchBox = document.querySelector('.app-search-box');
 function closeDialog(name) {
     name.modal('hide');
 }
+
+$(document).ready(function () {
+    $('#user-management-table').DataTable();
+});

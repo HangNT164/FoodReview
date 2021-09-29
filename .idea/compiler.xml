@@ -8,9 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="anest.boarding.house" />
-        <module name="anest.core2" />
         <module name="boarding-house-backend" />
         <module name="FoodReview" />
+        <module name="anest.core2" />
         <module name="boarding-house-backend-develop" />
       </profile>
     </annotationProcessing>

@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="resources/css/custom/footer.css">
 
 </head>
-
 <body class="app">
 <header class="app-header fixed-top">
     <div class="app-header-inner">
@@ -45,7 +44,7 @@
                                                                         alt="Avatar" style="border-radius: 50%;">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
-                                <li><a class="dropdown-item" href="account.jsp">Account</a></li>
+                                <li><a class="dropdown-item" href="profile">Account</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -72,11 +71,10 @@
                                 Review</i></span></a>
             </div>
             <!--//app-branding-->
-
             <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
                 <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                     <li class="nav-item ">
-                        <a class="nav-link active " href="index.jsp">
+                        <a class="nav-link  " href="index.jsp">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +91,7 @@
                     <!--//nav-item-->
 
                     <li class="nav-item">
-                        <a class="nav-link" href="user.jsp">
+                        <a class="nav-link" href="search-user-management">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -147,15 +145,11 @@
     <!--//app-sidepanel-->
 </header>
 <!--//app-header-->
-
 <div class="app-wrapper">
     <div class="app-content pt-3 p-md-3 p-lg-4">
-
         <h1 class="app-page-title">My Account</h1>
     </div>
     <div class="container">
-
-
         <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
             <div class="app-card-header p-3 border-bottom-0">
                 <div class="row align-items-center gx-3">
@@ -180,176 +174,198 @@
             </div>
             <!--//app-card-header-->
             <div class="app-card-body px-4 w-100">
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label mb-2"><strong>Photo</strong></div>
-                            <div class="item-data"><img class="profile-image" src="resources/images/users/hangnt.png"
-                                                        alt="Avatar" style="border-radius: 50%;"></div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                                 alt="Avatart"/>
                         </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
                     </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>Name</strong></div>
-                            <div class="item-data">Nguyễn Thúy Hằng</div>
-                        </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
-                    </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>Email</strong></div>
-                            <div class="item-data">hangnt16499@gmail.com</div>
-                        </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
-                    </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>DOB</strong></div>
-                            <div class="item-data">
-                                16/04/1999
-                            </div>
-                        </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
-                    </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>Address</strong></div>
-                            <div class="item-data">
-                                Hà Nội
-                            </div>
-                        </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
-                    </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>Home Town</strong></div>
-                            <div class="item-data">
-                                Nam Định
-                            </div>
-                        </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
-                    </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>Role</strong></div>
-                            <div class="item-data">
-                                Administrator
-                            </div>
-                        </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="#">Change</a>
-                        </div>
-                        <!--//col-->
-                    </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
-                <!--//item-->
-                <div class="item border-bottom py-3">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <div class="item-label"><strong>Password</strong></div>
-                            <div class="item-data">
-                                *******
-                            </div>
-                        </div>
-                        <!--//col-->
-                        <div class="col text-end">
-                            <a class="btn-sm app-btn-secondary" href="change-password.jsp">Change</a>
-                        </div>
-                        <!--//col-->
-                    </div>
-                    <!--//row-->
-                </div>
-                <!--//item-->
-            </div>
-            <!--//app-card-body-->
-            <div class="app-card-footer p-4 mt-auto">
-            </div>
-            <!--//app-card-footer-->
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                            <h5>
+                                <span>${account.name}</span>
+                            </h5>
 
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                       aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                       aria-controls="profile" aria-selected="false">Update Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="change-tab" data-toggle="tab" href="#change" role="tab"
+                                       aria-controls="change" aria-selected="false">Change Password</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work"></div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab p-3" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Name</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><span>${sessionScope.account.name}</span></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>${sessionScope.account.email}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Phone</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>${sessionScope.account.phoneNumber}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Role</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>${sessionScope.account.role}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Address</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>${sessionScope.account.address}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>DOB</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>${sessionScope.account.dob}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <form action="profile" method="post">
+                                    <p style="text-align: center;color: red;">${message}</p>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Name</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" name="name" value=${sessionScope.account.name}/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Email</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="email" name="email" value=${sessionScope.account.email}/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Phone Number</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" name="phone" value=${sessionScope.account.phoneNumber}/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Address</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="text" name="address" value=${sessionScope.account.address}/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>DOB</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="date" name="dob" value="${sessionScope.account.dob}"/>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex;justify-content: flex-end;">
+                                        <button type="submit" style="border: 1px solid green">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="change" role="tabpanel" aria-labelledby="change-tab">
+                                <form action="change-password" method="post">
+                                    <p style="text-align: center;color: red;">${message}</p>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Old Password</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="password" name="oldPassword"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>New Password</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="password" name="newPassword"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Confirm Password</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="password" name="rePassword"/>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex;justify-content: flex-end;">
+                                        <button type="submit" style="border: 1px solid green">Change Password</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!--//row-->
-
     </div>
-    <!--//container-fluid-->
     <!--//app-content-->
-
     <footer class="footer">
         <div class="container text-center py-3">
-            <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
             <small class="copyright" style="color: black;">© 2021 Copyright <i class="fas fa-heart"
                                                                                style="color: #fb866a;"></i> by <a
                     class="app-link"
                     href="index.jsp">ams.building.com</a></small>
-
         </div>
     </footer>
     <!--//app-footer-->
-
 </div>
 <!--//app-wrapper-->
-
-
-<!-- Javascript -->
-<script src="resources/plugins/popper.min.js"></script>
-<script src="resources/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- Page Specific JS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 <script src="resources/js/custom/app.js"></script>
-
 </body>
-
 </html>
