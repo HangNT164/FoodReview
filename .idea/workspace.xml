@@ -10,43 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e05f9e78-227f-4d36-95e2-599cafc6b358" name="Default Changelist" comment="Finish Resgister Account">
-      <change afterPath="$PROJECT_DIR$/src/main/db/data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/db/init.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AddNewTopicController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ChangePassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/RemoveTopicManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/SearchTopicByStatusController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/UpdateStatusTopicManagementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TopicManagementController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/UpdateStatusUserManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/UpdateStatusUserManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AccountDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/db/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/db/init.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/TopicDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/TopicDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/BCrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/BCrypt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/ValidateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/ValidateHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/home/flex-slider.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/home/flex-slider.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/home/font-awesome.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/home/font-awesome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/home/owl-carousel.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/home/owl-carousel.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/home/templatemo-klassy-cafe.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/home/templatemo-klassy-cafe.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/fonts/flexslider-icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/flexslider-icon.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/fonts/slick.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/slick.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/accordions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/accordions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/custom/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/datepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/datepicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/lightbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lightbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/owl-carousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/owl-carousel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/popper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/popper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/slick.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/slick.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/sigup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sigup.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/topic.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/topic.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

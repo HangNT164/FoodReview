@@ -121,6 +121,26 @@ public class TopicDao {
         }
         return check > 0;
     }
+    public boolean updateTopic(int id, Topic topic){
+        int check = 0;
+        String query = "UPDATE topic SET title=?" +
+                ", content = ?" +
+                ", status = ?" +
+                "WHERE topic_id = ?";
+        try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, topic.getTitle());
+                ps.setObject(2, topic.getContent());
+                ps.setObject(3, topic.getStatus());
+                ps.setObject(4, id);
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
 //    public static void main(String[] args) {
 //        TopicDao dao = new TopicDao();
 //        List<Topic> topicList = dao.getListTopic();

@@ -173,7 +173,7 @@
                                 <form action="search-topic-status">
                                     <div>
                                         <span>Add new </span>
-                                    </br>
+                                        </br>
                                         <a href="#" class="view mr-1" data-toggle="modal"
                                            data-target="#add" title="">
                                             <i class="fas fa-plus"></i></a>
@@ -261,11 +261,13 @@
                                                                             <div class="form-group row">
                                                                                 <div class="col-sm-12">
                                                                                     <label>Title</label>
-                                                                                    <input name="title" class="form-control"></input>
+                                                                                    <input name="title"
+                                                                                           class="form-control"></input>
                                                                                 </div>
                                                                                 <div class="col-sm-12">
                                                                                     <label>Content</label>
-                                                                                    <input name="content" class="form-control"></input>
+                                                                                    <input name="content"
+                                                                                           class="form-control"></input>
                                                                                 </div>
 
                                                                             </div>
@@ -373,19 +375,38 @@
                                                                 <div class="card">
                                                                     <div class="card-body">
                                                                         <h5 class="mb-3">Update Topic</h5>
-                                                                        <form action="update-user-management?accountId=${l.topicId}"
+                                                                        <form action="update-status-topic?topicId=${l.topicId}"
                                                                               method="post">
                                                                             <p style="text-align: center;color: red;">${message}</p>
+                                                                            <div class="form-group row">
+                                                                                <div class="col-sm-12">
+                                                                                    <label>Title</label>
+                                                                                    <input class="form-control"
+                                                                                              name="title"
+                                                                                           value="${l.title}"
+                                                                                              > </input>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <div class="col-sm-12">
+                                                                                    <label>Title</label>
+                                                                                    <input class="form-control"
+                                                                                              name="content"
+                                                                                              value="${l.content}"> </input>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <select id="statu" class="form-control"
+                                                                                        name="status">
 
-                                                                            <select class="form-control"
-                                                                                    name="listRole">
-                                                                                <option value="Approve">Approve
-                                                                                </option>
-                                                                                <option value="Reject">Reject
-                                                                                </option>
-                                                                                <option value="Pending">Pending</option>
-                                                                            </select>
-                                                                            <br/>
+                                                                                    <option value="approved">Approved
+                                                                                    </option>
+                                                                                    <option value="pending">Pending
+                                                                                    </option>
+                                                                                    <option value="reject">Reject
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
                                                                             <div style="display: flex;justify-content: space-evenly">
                                                                                 <button type="submit"
                                                                                         style="border: 1px solid;"
