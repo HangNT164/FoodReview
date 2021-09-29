@@ -13,17 +13,9 @@ public class ValidateHelper {
     private static final String REGEX_EMAIL = "^[\\w-\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 
     /**
-     * Check format date.
+     * Check format Password.
      */
-    private static final String REGEX_DATE =
-            "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|"
-                    + "(?:(?:29|30)(\\/|-|\\.)"
-                    + "(?:0?[1,3-9]|1[0-2])\\2))"
-                    + "(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$"
-                    + "|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|"
-                    + "(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]"
-                    + "|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])"
-                    + "|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
+    private static final String REGEX_PASSWORD = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
 
 
     /**
@@ -51,12 +43,12 @@ public class ValidateHelper {
     /**
      * Check date is valid or not.
      *
-     * @param date need to check
+     * @param password need to check
      * @return true if date is valid
      * false if date is invalid
      */
-    public static boolean isDate(String date) {
-        return date.matches(REGEX_DATE);
+    public static boolean isPassword(String password) {
+        return password.matches(REGEX_PASSWORD);
     }
 
     public static int getValidateID(String strID) {
@@ -67,5 +59,27 @@ public class ValidateHelper {
             e.printStackTrace(System.out);
         }
         return number;
+    }
+
+    public static String convertFormatDate(String date) {
+        String convert = "";
+        String[] dates = date.split("-");
+        if (dates.length > 0) {
+            convert = dates[2] + "/" + dates[1] + "/" + dates[0];
+        }
+        return convert;
+    }
+
+    public static String convertFormatDateYYYYMMDD(String date) {
+        String convert = "";
+        String[] dates = date.split("/");
+        if (dates.length > 0) {
+            convert = dates[2] + "-" + dates[1] + "-" + dates[0];
+        }
+        return convert;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(convertFormatDateYYYYMMDD("16/04/1999"));
     }
 }

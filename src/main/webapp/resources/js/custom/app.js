@@ -78,6 +78,6 @@ function closeDialog(name) {
     name.modal('hide');
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#user-management-table').DataTable();
-} );
+});

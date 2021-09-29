@@ -32,7 +32,7 @@ public class UpdateStatusUserManagementController extends HttpServlet {
                 if (!update) {
                     request.setAttribute("message", "Thay đổi quyền thất bại");
                     request.getRequestDispatcher("user.jsp").forward(request, response);
-                }else{
+                } else {
                     response.sendRedirect("search-user-management");
                 }
             }

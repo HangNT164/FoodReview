@@ -27,59 +27,80 @@
 <div id="intro">
     <div class="middle signin"
          style="background: url(https://www.ieltsvietop.vn/wp-content/uploads/2020/07/hong_kong_skyline_green_building_in_asia.jpg);">
-        <div class="login-panel">
-            <div class="logo text-center"><br/>
-                <a href="#">
-                    <p>Food Review</p>
-                </a><br/><br/>
-            </div>
-            <div class="form-group">
-                <label>
-                    <i class="fas fa-user fa-fw"></i>
-                </label>
-                <input type="text" class="form-control" placeholder="Employee Name" name="firstname" required/>
-            </div>
-            <div class="form-group">
-                <label>
-                    <i class="fas fa-user fa-fw"></i>
-                </label>
-                <input type="text" class="form-control" placeholder="Employee Name" name="lastname" required/>
-            </div>
-            <div class="form-group">
-                <label>
-                    <i class="fas fa-user fa-fw"></i>
-                </label>
-                <input type="text" class="form-control" placeholder="Phone Number" name="phone" required/>
-            </div>
-            <div class="form-group">
-                <label>
-                    <i class="fas fa-user fa-fw"></i>
-                </label>
-                <input type="text" class="form-control" placeholder="Address" name="address" required/>
-            </div>
-            <div class="form-group">
-                <label>
-                    <i class="fas fa-key fa-fw"></i>
-                </label>
-                <input type="password" class="form-control" placeholder="Password" name="txtPassword" required/>
-            </div>
-            <div class="form-group">
-                <label>
-                    <i class="fas fa-key fa-fw"></i>
-                </label>
-                <input type="password" class="form-control" placeholder="Re-enter Password" name="txtRePassword" required/>
-            </div>
-            <br>
-            <div class="form-group">
-                <div class="col">
-                    <a href="index.jsp">
-                        <button type="submit" class="btn btn-sm">
-                            <i class="fas fa-sign-in-alt fa-fw mr-1"></i>Sign Up
-                        </button>
-                    </a>
+        <form action="register" method="post">
+            <div class="login-panel">
+                <div class="logo text-center"><br/>
+                    <a href="#">
+                        <p>Food Review</p>
+                    </a><br/>
+                    <p style="text-align: center; color: white;font-size: 12px;">${message}</p>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <i class="fas fa-user fa-fw"></i>
+                    </label>
+                    <input type="text" class="form-control" placeholder="Name" name="name" required/>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <i class="fas fa-user fa-fw"></i>
+                    </label>
+                    <input type="text" class="form-control" placeholder="Phone Number" name="phone" required/>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <i class="fas fa-user fa-fw"></i>
+                    </label>
+                    <input type="text" class="form-control" placeholder="Email" name="email" required/>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <i class="fas fa-user fa-fw"></i>
+                    </label>
+                    <input type="text" class="form-control" placeholder="Address" name="address" required/>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <i class="fas fa-key fa-fw"></i>
+                    </label>
+                    <select class="form-control"
+                            name="gender">
+                        <option value="true" style="color: black">Male
+                        </option>
+                        <option value="false" style="color: black">Female
+                        </option>
+                    </select></div>
+                <div class="form-group">
+                    <label>
+                        <i class="fas fa-key fa-fw"></i>
+                    </label>
+                    <input type="date" class="form-control" placeholder="DOB" name="dob" required/>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <i class="fas fa-key fa-fw"></i>
+                    </label>
+                    <input type="password" class="form-control" placeholder="Password" name="password" required/>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <i class="fas fa-key fa-fw"></i>
+                    </label>
+                    <input type="password" class="form-control" placeholder="Re-enter Password" name="rePassword"
+                           required/>
+                </div>
+                <br>
+                <div class="form-group">
+                    <div class="col">
+                        <a href="#">
+                            <button type="submit" class="btn btn-sm">
+                                <i class="fas fa-sign-in-alt fa-fw mr-1"></i>Sign Up
+                            </button>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
