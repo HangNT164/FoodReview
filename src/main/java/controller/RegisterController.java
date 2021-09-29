@@ -44,11 +44,11 @@ public class RegisterController extends HttpServlet {
 
             // Validate date
             if (!ValidateHelper.isEmail(email)) {
-                request.setAttribute("message", "Số điện thoại không đúng định dạng");
+                request.setAttribute("message", "Mail không đúng định dạng");
                 request.getRequestDispatcher("sigup.jsp").forward(request, response);
             }
             if (!ValidateHelper.isPhoneNumber(phone)) {
-                request.setAttribute("message", "Mail không đúng định dạng");
+                request.setAttribute("message", "Số điện thoại không đúng định dạng");
                 request.getRequestDispatcher("sigup.jsp").forward(request, response);
             }
             if (!ValidateHelper.isPassword(password)) {

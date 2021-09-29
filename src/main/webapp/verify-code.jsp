@@ -16,7 +16,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="resources/css/custom/form.css">
 
-    <title>Forgot Password | Food Review</title>
+    <title>Verify Code | Food Review</title>
 
     <link rel="shortcut icon" href="resources/images/avatar.png">
 
@@ -33,19 +33,18 @@
                     <p>Food Review</p>
                 </a><br/><br/>
             </div>
-            <br>
-            <form method="POST" action="reset-password" id="reset-password-form">
+            <form method="POST" action="verify-code" id="verify-code-form">
                 <p style="text-align: center; color: white;font-size: 12px;">${message}</p>
                 <div class="form-group">
                     <label>
-                        <i style="margin-top: 2px" class="fas fa-user fa-fw"></i>
+                        <i style="margin-top: 2px" class="fas fa-code fa-fw"></i>
                     </label>
-                    <input type="text" class="form-control" placeholder="Email" name="email" required/>
+                    <input type="text" class="form-control" placeholder="Verify code" name="verifyCode" required/>
                 </div>
                 <div class="form-group">
                     <div class="col">
                         <button type="submit" class="btn btn-sm">
-                            <i class="fas fa-paper-plane fa-fw mr-1"></i>Send
+                            <i class="fas fa-check fa-fw mr-1"></i>Verify
                         </button>
                     </div>
                 </div>
