@@ -80,6 +80,26 @@ public class AccountDao {
         return null;
     }
 
+    public Account getAccountByEmail(String email) {
+        String query = "SELECT * FROM account WHERE email = '"+ email + "' AND status = ?";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, StatusAccountEnum.active.toString());
+                ResultSet rs = ps.executeQuery();
+                Account account = null;
+                while (rs != null && rs.next()) {
+                    account = getValueAccount(rs);
+                }
+                return account;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
     public boolean changeRoleAccount(int accountId, String role) {
         int check = 0;
         String query = "UPDATE account SET role = ? , updated_date =?"
