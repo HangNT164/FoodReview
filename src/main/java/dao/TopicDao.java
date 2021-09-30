@@ -69,7 +69,7 @@ public class TopicDao {
         return null;
     }
     public List<Topic> getListTopic(){
-        String query = "SELECT * FROM swp391_g2_project.topic where status not like \"reject\";";
+        String query = "SELECT * FROM swp391_g2_project.topic where status  like \"approved\";";
         try(Connection con = MySqlConnection.getConnection();
             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;){
             if(ps!=null){
