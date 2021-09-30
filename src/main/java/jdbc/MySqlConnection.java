@@ -29,7 +29,7 @@ public class MySqlConnection {
     static {
         URL = "jdbc:mysql://localhost:3306/swp391_g2_project?useSSL=false";
         USER = "root";
-        PASSWORD = "1234";
+        PASSWORD = "nmHieu0103";
     }
 
     /**
