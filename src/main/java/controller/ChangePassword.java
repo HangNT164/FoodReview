@@ -26,25 +26,25 @@ public class ChangePassword extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            Account account = (Account) session.getAttribute("account");
-            String oldpass = request.getParameter("oldPassword");
+            Account account = (Account)session.getAttribute("account");
+            String oldPass = request.getParameter("oldPassword");
             String newPass = request.getParameter("newPassword");
             String rePass = request.getParameter("rePassword");
 
-            boolean checkPass = BCrypt.checkpw(oldpass, account.getPassword());
+            boolean checkPass = BCrypt.checkpw(oldPass, account.getPassword());
             if (!checkPass) {
-                request.setAttribute("message", "Mật khẩu cũ không đúng ");
+                request.setAttribute("message","Mật khẩu cũ không đúng");
             }
             if (!ValidateHelper.isPassword(newPass)) {
-                request.setAttribute("message", "Mật khẩu không đúng định dạng");
+                request.setAttribute("message","Mật khẩu không đúng định dạng");
             }
             if (!newPass.equals(rePass)) {
-                request.setAttribute("message", "Mật khẩu và nhập lại mật khẩu không trùng khớp");
+                request.setAttribute("message","Mật khẩu và nhập lại mật khẩu không trùng khớp");
             }
 
             boolean updatePassword = accountDao.updatePassword(account.getAccountId(), newPass);
             if (!updatePassword) {
-                request.setAttribute("message", "Thay đổi mật khẩu thất bại");
+                request.setAttribute("message","Thay đổi mật khẩu thất bại");
             }
             request.getRequestDispatcher("account.jsp").forward(request, response);
         }
