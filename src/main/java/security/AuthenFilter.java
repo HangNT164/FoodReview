@@ -28,9 +28,9 @@ public class AuthenFilter implements Filter {
         boolean loginPage = request.getRequestURI().endsWith("login.jsp");
 
         if (loggedIn && (loginRequest || loginPage)) {
-            response.sendRedirect(loginURI);
+            request.getRequestDispatcher("/").forward(request, response);
         }
-        if (loggedIn || loginRequest) {
+        else if (loggedIn || loginRequest) {
             filterChain.doFilter(request, response);
         } else {
             request.getRequestDispatcher("login.jsp").forward(request, response);
