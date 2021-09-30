@@ -11,7 +11,7 @@
     </servlet-mapping>
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
-        <filter-class>security.AuthenticationFilter</filter-class>
+        <filter-class>security.AuthenFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
