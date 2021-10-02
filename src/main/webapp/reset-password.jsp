@@ -55,7 +55,7 @@
                     <a class="link-effect" href="#">
                     </a>
                     <a class="link-effect float-right" href="login">
-                        <i class="fas fa-question fa-fw mr-1"></i>Login
+                        <i class="fas fa-sign-in-alt fa-fw mr-1"></i>Login
                     </a><br/><br/>
                 </div>
             </div>
