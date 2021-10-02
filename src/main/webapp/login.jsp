@@ -62,7 +62,7 @@
                     <div class="col">
                         <a class="link-effect" href="#">
                         </a>
-                        <a class="link-effect float-right" href="signup.jsp">
+                        <a class="link-effect float-right" href="register">
                             <i class="fas fa-question fa-fw mr-1"></i>Signup
                         </a><br/><br/>
                     </div>

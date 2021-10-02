@@ -58,7 +58,7 @@ public class LoginController extends HttpServlet {
                         response.sendRedirect("home");
                     }
                 } else {
-                    request.setAttribute("message", "Tên khoản đã vị vô hiện hóa");
+                    request.setAttribute("message", "Tên khoản đã bị vô hiệu hóa");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
             } else {
