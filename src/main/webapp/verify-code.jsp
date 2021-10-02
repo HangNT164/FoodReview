@@ -53,7 +53,7 @@
                 <div class="col">
                     <a class="link-effect" href="#">
                     </a>
-                    <a class="link-effect float-right" href="login.jsp">
+                    <a class="link-effect float-right" href="login">
                         <i class="fas fa-question fa-fw mr-1"></i>Login
                     </a><br/><br/>
                 </div>

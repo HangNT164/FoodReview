@@ -48,7 +48,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="login.jsp">Log Out</a></li>
+                                <li><a class="dropdown-item" href="login">Log Out</a></li>
                             </ul>
                         </div>
                         <!--//app-user-dropdown-->
@@ -358,7 +358,7 @@
             <small class="copyright" style="color: black;">© 2021 Copyright <i class="fas fa-heart"
                                                                                style="color: #fb866a;"></i> by <a
                     class="app-link"
-                    href="index.jsp">ams.building.com</a></small>
+                    href="index.jsp">food.review.com</a></small>
         </div>
     </footer>
     <!--//app-footer-->

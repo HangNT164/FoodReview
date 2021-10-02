@@ -12,29 +12,52 @@ public class AuthenFilter implements Filter {
 
     private FilterConfig filterConfig = null;
 
+    private HttpServletRequest request;
+    private static final String[] loginRequiredURLs = {
+            "/admin"
+    };
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
-        HttpSession session = request.getSession();
+        request = (HttpServletRequest) servletRequest;
         request.setCharacterEncoding("UTF-8");
+        String path = request.getRequestURI().substring(request.getContextPath().length());
+
+        if (path.startsWith("/server/")) {
+            filterChain.doFilter(servletRequest, servletResponse);
+        }
+
+        HttpSession session = request.getSession(false);
+
         String loginURI = request.getContextPath() + "/login";
         boolean loggedIn = (session != null && session.getAttribute("account") != null);
         boolean loginRequest = request.getRequestURI().equals(loginURI);
         boolean loginPage = request.getRequestURI().endsWith("login.jsp");
 
         if (loggedIn && (loginRequest || loginPage)) {
-            request.getRequestDispatcher("/").forward(request, response);
+            request.getRequestDispatcher("/").forward(servletRequest, servletResponse);
         }
-        else if (loggedIn || loginRequest) {
-            filterChain.doFilter(request, response);
+        else if (!loggedIn && loginRequired()) {
+            request.getRequestDispatcher("/login.jsp").forward(servletRequest, servletResponse);
         } else {
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            filterChain.doFilter(servletRequest, servletResponse);
         }
+    }
+
+    private boolean loginRequired() {
+        String requestURL = request.getRequestURL().toString();
+
+        for (String loginRequiredURL : loginRequiredURLs) {
+            if (requestURL.contains(loginRequiredURL)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override

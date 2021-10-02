@@ -57,7 +57,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="login.jsp">Log Out</a></li>
+                                <li><a class="dropdown-item" href="login">Log Out</a></li>
                             </ul>
                         </div>
                         <!--//app-user-dropdown-->
@@ -232,16 +232,16 @@
                                                         <td>${l.updatedDate}</td>
                                                         <td style="text-align: center">
                                                             <a href="#" class="view mr-1" data-toggle="modal"
-                                                               data-target="#detail${l.topicId}" title="Xem chi tiết">
+                                                               data-target="#detail${l.topicId}" title="Detail">
                                                                 <i
                                                                         class="fas fa-eye fa-fw"></i></a>
                                                             <a href="#" class="edit mr-1" data-toggle="modal"
-                                                               data-target="#update${l.topicId}" title="Xem chi tiết">
+                                                               data-target="#update${l.topicId}" title="Update">
                                                                 <i
                                                                         class="fas fa-pen fa-fw"></i></a>
                                                             <a href="#" class="remove mr-1" data-toggle="modal"
                                                                data-target="#remove${l.topicId}"
-                                                               title="Xóa">
+                                                               title="Remove">
                                                                 <i
                                                                         class="fas fa-trash fa-fw"></i></a>
                                                         </td>
@@ -482,7 +482,7 @@
         <small class="copyright " style="color: black; ">© 2021 Copyright <i class="fas fa-heart "
                                                                              style="color: #fb866a; "></i> by <a
                 class="app-link "
-                href="index.jsp ">ams.building.com</a></small>
+                href="index.jsp ">food.review.com</a></small>
 
     </div>
 </footer>

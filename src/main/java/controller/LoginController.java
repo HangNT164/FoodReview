@@ -50,15 +50,15 @@ public class LoginController extends HttpServlet {
                     user.setDob(convertFormatDateYYYYMMDD(user.getDob()));
                     session.setAttribute("account", user);
                     if (role.equals(RoleEnum.Admin.toString())) {
-                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                        response.sendRedirect("admin");
                     } else if (role.equals(RoleEnum.ShopOwner.toString())) {
                         // send toi trang shop nhung chua lam
                         request.getRequestDispatcher("").forward(request, response);
                     } else {
-                        request.getRequestDispatcher("home.jsp").forward(request, response);
+                        response.sendRedirect("home");
                     }
                 } else {
-                    request.setAttribute("message", "Tên khoản đã vị vô hiện hóa");
+                    request.setAttribute("message", "Tên khoản đã bị vô hiệu hóa");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
             } else {
