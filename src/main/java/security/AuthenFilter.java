@@ -23,13 +23,17 @@ public class AuthenFilter implements Filter {
         HttpSession session = request.getSession();
         request.setCharacterEncoding("UTF-8");
         String loginURI = request.getContextPath() + "/login";
-        boolean loggedIn = session != null && session.getAttribute("account") != null;
+        boolean loggedIn = (session != null && session.getAttribute("account") != null);
         boolean loginRequest = request.getRequestURI().equals(loginURI);
+        boolean loginPage = request.getRequestURI().endsWith("login.jsp");
 
-        if (loggedIn || loginRequest) {
+        if (loggedIn && (loginRequest || loginPage)) {
+            request.getRequestDispatcher("/").forward(request, response);
+        }
+        else if (loggedIn || loginRequest) {
             filterChain.doFilter(request, response);
         } else {
-            response.sendRedirect(loginURI);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 
