@@ -26,6 +26,7 @@ public class ChangePassword extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
+            boolean isValid = true;
             Account account = (Account)session.getAttribute("account");
             String oldPass = request.getParameter("oldPassword");
             String newPass = request.getParameter("newPassword");
@@ -33,18 +34,25 @@ public class ChangePassword extends HttpServlet {
 
             boolean checkPass = BCrypt.checkpw(oldPass, account.getPassword());
             if (!checkPass) {
-                request.setAttribute("message","Mật khẩu cũ không đúng");
+                request.setAttribute("message2","Mật khẩu cũ không đúng");
+                isValid = false;
             }
             if (!ValidateHelper.isPassword(newPass)) {
-                request.setAttribute("message","Mật khẩu không đúng định dạng");
+                request.setAttribute("message2","Mật khẩu không đúng định dạng");
+                isValid = false;
             }
             if (!newPass.equals(rePass)) {
-                request.setAttribute("message","Mật khẩu và nhập lại mật khẩu không trùng khớp");
+                request.setAttribute("message2","Mật khẩu và nhập lại mật khẩu không trùng khớp");
+                isValid = false;
             }
 
-            boolean updatePassword = accountDao.updatePassword(account.getAccountId(), newPass);
-            if (!updatePassword) {
-                request.setAttribute("message","Thay đổi mật khẩu thất bại");
+            if (isValid) {
+                boolean updatePassword = accountDao.updatePassword(account.getAccountId(), newPass);
+                if (!updatePassword) {
+                    request.setAttribute("message2","Thay đổi mật khẩu thất bại");
+                }else {
+                    request.setAttribute("message","Thay đổi mật khẩu thành công");
+                }
             }
             request.getRequestDispatcher("account.jsp").forward(request, response);
         }
