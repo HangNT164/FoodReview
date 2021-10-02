@@ -354,7 +354,7 @@
             <small class="copyright" style="color: black;">© 2021 Copyright <i class="fas fa-heart"
                                                                                style="color: #fb866a;"></i> by <a
                     class="app-link"
-                    href="index.jsp">ams.building.com</a></small>
+                    href="index.jsp">food.review.com</a></small>
         </div>
     </footer>
     <!--//app-footer-->

@@ -21,15 +21,10 @@ public class MySqlConnection {
      */
     private static final String PASSWORD;
 
-//        static {
-//        URL = "jdbc:mysql://foodreview.cr84dwauefly.us-east-2.rds.amazonaws.com:3306/swp391_g2_project";
-//        USER = "admin";
-//        PASSWORD = "a1234567";
-//    }
     static {
         URL = "jdbc:mysql://localhost:3306/swp391_g2_project?useSSL=false";
         USER = "root";
-        PASSWORD = "nmHieu0103";
+        PASSWORD = "";
     }
 
     /**

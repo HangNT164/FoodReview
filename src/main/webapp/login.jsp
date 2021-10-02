@@ -62,6 +62,13 @@
                     <div class="col">
                         <a class="link-effect" href="#">
                         </a>
+                        <a class="link-effect float-right" href="signup.jsp">
+                            <i class="fas fa-question fa-fw mr-1"></i>Signup
+                        </a><br/><br/>
+                    </div>
+                    <div class="col">
+                        <a class="link-effect" href="#">
+                        </a>
                         <a class="link-effect float-right" href="reset-password.jsp">
                             <i class="fas fa-question fa-fw mr-1"></i>Forgot password
                         </a><br/><br/>
