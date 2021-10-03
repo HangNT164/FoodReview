@@ -335,7 +335,7 @@
                                                                 <div class="card">
                                                                     <div class="card-body">
                                                                         <h5 class="mb-3">Update Role User </h5>
-                                                                        <form action="update-user-management?accountId=${a.accountId}"
+                                                                        <form action="search-user-management?accountId=${a.accountId}"
                                                                               method="post">
                                                                             <p style="text-align: center;color: red;">${message}</p>
                                                                             <select class="form-control"
