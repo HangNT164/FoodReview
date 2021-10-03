@@ -35,6 +35,7 @@ public class ProfileController extends HttpServlet {
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             String phone = request.getParameter("phone");
+            Boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
             String address = request.getParameter("address");
             String dob = request.getParameter("dob");
             if (!ValidateHelper.isEmail(email)) {
@@ -55,6 +56,7 @@ public class ProfileController extends HttpServlet {
                     .name(name)
                     .email(email)
                     .phoneNumber(phone)
+                    .gender(gender)
                     .address(address)
                     .dob(ValidateHelper.convertFormatDate(dob))
                     .build();

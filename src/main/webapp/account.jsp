@@ -233,10 +233,10 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Role</label>
+                                                <label>Gender</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>${sessionScope.account.role}</p>
+                                                <p>${sessionScope.account.gender}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -263,7 +263,7 @@
                                                 <div class="form-group">
                                                     <div class="col-md-10">
                                                         <label>Name: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="text" name="name" value=${sessionScope.account.name} />
+                                                        <input class="form-control" style="margin-left: 60px" type="text" name="name" value="${sessionScope.account.name}" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -271,7 +271,7 @@
                                                 <div class="form-group">
                                                     <div class="col-md-10">
                                                         <label>Email: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="email" name="email" value=${sessionScope.account.email} />
+                                                        <input class="form-control" style="margin-left: 60px" type="email" name="email" value="${sessionScope.account.email}" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -279,7 +279,7 @@
                                                 <div class="form-group">
                                                     <div class="col-md-10">
                                                         <label>Phone Number: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="text" name="phone" value=${sessionScope.account.phoneNumber} />
+                                                        <input class="form-control" style="margin-left: 60px" type="text" name="phone" value="${sessionScope.account.phoneNumber}" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -287,7 +287,15 @@
                                                 <div class="form-group">
                                                     <div class="col-md-10">
                                                         <label>Address: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="text" name="address" value=${sessionScope.account.address} />
+                                                        <input class="form-control" style="margin-left: 60px" type="text" name="address" value="${sessionScope.account.address}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Gender: </label>
+                                                        <input class="form-control" style="margin-left: 60px" type="text" name="gender" value="${sessionScope.account.gender}" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -295,7 +303,7 @@
                                                 <div class="form-group">
                                                     <div class="col-md-10">
                                                         <label>Date Of Birth: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="date" name="dob" value=${sessionScope.account.dob} />
+                                                        <input class="form-control" style="margin-left: 60px" type="date" name="dob" value="${sessionScope.account.dob}" />
                                                     </div>
                                                 </div>
                                             </div>
