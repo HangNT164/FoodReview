@@ -61,6 +61,7 @@ public class ProfileController extends HttpServlet {
                     .dob(ValidateHelper.convertFormatDate(dob))
                     .build();
             boolean updateAccount = accountDao.updateAccount(accountCurrent.getAccountId(), account);
+            session.setAttribute("account", account);
             if (!updateAccount) {
                 request.setAttribute("message", "Không thể thay đổi thông tin");
             }
