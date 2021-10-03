@@ -62,8 +62,8 @@ public class AccountDao {
         return null;
     }
 
-    public List<Account> searchAccountByName(String name) {
-        String query = "SELECT * FROM account WHERE email like '%" + name + "%' AND status = ?";
+    public List<Account> searchAccountByEmail(String email) {
+        String query = "SELECT * FROM account WHERE email like '%" + email + "%' AND status = ?";
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
