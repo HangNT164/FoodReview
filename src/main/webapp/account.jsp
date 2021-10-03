@@ -151,7 +151,7 @@
     </div>
     <div class="container">
         <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
-            <div class="app-card-header p-3 border-bottom-0">
+            <div class="app-card-header p-2 border-bottom-0">
                 <div class="row align-items-center gx-3">
                     <div class="col-auto">
                         <div class="app-icon-holder">
@@ -204,7 +204,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="tab-content profile-tab p-3" id="myTabContent">
+                                <div class="tab-content profile-tab p-1" id="myTabContent">
                                     <div class="tab-pane fade ${message1 == null && message2 == null ? " show active" : ""}" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <p style="text-align: center;color: limegreen;">${message}</p>
                                         <div class="row">
