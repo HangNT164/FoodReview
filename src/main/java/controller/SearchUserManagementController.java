@@ -1,7 +1,6 @@
 package controller;
 
 import bean.Account;
-import bean.Topic;
 import dao.AccountDao;
 import dao.TopicDao;
 
@@ -22,16 +21,16 @@ public class SearchUserManagementController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("name");
-        List<Topic> topicList;
-        topicList = topicDao.getListTopic();
-        request.setAttribute("topicList", topicList);
+        String email = request.getParameter("email");
+//        List<Topic> topicList;
+//        topicList = topicDao.getListTopic();
+//        request.setAttribute("topicList", topicList);
 //        request.getRequestDispatcher("topic.jsp").forward(request, response);
         List<Account> accountList;
-        if (name == null) {
-            accountList = accountDao.searchAccountByName("");
+        if (email == null) {
+            accountList = accountDao.searchAccountByEmail("");
         } else {
-            accountList = accountDao.searchAccountByName(name);
+            accountList = accountDao.searchAccountByEmail(email);
         }
         request.setAttribute("accountList", accountList);
         request.getRequestDispatcher("user.jsp").forward(request, response);
