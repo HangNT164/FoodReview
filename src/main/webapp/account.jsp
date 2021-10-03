@@ -239,10 +239,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>Role</label>
+                                        <label>Gender</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>${sessionScope.account.role}</p>
+                                        <p>${sessionScope.account.gender}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -266,6 +266,7 @@
                                 <form action="profile" method="post">
                                     <p style="text-align: center;color: red;">${message}</p>
                                     <div class="row">
+<<<<<<< Updated upstream
                                         <div class="col-md-4">
                                             <label>Name</label>
                                         </div>
@@ -303,6 +304,53 @@
                                         </div>
                                         <div class="col-md-8">
                                             <input type="date" name="dob" value="${sessionScope.account.dob}"/>
+=======
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <label>Name: </label>
+                                                <input class="form-control" style="margin-left: 60px" type="text" name="name" value="${sessionScope.account.name}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <label>Email: </label>
+                                                <input class="form-control" style="margin-left: 60px" type="email" name="email" value="${sessionScope.account.email}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <label>Phone Number: </label>
+                                                <input class="form-control" style="margin-left: 60px" type="text" name="phone" value="${sessionScope.account.phoneNumber}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <label>Gender: </label>
+                                                <input class="form-control" style="margin-left: 60px" type="text" name="gender" value="${sessionScope.account.gender}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <label>Address: </label>
+                                                <input class="form-control" style="margin-left: 60px" type="text" name="address" value="${sessionScope.account.address}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <label>Date Of Birth: </label>
+                                                <input class="form-control" style="margin-left: 60px" type="date" name="dob" value="${sessionScope.account.dob}" />
+                                            </div>
+>>>>>>> Stashed changes
                                         </div>
                                     </div>
                                     <div style="display: flex;justify-content: flex-end;">

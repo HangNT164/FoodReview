@@ -146,8 +146,8 @@ public class AccountDao {
 
     public boolean addAccount(Account account) {
         int check = 0;
-        String query = "INSERT INTO account (`name`, `dob`, `address`, `email`, `phone_number`, `password`) " +
-                " VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO account (`name`, `dob`, `address`, `email`, `phone_number`, `gender`,`password`) " +
+                " VALUES (?,?,?,?,?,?,?)";
 
         try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
@@ -157,7 +157,8 @@ public class AccountDao {
                 ps.setObject(3, account.getAddress());
                 ps.setObject(4, account.getEmail());
                 ps.setObject(5, account.getPhoneNumber());
-                ps.setObject(6, BCrypt.hashpw(account.getPassword(), BCrypt.gensalt()));
+                ps.setObject(6, account.getGender());
+                ps.setObject(7, BCrypt.hashpw(account.getPassword(), BCrypt.gensalt()));
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {
@@ -206,7 +207,7 @@ public class AccountDao {
 
     public boolean updateAccount(int id, Account account) {
         int check = 0;
-        String query = "UPDATE account SET name=?, phone_number=?, email=?, address=?, dob=?, updated_date =?  WHERE account_id =?";
+        String query = "UPDATE account SET name=?, phone_number=?, email=?, address=?, gender=?,dob=?, updated_date =?  WHERE account_id =?";
 
         try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
@@ -215,9 +216,10 @@ public class AccountDao {
                 ps.setObject(2, account.getPhoneNumber());
                 ps.setObject(3, account.getEmail());
                 ps.setObject(4, account.getAddress());
-                ps.setObject(5, account.getDob());
-                ps.setObject(6, new Date());
-                ps.setObject(7, id);
+                ps.setObject(5, account.getGender());
+                ps.setObject(6, account.getDob());
+                ps.setObject(7, new Date());
+                ps.setObject(8, id);
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {
