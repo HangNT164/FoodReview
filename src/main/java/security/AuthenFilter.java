@@ -39,15 +39,22 @@ public class AuthenFilter implements Filter {
         boolean loginPage = request.getRequestURI().endsWith("login.jsp");
 
         if (loggedIn && (loginRequest || loginPage)) {
+            // Kiểm tra nếu người dùng đã login nhưng vẫn cố login
+            // thì chuyển hướng về trang home
             request.getRequestDispatcher("/").forward(servletRequest, servletResponse);
         }
         else if (!loggedIn && loginRequired()) {
+            // Kiểm tra nếu người dùng chưa login nhưng muốn vào trang yêu cầu login
+            // thì chuyển hướng về trang login
             request.getRequestDispatcher("/login.jsp").forward(servletRequest, servletResponse);
         } else {
+            // Kiếm tra nếu người dùng truy cập vào trang không cần login
+            // hoặc người dùng đã login thì tiếp tục chuyển hướng đến trang đã chọn
             filterChain.doFilter(servletRequest, servletResponse);
         }
     }
 
+    // Kiểm tra đường dẫn những trang cần login
     private boolean loginRequired() {
         String requestURL = request.getRequestURL().toString();
 

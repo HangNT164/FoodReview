@@ -34,6 +34,7 @@
                 </a><br/><br/>
             </div>
             <form method="POST" action="verify-code" id="verify-code-form">
+                <p style="text-align: center; color: white;font-size: 14px;">Kiểm tra email đã đăng ký để lấy mã gồm 6 chữ số</p>
                 <p style="text-align: center; color: white;font-size: 12px;">${message}</p>
                 <div class="form-group">
                     <label>

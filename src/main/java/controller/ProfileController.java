@@ -39,17 +39,17 @@ public class ProfileController extends HttpServlet {
             String address = request.getParameter("address");
             String dob = request.getParameter("dob");
             if (!ValidateHelper.isEmail(email)) {
-                request.setAttribute("message", "Email không đúng định dạng");
+                request.setAttribute("message1", "Email không đúng định dạng");
             }
             if (!ValidateHelper.isPhoneNumber(phone)) {
-                request.setAttribute("message", "Số điện thoại không đúng định dạng");
+                request.setAttribute("message1", "Số điện thoại không đúng định dạng");
             }
 
             if (!accountCurrent.getEmail().equals(email) && !accountDao.isDulicapteEmail(email)) {
-                request.setAttribute("message", "Email đã được đăng ký trước đó");
+                request.setAttribute("message1", "Email đã được đăng ký trước đó");
             }
             if (!accountCurrent.getPhoneNumber().equals(phone) && !accountDao.isDulicaptePhone(phone)) {
-                request.setAttribute("message", "Số điện thoại đã được đăng ký trước đó");
+                request.setAttribute("message1", "Số điện thoại đã được đăng ký trước đó");
             }
 
             Account account = Account.builder()
@@ -63,7 +63,7 @@ public class ProfileController extends HttpServlet {
             boolean updateAccount = accountDao.updateAccount(accountCurrent.getAccountId(), account);
             session.setAttribute("account", account);
             if (!updateAccount) {
-                request.setAttribute("message", "Không thể thay đổi thông tin");
+                request.setAttribute("message1", "Không thể thay đổi thông tin");
             }
             request.getRequestDispatcher("account.jsp").forward(request, response);
         }

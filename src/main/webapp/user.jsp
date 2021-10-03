@@ -172,7 +172,7 @@
                                         <div class="row" style="padding: 0px;margin: 0px;">
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <label for="name">Name:</label><br>
+                                                    <label for="name">Email:</label>
                                                     <input id="name" name="name" type="text" class="form-control">
                                                 </div>
                                             </div>
@@ -184,9 +184,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                <br/>
 
-                                <br/>
                                 <div class="row">
                                     <div style="max-height: 600px; overflow: auto;">
                                         <div class="table-responsive">
@@ -337,7 +335,7 @@
                                                                 <div class="card">
                                                                     <div class="card-body">
                                                                         <h5 class="mb-3">Update Role User </h5>
-                                                                        <form action="update-user-management?accountId=${a.accountId}"
+                                                                        <form action="search-user-management?accountId=${a.accountId}"
                                                                               method="post">
                                                                             <p style="text-align: center;color: red;">${message}</p>
                                                                             <select class="form-control"
@@ -458,6 +456,18 @@
     });
 
 </script>
+
+<style>
+    .dataTables_paginate>span>a {
+        margin-bottom: 0px !important;
+        padding: 2px 2px !important;
+    }
+
+    .dataTables_paginate>a {
+        margin-bottom: 0px !important;
+        padding: 2px 2px !important;
+    }
+</style>
 </body>
 
 </html>
