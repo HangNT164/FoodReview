@@ -12,8 +12,8 @@
           rel="stylesheet">
 
     <title>Food Review - Restaurant </title>
-    <!--
 
+    <!--
     TemplateMo 558 Klassy Cafe
 
     https://templatemo.com/tm-558-klassy-cafe
@@ -22,6 +22,7 @@
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="resources/css/home/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="resources/css/home/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/home/home.css">
     <link rel="stylesheet" href="resources/css/home/templatemo-klassy-cafe.css">
     <link rel="stylesheet" href="resources/css/home/owl-carousel.css">
     <link rel="stylesheet" href="resources/css/home/lightbox.css">
@@ -76,9 +77,24 @@
                             </ul>
                         </li> -->
                         <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                        <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li>
-                        <li class="scroll-to-section"><a href="login">Sign in</a></li>
+                        <li class="scroll-to-section"><a href="#">Contact Us</a></li>
+                        <li class="scroll-to-section">
+                            <% if (session.getAttribute("account") == null) {%>
+                            <a href="login">Login</a>
+                            <%
+                                }
+                                if (session.getAttribute("account") != null) {
+                            %>
+                            <div class="dropdown">
+                                <a onclick="myFunction()" class="dropbtn">${account.name}</a>
+                                <div id="myDropdown" class="dropdown-content" style="padding-bottom: 15px">
+                                    <a href="#">Profile</a>
+                                    <a href="logout">Log out</a>
+                                </div>
+                            </div>
 
+                            <%}%>
+                        </li>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -101,7 +117,7 @@
                         <h4>Food Review</h4>
                         <h6>THE BEST EXPERIENCE</h6>
                         <div class="main-white-button scroll-to-section">
-                            <a href="#reservation">About us</a>
+                            <a href="#"></a>
                         </div>
                     </div>
                 </div>
@@ -193,16 +209,16 @@
         </div>
     </div>
 
-        <div class="menu-item-carousel">
-            <div class="col-lg-12">
-                <div class="owl-menu-item owl-carousel">
-                    <c:forEach items="${topicList}" var="l">
+    <div class="menu-item-carousel">
+        <div class="col-lg-12">
+            <div class="owl-menu-item owl-carousel">
+                <c:forEach items="${topicList}" var="l">
                     <div class="item">
                         <div class='card card1'>
-                            <div class="price"><h6>${l.rate}</h6></div>
+                            <div class="price"><h6>${l.rate} <i class="fas fa-heart fw"></i></h6></div>
                             <div class='info'>
                                 <h1 class='title'>${l.title}</h1>
-                                <p class='description'>${l.content}</p>
+                                <p class="description" style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
                                 <div class="main-text-button">
                                     <div class="scroll-to-section"><a href="#">More.. <i
                                             class="fa fa-angle-down"></i></a>
@@ -211,11 +227,11 @@
                             </div>
                         </div>
                     </div>
-                    </c:forEach>
+                </c:forEach>
 
-                </div>
             </div>
         </div>
+    </div>
 
 </section>
 <!-- ***** Menu Area Ends ***** -->
@@ -288,116 +304,116 @@
 </section>
 <!-- ***** Chefs Area Ends ***** -->
 
-<!-- ***** Reservation Us Area Starts ***** -->
-<section class="section" id="reservation">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 align-self-center">
-                <div class="left-text-content">
-                    <div class="section-heading">
-                        <h6>Contact Us</h6>
-                        <h2 style="font-family: none;">Hãy liên hệ với chúng tôi ngay nếu bạn cần sự góp ý</h2>
-                    </div>
-                    <!-- <p>Donec pretium est orci, non vulputate arcu hendrerit a. Fusce a eleifend riqsie, namei sollicitudin urna diam, sed commodo purus porta ut.</p> -->
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="phone">
-                                <i class="fa fa-phone"></i>
-                                <h4>Phone Numbers</h4>
-                                <span><a href="#">080-090-0990</a><br><a href="#">080-090-0880</a></span>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="message">
-                                <i class="fa fa-envelope"></i>
-                                <h4>Emails</h4>
-                                <span><a href="#">hello@company.com</a><br><a href="#">info@company.com</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="contact-form">
-                    <form id="contact" action="" method="post">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>Table Reservation</h4>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <fieldset>
-                                    <input name="name" type="text" id="name" placeholder="Your Name*" required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <fieldset>
-                                    <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*"
-                                           placeholder="Your Email Address" required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <fieldset>
-                                    <input name="phone" type="text" id="phone" placeholder="Phone Number*" required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                                <fieldset>
-                                    <select value="number-guests" name="number-guests" id="number-guests">
-                                        <option value="number-guests">Number Of Guests</option>
-                                        <option name="1" id="1">1</option>
-                                        <option name="2" id="2">2</option>
-                                        <option name="3" id="3">3</option>
-                                        <option name="4" id="4">4</option>
-                                        <option name="5" id="5">5</option>
-                                        <option name="6" id="6">6</option>
-                                        <option name="7" id="7">7</option>
-                                        <option name="8" id="8">8</option>
-                                        <option name="9" id="9">9</option>
-                                        <option name="10" id="10">10</option>
-                                        <option name="11" id="11">11</option>
-                                        <option name="12" id="12">12</option>
-                                    </select>
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-6">
-                                <div id="filterDate2">
-                                    <div class="input-group date" data-date-format="dd/mm/yyyy">
-                                        <input name="date" id="date" type="text" class="form-control"
-                                               placeholder="dd/mm/yyyy">
-                                        <div class="input-group-addon">
-                                            <span class="glyphicon glyphicon-th"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                                <fieldset>
-                                    <select value="time" name="time" id="time">
-                                        <option value="time">Time</option>
-                                        <option name="Breakfast" id="Breakfast">Breakfast</option>
-                                        <option name="Lunch" id="Lunch">Lunch</option>
-                                        <option name="Dinner" id="Dinner">Dinner</option>
-                                    </select>
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                                <fieldset>
-                                    <textarea name="message" rows="6" id="message" placeholder="Message"
-                                              required=""></textarea>
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                                <fieldset>
-                                    <button type="submit" id="form-submit" class="main-button-icon">Make A Reservation
-                                    </button>
-                                </fieldset>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+<%--<!-- ***** Reservation Us Area Starts ***** -->--%>
+<%--<section class="section" id="reservation">--%>
+<%--    <div class="container">--%>
+<%--        <div class="row">--%>
+<%--            <div class="col-lg-6 align-self-center">--%>
+<%--                <div class="left-text-content">--%>
+<%--                    <div class="section-heading">--%>
+<%--                        <h6>Contact Us</h6>--%>
+<%--                        <h2 style="font-family: none;">Hãy liên hệ với chúng tôi ngay nếu bạn cần sự góp ý</h2>--%>
+<%--                    </div>--%>
+<%--                    <!-- <p>Donec pretium est orci, non vulputate arcu hendrerit a. Fusce a eleifend riqsie, namei sollicitudin urna diam, sed commodo purus porta ut.</p> -->--%>
+<%--                    <div class="row">--%>
+<%--                        <div class="col-lg-6">--%>
+<%--                            <div class="phone">--%>
+<%--                                <i class="fa fa-phone"></i>--%>
+<%--                                <h4>Phone Numbers</h4>--%>
+<%--                                <span><a href="#">080-090-0990</a><br><a href="#">080-090-0880</a></span>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-lg-6">--%>
+<%--                            <div class="message">--%>
+<%--                                <i class="fa fa-envelope"></i>--%>
+<%--                                <h4>Emails</h4>--%>
+<%--                                <span><a href="#">hello@company.com</a><br><a href="#">info@company.com</a></span>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-lg-6">--%>
+<%--                <div class="contact-form">--%>
+<%--                    <form id="contact" action="" method="post">--%>
+<%--                        <div class="row">--%>
+<%--                            <div class="col-lg-12">--%>
+<%--                                <h4>Table Reservation</h4>--%>
+<%--                            </div>--%>
+<%--                            <div class="col-lg-6 col-sm-12">--%>
+<%--                                <fieldset>--%>
+<%--                                    <input name="name" type="text" id="name" placeholder="Your Name*" required="">--%>
+<%--                                </fieldset>--%>
+<%--                            </div>--%>
+<%--                            <div class="col-lg-6 col-sm-12">--%>
+<%--                                <fieldset>--%>
+<%--                                    <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*"--%>
+<%--                                           placeholder="Your Email Address" required="">--%>
+<%--                                </fieldset>--%>
+<%--                            </div>--%>
+<%--                            <div class="col-lg-6 col-sm-12">--%>
+<%--                                <fieldset>--%>
+<%--                                    <input name="phone" type="text" id="phone" placeholder="Phone Number*" required="">--%>
+<%--                                </fieldset>--%>
+<%--                            </div>--%>
+<%--                            <div class="col-md-6 col-sm-12">--%>
+<%--                                <fieldset>--%>
+<%--                                    <select value="number-guests" name="number-guests" id="number-guests">--%>
+<%--                                        <option value="number-guests">Number Of Guests</option>--%>
+<%--                                        <option name="1" id="1">1</option>--%>
+<%--                                        <option name="2" id="2">2</option>--%>
+<%--                                        <option name="3" id="3">3</option>--%>
+<%--                                        <option name="4" id="4">4</option>--%>
+<%--                                        <option name="5" id="5">5</option>--%>
+<%--                                        <option name="6" id="6">6</option>--%>
+<%--                                        <option name="7" id="7">7</option>--%>
+<%--                                        <option name="8" id="8">8</option>--%>
+<%--                                        <option name="9" id="9">9</option>--%>
+<%--                                        <option name="10" id="10">10</option>--%>
+<%--                                        <option name="11" id="11">11</option>--%>
+<%--                                        <option name="12" id="12">12</option>--%>
+<%--                                    </select>--%>
+<%--                                </fieldset>--%>
+<%--                            </div>--%>
+<%--                            <div class="col-lg-6">--%>
+<%--                                <div id="filterDate2">--%>
+<%--                                    <div class="input-group date" data-date-format="dd/mm/yyyy">--%>
+<%--                                        <input name="date" id="date" type="text" class="form-control"--%>
+<%--                                               placeholder="dd/mm/yyyy">--%>
+<%--                                        <div class="input-group-addon">--%>
+<%--                                            <span class="glyphicon glyphicon-th"></span>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="col-md-6 col-sm-12">--%>
+<%--                                <fieldset>--%>
+<%--                                    <select value="time" name="time" id="time">--%>
+<%--                                        <option value="time">Time</option>--%>
+<%--                                        <option name="Breakfast" id="Breakfast">Breakfast</option>--%>
+<%--                                        <option name="Lunch" id="Lunch">Lunch</option>--%>
+<%--                                        <option name="Dinner" id="Dinner">Dinner</option>--%>
+<%--                                    </select>--%>
+<%--                                </fieldset>--%>
+<%--                            </div>--%>
+<%--                            <div class="col-lg-12">--%>
+<%--                                <fieldset>--%>
+<%--                                    <textarea name="message" rows="6" id="message" placeholder="Message"--%>
+<%--                                              required=""></textarea>--%>
+<%--                                </fieldset>--%>
+<%--                            </div>--%>
+<%--                            <div class="col-lg-12">--%>
+<%--                                <fieldset>--%>
+<%--                                    <button type="submit" id="form-submit" class="main-button-icon">Make A Reservation--%>
+<%--                                    </button>--%>
+<%--                                </fieldset>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </form>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
 </section>
 <!-- ***** Reservation Area Ends ***** -->
 
@@ -740,6 +756,23 @@
 <script src="resources/js/custom.js"></script>
 <script>
 
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    };
     $(function () {
         var selectedClass = "";
         $("p").click(function () {

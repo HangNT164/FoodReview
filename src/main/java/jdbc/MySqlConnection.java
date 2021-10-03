@@ -22,9 +22,9 @@ public class MySqlConnection {
     private static final String PASSWORD;
 
     static {
-        URL = "jdbc:mysql://localhost:3306/swp391_g2_project?useSSL=false";
+        URL = "jdbc:mysql://localhost:3306/food_review?useSSL=false";
         USER = "root";
-        PASSWORD = "";
+        PASSWORD = "123456";
     }
 
     /**
