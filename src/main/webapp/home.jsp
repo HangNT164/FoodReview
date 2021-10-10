@@ -88,7 +88,7 @@
                             <div class="dropdown">
                                 <a onclick="myFunction()" class="dropbtn">${account.name}</a>
                                 <div id="myDropdown" class="dropdown-content" style="padding-bottom: 15px">
-                                    <a href="#">Profile</a>
+                                    <a href="account.jsp">Profile</a>
                                     <a href="logout">Log out</a>
                                 </div>
                             </div>

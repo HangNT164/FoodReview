@@ -31,24 +31,29 @@ public class ProfileController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
+            boolean flag = true;
             Account accountCurrent = (Account) session.getAttribute("account");
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             String phone = request.getParameter("phone");
-            Boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
+            int gender = Integer.parseInt(request.getParameter("gender"));
             String address = request.getParameter("address");
             String dob = request.getParameter("dob");
             if (!ValidateHelper.isEmail(email)) {
+                flag =false;
                 request.setAttribute("message1", "Email không đúng định dạng");
             }
             if (!ValidateHelper.isPhoneNumber(phone)) {
+                flag = false;
                 request.setAttribute("message1", "Số điện thoại không đúng định dạng");
             }
 
             if (!accountCurrent.getEmail().equals(email) && !accountDao.isDulicapteEmail(email)) {
+                flag =false;
                 request.setAttribute("message1", "Email đã được đăng ký trước đó");
             }
             if (!accountCurrent.getPhoneNumber().equals(phone) && !accountDao.isDulicaptePhone(phone)) {
+                flag =false;
                 request.setAttribute("message1", "Số điện thoại đã được đăng ký trước đó");
             }
 
@@ -56,14 +61,23 @@ public class ProfileController extends HttpServlet {
                     .name(name)
                     .email(email)
                     .phoneNumber(phone)
-                    .gender(gender)
+                    .gender(gender==1)
+                    .address(address)
+                    .dob(dob)
+                    .build();
+            Account updateAccount = Account.builder()
+                    .name(name)
+                    .email(email)
+                    .phoneNumber(phone)
+                    .gender(gender==1)
                     .address(address)
                     .dob(ValidateHelper.convertFormatDate(dob))
                     .build();
-            boolean updateAccount = accountDao.updateAccount(accountCurrent.getAccountId(), account);
-            session.setAttribute("account", account);
-            if (!updateAccount) {
-                request.setAttribute("message1", "Không thể thay đổi thông tin");
+
+            if(flag){
+                session.setAttribute("account", account);
+                request.setAttribute("message1", "Thay đổi thông tin thành công!");
+                accountDao.updateAccount(accountCurrent.getAccountId(), updateAccount);
             }
             request.getRequestDispatcher("account.jsp").forward(request, response);
         }

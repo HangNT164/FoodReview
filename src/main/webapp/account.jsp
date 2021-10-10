@@ -13,6 +13,7 @@
 
     <!-- FontAwesome JS-->
     <script defer src="resources/plugins/fontawesome/js/all.min.js"></script>
+    <script src="resources/js/custom/genderScript.js"></script>
 
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
@@ -236,7 +237,7 @@
                                                 <label>Gender</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>${sessionScope.account.gender}</p>
+                                                <p id="genderName"></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -257,7 +258,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade ${message1 != null && message2 == null ? "show active" : ""}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <form action="profile" method="post">
+                                        <form id="profile" action="profile" method="post">
                                             <p style="text-align: center;color: red;">${message1}</p>
                                             <div class="row">
                                                 <div class="form-group">
@@ -295,7 +296,13 @@
                                                 <div class="form-group">
                                                     <div class="col-md-10">
                                                         <label>Gender: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="text" name="gender" value="${sessionScope.account.gender}" />
+                                                        <input id='hiddenG' type='hidden' value='${sessionScope.account.gender}'/>
+                                                        <input style="margin-left: 60px" type="radio" id="genderMale" name="gender" value="0"/>
+                                                        <label for="age1">Male</label>
+                                                        <input type="radio" id="genderFemale" name="gender" value="1" />
+                                                        <label for="age1">Female</label>
+                                                        <!-- <input type="radio" id="genderOther" name="gender" value="2" />
+                                                        <label for="age1">Other</label> -->
                                                     </div>
                                                 </div>
                                             </div>
