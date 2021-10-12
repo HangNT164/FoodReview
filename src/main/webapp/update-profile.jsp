@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Food Review| Home</title>
+    <title>Food Review | Update Profile</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -16,10 +16,9 @@
 
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
-    <link id="theme-style" rel="stylesheet" href="resources/css/custom/footer.css">
+    <link rel="stylesheet" href="resources/css/custom/footer.css">
 
 </head>
-
 <body class="app">
 <header class="app-header fixed-top">
     <div class="app-header-inner">
@@ -75,11 +74,10 @@
                                 Review</i></span></a>
             </div>
             <!--//app-branding-->
-
             <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
                 <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                     <li class="nav-item ">
-                        <a class="nav-link active " href="index.jsp">
+                        <a class="nav-link  " href="index.jsp">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +114,7 @@
                     <!--//nav-item-->
 
                     <li class="nav-item">
-                        <a class="nav-link" href="search-topic-status">
+                        <a class="nav-link" href="topic.jsp">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -150,161 +148,139 @@
     <!--//app-sidepanel-->
 </header>
 <!--//app-header-->
-
 <div class="app-wrapper">
-
     <div class="app-content pt-3 p-md-3 p-lg-4">
-        <div class="container-fuild">
+        <h1 class="app-page-title">My Account</h1>
+    </div>
+    <div class="container">
+        <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
+            <div class="app-card-header p-2 border-bottom-0">
+                <div class="row align-items-center gx-3">
+                    <div class="col-auto">
+                        <div class="app-icon-holder">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person"
+                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                            </svg>
+                        </div>
+                        <!--//icon-holder-->
 
-            <h1 class="app-page-title">Dashboard</h1>
-
-            <div class="row g-4 mb-4">
-                <div class="col-6 col-lg-3">
-                    <div class="app-card app-card-stat shadow-sm h-100">
-                        <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Apartment</h4>
-                            <div class="stats-figure">12,628</div>
-                        </div>
-                        <!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
                     </div>
-                    <!--//app-card-->
-                </div>
-                <!--//col-->
-
-                <div class="col-6 col-lg-3">
-                    <div class="app-card app-card-stat shadow-sm h-100">
-                        <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Resident</h4>
-                            <div class="stats-figure">2,250</div>
-                        </div>
-                        <!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
+                    <!--//col-->
+                    <div class="col-auto">
+                        <h4 class="app-card-title">Profile</h4>
                     </div>
-                    <!--//app-card-->
+                    <!--//col-->
                 </div>
-                <!--//col-->
-                <div class="col-6 col-lg-3">
-                    <div class="app-card app-card-stat shadow-sm h-100">
-                        <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Employee</h4>
-                            <div class="stats-figure">23</div>
-                        </div>
-                        <!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
-                    </div>
-                    <!--//app-card-->
-                </div>
-                <!--//col-->
-                <div class="col-6 col-lg-3">
-                    <div class="app-card app-card-stat shadow-sm h-100">
-                        <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Department</h4>
-                            <div class="stats-figure">6</div>
-                        </div>
-                        <!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
-                    </div>
-                    <!--//app-card-->
-                </div>
-                <!--//col-->
+                <!--//row-->
             </div>
-            <!--//row-->
-            <div class="row g-4 mb-4">
-                <div class="col-12 col-lg-6">
-                    <div class="app-card app-card-chart h-100 shadow-sm">
-                        <div class="app-card-header p-3">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto">
-                                    <h4 class="app-card-title">Line Chart Example</h4>
+            <!--//app-card-header-->
+            <div class="app-card-body px-4 w-100">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                                 alt="Avatar"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                       aria-controls="profile" aria-selected="false">Update Profile</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tab-content profile-tab p-1" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <form action="profile" method="post">
+                                            <p style="text-align: center;color: red;">${message1}</p>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Name: </label>
+                                                        <input class="form-control" style="margin-left: 60px" type="text" name="name" value="${sessionScope.account.name}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Email: </label>
+                                                        <input class="form-control" style="margin-left: 60px" type="email" name="email" value="${sessionScope.account.email}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Phone Number: </label>
+                                                        <input class="form-control" style="margin-left: 60px" type="text" name="phone" value="${sessionScope.account.phoneNumber}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Address: </label>
+                                                        <input class="form-control" style="margin-left: 60px" type="text" name="address" value="${sessionScope.account.address}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Gender: </label>
+                                                        <input class="form-control" style="margin-left: 60px" type="text" name="gender" value="${sessionScope.account.gender}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Date Of Birth: </label>
+                                                        <input class="form-control" style="margin-left: 60px" type="date" name="dob" value="${sessionScope.account.dob}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex;justify-content: flex-end; padding-bottom: 20px; margin-top: 5px">
+                                                <button type="submit" class="btn btn-success collapsed">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                            <!--//row-->
                         </div>
-                        <!--//app-card-header-->
-                        <div class="app-card-body p-3 p-lg-4">
-                            <div class="mb-3 d-flex">
-                                <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
-                                    <option value="1" selected>This week</option>
-                                    <option value="2">Today</option>
-                                    <option value="3">This Month</option>
-                                    <option value="3">This Year</option>
-                                </select>
-                            </div>
-                            <div class="chart-container">
-                                <canvas id="canvas-linechart"></canvas>
-                            </div>
-                        </div>
-                        <!--//app-card-body-->
                     </div>
-                    <!--//app-card-->
-                </div>
-                <!--//col-->
-                <div class="col-12 col-lg-6">
-                    <div class="app-card app-card-chart h-100 shadow-sm">
-                        <div class="app-card-header p-3">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto">
-                                    <h4 class="app-card-title">Bar Chart Example</h4>
-                                </div>
-                            </div>
-                            <!--//row-->
-                        </div>
-                        <!--//app-card-header-->
-                        <div class="app-card-body p-3 p-lg-4">
-                            <div class="mb-3 d-flex">
-                                <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
-                                    <option value="1" selected>This week</option>
-                                    <option value="2">Today</option>
-                                    <option value="3">This Month</option>
-                                    <option value="3">This Year</option>
-                                </select>
-                            </div>
-                            <div class="chart-container">
-                                <canvas id="canvas-barchart"></canvas>
-                            </div>
-                        </div>
-                        <!--//app-card-body-->
+                    <div class="col-md-2">
                     </div>
-                    <!--//app-card-->
                 </div>
-                <!--//col-->
 
             </div>
-            <!--//row-->
         </div>
-        <!--//container-fluid-->
     </div>
     <!--//app-content-->
-
-</div>
-<footer class="footer">
-    <div class="container text-center py-3">
-        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-        <small class="copyright" style="color: black;">© 2021 Copyright <i class="fas fa-heart"
-                                                                           style="color: #fb866a;"></i> by <a
-                class="app-link" href="index.jsp">food.review.com</a></small>
-
-    </div>
-</footer>
-<!--//app-footer-->
-
+    <footer class="footer">
+        <div class="container text-center py-3">
+            <small class="copyright" style="color: black;">© 2021 Copyright <i class="fas fa-heart"
+                                                                               style="color: #fb866a;"></i> by <a
+                    class="app-link"
+                    href="index.jsp">food.review.com</a></small>
+        </div>
+    </footer>
+    <!--//app-footer-->
 </div>
 <!--//app-wrapper-->
-
-
-<!-- Javascript -->
-<script src="resources/plugins/popper.min.js"></script>
-<script src="resources/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- Charts JS -->
-<script src="resources/plugins/chart.js/chart.min.js"></script>
-<script src="resources/js/custom/index-charts.js"></script>
-
-<!-- Page Specific JS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 <script src="resources/js/custom/app.js"></script>
-
-
 </body>
-
 </html>
