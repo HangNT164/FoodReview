@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Food Review| Home</title>
+    <title>Food Review | Update Profile</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -16,10 +16,9 @@
 
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
-    <link id="theme-style" rel="stylesheet" href="resources/css/custom/footer.css">
+    <link rel="stylesheet" href="resources/css/custom/footer.css">
 
 </head>
-
 <body class="app">
 <header class="app-header fixed-top">
     <div class="app-header-inner">
@@ -75,11 +74,10 @@
                                 Review</i></span></a>
             </div>
             <!--//app-branding-->
-
             <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
                 <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                     <li class="nav-item ">
-                        <a class="nav-link active " href="index.jsp">
+                        <a class="nav-link  " href="index.jsp">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +114,7 @@
                     <!--//nav-item-->
 
                     <li class="nav-item">
-                        <a class="nav-link" href="search-topic-status">
+                        <a class="nav-link" href="topic.jsp">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -150,161 +148,110 @@
     <!--//app-sidepanel-->
 </header>
 <!--//app-header-->
-
 <div class="app-wrapper">
-
     <div class="app-content pt-3 p-md-3 p-lg-4">
-        <div class="container-fuild">
-
-            <h1 class="app-page-title">Dashboard</h1>
-
-            <div class="row g-4 mb-4">
-                <div class="col-6 col-lg-3">
-                    <div class="app-card app-card-stat shadow-sm h-100">
-                        <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Apartment</h4>
-                            <div class="stats-figure">12,628</div>
+        <h1 class="app-page-title">My Account</h1>
+    </div>
+    <div class="container">
+        <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
+            <div class="app-card-header p-2 border-bottom-0">
+                <div class="row align-items-center gx-3">
+                    <div class="col-auto">
+                        <div class="app-icon-holder">
+                            <img src="https://img.icons8.com/cute-clipart/32/000000/key.png"/>
                         </div>
-                        <!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
+                        <!--//icon-holder-->
                     </div>
-                    <!--//app-card-->
-                </div>
-                <!--//col-->
-
-                <div class="col-6 col-lg-3">
-                    <div class="app-card app-card-stat shadow-sm h-100">
-                        <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Resident</h4>
-                            <div class="stats-figure">2,250</div>
-                        </div>
-                        <!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
+                    <!--//col-->
+                    <div class="col-auto">
+                        <h4 class="app-card-title">Change Password</h4>
                     </div>
-                    <!--//app-card-->
+                    <!--//col-->
                 </div>
-                <!--//col-->
-                <div class="col-6 col-lg-3">
-                    <div class="app-card app-card-stat shadow-sm h-100">
-                        <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Employee</h4>
-                            <div class="stats-figure">23</div>
-                        </div>
-                        <!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
-                    </div>
-                    <!--//app-card-->
-                </div>
-                <!--//col-->
-                <div class="col-6 col-lg-3">
-                    <div class="app-card app-card-stat shadow-sm h-100">
-                        <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Department</h4>
-                            <div class="stats-figure">6</div>
-                        </div>
-                        <!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
-                    </div>
-                    <!--//app-card-->
-                </div>
-                <!--//col-->
+                <!--//row-->
             </div>
-            <!--//row-->
-            <div class="row g-4 mb-4">
-                <div class="col-12 col-lg-6">
-                    <div class="app-card app-card-chart h-100 shadow-sm">
-                        <div class="app-card-header p-3">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto">
-                                    <h4 class="app-card-title">Line Chart Example</h4>
+            <!--//app-card-header-->
+            <div class="app-card-body px-4 w-100">
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tab-content profile-tab p-1" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="change" role="tabpanel"
+                                         aria-labelledby="change-tab">
+                                        <form action="change-password" id="change-password-form" method="post">
+                                            <p style="text-align: center; color: limegreen;">${messageSuccessful}</p>
+                                            <p style="text-align: center; color: red;">${messageFailed}</p>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Old Password: </label>
+                                                        <input style="margin-left: 60px" type="password"
+                                                               name="oldPassword"
+                                                               class="form-control"/>
+                                                    </div>
+                                                    <p style="text-align: center; color: red;">${messageWrongOldPass}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>New Password: </label>
+                                                        <input style="margin-left: 60px" type="password"
+                                                               name="newPassword"
+                                                               class="form-control"/>
+                                                    </div>
+                                                    <p style="text-align: center; color: red;">${messagePassNotValid}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Confirm Password: </label>
+                                                        <input style="margin-left: 60px" type="password"
+                                                               name="rePassword"
+                                                               class="form-control"/>
+                                                    </div>
+                                                    <p style="text-align: center; color: red;">${messageNotCorrect}</p>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex;justify-content: flex-end; padding-bottom: 20px; margin-top: 5px">
+                                                <input type="submit" name="submit" id="submit" class="btn btn-success collapsed" value="Change Password"
+                                                       onclick="document.getElementById('change-password-form').submit();"/>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                            <!--//row-->
                         </div>
-                        <!--//app-card-header-->
-                        <div class="app-card-body p-3 p-lg-4">
-                            <div class="mb-3 d-flex">
-                                <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
-                                    <option value="1" selected>This week</option>
-                                    <option value="2">Today</option>
-                                    <option value="3">This Month</option>
-                                    <option value="3">This Year</option>
-                                </select>
-                            </div>
-                            <div class="chart-container">
-                                <canvas id="canvas-linechart"></canvas>
-                            </div>
-                        </div>
-                        <!--//app-card-body-->
                     </div>
-                    <!--//app-card-->
-                </div>
-                <!--//col-->
-                <div class="col-12 col-lg-6">
-                    <div class="app-card app-card-chart h-100 shadow-sm">
-                        <div class="app-card-header p-3">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto">
-                                    <h4 class="app-card-title">Bar Chart Example</h4>
-                                </div>
-                            </div>
-                            <!--//row-->
-                        </div>
-                        <!--//app-card-header-->
-                        <div class="app-card-body p-3 p-lg-4">
-                            <div class="mb-3 d-flex">
-                                <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
-                                    <option value="1" selected>This week</option>
-                                    <option value="2">Today</option>
-                                    <option value="3">This Month</option>
-                                    <option value="3">This Year</option>
-                                </select>
-                            </div>
-                            <div class="chart-container">
-                                <canvas id="canvas-barchart"></canvas>
-                            </div>
-                        </div>
-                        <!--//app-card-body-->
+                    <div class="col-md-2">
                     </div>
-                    <!--//app-card-->
                 </div>
-                <!--//col-->
 
             </div>
-            <!--//row-->
         </div>
-        <!--//container-fluid-->
     </div>
     <!--//app-content-->
-
-</div>
-<footer class="footer">
-    <div class="container text-center py-3">
-        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-        <small class="copyright" style="color: black;">© 2021 Copyright <i class="fas fa-heart"
-                                                                           style="color: #fb866a;"></i> by <a
-                class="app-link" href="index.jsp">food.review.com</a></small>
-
-    </div>
-</footer>
-<!--//app-footer-->
-
+    <footer class="footer">
+        <div class="container text-center py-3">
+            <small class="copyright" style="color: black;">© 2021 Copyright <i class="fas fa-heart"
+                                                                               style="color: #fb866a;"></i> by <a
+                    class="app-link"
+                    href="index.jsp">food.review.com</a></small>
+        </div>
+    </footer>
+    <!--//app-footer-->
 </div>
 <!--//app-wrapper-->
-
-
-<!-- Javascript -->
-<script src="resources/plugins/popper.min.js"></script>
-<script src="resources/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- Charts JS -->
-<script src="resources/plugins/chart.js/chart.min.js"></script>
-<script src="resources/js/custom/index-charts.js"></script>
-
-<!-- Page Specific JS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 <script src="resources/js/custom/app.js"></script>
-
-
 </body>
-
 </html>

@@ -56,6 +56,9 @@
                                 <li><a class="dropdown-item" href="profile">Account</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
+                                <li><a class="dropdown-item" href="change-password.jsp">Change Password</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="logout">Log Out</a></li>
                             </ul>
