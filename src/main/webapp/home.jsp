@@ -162,14 +162,18 @@
                 <div class="left-text-content">
                     <div class="section-heading">
                         <h6>New Post</h6>
-                        <a href="#" style="font-family: none;"><h2>${top1.title}</h2>
-                        </a>
+                        <form id="linkForm" action="topic-detail" method="post">
+                            <input type="text" name="topicId" hidden="true" value="${top1.topicId}"/>
+                            <a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="font-family: none;"><h2>${top1.title}</h2></a>
+                        </form>
                     </div>
-                    <p>${top1.content}
-                    </p>
-                    <i>Địa chỉ: 459-461 Lê Đại Hành, Quận 11
+                    <h5 style="white-space: pre-line; font-weight:normal;">${top1.content}
+                    </h5>
+                    <br>
+                    <br>
+                    <!--<i>Địa chỉ: 459-461 Lê Đại Hành, Quận 11
                         <br>Giờ mở cửa: 9.00-19.00
-                        <br>Giá: 35.000VND</i>
+                        <br>Giá: 35.000VND</i>-->
                     <div class="row">
                         <div class="col-4">
                             <img src="resources/images/home/about-thumb-01.jpg" alt="">

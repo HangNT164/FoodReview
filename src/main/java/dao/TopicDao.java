@@ -50,6 +50,26 @@ public class TopicDao {
         }
         return null;
     }
+    public Topic getPostById(int id){
+        String query = "SELECT * FROM swp391_g2_project.topic WHERE status = \"approved\" AND topic_id = "+id+" ;";
+        try(Connection con = MySqlConnection.getConnection();
+            PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;){
+            if(ps!=null){
+                ResultSet rs = ps.executeQuery();
+                while (rs != null && rs.next()) {
+                    Topic topic = getValueTopic(rs);
+                    return topic;
+                }
+
+            } else{
+                return null;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
     public List<Topic> searchTopicByStatus(String status) {
         String query = "SELECT * FROM topic WHERE status like '%" + status + "%' ";
 
