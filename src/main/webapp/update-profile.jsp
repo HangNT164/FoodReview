@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Food Review | Profile</title>
+    <title>Food Review | Update Profile</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -45,6 +45,9 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
                                 <li><a class="dropdown-item" href="profile">Account</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                <li><a class="dropdown-item" href="change-password.jsp">Change Password</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -183,80 +186,17 @@
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
-                            <h5>
-                                <span>${account.name}</span>
-                            </h5>
-
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link ${message1 == null && message2 == null ? " active" : ""}" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                       aria-controls="home" aria-selected="true">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link ${message1 != null && message2 == null ? " active" : ""}" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                                        aria-controls="profile" aria-selected="false">Update Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link ${message1 == null && message2 != null ? " active" : ""}" id="change-tab" data-toggle="tab" href="#change" role="tab"
-                                       aria-controls="change" aria-selected="false">Change Password</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="tab-content profile-tab p-1" id="myTabContent">
-                                    <div class="tab-pane fade ${message1 == null && message2 == null ? " show active" : ""}" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <p style="text-align: center;color: limegreen;">${message}</p>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><span>${sessionScope.account.name}</span></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.email}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.phoneNumber}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Gender</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.gender}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Address</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.address}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>DOB</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.dob}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade ${message1 != null && message2 == null ? "show active" : ""}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         <form action="profile" method="post">
                                             <p style="text-align: center;color: red;">${message1}</p>
                                             <div class="row">
@@ -307,43 +247,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="display: flex;justify-content: flex-end;">
+                                            <div style="display: flex;justify-content: flex-end; padding-bottom: 20px; margin-top: 5px">
                                                 <button type="submit" class="btn btn-success collapsed">Update</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="tab-pane fade ${message2 != null && message1 == null? "show active" : ""}" id="change" role="tabpanel" aria-labelledby="change-tab">
-                                        <form action="change-password" method="post">
-                                            <p style="text-align: center;color: red;">${message2}</p>
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-10">
-                                                        <label>Old Password: </label>
-                                                        <input style="margin-left: 60px" type="password" name="oldPassword"
-                                                               class="form-control"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-10">
-                                                        <label>New Password: </label>
-                                                        <input style="margin-left: 60px" type="password" name="newPassword"
-                                                               class="form-control"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-10">
-                                                        <label>Confirm Password: </label>
-                                                        <input style="margin-left: 60px" type="password" name="rePassword"
-                                                               class="form-control"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div style="display: flex;justify-content: flex-end;">
-                                                <button type="submit" class="btn btn-success collapsed">Change Password</button>
                                             </div>
                                         </form>
                                     </div>

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Food Review | Profile</title>
+    <title>Food Review | Update Profile</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -45,6 +45,9 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
                                 <li><a class="dropdown-item" href="profile">Account</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                <li><a class="dropdown-item" href="change-password.jsp">Change Password</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -155,18 +158,13 @@
                 <div class="row align-items-center gx-3">
                     <div class="col-auto">
                         <div class="app-icon-holder">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person"
-                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                      d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                            </svg>
+                            <img src="https://img.icons8.com/cute-clipart/32/000000/key.png"/>
                         </div>
                         <!--//icon-holder-->
-
                     </div>
                     <!--//col-->
                     <div class="col-auto">
-                        <h4 class="app-card-title">Profile</h4>
+                        <h4 class="app-card-title">Change Password</h4>
                     </div>
                     <!--//col-->
                 </div>
@@ -175,175 +173,53 @@
             <!--//app-card-header-->
             <div class="app-card-body px-4 w-100">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                                 alt="Avatar"/>
-                        </div>
+                    <div class="col-md-2">
                     </div>
-                    <div class="col-md-6">
-                        <div class="profile-head">
-                            <h5>
-                                <span>${account.name}</span>
-                            </h5>
-
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link ${message1 == null && message2 == null ? " active" : ""}" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                       aria-controls="home" aria-selected="true">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link ${message1 != null && message2 == null ? " active" : ""}" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                       aria-controls="profile" aria-selected="false">Update Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link ${message1 == null && message2 != null ? " active" : ""}" id="change-tab" data-toggle="tab" href="#change" role="tab"
-                                       aria-controls="change" aria-selected="false">Change Password</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="tab-content profile-tab p-1" id="myTabContent">
-                                    <div class="tab-pane fade ${message1 == null && message2 == null ? " show active" : ""}" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <p style="text-align: center;color: limegreen;">${message}</p>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><span>${sessionScope.account.name}</span></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.email}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.phoneNumber}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Gender</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.gender}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Address</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.address}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>DOB</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.dob}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade ${message1 != null && message2 == null ? "show active" : ""}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <form action="profile" method="post">
-                                            <p style="text-align: center;color: red;">${message1}</p>
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-10">
-                                                        <label>Name: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="text" name="name" value="${sessionScope.account.name}" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-10">
-                                                        <label>Email: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="email" name="email" value="${sessionScope.account.email}" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-10">
-                                                        <label>Phone Number: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="text" name="phone" value="${sessionScope.account.phoneNumber}" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-10">
-                                                        <label>Address: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="text" name="address" value="${sessionScope.account.address}" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-10">
-                                                        <label>Gender: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="text" name="gender" value="${sessionScope.account.gender}" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-10">
-                                                        <label>Date Of Birth: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="date" name="dob" value="${sessionScope.account.dob}" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div style="display: flex;justify-content: flex-end;">
-                                                <button type="submit" class="btn btn-success collapsed">Update</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="tab-pane fade ${message2 != null && message1 == null? "show active" : ""}" id="change" role="tabpanel" aria-labelledby="change-tab">
-                                        <form action="change-password" method="post">
-                                            <p style="text-align: center;color: red;">${message2}</p>
+                                    <div class="tab-pane fade show active" id="change" role="tabpanel"
+                                         aria-labelledby="change-tab">
+                                        <form action="change-password" id="change-password-form" method="post">
+                                            <p style="text-align: center; color: limegreen;">${messageSuccessful}</p>
+                                            <p style="text-align: center; color: red;">${messageFailed}</p>
                                             <div class="row">
                                                 <div class="form-group">
                                                     <div class="col-md-10">
                                                         <label>Old Password: </label>
-                                                        <input style="margin-left: 60px" type="password" name="oldPassword"
+                                                        <input style="margin-left: 60px" type="password"
+                                                               name="oldPassword"
                                                                class="form-control"/>
                                                     </div>
+                                                    <p style="text-align: center; color: red;">${messageWrongOldPass}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group">
                                                     <div class="col-md-10">
                                                         <label>New Password: </label>
-                                                        <input style="margin-left: 60px" type="password" name="newPassword"
+                                                        <input style="margin-left: 60px" type="password"
+                                                               name="newPassword"
                                                                class="form-control"/>
                                                     </div>
+                                                    <p style="text-align: center; color: red;">${messagePassNotValid}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group">
                                                     <div class="col-md-10">
                                                         <label>Confirm Password: </label>
-                                                        <input style="margin-left: 60px" type="password" name="rePassword"
+                                                        <input style="margin-left: 60px" type="password"
+                                                               name="rePassword"
                                                                class="form-control"/>
                                                     </div>
+                                                    <p style="text-align: center; color: red;">${messageNotCorrect}</p>
                                                 </div>
                                             </div>
-                                            <div style="display: flex;justify-content: flex-end;">
-                                                <button type="submit" class="btn btn-success collapsed">Change Password</button>
+                                            <div style="display: flex;justify-content: flex-end; padding-bottom: 20px; margin-top: 5px">
+                                                <input type="submit" name="submit" id="submit" class="btn btn-success collapsed" value="Change Password"
+                                                       onclick="document.getElementById('change-password-form').submit();"/>
                                             </div>
                                         </form>
                                     </div>
