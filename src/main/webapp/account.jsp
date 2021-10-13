@@ -13,6 +13,7 @@
 
     <!-- FontAwesome JS-->
     <script defer src="resources/plugins/fontawesome/js/all.min.js"></script>
+    <script src="resources/js/custom/genderScript.js"></script>
 
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
@@ -236,7 +237,7 @@
                                                 <label>Gender</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>${sessionScope.account.gender}</p>
+                                                <p id="genderName"></p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -295,7 +296,13 @@
                                                 <div class="form-group">
                                                     <div class="col-md-10">
                                                         <label>Gender: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="text" name="gender" value="${sessionScope.account.gender}" />
+                                                        <input id='hiddenG' type='hidden' value='${sessionScope.account.gender}'/>
+                                                        <input style="margin-left: 60px" type="radio" id="genderMale" name="gender" value="0"/>
+                                                        <label for="genderMale">Male</label>
+                                                        <input type="radio" id="genderFemale" name="gender" value="1" />
+                                                        <label for="genderFemale">Female</label>
+                                                        <!-- <input type="radio" id="genderOther" name="gender" value="2" />
+                                                        <label for="genderOther">Other</label> -->
                                                     </div>
                                                 </div>
                                             </div>
