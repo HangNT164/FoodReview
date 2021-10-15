@@ -88,6 +88,43 @@ public class TopicDao {
         }
         return null;
     }
+    public List<Topic> getTopicsByIndexAndSearchString(String search, int index) {
+        String query = "SELECT * FROM topic WHERE status like '%approved%' AND title like '%"+search+"%' " +
+                "LIMIT "+((index-1)*2)+", "+2;
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Topic> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueTopic(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+    public int getTotalTopics(String search) {
+        String query = "SELECT COUNT(*) FROM topic WHERE title like '%"+search+"%'";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                int result = -1;
+                while (rs.next()){
+                    result = rs.getInt(1);
+                }
+                return result;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return -1;
+    }
     public List<Topic> getListTopic(){
         String query = "SELECT * FROM swp391_g2_project.topic where status like \"approved\";";
         try(Connection con = MySqlConnection.getConnection();

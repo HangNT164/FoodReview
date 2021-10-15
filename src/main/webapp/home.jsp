@@ -167,8 +167,12 @@
                             <a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="font-family: none;"><h2>${top1.title}</h2></a>
                         </form>
                     </div>
+                    <p>${top1.createdDate}</p>
+                    <br>
                     <h5 style="white-space: pre-line; font-weight:normal;">${top1.content}
+                    <br>
                     </h5>
+                    <h5>Rate: ${top1.rate}</h5>
                     <br>
                     <br>
                     <!--<i>Địa chỉ: 459-461 Lê Đại Hành, Quận 11
@@ -207,7 +211,11 @@
             <div class="col-lg-4">
                 <div class="section-heading">
                     <h6>All Post</h6>
-                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi</h2>
+                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi
+                    <form id="listTopicForm" action="list-topic-approved" method="get">
+                        <a href="javascript:{}" onclick="document.getElementById('listTopicForm').submit();" style="font-family: none;">Xem thêm >></a>
+                    </form>
+                    </h2>
                 </div>
             </div>
         </div>
@@ -221,7 +229,12 @@
                         <div class='card card1'>
                             <div class="price"><h6>${l.rate} <i class="fas fa-heart fw"></i></h6></div>
                             <div class='info'>
-                                <h1 class='title'>${l.title}</h1>
+                                <h1 class='title'>
+                                    <form id="linkForm" action="topic-detail" method="post">
+                                      <input type="text" name="topicId" hidden="true" value="${l.topicId}"/>
+                                      <a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="font-family: none;"><h2>${l.title}</h2></a>
+                                    </form>
+                                </h1>
                                 <p class="description" style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
                                 <div class="main-text-button">
                                     <div class="scroll-to-section"><a href="#">More.. <i

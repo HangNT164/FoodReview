@@ -21,7 +21,8 @@
     -->
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="resources/css/home/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/home/font-awesome.css">
+    <!-- <link rel="stylesheet" type="text/css" href="resources/css/home/font-awesome.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="resources/css/home/home.css">
     <link rel="stylesheet" href="resources/css/home/templatemo-klassy-cafe.css">
     <link rel="stylesheet" href="resources/css/home/owl-carousel.css">
@@ -154,114 +155,85 @@
 </div>
 <!-- ***** Main Banner Area End ***** -->
 
-<!-- ***** About Area Starts ***** -->
+<!-- ***** Topic List Area Starts ***** -->
 <section class="section" id="about">
     <div class="container">
+        <form id="listTopicForm" action="list-topic-approved" method="post">
+                <div class = "row">
+                    <input class="form-control col-4" type="text"  name="search" placeholder="topic's title..."/>
+                    <button type="submit" class="btn btn-primary col-1"><i class="fa fa-search"></i></button>
+                </div>
+
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-xs-12">
-                <div class="left-text-content">
-                    <div class="section-heading">
-                        <h2>${topic.title}</h2>
-                    </div>
-                    <p>${topic.createdDate}</p>
+            <c:forEach items="${topicList}" var="l" varStatus="loop">
+                <div class="col-6 border-bottom border-right rounded">
                     <br>
-                    <h5 style="white-space: pre-line; font-weight:normal;">${topic.content}
-                    </h5>
                     <br>
-                    <h5>Rate: ${topic.rate}</h5>
-                    <!--<i>Địa chỉ: 459-461 Lê Đại Hành, Quận 11
-                        <br>Giờ mở cửa: 9.00-19.00
-                        <br>Giá: 35.000VND</i>-->
+                    <h2>${l.title}</h2>
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-6">
                             <img src="resources/images/home/about-thumb-01.jpg" alt="">
                         </div>
-                        <div class="col-4">
-                            <img src="resources/images/home/about-thumb-02.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img src="resources/images/home/about-thumb-03.jpg" alt="">
+                        <div class="col-6">
+                            <p style="white-space: pre-line;">${l.content}</p>
+                            <br>
+                            <br>
+                            <h5>Rate: ${l.rate}</h5>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-xs-12">
-                <div class="right-content">
-                    <div class="thumb">
-                        <a rel="nofollow" href="http://youtube.com"><i class="fa fa-play"></i></a>
-                        <img src="resources/images/home/about-video-bg.jpg" alt="">
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
         </div>
         <br>
-        <div class="row">
-            <div class="col-lg-10 col-md-10 col-xs-10">
-                <div class="left-text-content">
-                    <c:forEach items="${topicCommentList}" var="t">
-                        <br>
-                        <div class="section-heading">
-                            <hr>
-                            <h5>Anonymous</h5>
-                            <p>Rate: ${t.rate}</p>
-                            <p style="white-space: pre-line; padding-left: 5%;">${t.content}
-                            </p>
-                            <p> Create date: ${t.createdDate}</p>
-                        </div>
+        <br>
+            <input type="text" id="topicListIndex" name="topicListIndex" hidden="true" value="${currentTopicListIndex}"/>
+            <c:if test="${totalTopicListIndexes > 1}">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination">
+                    <c:if test="${currentTopicListIndex >1}">
+                        <li class="page-item">
+                          <a class="page-link" href="javascript:{}" onclick="document.getElementById('topicListIndex').value = ${currentTopicListIndex-1}; document.getElementById('listTopicForm').submit();" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                        </li>
+                    </c:if>
+                    <c:if test="${currentTopicListIndex <=1}">
+                        <li class="page-item disabled">
+                          <a class="page-link" href="javascript:{}" onclick="document.getElementById('topicListIndex').value = ${currentTopicListIndex-1}; document.getElementById('listTopicForm').submit();" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                        </li>
+                    </c:if>
+
+                    <c:forEach var="i" begin="1" end="${totalTopicListIndexes}">
+                        <li class="page-item"><a class="page-link" href="javascript:{}" onclick="document.getElementById('topicListIndex').value = ${i}; document.getElementById('listTopicForm').submit();">${i}</a></li>
                     </c:forEach>
-                </div>
-            </div>
-        </div>
+
+                    <c:if test="${currentTopicListIndex < totalTopicListIndexes}">
+                        <li class="page-item">
+                          <a class="page-link" href="javascript:{}" onclick="document.getElementById('topicListIndex').value = ${currentTopicListIndex+1}; document.getElementById('listTopicForm').submit();" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </li>
+                    </c:if>
+                    <c:if test="${currentTopicListIndex >= totalTopicListIndexes}">
+                        <li class="page-item disabled">
+                          <a class="page-link" href="javascript:{}" onclick="document.getElementById('topicListIndex').value = ${currentTopicListIndex+1}; document.getElementById('listTopicForm').submit();" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </li>
+                    </c:if>
+                  </ul>
+                </nav>
+            </c:if>
+        </form>
     </div>
 </section>
-<!-- ***** About Area Ends ***** -->
-
-<!-- ***** Menu Area Starts ***** -->
-<section class="section" id="menu">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="section-heading">
-                    <h6>All Post</h6>
-                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="menu-item-carousel">
-        <div class="col-lg-12">
-            <div class="owl-menu-item owl-carousel">
-                <c:forEach items="${topicList}" var="l">
-                    <div class="item">
-                        <div class='card card1'>
-                            <div class="price"><h6>${l.rate} <i class="fas fa-heart fw"></i></h6></div>
-                            <div class='info'>
-                                <h1 class='title'>
-                                    <form id="linkForm" action="topic-detail" method="post">
-                                      <input type="text" name="topicId" hidden="true" value="${l.topicId}"/>
-                                      <a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="font-family: none;"><h2>${l.title}</h2></a>
-                                    </form>
-                                </h1>
-                                <p class="description" style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
-                                <div class="main-text-button">
-                                    <div class="scroll-to-section"><a href="#">More.. <i
-                                            class="fa fa-angle-down"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-
-            </div>
-        </div>
-    </div>
-
-</section>
-<!-- ***** Menu Area Ends ***** -->
-
-
+<!-- ***** Topic List Area Ends ***** -->
 
 <!-- ***** Footer Start ***** -->
 <footer>
@@ -292,8 +264,22 @@
     </div>
 </footer>
 
-<!-- jQuery -->
-<script src="resources/js/jquery-2.1.0.min.js"></script>
+<!-- Javascript -->
+<script src="resources/js/plugin/jquery-3.3.1.slim.min.js " type="text/javascript "></script>
+<script src="resources/js/plugin/jquery.min.js "></script>
+<script src="resources/js/plugin/popper.min.js "></script>
+<script src="resources/plugins/popper.min.js "></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<!-- Charts JS -->
+<script src="resources/plugins/chart.js/chart.min.js "></script>
+
+<!-- Page Specific JS -->
+<script src="resources/js/custom/app.js "></script>
+
+
 
 <!-- Bootstrap -->
 <script src="resources/js/popper.js"></script>
@@ -347,5 +333,6 @@
     });
 
 </script>
+
 </body>
 </html>
