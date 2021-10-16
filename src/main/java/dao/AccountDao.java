@@ -63,12 +63,11 @@ public class AccountDao {
     }
 
     public List<Account> searchAccountByEmail(String email) {
-        String query = "SELECT * FROM account WHERE email like '%" + email + "%' AND status = ?";
+        String query = "SELECT * FROM account WHERE email like '%" + email + "%'";
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
-                ps.setObject(1, StatusAccountEnum.active.toString());
                 ResultSet rs = ps.executeQuery();
                 List<Account> list = new ArrayList<>();
                 while (rs != null && rs.next()) {
@@ -83,12 +82,11 @@ public class AccountDao {
     }
 
     public Account getAccountByEmail(String email) {
-        String query = "SELECT * FROM account WHERE email = '"+ email + "' AND status = ?";
+        String query = "SELECT * FROM account WHERE email = '"+ email + "'";
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
-                ps.setObject(1, StatusAccountEnum.active.toString());
                 ResultSet rs = ps.executeQuery();
                 Account account = null;
                 while (rs != null && rs.next()) {
@@ -122,18 +120,17 @@ public class AccountDao {
         return check > 0;
     }
 
-    public boolean removeAccount(int accountId) {
+    public boolean changeStatusAccount(int accountId, String status) {
         int check = 0;
         String query = "UPDATE account SET status = ?, updated_date =?"
-                + "WHERE account_id = ? AND status =?";
+                + "WHERE account_id = ?";
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
             if (ps != null) {
-                ps.setObject(1, StatusAccountEnum.inactive.toString());
+                ps.setObject(1, status);
                 ps.setObject(2, new Date());
                 ps.setObject(3, accountId);
-                ps.setObject(4, StatusAccountEnum.active.toString());
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {
