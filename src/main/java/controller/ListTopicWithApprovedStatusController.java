@@ -39,7 +39,15 @@ public class ListTopicWithApprovedStatusController extends HttpServlet {
         else if(index >totalIndexes)
             index =totalIndexes;
         if (search.isEmpty()) {
-            topicListByStatus = topicDao.getTopicsByIndexAndSearchString("", index);
+            String type = request.getParameter("type");
+            if(type.equals("search")){
+                topicListByStatus = topicDao.getTopicsByIndexAndSearchString("", 1);
+                totalIndexes = (topicDao.getTotalTopics(search)/2)+1;
+                session.setAttribute("totalTopicListIndexes", totalIndexes);
+            }
+            else{
+                topicListByStatus = topicDao.getTopicsByIndexAndSearchString("", index);
+            }
         } else {
             topicListByStatus = topicDao.getTopicsByIndexAndSearchString(search, 1);
             totalIndexes = (topicDao.getTotalTopics(search)/2)+1;

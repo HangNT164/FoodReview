@@ -160,8 +160,9 @@
     <div class="container">
         <form id="listTopicForm" action="list-topic-approved" method="post">
                 <div class = "row">
-                    <input class="form-control col-4" type="text"  name="search" placeholder="topic's title..."/>
-                    <button type="submit" class="btn btn-primary col-1"><i class="fa fa-search"></i></button>
+                    <input class="form-control col-4" type="text"  name="search" placeholder="topic's title..." onfocus="document.getElementById('type').value = 'search';"/>
+                    <input hidden="true" id="type" name="type" value="move"/>
+                    <button type="submit" class="btn btn-primary col-1" onclick="document.getElementById('type').value = 'search';"><i class="fa fa-search"></i></button>
                 </div>
 
         <div class="row">
@@ -169,7 +170,10 @@
                 <div class="col-6 border-bottom border-right rounded">
                     <br>
                     <br>
-                    <h2>${l.title}</h2>
+                    <form id="linkForm" action="topic-detail" method="post">
+                        <input type="text" name="topicId" hidden="true" value="${l.topicId}"/>
+                        <h2><a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="color: black;">${l.title}</a></h2>
+                    </form>
                     <div class="row">
                         <div class="col-6">
                             <img src="resources/images/home/about-thumb-01.jpg" alt="">

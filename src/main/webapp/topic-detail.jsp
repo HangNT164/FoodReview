@@ -240,7 +240,7 @@
                                 <h1 class='title'>
                                     <form id="linkForm" action="topic-detail" method="post">
                                       <input type="text" name="topicId" hidden="true" value="${l.topicId}"/>
-                                      <a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="font-family: none;"><h2>${l.title}</h2></a>
+                                      <a href="javascript:{}" style="color: black;" onclick="document.getElementById('linkForm').submit();" style="font-family: none;"><h2>${l.title}</h2></a>
                                     </form>
                                 </h1>
                                 <p class="description" style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
