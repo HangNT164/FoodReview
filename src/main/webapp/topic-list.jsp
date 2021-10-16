@@ -159,7 +159,7 @@
 <section class="section" id="about">
     <div class="container">
         <form form id="linkForm" action="topic-detail" method="post">
-            <input type="text" name="topicId" hidden="true" value="${l.topicId}"/>
+            <input type="text" id="topicId" name="topicId" hidden="true" value=""/>
         </form>
         <form id="listTopicForm" action="list-topic-approved" method="post">
             <div class = "row">
@@ -175,7 +175,7 @@
                     <div class="col-6 border-bottom border-right rounded">
                         <br>
                         <br>
-                            <h2><a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="color: black;">${l.title}</a></h2>
+                        <h2><a href="javascript:{}" onclick="document.getElementById('topicId').value = ${l.topicId}; document.getElementById('linkForm').submit();" style="color: black;">${l.title}</a></h2>
 
                         <div class="row">
                             <div class="col-6">
