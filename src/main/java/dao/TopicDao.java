@@ -88,20 +88,22 @@ public class TopicDao {
     }
     public boolean addTopic(Topic topic){
         int check = 0;
-        String query = "INSERT INTO topic (`title`, `status`, `content`, `rate`) VALUES (?,?,?,?)";
+        String query = "INSERT INTO topic (`title`, `status`, `content`, `rate`, `created_date`, `updated_date`) VALUES (?,?,?,?,?,?)";
         try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;){
         if(ps != null){
             ps.setObject(1, topic.getTitle());
-            ps.setObject(2, "Pending");
+            ps.setObject(2, topic.getStatus());
             ps.setObject(3, topic.getContent());
-            ps.setObject(4, "0");
+            ps.setObject(4, topic.getRate());
+            ps.setObject(5, new Date());
+            ps.setObject(6, new Date());
             check = ps.executeUpdate();
         }
         } catch (Exception e){
             e.printStackTrace(System.out);
         }
-        return  check > 0;
+        return check > 0;
     }
     public boolean removeTopic(int topicId) {
         int check = 0;

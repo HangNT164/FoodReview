@@ -172,15 +172,65 @@
                         <div class="card">
 
                             <div class="card-body">
-
-                                <form action="search-topic-status">
-                                    <div>
-                                        <span>Add new </span>
-                                        </br>
-                                        <a href="#" class="view mr-1" data-toggle="modal"
-                                           data-target="#add" title="">
-                                            <i class="fas fa-plus"></i></a>
+                                <div>
+                                    <a href="#" class="view mr-1" data-toggle="modal"
+                                       data-target="#add-topic" title="Add topic" style="text-decoration: none">
+                                        <i class="fas fa-plus"></i><span>Add new </span></a>
+                                    <%-- Su kien add--%>
+                                    <div class="modal fade" id="add-topic" tabindex="-1"
+                                         role="dialog" aria-labelledby="add-topic"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-md"
+                                             role="document">
+                                            <div class="modal-content">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <form action="add-topic" method="post" onchange="return validateAddForm()">
+                                                            <h5 class="mb-3">Add topic</h5>
+                                                            <div class="row">
+                                                                <div class="form-group">
+                                                                    <div class="col-md-10">
+                                                                        <label>Title: </label>
+                                                                        <input style="margin-left: 60px" type="text"
+                                                                               id="add-title"
+                                                                               name="title"
+                                                                               class="form-control"/>
+                                                                        <span id="add-title-message" style="display: none; color: red; font-size: 14px; text-align: center">Chủ đề không được để trống</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group">
+                                                                    <div class="col-md-10">
+                                                                        <label>Content: </label>
+                                                                        <input style="margin-left: 60px" type="text"
+                                                                               name="content"
+                                                                               class="form-control"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br/>
+                                                            <div style="display: flex;justify-content: space-evenly">
+                                                                <button type="submit"
+                                                                        onclick="return validateAddForm()"
+                                                                        style="border: 1px solid;"
+                                                                        class="btn btn-success collapsed">
+                                                                    Add
+                                                                </button>
+                                                                <button type="button"
+                                                                        style="border: 1px solid;"
+                                                                        class="btn btn-outline-success"
+                                                                        data-dismiss="modal">Close
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
+                                <form action="search-topic-status">
                                     <div class="row mt-3 mb-3">
                                         <div class="row" style="padding: 0px;margin: 0px;">
                                             <div class="col-md-2">
@@ -249,49 +299,6 @@
                                                                         class="fas fa-trash fa-fw"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <%-- Su kien add--%>
-                                                    <div class="modal fade" id="add" tabindex="-1"
-                                                         role="dialog" aria-labelledby=""
-                                                         aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-xl"
-                                                             role="document">
-                                                            <div class="modal-content">
-                                                                <div class="card">
-                                                                    <div class="card-body">
-                                                                        <h5 class="mb-3">Add New Topic</h5>
-                                                                        <form action="add-topic"
-                                                                              method="post">
-                                                                            <div class="form-group row">
-                                                                                <div class="col-sm-12">
-                                                                                    <label>Title</label>
-                                                                                    <input name="title"
-                                                                                           class="form-control"></input>
-                                                                                </div>
-                                                                                <div class="col-sm-12">
-                                                                                    <label>Content</label>
-                                                                                    <input name="content"
-                                                                                           class="form-control"></input>
-                                                                                </div>
-
-                                                                            </div>
-                                                                            <div style="display: flex;justify-content: space-evenly">
-                                                                                <button type="submit"
-                                                                                        style="border: 1px solid;"
-                                                                                        class="btn btn-outline-success">
-                                                                                    Submit
-                                                                                </button>
-                                                                                <button type="button"
-                                                                                        style="border: 1px solid;"
-                                                                                        class="btn btn-outline-success"
-                                                                                        data-dismiss="modal">Close
-                                                                                </button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     <!-- Su kien show chi tiet -->
                                                     <div class="modal fade" id="detail${l.topicId}" tabindex="-1"
                                                          role="dialog" aria-labelledby="detail${l.topicId}"
@@ -518,6 +525,16 @@
         $('#user-management-table').DataTable();
     });
 
+    function validateAddForm() {
+        if (document.getElementById('add-title').value == "") {
+            document.getElementById('add-title').style.borderColor = 'red'
+            document.getElementById('add-title-message').style.display = 'block'
+            return false;
+        }else {
+            document.getElementById('add-title').style.borderColor = '#e7e9ed'
+            document.getElementById('add-title-message').style.display = 'none'
+        }
+    }
 </script>
 </body>
 
