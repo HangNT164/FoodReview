@@ -158,38 +158,41 @@
 <!-- ***** Topic List Area Starts ***** -->
 <section class="section" id="about">
     <div class="container">
+        <form form id="linkForm" action="topic-detail" method="post">
+            <input type="text" name="topicId" hidden="true" value="${l.topicId}"/>
+        </form>
         <form id="listTopicForm" action="list-topic-approved" method="post">
-                <div class = "row">
-                    <input class="form-control col-4" type="text"  name="search" placeholder="topic's title..." onfocus="document.getElementById('type').value = 'search';"/>
-                    <input hidden="true" id="type" name="type" value="move"/>
-                    <button type="submit" class="btn btn-primary col-1" onclick="document.getElementById('type').value = 'search';"><i class="fa fa-search"></i></button>
-                </div>
+            <div class = "row">
+                <input class="form-control col-4" type="text"  name="search" placeholder="search..." value="${search}" onfocus="document.getElementById('type').value = 'search';"/>
+                <input hidden="true" id="type" name="type" value="move"/>
+                <button type="submit" class="btn btn-primary col-1" onclick="document.getElementById('type').value = 'search';"><i class="fa fa-search"></i></button>
+                <input class="form-control col-1" type="number" step="0.01" name="rateMin" value="${rateMin}"/>
+                <input class="form-control col-1" type="number" step="0.01" name="rateMax" value="${rateMax}"/>
+            </div>
 
-        <div class="row">
-            <c:forEach items="${topicList}" var="l" varStatus="loop">
-                <div class="col-6 border-bottom border-right rounded">
-                    <br>
-                    <br>
-                    <form id="linkForm" action="topic-detail" method="post">
-                        <input type="text" name="topicId" hidden="true" value="${l.topicId}"/>
-                        <h2><a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="color: black;">${l.title}</a></h2>
-                    </form>
-                    <div class="row">
-                        <div class="col-6">
-                            <img src="resources/images/home/about-thumb-01.jpg" alt="">
-                        </div>
-                        <div class="col-6">
-                            <p style="white-space: pre-line;">${l.content}</p>
-                            <br>
-                            <br>
-                            <h5>Rate: ${l.rate}</h5>
+            <div class="row">
+                <c:forEach items="${topicList}" var="l" varStatus="loop">
+                    <div class="col-6 border-bottom border-right rounded">
+                        <br>
+                        <br>
+                            <h2><a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="color: black;">${l.title}</a></h2>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <img src="resources/images/home/about-thumb-01.jpg" alt="">
+                            </div>
+                            <div class="col-6">
+                                <p style="white-space: pre-line;">${l.content}</p>
+                                <br>
+                                <br>
+                                <h5>Rate: ${l.rate}</h5>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </c:forEach>
-        </div>
-        <br>
-        <br>
+                </c:forEach>
+            </div>
+            <br>
+            <br>
             <input type="text" id="topicListIndex" name="topicListIndex" hidden="true" value="${currentTopicListIndex}"/>
             <c:if test="${totalTopicListIndexes > 1}">
                 <nav aria-label="Page navigation">

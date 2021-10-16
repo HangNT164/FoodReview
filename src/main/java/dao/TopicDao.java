@@ -88,9 +88,9 @@ public class TopicDao {
         }
         return null;
     }
-    public List<Topic> getTopicsByIndexAndSearchString(String search, int index) {
+    public List<Topic> getTopicsByIndexAndSearchString(String search, int index, float rateMin, float rateMax) {
         String query = "SELECT * FROM topic WHERE status like '%approved%' AND title like '%"+search+"%' " +
-                "LIMIT "+((index-1)*2)+", "+2;
+                "AND rate BETWEEN "+rateMin+" AND "+rateMax+" LIMIT "+((index-1)*2)+", "+2;
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
@@ -107,8 +107,8 @@ public class TopicDao {
         }
         return null;
     }
-    public int getTotalTopics(String search) {
-        String query = "SELECT COUNT(*) FROM topic WHERE title like '%"+search+"%'";
+    public int getTotalTopics(String search, float rateMin, float rateMax) {
+        String query = "SELECT COUNT(*) FROM topic WHERE title like '%"+search+"%' AND rate BETWEEN "+ rateMin+" AND "+rateMax;
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
