@@ -90,7 +90,7 @@ public class TopicDao {
     }
     public List<Topic> getTopicsByIndexAndSearchString(String search, int index, float rateMin, float rateMax) {
         String query = "SELECT * FROM topic WHERE status like '%approved%' AND title like '%"+search+"%' " +
-                "AND rate BETWEEN "+rateMin+" AND "+rateMax+" LIMIT "+((index-1)*2)+", "+2;
+                "AND rate BETWEEN "+rateMin+" AND "+rateMax+" LIMIT "+((index-1)*8)+", 8";
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {

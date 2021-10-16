@@ -24,8 +24,8 @@ public class ListTopicWithApprovedStatusController extends HttpServlet {
         topicListByStatus = topicDao.getTopicsByIndexAndSearchString("",1, rateMin, rateMax);
         //test under
         int totalTopics = topicDao.getTotalTopics("", rateMin, rateMax);
-        int totalIndexes = (totalTopics/2)+1;
-        if(totalTopics%2 ==0)
+        int totalIndexes = (totalTopics/8)+1;
+        if(totalTopics%8 ==0)
             --totalIndexes;
         request.setAttribute("topicList", topicListByStatus);
         request.setAttribute("rateMin", rateMin);
@@ -52,8 +52,8 @@ public class ListTopicWithApprovedStatusController extends HttpServlet {
             if(type.equals("search")){
                 topicListByStatus = topicDao.getTopicsByIndexAndSearchString("", 1, rateMin, rateMax);
                 int totalTopics = topicDao.getTotalTopics(search, rateMin, rateMax);
-                totalIndexes = (totalTopics/2)+1;
-                if(totalTopics%2 ==0)
+                totalIndexes = (totalTopics/8)+1;
+                if(totalTopics%8 ==0)
                     --totalIndexes;
                 session.setAttribute("totalTopicListIndexes", totalIndexes);
             }
@@ -63,8 +63,8 @@ public class ListTopicWithApprovedStatusController extends HttpServlet {
         } else {
             topicListByStatus = topicDao.getTopicsByIndexAndSearchString(search, 1, rateMin, rateMax);
             int totalTopics = topicDao.getTotalTopics(search, rateMin, rateMax);
-            totalIndexes = (totalTopics/2)+1;
-            if(totalTopics%2 ==0)
+            totalIndexes = (totalTopics/8)+1;
+            if(totalTopics%8 ==0)
                 --totalIndexes;
             session.setAttribute("totalTopicListIndexes", totalIndexes);
         }
