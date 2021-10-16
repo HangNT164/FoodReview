@@ -27,7 +27,7 @@ public class AddTopicController extends HttpServlet {
             // Create Topic
             Topic topic = Topic.builder()
                     .title(title)
-                    .status("Pending")
+                    .status("pending")
                     .content(content)
                     .rate(0)
                     .build();
