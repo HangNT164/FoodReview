@@ -1,5 +1,6 @@
 package dao;
 
+import bean.Account;
 import bean.Topic;
 import jdbc.MySqlConnection;
 
@@ -8,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -88,7 +90,7 @@ public class TopicDao {
 
     public boolean addTopic(Topic topic) {
         int check = 0;
-        String query = "INSERT INTO topic (`title`, `status`, `content`, `rate`, `created_date`, `updated_date`) VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO topic (`title`, `status`, `content`, `rate`, `created_date`, `updated_date`,`month`) VALUES (?,?,?,?,?,?,?)";
         try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
@@ -98,6 +100,7 @@ public class TopicDao {
                 ps.setObject(4, topic.getRate());
                 ps.setObject(5, new Date());
                 ps.setObject(6, new Date());
+                ps.setObject(7, currentMonth());
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {
@@ -147,11 +150,41 @@ public class TopicDao {
         }
         return check > 0;
     }
-//    public static void main(String[] args) {
-//        TopicDao dao = new TopicDao();
-//        List<Topic> topicList = dao.getListTopic();
-//        for(Topic o: topicList){
-//            System.out.println(o);
-//        }
-//    }
+
+    public List<Topic> getListTopicByMonth(String month) {
+        String query = "SELECT * FROM topic WHERE month=?";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, month);
+                ResultSet rs = ps.executeQuery();
+                List<Topic> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueTopic(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    private String currentMonth() {
+        // Get Last Month
+        Calendar cal = Calendar.getInstance();
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+
+        // Current Month
+        String billingMonthCurrent;
+        if (month >= 0 && month <= 8) {
+            billingMonthCurrent = "0" + (month + 1) + "/" + year;
+        } else {
+            billingMonthCurrent = (month + 1) + "/" + year;
+        }
+        return billingMonthCurrent;
+    }
+
 }

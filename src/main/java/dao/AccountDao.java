@@ -265,6 +265,25 @@ public class AccountDao {
         }
         return null;
     }
+    public List<Account> listAccountRoleShopOwner() {
+        String query = "SELECT * FROM account WHERE role=?";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, "ShopOwner");
+                ResultSet rs = ps.executeQuery();
+                List<Account> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueAccount(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
 
     private String currentMonth() {
         // Get Last Month

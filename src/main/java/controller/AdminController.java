@@ -1,7 +1,9 @@
 package controller;
 
 import bean.Account;
+import bean.Topic;
 import dao.AccountDao;
+import dao.TopicDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,20 +19,34 @@ import java.util.List;
 public class AdminController extends HttpServlet {
 
     private AccountDao accountDao = new AccountDao();
+    private TopicDao topicDao = new TopicDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Account> accountList = accountDao.searchAccountByEmail("");
+        List<Account> accountListShopOwner = accountDao.listAccountRoleShopOwner();
+        List<Topic> topics = topicDao.searchTopicByStatus("");
+        List<Topic> topicsApprove = topicDao.searchTopicByStatus("approved");
+
         Calendar cal = Calendar.getInstance();
         String yearStr = request.getParameter("year");
+        String yearStrTopic = request.getParameter("topicYear");
         int year;
         if (yearStr == null) {
             year = cal.get(Calendar.YEAR);
         } else {
             year = Integer.valueOf(yearStr);
         }
+
+        int yearTopic;
+        if (yearStrTopic == null) {
+            yearTopic = cal.get(Calendar.YEAR);
+        } else {
+            yearTopic = Integer.valueOf(yearStrTopic);
+        }
+
         List<String> lists = new ArrayList<>();
-        for (int i = 2020; i < cal.get(Calendar.YEAR) + 2; i++) {
+        for (int i = 2021; i < cal.get(Calendar.YEAR) + 2; i++) {
             lists.add(String.valueOf(i));
         }
         List<Account> monthJan = accountDao.listAccountByMonth("01/" + year);
@@ -45,7 +61,22 @@ public class AdminController extends HttpServlet {
         List<Account> monthOct = accountDao.listAccountByMonth("10/" + year);
         List<Account> monthNov = accountDao.listAccountByMonth("11/" + year);
         List<Account> monthDec = accountDao.listAccountByMonth("12/" + year);
+
+        List<Topic> monthJanTopic = topicDao.getListTopicByMonth("01/" + yearTopic);
+        List<Topic> monthFebTopic = topicDao.getListTopicByMonth("02/" + yearTopic);
+        List<Topic> monthMarTopic = topicDao.getListTopicByMonth("03/" + yearTopic);
+        List<Topic> monthAprTopic = topicDao.getListTopicByMonth("04/" + yearTopic);
+        List<Topic> monthMayTopic = topicDao.getListTopicByMonth("05/" + yearTopic);
+        List<Topic> monthJunTopic = topicDao.getListTopicByMonth("06/" + yearTopic);
+        List<Topic> monthJulTopic = topicDao.getListTopicByMonth("07/" + yearTopic);
+        List<Topic> monthAugTopic = topicDao.getListTopicByMonth("08/" + yearTopic);
+        List<Topic> monthSepTopic = topicDao.getListTopicByMonth("09/" + yearTopic);
+        List<Topic> monthOctTopic = topicDao.getListTopicByMonth("10/" + yearTopic);
+        List<Topic> monthNovTopic = topicDao.getListTopicByMonth("11/" + yearTopic);
+        List<Topic> monthDecTopic = topicDao.getListTopicByMonth("12/" + yearTopic);
+
         request.setAttribute("totalAccount", accountList.size());
+        request.setAttribute("totalTopic", topics.size());
         request.setAttribute("monthJan", monthJan.size());
         request.setAttribute("monthFeb", monthFeb.size());
         request.setAttribute("monthMar", monthMar.size());
@@ -58,8 +89,24 @@ public class AdminController extends HttpServlet {
         request.setAttribute("monthOct", monthOct.size());
         request.setAttribute("monthNov", monthNov.size());
         request.setAttribute("monthDec", monthDec.size());
+
+        request.setAttribute("monthJanTopic", monthJanTopic.size());
+        request.setAttribute("monthFebTopic", monthFebTopic.size());
+        request.setAttribute("monthMarTopic", monthMarTopic.size());
+        request.setAttribute("monthAprTopic", monthAprTopic.size());
+        request.setAttribute("monthMayTopic", monthMayTopic.size());
+        request.setAttribute("monthJunTopic", monthJunTopic.size());
+        request.setAttribute("monthJulTopic", monthJulTopic.size());
+        request.setAttribute("monthAugTopic", monthAugTopic.size());
+        request.setAttribute("monthSepTopic", monthSepTopic.size());
+        request.setAttribute("monthOctTopic", monthOctTopic.size());
+        request.setAttribute("monthNovTopic", monthNovTopic.size());
+        request.setAttribute("monthDecTopic", monthDecTopic.size());
+
+        request.setAttribute("accountListShopOwner", accountListShopOwner.size());
+        request.setAttribute("topicsApprove", topicsApprove.size());
         request.setAttribute("years", lists);
-        request.setAttribute("currentYear", cal.get(Calendar.YEAR));
+
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

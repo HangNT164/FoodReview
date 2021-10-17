@@ -206,7 +206,7 @@
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Total Shop Owner</h4>
-                            <div class="stats-figure">2,250</div>
+                            <div class="stats-figure">${accountListShopOwner}</div>
                         </div>
                         <!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
@@ -218,7 +218,7 @@
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Total Topic</h4>
-                            <div class="stats-figure">23</div>
+                            <div class="stats-figure">${totalTopic}</div>
                         </div>
                         <!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
@@ -230,7 +230,7 @@
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
                             <h4 class="stats-type mb-1">Total Topic Approve</h4>
-                            <div class="stats-figure">6</div>
+                            <div class="stats-figure">${topicsApprove}</div>
                         </div>
                         <!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
@@ -240,74 +240,70 @@
                 <!--//col-->
             </div>
             <!--//row-->
-            <div class="row g-4 mb-4">
-                <div class="col-12 col-lg-6">
-                    <div class="app-card app-card-chart h-100 shadow-sm">
-                        <div class="app-card-header p-3">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto">
-                                    <h4 class="app-card-title">Total Topic</h4>
+            <form action="admin">
+                <div class="row g-4 mb-4">
+                    <div class="col-12 col-lg-6">
+                        <div class="app-card app-card-chart h-100 shadow-sm">
+                            <div class="app-card-header p-3">
+                                <div class="row justify-content-between align-items-center">
+                                    <div class="col-auto">
+                                        <h4 class="app-card-title">Total Topic</h4>
+                                    </div>
                                 </div>
+                                <!--//row-->
                             </div>
-                            <!--//row-->
-                        </div>
-                        <!--//app-card-header-->
-                        <div class="app-card-body p-3 p-lg-4">
-                            <div class="mb-3 d-flex">
-                                <form action="admin">
+                            <!--//app-card-header-->
+                            <div class="app-card-body p-3 p-lg-4">
+                                <div class="mb-3 d-flex">
                                     <select name="topicYear"
                                             class="form-select form-select-sm ms-auto d-inline-flex w-auto"
-                                            onchange="doSubmitSecond()">
-                                        <option value="${currentYear}">Current year</option>
+                                            onchange="doSubmit()">
                                         <c:forEach items="${years}" var="year" varStatus="loop">
                                             <option value="${year}" ${param.topicYear == year ? "selected" : ""}>${year}</option>
                                         </c:forEach>
                                     </select>
-                                </form>
-                            </div>
-                            <div class="chart-container">
-                                <canvas id="topicTotal" width="100%" height="30"></canvas>
-                            </div>
-                        </div>
-                        <!--//app-card-body-->
-                    </div>
-                    <!--//app-card-->
-                </div>
-                <!--//col-->
-                <div class="col-12 col-lg-6">
-                    <div class="app-card app-card-chart h-100 shadow-sm">
-                        <div class="app-card-header p-3">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto">
-                                    <h4 class="app-card-title">Total User</h4>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="topicTotal" width="100%" height="30"></canvas>
                                 </div>
                             </div>
-                            <!--//row-->
+                            <!--//app-card-body-->
                         </div>
-                        <!--//app-card-header-->
-                        <div class="app-card-body p-3 p-lg-4">
-                            <div class="mb-3 d-flex">
-                                <form action="admin">
+                        <!--//app-card-->
+                    </div>
+                    <!--//col-->
+                    <div class="col-12 col-lg-6">
+                        <div class="app-card app-card-chart h-100 shadow-sm">
+                            <div class="app-card-header p-3">
+                                <div class="row justify-content-between align-items-center">
+                                    <div class="col-auto">
+                                        <h4 class="app-card-title">Total User</h4>
+                                    </div>
+                                </div>
+                                <!--//row-->
+                            </div>
+                            <!--//app-card-header-->
+                            <div class="app-card-body p-3 p-lg-4">
+                                <div class="mb-3 d-flex">
                                     <select name="year" class="form-select form-select-sm ms-auto d-inline-flex w-auto"
                                             onchange="doSubmit()">
-                                        <option value="${currentYear}">Current year</option>
                                         <c:forEach items="${years}" var="year" varStatus="loop">
                                             <option value="${year}" ${param.year == year ? "selected" : ""}>${year}</option>
                                         </c:forEach>
                                     </select>
-                                </form>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="myBarChart" width="100%" height="30"></canvas>
+                                </div>
                             </div>
-                            <div class="chart-container">
-                                <canvas id="myBarChart" width="100%" height="30"></canvas>
-                            </div>
+                            <!--//app-card-body-->
                         </div>
-                        <!--//app-card-body-->
+                        <!--//app-card-->
                     </div>
-                    <!--//app-card-->
+                    <!--//col-->
                 </div>
-                <!--//col-->
-            </div>
-            <!--//row-->
+                <!--//row-->
+            </form>
         </div>
         <!--//container-fluid-->
     </div>
@@ -344,18 +340,10 @@
 <script type="text/javascript">
     function doSubmit() {
         var opt = document.getElementsByName("year")[0];
-        var v = opt.options[opt.selectedIndex].value;
-        document.forms[1].submit();
-    }
-</script>
-<script type="text/javascript">
-    function doSubmitSecond() {
-        var opt = document.getElementsByName("topicYear")[0];
-        var v = opt.options[opt.selectedIndex].value;
+        var opt1 = document.getElementsByName("topicYear")[0];
         document.forms[0].submit();
     }
 </script>
-
 <%--User--%>
 <script>
     Chart.defaults.global.defaultFontColor = '#252930';
