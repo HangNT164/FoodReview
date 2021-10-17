@@ -95,6 +95,11 @@
 
                             <%}%>
                         </li>
+                        <li class="scroll-to-section">
+                            <% if (session.getAttribute("account") == null) {%>
+                            <a href="register">Sign up</a>
+                            <%}%>
+                        </li>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
