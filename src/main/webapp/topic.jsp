@@ -372,7 +372,7 @@
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
-                                                                                        <label>Create Date</label>
+                                                                                        <label>Created Date</label>
                                                                                         <span class="form-control"
                                                                                               disabled>${l.createdDate}</span>
                                                                                     </div>

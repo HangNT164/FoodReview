@@ -128,6 +128,7 @@ public class TopicDao {
         String query = "UPDATE topic SET title=?" +
                 ", content = ?" +
                 ", status = ?" +
+                ", updated_date = ?" +
                 "WHERE topic_id = ?";
         try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
@@ -135,7 +136,8 @@ public class TopicDao {
                 ps.setObject(1, topic.getTitle());
                 ps.setObject(2, topic.getContent());
                 ps.setObject(3, topic.getStatus());
-                ps.setObject(4, id);
+                ps.setObject(4, new Date());
+                ps.setObject(5, id);
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {
