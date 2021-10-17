@@ -16,7 +16,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="resources/css/custom/form.css">
 
-    <title>Login | Food Review</title>
+    <title>Verify Code | Food Review</title>
 
     <link rel="shortcut icon" href="resources/images/avatar.png">
 
@@ -29,52 +29,37 @@
          style="background: url(https://www.ieltsvietop.vn/wp-content/uploads/2020/07/hong_kong_skyline_green_building_in_asia.jpg);">
         <div class="login-panel">
             <div class="logo text-center"><br/>
-                <a href="home">
+                <a href="#">
                     <p>Food Review</p>
                 </a><br/><br/>
             </div>
-            <form class="account" action="login" method="post">
-                <p style="text-align: center;color: #eb421c;">${message}</p>
+            <form method="post" action="verify-email" id="verify-code-form">
+                <p style="text-align: center; color: white;font-size: 14px;">Check email get code</p>
+                <p style="text-align: center; color: #eb421c;font-size: 12px;">${message}</p>
                 <div class="form-group">
                     <label>
-                        <i class="fas fa-user fa-fw"></i>
+                        <i style="margin-top: 2px" class="fas fa-code fa-fw"></i>
                     </label>
-                    <input type="email" class="form-control" placeholder="Email" name="email" autocomplete="off"
-                           id="InputEmail" required/>
+                    <input type="text" class="form-control" placeholder="Verify mail" name="verifyEmail" required/>
                 </div>
-                <div class="form-group">
-                    <label>
-                        <i class="fas fa-key fa-fw"></i>
-                    </label>
-                    <input type="password" class="form-control" placeholder="Password" name="password"
-                           autocomplete="off"required/>
-                </div>
-                <br>
                 <div class="form-group">
                     <div class="col">
-                        <input type="hidden" name="action" value="signIn"/>
                         <button type="submit" class="btn btn-sm">
-                            <i class="fas fa-sign-in-alt fa-fw mr-1"></i>Login
+                            <i class="fas fa-check fa-fw mr-1"></i>Verify
                         </button>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col">
-                        <a class="link-effect" href="#">
-                        </a>
-                        <a class="link-effect float-right" href="register">
-                            <i class="fas fa-question fa-fw mr-1"></i>Signup
-                        </a><br/><br/>
-                    </div>
-                    <div class="col">
-                        <a class="link-effect" href="#">
-                        </a>
-                        <a class="link-effect float-right" href="reset-password.jsp">
-                            <i class="fas fa-question fa-fw mr-1"></i>Forgot password
-                        </a><br/><br/>
-                    </div>
-                </div>
             </form>
+            <div class="form-group">
+                <div class="col">
+                    <a class="link-effect" href="#">
+                    </a>
+                    <a class="link-effect float-right" href="login">
+                        <i class="fas fa-question fa-fw mr-1"></i>Login
+                    </a><br/><br/>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

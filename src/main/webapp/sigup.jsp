@@ -30,10 +30,10 @@
         <form action="register" method="post">
             <div class="login-panel">
                 <div class="logo text-center"><br/>
-                    <a href="home.jsp">
+                    <a href="home">
                         <p>Food Review</p>
                     </a><br/>
-                    <p style="text-align: center; color: white;font-size: 12px;">${message}</p>
+                    <p style="text-align: center; color: #eb421c;font-size: 12px;">${message}</p>
                 </div>
                 <div class="form-group">
                     <label>
@@ -97,6 +97,15 @@
                                 <i class="fas fa-sign-in-alt fa-fw mr-1"></i>Sign Up
                             </button>
                         </a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col">
+                        <a class="link-effect" href="#">
+                        </a>
+                        <a class="link-effect float-right" href="login">
+                            <i class="fas fa-question fa-fw mr-1"></i>Login
+                        </a><br/><br/>
                     </div>
                 </div>
             </div>

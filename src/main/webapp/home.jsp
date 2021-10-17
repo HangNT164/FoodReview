@@ -46,7 +46,7 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="home.jsp" class="logo">
+                    <a href="home" class="logo">
                         <img height="80px" width="120px" src="resources/images/home/logo.png">
                     </a>
                     <!-- ***** Logo End ***** -->
@@ -725,7 +725,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="logo">
-                    <a href="home.jsp"><img src="resources/images/home/logo.png" alt=""></a>
+                    <a href="home"><img src="resources/images/home/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-4 col-xs-12">

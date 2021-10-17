@@ -2,6 +2,7 @@ package controller;
 
 import bean.Account;
 import dao.AccountDao;
+import util.EmailUtil;
 import util.ValidateHelper;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -18,6 +20,7 @@ import static util.ValidateHelper.convertFormatDate;
 public class RegisterController extends HttpServlet {
 
     private AccountDao accountDao = new AccountDao();
+    private EmailUtil emailUtil = new EmailUtil();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,6 +35,7 @@ public class RegisterController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
         try (PrintWriter out = response.getWriter()) {
             String name = request.getParameter("name");
             String phone = request.getParameter("phone");
@@ -82,14 +86,14 @@ public class RegisterController extends HttpServlet {
                     .phoneNumber(phone)
                     .password(password)
                     .build();
-            // Insert
-            boolean addAccount = accountDao.addAccount(account);
-            if (!addAccount) {
-                request.setAttribute("message", "Tạo tại khoản thất bại");
-                request.getRequestDispatcher("sigup.jsp").forward(request, response);
-            } else {
-                response.sendRedirect("login");
-            }
+
+            // Check exist
+            // Send Mail
+            String code = emailUtil.generate6DigitsRandom();
+            emailUtil.sendVerifyCodeEmail(email, code);
+            session.setAttribute("emailCode", code);
+            session.setAttribute("accountRegister", account);
+            response.sendRedirect("verify-email");
         }
     }
 }
