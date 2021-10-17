@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -235,13 +236,24 @@
                         <div class="app-card-header p-3">
                             <div class="row justify-content-between align-items-center">
                                 <div class="col-auto">
-                                    <h4 class="app-card-title">Total User By Year</h4>
+                                    <h4 class="app-card-title">Total User</h4>
                                 </div>
                             </div>
                             <!--//row-->
                         </div>
                         <!--//app-card-header-->
                         <div class="app-card-body p-3 p-lg-4">
+                            <div class="mb-3 d-flex">
+                                <form action="admin">
+                                    <select name="year" class="form-select form-select-sm ms-auto d-inline-flex w-auto"
+                                            onchange="doSubmit()">
+                                        <option value="${currentYear}">Current year</option>
+                                        <c:forEach items="${years}" var="year" varStatus="loop">
+                                            <option value="${year}" ${param.year == year ? "selected" : ""}>${year}</option>
+                                        </c:forEach>
+                                    </select>
+                                </form>
+                            </div>
                             <div class="chart-container">
                                 <canvas id="myBarChart" width="100%" height="30"></canvas>
                             </div>
@@ -286,6 +298,14 @@
 <!-- Page Specific JS -->
 <script src="resources/js/custom/app.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+    function doSubmit() {
+        var opt = document.getElementsByName("year")[0];
+        var v = opt.options[opt.selectedIndex].value;
+        document.forms[0].submit();
+    }
+</script>
 
 <script>
     Chart.defaults.global.defaultFontColor = '#252930';

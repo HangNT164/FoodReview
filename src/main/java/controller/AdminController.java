@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -21,7 +22,17 @@ public class AdminController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Account> accountList = accountDao.searchAccountByEmail("");
         Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
+        String yearStr = request.getParameter("year");
+        int year;
+        if (yearStr == null) {
+            year = cal.get(Calendar.YEAR);
+        } else {
+            year = Integer.valueOf(yearStr);
+        }
+        List<String> lists = new ArrayList<>();
+        for (int i = 2020; i < cal.get(Calendar.YEAR) + 2; i++) {
+            lists.add(String.valueOf(i));
+        }
         List<Account> monthJan = accountDao.listAccountByMonth("01/" + year);
         List<Account> monthFeb = accountDao.listAccountByMonth("02/" + year);
         List<Account> monthMar = accountDao.listAccountByMonth("03/" + year);
@@ -47,6 +58,8 @@ public class AdminController extends HttpServlet {
         request.setAttribute("monthOct", monthOct.size());
         request.setAttribute("monthNov", monthNov.size());
         request.setAttribute("monthDec", monthDec.size());
+        request.setAttribute("years", lists);
+        request.setAttribute("currentYear", cal.get(Calendar.YEAR));
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
