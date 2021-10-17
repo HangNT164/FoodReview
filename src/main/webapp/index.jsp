@@ -72,7 +72,7 @@
         <div class="sidepanel-inner d-flex flex-column">
             <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
             <div class="app-branding" style="margin:auto;">
-                <a class="app-logo" href="index.jsp"><span class="logo-text" style="font-size: 27px;"><i>Food
+                <a class="app-logo" href="home.jsp"><span class="logo-text" style="font-size: 27px;"><i>Food
                                 Review</i></span></a>
             </div>
             <!--//app-branding-->
@@ -312,7 +312,7 @@
         <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
         <small class="copyright" style="color: black;">© 2021 Copyright <i class="fas fa-heart"
                                                                            style="color: #fb866a;"></i> by <a
-                class="app-link" href="index.jsp">food.review.com</a></small>
+                class="app-link" href="home.jsp">food.review.com</a></small>
 
     </div>
 </footer>

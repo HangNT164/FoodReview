@@ -30,7 +30,7 @@
         <form action="register" method="post">
             <div class="login-panel">
                 <div class="logo text-center"><br/>
-                    <a href="#">
+                    <a href="home.jsp">
                         <p>Food Review</p>
                     </a><br/>
                     <p style="text-align: center; color: white;font-size: 12px;">${message}</p>
