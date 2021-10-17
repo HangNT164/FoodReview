@@ -102,7 +102,7 @@
                         <!--//nav-link-->
                     </li>
                     <!--//nav-item-->
-
+                    <c:if test="${sessionScope.account.role == 'Admin'}">
                     <li class="nav-item">
                         <a class="nav-link " href="search-user-management">
                                 <span class="nav-icon">
@@ -121,8 +121,9 @@
                         </a>
                         <!--//nav-link-->
                     </li>
+                    </c:if>
                     <!--//nav-item-->
-
+                    <c:if test="${sessionScope.account.role == 'Admin'}">
                     <li class="nav-item">
                         <a class="nav-link " href="search-topic-status">
                                 <span class="nav-icon">
@@ -146,6 +147,9 @@
                         </a>
                         <!--//nav-link-->
                     </li>
+                    </c:if>
+
+                    <c:if test="${sessionScope.account.role == 'ShopOwner'}">
                     <li class="nav-item">
                         <a class="nav-link " href="food-management">
                                 <span class="nav-icon">
@@ -169,6 +173,7 @@
                         </a>
                         <!--//nav-link-->
                     </li>
+                    </c:if>
                     <!--//nav-item-->
                 </ul>
                 <!--//app-menu-->

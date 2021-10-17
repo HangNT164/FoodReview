@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,7 +95,7 @@
                         <!--//nav-link-->
                     </li>
                     <!--//nav-item-->
-
+                    <c:if test="${sessionScope.account.role == 'Admin'}">
                     <li class="nav-item">
                         <a class="nav-link" href="search-user-management">
                                 <span class="nav-icon">
@@ -113,8 +114,9 @@
                         </a>
                         <!--//nav-link-->
                     </li>
+                    </c:if>
                     <!--//nav-item-->
-
+                    <c:if test="${sessionScope.account.role == 'Admin'}">
                     <li class="nav-item">
                         <a class="nav-link" href="search-topic-status">
                                 <span class="nav-icon">
@@ -138,8 +140,11 @@
                         </a>
                         <!--//nav-link-->
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="food-management">
+                    </c:if>
+
+                    <c:if test="${sessionScope.account.role == 'ShopOwner'}">
+                        <li class="nav-item">
+                            <a class="nav-link " href="food-management">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -157,10 +162,11 @@
                                     <circle cx="3.5" cy="10.5" r=".5"/>
                                     </svg>
                                 </span>
-                            <span class="nav-link-text">Food Management</span>
-                        </a>
-                        <!--//nav-link-->
-                    </li>
+                                <span class="nav-link-text">Food Management</span>
+                            </a>
+                            <!--//nav-link-->
+                        </li>
+                    </c:if>
                     <!--//nav-item-->
                 </ul>
                 <!--//app-menu-->
