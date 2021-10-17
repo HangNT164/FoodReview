@@ -269,10 +269,8 @@
                                                             name="status">
                                                         <option value="">All
                                                         </option>
-                                                        <option value="approved">Approved
-                                                        </option>
-                                                        <option value="pending">Pending
-                                                        </option>
+                                                        <option value="approved">Approved</option>
+                                                        <option value="pending">Pending</option>
                                                         <option value="reject">Reject</option>
                                                     </select>
 
@@ -427,23 +425,26 @@
                                                                             </div>
                                                                             <div class="form-group row">
                                                                                 <div class="col-sm-12">
-                                                                                    <label>Title</label>
+                                                                                    <label>Content</label>
                                                                                     <input class="form-control"
                                                                                               name="content"
                                                                                               value="${l.content}"> </input>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
-                                                                                <select id="statu" class="form-control"
-                                                                                        name="status">
+                                                                                <div class="col-sm-12">
+                                                                                    <label>Status</label>
+                                                                                    <select id="statu" class="form-control"
+                                                                                            name="status">
 
-                                                                                    <option value="approved">Approved
-                                                                                    </option>
-                                                                                    <option value="pending">Pending
-                                                                                    </option>
-                                                                                    <option value="reject">Reject
-                                                                                    </option>
-                                                                                </select>
+                                                                                        <option value="approved">Approved
+                                                                                        </option>
+                                                                                        <option value="pending">Pending
+                                                                                        </option>
+                                                                                        <option value="reject">Reject
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
                                                                             <div style="display: flex;justify-content: space-evenly">
                                                                                 <button type="submit"
@@ -573,6 +574,9 @@
     .dataTables_paginate>a {
         margin-bottom: 0px !important;
         padding: 2px 2px !important;
+    }
+    .form-control {
+        height: 2.7rem;
     }
 </style>
 </body>
