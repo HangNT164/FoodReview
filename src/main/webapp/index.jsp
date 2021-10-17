@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -49,8 +50,11 @@
                                 <li><a class="dropdown-item" href="profile">Account</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
+                                <li><a class="dropdown-item" href="change-password.jsp">Change Password</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="login">Log Out</a></li>
+                                <li><a class="dropdown-item" href="logout">Log Out</a></li>
                             </ul>
                         </div>
                         <!--//app-user-dropdown-->
@@ -69,7 +73,7 @@
         <div class="sidepanel-inner d-flex flex-column">
             <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
             <div class="app-branding" style="margin:auto;">
-                <a class="app-logo" href="index.jsp"><span class="logo-text" style="font-size: 27px;"><i>Food
+                <a class="app-logo" href="home.jsp"><span class="logo-text" style="font-size: 27px;"><i>Food
                                 Review</i></span></a>
             </div>
             <!--//app-branding-->
@@ -92,7 +96,7 @@
                         <!--//nav-link-->
                     </li>
                     <!--//nav-item-->
-
+                    <c:if test="${sessionScope.account.role == 'Admin'}">
                     <li class="nav-item">
                         <a class="nav-link" href="search-user-management">
                                 <span class="nav-icon">
@@ -111,8 +115,9 @@
                         </a>
                         <!--//nav-link-->
                     </li>
+                    </c:if>
                     <!--//nav-item-->
-
+                    <c:if test="${sessionScope.account.role == 'Admin'}">
                     <li class="nav-item">
                         <a class="nav-link" href="search-topic-status">
                                 <span class="nav-icon">
@@ -136,6 +141,33 @@
                         </a>
                         <!--//nav-link-->
                     </li>
+                    </c:if>
+
+                    <c:if test="${sessionScope.account.role == 'ShopOwner'}">
+                        <li class="nav-item">
+                            <a class="nav-link " href="food-management">
+                                <span class="nav-icon">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
+                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z"/>
+                                    </svg>
+                                    <path fill-rule="evenodd"
+                                          d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                                    <path fill-rule="evenodd"
+                                          d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
+                                    <circle cx="3.5" cy="5.5" r=".5"/>
+                                    <circle cx="3.5" cy="8" r=".5"/>
+                                    <circle cx="3.5" cy="10.5" r=".5"/>
+                                    </svg>
+                                </span>
+                                <span class="nav-link-text">Food Management</span>
+                            </a>
+                            <!--//nav-link-->
+                        </li>
+                    </c:if>
                     <!--//nav-item-->
                 </ul>
                 <!--//app-menu-->
@@ -287,7 +319,7 @@
         <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
         <small class="copyright" style="color: black;">© 2021 Copyright <i class="fas fa-heart"
                                                                            style="color: #fb866a;"></i> by <a
-                class="app-link" href="index.jsp">food.review.com</a></small>
+                class="app-link" href="home.jsp">food.review.com</a></small>
 
     </div>
 </footer>

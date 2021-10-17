@@ -1,9 +1,7 @@
 package controller;
 
-import bean.Account;
 import bean.Topic;
 import dao.TopicDao;
-import util.ValidateHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,10 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static util.ValidateHelper.convertFormatDate;
-
-@WebServlet(name = "AddNewTopicController", value = "/add-topic")
-public class AddNewTopicController extends HttpServlet {
+@WebServlet(name = "AddTopicController", value = "/add-topic")
+public class AddTopicController extends HttpServlet {
     private TopicDao topicDao = new TopicDao();
 
     @Override
@@ -26,24 +22,23 @@ public class AddNewTopicController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String title = request.getParameter("title");
-            String status = request.getParameter("status");
             String content = request.getParameter("content");
-            String rate = request.getParameter("rate");
+
             // Create Topic
             Topic topic = Topic.builder()
                     .title(title)
-                    .status(status)
+                    .status("pending")
                     .content(content)
-                    .rate(Integer.parseInt(rate))
+                    .rate(0)
                     .build();
+
             // Insert
             boolean addTopic = topicDao.addTopic(topic);
             if (!addTopic) {
-                request.setAttribute("message", "Tạo mới thất bại");
+                request.setAttribute("message", "Tạo chủ đề mới thất bại");
                 request.getRequestDispatcher("topic.jsp").forward(request, response);
-            } else {
-                response.sendRedirect("search-topic-status");
             }
+            response.sendRedirect("search-topic-status");
         }
     }
 }

@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    <title>Food Review | Topic Management</title>
+    <title>Food Review | Food Management</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -79,7 +79,7 @@
         <div class="sidepanel-inner d-flex flex-column">
             <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
             <div class="app-branding" style="margin:auto;">
-                <a class="app-logo" href="home.jsp"><span class="logo-text" style="font-size: 27px;"><i>Food
+                <a class="app-logo" href="index.jsp"><span class="logo-text" style="font-size: 27px;"><i>Food
                                 Review</i></span></a>
             </div>
             <!--//app-branding-->
@@ -190,7 +190,7 @@
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-fuild">
 
-            <h1 class="app-page-title">Topic Management</h1>
+            <h1 class="app-page-title">Food Management</h1>
             <div class="animated fadeIn">
 
                 <div class="row">
@@ -202,38 +202,51 @@
                             <div class="card-body">
                                 <div>
                                     <a href="#" class="view mr-1" data-toggle="modal"
-                                       data-target="#add-topic" title="Add topic" style="text-decoration: none">
+                                       data-target="#add-food" title="Add topic" style="text-decoration: none">
                                         <i class="fas fa-plus"></i><span>Add new </span></a>
                                     <%-- Su kien add--%>
-                                    <div class="modal fade" id="add-topic" tabindex="-1"
-                                         role="dialog" aria-labelledby="add-topic"
+                                    <div class="modal fade" id="add-food" tabindex="-1"
+                                         role="dialog" aria-labelledby="add-food"
                                          aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered modal-md"
                                              role="document">
                                             <div class="modal-content">
                                                 <div class="card">
                                                     <div class="card-body">
-                                                        <form action="add-topic" method="post" onchange="return validateAddForm()">
-                                                            <h5 class="mb-3">Add topic</h5>
+                                                        <form action="add-food" method="post" onchange="return validateAddForm()">
+                                                            <h5 class="mb-3">Add food</h5>
                                                             <div class="row">
                                                                 <div class="form-group">
                                                                     <div class="col-md-10">
-                                                                        <label>Title: </label>
+                                                                        <label>Name: </label>
                                                                         <input style="margin-left: 60px" type="text"
-                                                                               id="add-title"
-                                                                               name="title"
+                                                                               id="add-name"
+                                                                               name="name"
                                                                                class="form-control"/>
-                                                                        <span id="add-title-message" style="display: none; color: red; font-size: 14px; text-align: center">Chủ đề không được để trống</span>
+                                                                        <span id="add-name-message" style="display: none; color: red; font-size: 14px; text-align: center">Tên không được để trống</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="form-group">
                                                                     <div class="col-md-10">
-                                                                        <label>Content: </label>
+                                                                        <label>Description: </label>
                                                                         <input style="margin-left: 60px" type="text"
-                                                                               name="content"
+                                                                               name="description"
                                                                                class="form-control"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group">
+                                                                    <div class="col-md-10">
+                                                                        <label>Shop: </label>
+                                                                        <select class="form-control" style="margin-left: 60px"
+                                                                                name="shopId">
+                                                                            <c:forEach items="${listShopByAccount}" var="shop">
+                                                                                <option value="${shop.shopId}">${shop.shopName}</option>
+                                                                            </c:forEach>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -269,8 +282,10 @@
                                                             name="status">
                                                         <option value="">All
                                                         </option>
-                                                        <option value="approved">Approved</option>
-                                                        <option value="pending">Pending</option>
+                                                        <option value="approved">Approved
+                                                        </option>
+                                                        <option value="pending">Pending
+                                                        </option>
                                                         <option value="reject">Reject</option>
                                                     </select>
 
@@ -372,7 +387,7 @@
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
-                                                                                        <label>Created Date</label>
+                                                                                        <label>Create Date</label>
                                                                                         <span class="form-control"
                                                                                               disabled>${l.createdDate}</span>
                                                                                     </div>
@@ -418,33 +433,30 @@
                                                                                 <div class="col-sm-12">
                                                                                     <label>Title</label>
                                                                                     <input class="form-control"
-                                                                                              name="title"
+                                                                                           name="title"
                                                                                            value="${l.title}"
-                                                                                              > </input>
+                                                                                    > </input>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
                                                                                 <div class="col-sm-12">
-                                                                                    <label>Content</label>
+                                                                                    <label>Title</label>
                                                                                     <input class="form-control"
-                                                                                              name="content"
-                                                                                              value="${l.content}"> </input>
+                                                                                           name="content"
+                                                                                           value="${l.content}"> </input>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
-                                                                                <div class="col-sm-12">
-                                                                                    <label>Status</label>
-                                                                                    <select id="statu" class="form-control"
-                                                                                            name="status">
+                                                                                <select id="statu" class="form-control"
+                                                                                        name="status">
 
-                                                                                        <option value="approved">Approved
-                                                                                        </option>
-                                                                                        <option value="pending">Pending
-                                                                                        </option>
-                                                                                        <option value="reject">Reject
-                                                                                        </option>
-                                                                                    </select>
-                                                                                </div>
+                                                                                    <option value="approved">Approved
+                                                                                    </option>
+                                                                                    <option value="pending">Pending
+                                                                                    </option>
+                                                                                    <option value="reject">Reject
+                                                                                    </option>
+                                                                                </select>
                                                                             </div>
                                                                             <div style="display: flex;justify-content: space-evenly">
                                                                                 <button type="submit"
@@ -521,7 +533,7 @@
         <small class="copyright " style="color: black; ">© 2021 Copyright <i class="fas fa-heart "
                                                                              style="color: #fb866a; "></i> by <a
                 class="app-link "
-                href="home.jsp ">food.review.com</a></small>
+                href="index.jsp ">food.review.com</a></small>
 
     </div>
 </footer>
@@ -555,30 +567,16 @@
     });
 
     function validateAddForm() {
-        if (document.getElementById('add-title').value == "") {
-            document.getElementById('add-title').style.borderColor = 'red'
-            document.getElementById('add-title-message').style.display = 'block'
+        if (document.getElementById('add-name').value == "") {
+            document.getElementById('add-name').style.borderColor = 'red'
+            document.getElementById('add-name-message').style.display = 'block'
             return false;
         }else {
-            document.getElementById('add-title').style.borderColor = '#e7e9ed'
-            document.getElementById('add-title-message').style.display = 'none'
+            document.getElementById('add-name').style.borderColor = '#e7e9ed'
+            document.getElementById('add-name-message').style.display = 'none'
         }
     }
 </script>
-<style>
-    .dataTables_paginate>span>a {
-        margin-bottom: 0px !important;
-        padding: 2px 2px !important;
-    }
-
-    .dataTables_paginate>a {
-        margin-bottom: 0px !important;
-        padding: 2px 2px !important;
-    }
-    .form-control {
-        height: 2.7rem;
-    }
-</style>
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Food Review | Profile</title>
+    <title>Food Review | Update Profile</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -99,73 +99,71 @@
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
-                            <h5>
-                                <span>${account.name}</span>
-                            </h5>
-
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link ${message1 == null && message2 == null ? " active" : ""}" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                       aria-controls="home" aria-selected="true">About</a>
+                                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                       aria-controls="profile" aria-selected="false">Update Profile</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="tab-content profile-tab p-1" id="myTabContent">
-                                    <div class="tab-pane fade ${message1 == null && message2 == null ? " show active" : ""}" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <p style="text-align: center;color: limegreen;">${message}</p>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Name</label>
+                                    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <form action="profile" method="post">
+                                            <p style="text-align: center;color: red;">${message1}</p>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Name: </label>
+                                                        <input class="form-control" style="margin-left: 60px" type="text" name="name" value="${sessionScope.account.name}" />
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p><span>${sessionScope.account.name}</span></p>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Email: </label>
+                                                        <input class="form-control" style="margin-left: 60px" type="email" name="email" value="${sessionScope.account.email}" />
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Phone Number: </label>
+                                                        <input class="form-control" style="margin-left: 60px" type="text" name="phone" value="${sessionScope.account.phoneNumber}" />
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.email}</p>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Address: </label>
+                                                        <input class="form-control" style="margin-left: 60px" type="text" name="address" value="${sessionScope.account.address}" />
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Gender: </label>
+                                                        <input class="form-control" style="margin-left: 60px" type="text" name="gender" value="${sessionScope.account.gender}" />
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.phoneNumber}</p>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Date Of Birth: </label>
+                                                        <input class="form-control" style="margin-left: 60px" type="date" name="dob" value="${sessionScope.account.dob}" />
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Gender</label>
+                                            <div style="display: flex;justify-content: flex-end; padding-bottom: 20px; margin-top: 5px">
+                                                <button type="submit" class="btn btn-success collapsed">Update</button>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.gender}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Address</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.address}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>DOB</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.dob}</p>
-                                            </div>
-                                        </div>
-                                        <div style="display: flex;justify-content: flex-end; padding-bottom: 20px; margin-top: 5px">
-                                            <a href="update-profile"><button type="button" class="btn btn-primary collapsed">Edit Profile</button></a>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Food Review | Profile</title>
+    <title>Food Review | Update Profile</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -63,7 +63,7 @@
 <!--//app-header-->
 <div>
     <div class="app-content pt-3 p-md-3 p-lg-4">
-        <h1 class="app-page-title">My Account</h1>
+        <h1 class="app-page-title" style="margin-left: 20px">My Account</h1>
     </div>
     <div class="container">
         <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
@@ -71,18 +71,13 @@
                 <div class="row align-items-center gx-3">
                     <div class="col-auto">
                         <div class="app-icon-holder">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person"
-                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                      d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                            </svg>
+                            <img src="https://img.icons8.com/cute-clipart/32/000000/key.png"/>
                         </div>
                         <!--//icon-holder-->
-
                     </div>
                     <!--//col-->
                     <div class="col-auto">
-                        <h4 class="app-card-title">Profile</h4>
+                        <h4 class="app-card-title">Change Password</h4>
                     </div>
                     <!--//col-->
                 </div>
@@ -91,81 +86,56 @@
             <!--//app-card-header-->
             <div class="app-card-body px-4 w-100">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                                 alt="Avatar"/>
-                        </div>
+                    <div class="col-md-2">
                     </div>
-                    <div class="col-md-6">
-                        <div class="profile-head">
-                            <h5>
-                                <span>${account.name}</span>
-                            </h5>
-
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link ${message1 == null && message2 == null ? " active" : ""}" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                       aria-controls="home" aria-selected="true">About</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="tab-content profile-tab p-1" id="myTabContent">
-                                    <div class="tab-pane fade ${message1 == null && message2 == null ? " show active" : ""}" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <p style="text-align: center;color: limegreen;">${message}</p>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Name</label>
+                                    <div class="tab-pane fade show active" id="change" role="tabpanel"
+                                         aria-labelledby="change-tab">
+                                        <form action="change-password" id="change-password-form" method="post">
+                                            <p style="text-align: center; color: limegreen;">${messageSuccessful}</p>
+                                            <p style="text-align: center; color: red;">${messageFailed}</p>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Old Password: </label>
+                                                        <input style="margin-left: 60px" type="password"
+                                                               name="oldPassword"
+                                                               class="form-control"/>
+                                                    </div>
+                                                    <p style="text-align: center; color: red;">${messageWrongOldPass}</p>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p><span>${sessionScope.account.name}</span></p>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>New Password: </label>
+                                                        <input style="margin-left: 60px" type="password"
+                                                               name="newPassword"
+                                                               class="form-control"/>
+                                                    </div>
+                                                    <p style="text-align: center; color: red;">${messagePassNotValid}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-10">
+                                                        <label>Confirm Password: </label>
+                                                        <input style="margin-left: 60px" type="password"
+                                                               name="rePassword"
+                                                               class="form-control"/>
+                                                    </div>
+                                                    <p style="text-align: center; color: red;">${messageNotCorrect}</p>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.email}</p>
+                                            <div style="display: flex;justify-content: flex-end; padding-bottom: 20px; margin-top: 5px">
+                                                <input type="submit" name="submit" id="submit"
+                                                       class="btn btn-success collapsed" value="Change Password"
+                                                       onclick="document.getElementById('change-password-form').submit();"/>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.phoneNumber}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Gender</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.gender}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Address</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.address}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>DOB</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>${sessionScope.account.dob}</p>
-                                            </div>
-                                        </div>
-                                        <div style="display: flex;justify-content: flex-end; padding-bottom: 20px; margin-top: 5px">
-                                            <a href="update-profile"><button type="button" class="btn btn-primary collapsed">Edit Profile</button></a>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
