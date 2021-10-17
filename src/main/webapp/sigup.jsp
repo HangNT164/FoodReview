@@ -30,34 +30,38 @@
         <form action="register" method="post">
             <div class="login-panel">
                 <div class="logo text-center"><br/>
-                    <a href="home.jsp">
+                    <a href="home">
                         <p>Food Review</p>
                     </a><br/>
-                    <p style="text-align: center; color: white;font-size: 12px;">${message}</p>
+                    <p style="text-align: center; color: #eb421c;font-size: 12px;">${message}</p>
                 </div>
                 <div class="form-group">
                     <label>
                         <i class="fas fa-user fa-fw"></i>
                     </label>
-                    <input type="text" class="form-control" placeholder="Name" name="name" required/>
+                    <input type="text" class="form-control" placeholder="Name" name="name" required
+                           value="${sessionScope.nameTemp}"/>
                 </div>
                 <div class="form-group">
                     <label>
                         <i class="fas fa-user fa-fw"></i>
                     </label>
-                    <input type="text" class="form-control" placeholder="Phone Number" name="phone" required/>
+                    <input type="text" class="form-control" placeholder="Phone Number" name="phone" required
+                           value="${sessionScope.phoneTemp}"/>
                 </div>
                 <div class="form-group">
                     <label>
                         <i class="fas fa-user fa-fw"></i>
                     </label>
-                    <input type="text" class="form-control" placeholder="Email" name="email" required/>
+                    <input type="text" class="form-control" placeholder="Email" name="email" required
+                           value="${sessionScope.emailTemp}"/>
                 </div>
                 <div class="form-group">
                     <label>
                         <i class="fas fa-user fa-fw"></i>
                     </label>
-                    <input type="text" class="form-control" placeholder="Address" name="address" required/>
+                    <input type="text" class="form-control" placeholder="Address" name="address" required
+                           value="${sessionScope.addressTemp}"/>
                 </div>
                 <div class="form-group">
                     <label>
@@ -74,7 +78,8 @@
                     <label>
                         <i class="fas fa-key fa-fw"></i>
                     </label>
-                    <input type="date" class="form-control" placeholder="DOB" name="dob" required/>
+                    <input type="date" class="form-control" placeholder="DOB" name="dob" required
+                           value="${sessionScope.dateTemp}"/>
                 </div>
                 <div class="form-group">
                     <label>
@@ -97,6 +102,15 @@
                                 <i class="fas fa-sign-in-alt fa-fw mr-1"></i>Sign Up
                             </button>
                         </a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col">
+                        <a class="link-effect" href="#">
+                        </a>
+                        <a class="link-effect float-right" href="login">
+                            <i class="fas fa-question fa-fw mr-1"></i>Login
+                        </a><br/><br/>
                     </div>
                 </div>
             </div>
