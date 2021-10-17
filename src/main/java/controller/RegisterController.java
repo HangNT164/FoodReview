@@ -45,7 +45,12 @@ public class RegisterController extends HttpServlet {
             String date = request.getParameter("dob");
             String password = request.getParameter("password");
             String rePassword = request.getParameter("rePassword");
-
+            // Save cake
+            session.setAttribute("nameTemp", name);
+            session.setAttribute("phoneTemp", phone);
+            session.setAttribute("emailTemp", email);
+            session.setAttribute("addressTemp", address);
+            session.setAttribute("dateTemp", date);
             // Validate date
             if (!ValidateHelper.isEmail(email)) {
                 request.setAttribute("message", "Mail không đúng định dạng");

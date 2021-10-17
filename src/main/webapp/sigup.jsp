@@ -39,25 +39,29 @@
                     <label>
                         <i class="fas fa-user fa-fw"></i>
                     </label>
-                    <input type="text" class="form-control" placeholder="Name" name="name" required/>
+                    <input type="text" class="form-control" placeholder="Name" name="name" required
+                           value="${sessionScope.nameTemp}"/>
                 </div>
                 <div class="form-group">
                     <label>
                         <i class="fas fa-user fa-fw"></i>
                     </label>
-                    <input type="text" class="form-control" placeholder="Phone Number" name="phone" required/>
+                    <input type="text" class="form-control" placeholder="Phone Number" name="phone" required
+                           value="${sessionScope.phoneTemp}"/>
                 </div>
                 <div class="form-group">
                     <label>
                         <i class="fas fa-user fa-fw"></i>
                     </label>
-                    <input type="text" class="form-control" placeholder="Email" name="email" required/>
+                    <input type="text" class="form-control" placeholder="Email" name="email" required
+                           value="${sessionScope.emailTemp}"/>
                 </div>
                 <div class="form-group">
                     <label>
                         <i class="fas fa-user fa-fw"></i>
                     </label>
-                    <input type="text" class="form-control" placeholder="Address" name="address" required/>
+                    <input type="text" class="form-control" placeholder="Address" name="address" required
+                           value="${sessionScope.addressTemp}"/>
                 </div>
                 <div class="form-group">
                     <label>
@@ -74,7 +78,8 @@
                     <label>
                         <i class="fas fa-key fa-fw"></i>
                     </label>
-                    <input type="date" class="form-control" placeholder="DOB" name="dob" required/>
+                    <input type="date" class="form-control" placeholder="DOB" name="dob" required
+                           value="${sessionScope.dateTemp}"/>
                 </div>
                 <div class="form-group">
                     <label>
