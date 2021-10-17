@@ -159,8 +159,8 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Apartment</h4>
-                            <div class="stats-figure">12,628</div>
+                            <h4 class="stats-type mb-1">Total Account</h4>
+                            <div class="stats-figure">${totalAccount}</div>
                         </div>
                         <!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
@@ -172,7 +172,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Resident</h4>
+                            <h4 class="stats-type mb-1">Total Shop Owner</h4>
                             <div class="stats-figure">2,250</div>
                         </div>
                         <!--//app-card-body-->
@@ -184,7 +184,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Employee</h4>
+                            <h4 class="stats-type mb-1">Total Topic</h4>
                             <div class="stats-figure">23</div>
                         </div>
                         <!--//app-card-body-->
@@ -196,7 +196,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Department</h4>
+                            <h4 class="stats-type mb-1">Total Topic Approve</h4>
                             <div class="stats-figure">6</div>
                         </div>
                         <!--//app-card-body-->
@@ -213,21 +213,14 @@
                         <div class="app-card-header p-3">
                             <div class="row justify-content-between align-items-center">
                                 <div class="col-auto">
-                                    <h4 class="app-card-title">Line Chart Example</h4>
+                                    <h4 class="app-card-title">Total topic by month</h4>
                                 </div>
                             </div>
                             <!--//row-->
                         </div>
                         <!--//app-card-header-->
                         <div class="app-card-body p-3 p-lg-4">
-                            <div class="mb-3 d-flex">
-                                <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
-                                    <option value="1" selected>This week</option>
-                                    <option value="2">Today</option>
-                                    <option value="3">This Month</option>
-                                    <option value="3">This Year</option>
-                                </select>
-                            </div>
+
                             <div class="chart-container">
                                 <canvas id="canvas-linechart"></canvas>
                             </div>
@@ -242,23 +235,15 @@
                         <div class="app-card-header p-3">
                             <div class="row justify-content-between align-items-center">
                                 <div class="col-auto">
-                                    <h4 class="app-card-title">Bar Chart Example</h4>
+                                    <h4 class="app-card-title">Total User By Year</h4>
                                 </div>
                             </div>
                             <!--//row-->
                         </div>
                         <!--//app-card-header-->
                         <div class="app-card-body p-3 p-lg-4">
-                            <div class="mb-3 d-flex">
-                                <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
-                                    <option value="1" selected>This week</option>
-                                    <option value="2">Today</option>
-                                    <option value="3">This Month</option>
-                                    <option value="3">This Year</option>
-                                </select>
-                            </div>
                             <div class="chart-container">
-                                <canvas id="canvas-barchart"></canvas>
+                                <canvas id="myBarChart" width="100%" height="30"></canvas>
                             </div>
                         </div>
                         <!--//app-card-body-->
@@ -266,9 +251,9 @@
                     <!--//app-card-->
                 </div>
                 <!--//col-->
-
             </div>
             <!--//row-->
+
         </div>
         <!--//container-fluid-->
     </div>
@@ -300,8 +285,52 @@
 
 <!-- Page Specific JS -->
 <script src="resources/js/custom/app.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-
+<script>
+    Chart.defaults.global.defaultFontColor = '#252930';
+    var ctx = document.getElementById("myBarChart");
+    var myLineChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            datasets: [{
+                label: "Total User",
+                backgroundColor: "#15a362",
+                borderColor: "#15a362",
+                data: ["${monthJan}", "${monthFeb}", "${monthMar}", "${monthApr}", "${monthMay}", "${monthJun}", "${monthJul}", "${monthAug}", "${monthSep}", "${monthOct}", "${monthNov}", "${monthDec}"],
+            }],
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'month'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 12
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: ${totalAccount},
+                        maxTicksLimit: 12
+                    },
+                    gridLines: {
+                        display: true
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            }
+        }
+    });
+</script>
 </body>
 
 </html>

@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "VerifyCode", value = "/verify-code")
-public class VerifyCode extends HttpServlet {
+public class VerifyCodeController extends HttpServlet {
 
     private EmailUtil emailUtil = new EmailUtil();
     private AccountDao accountDao = new AccountDao();

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -83,7 +84,7 @@ public class AccountDao {
     }
 
     public Account getAccountByEmail(String email) {
-        String query = "SELECT * FROM account WHERE email = '"+ email + "' AND status = ?";
+        String query = "SELECT * FROM account WHERE email = '" + email + "' AND status = ?";
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
@@ -143,11 +144,10 @@ public class AccountDao {
     }
 
 
-
     public boolean addAccount(Account account) {
         int check = 0;
-        String query = "INSERT INTO account (`name`, `dob`, `address`, `email`, `phone_number`, `gender`,`password`) " +
-                " VALUES (?,?,?,?,?,?,?)";
+        String query = "INSERT INTO account (`name`, `dob`, `address`, `email`, `phone_number`, `gender`,`password`, `month`) " +
+                " VALUES (?,?,?,?,?,?,?,?)";
 
         try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
@@ -159,6 +159,7 @@ public class AccountDao {
                 ps.setObject(5, account.getPhoneNumber());
                 ps.setObject(6, account.getGender());
                 ps.setObject(7, BCrypt.hashpw(account.getPassword(), BCrypt.gensalt()));
+                ps.setObject(8, currentMonth());
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {
@@ -244,4 +245,41 @@ public class AccountDao {
         }
         return check > 0;
     }
+
+    public List<Account> listAccountByMonth(String month) {
+        String query = "SELECT * FROM account WHERE month=?";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, month);
+                ResultSet rs = ps.executeQuery();
+                List<Account> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueAccount(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    private String currentMonth() {
+        // Get Last Month
+        Calendar cal = Calendar.getInstance();
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+
+        // Current Month
+        String billingMonthCurrent;
+        if (month >= 0 && month <= 8) {
+            billingMonthCurrent = "0" + (month + 1) + "/" + year;
+        } else {
+            billingMonthCurrent = (month + 1) + "/" + year;
+        }
+        return billingMonthCurrent;
+    }
+
 }
