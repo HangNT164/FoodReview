@@ -1,6 +1,5 @@
 package controller;
 
-;
 import bean.Account;
 import dao.AccountDao;
 import util.EmailUtil;

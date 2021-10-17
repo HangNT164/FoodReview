@@ -81,7 +81,7 @@
             <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
                 <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                     <li class="nav-item ">
-                        <a class="nav-link active " href="index.jsp">
+                        <a class="nav-link active " href="admin">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -97,8 +97,8 @@
                     </li>
                     <!--//nav-item-->
                     <c:if test="${sessionScope.account.role == 'Admin'}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="search-user-management">
+                        <li class="nav-item">
+                            <a class="nav-link" href="search-user-management">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -111,15 +111,15 @@
                                         <circle cx="3.5" cy="10.5" r=".5"/>
                                     </svg>
                                 </span>
-                            <span class="nav-link-text">User Management</span>
-                        </a>
-                        <!--//nav-link-->
-                    </li>
+                                <span class="nav-link-text">User Management</span>
+                            </a>
+                            <!--//nav-link-->
+                        </li>
                     </c:if>
                     <!--//nav-item-->
                     <c:if test="${sessionScope.account.role == 'Admin'}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="search-topic-status">
+                        <li class="nav-item">
+                            <a class="nav-link" href="search-topic-status">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -137,10 +137,10 @@
                                     <circle cx="3.5" cy="10.5" r=".5"/>
                                     </svg>
                                 </span>
-                            <span class="nav-link-text">Topic Management</span>
-                        </a>
-                        <!--//nav-link-->
-                    </li>
+                                <span class="nav-link-text">Topic Management</span>
+                            </a>
+                            <!--//nav-link-->
+                        </li>
                     </c:if>
 
                     <c:if test="${sessionScope.account.role == 'ShopOwner'}">
@@ -345,7 +345,7 @@
     function doSubmit() {
         var opt = document.getElementsByName("year")[0];
         var v = opt.options[opt.selectedIndex].value;
-        document.forms[0].submit();
+        document.forms[1].submit();
     }
 </script>
 <script type="text/javascript">

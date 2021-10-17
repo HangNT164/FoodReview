@@ -1,9 +1,7 @@
 package controller;
 
 import bean.Account;
-import bean.Food;
 import bean.Shop;
-import bean.Topic;
 import dao.ShopDao;
 
 import javax.servlet.ServletException;

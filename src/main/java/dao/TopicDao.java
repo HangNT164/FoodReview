@@ -1,8 +1,6 @@
 package dao;
 
-import bean.Account;
 import bean.Topic;
-import constant.StatusAccountEnum;
 import jdbc.MySqlConnection;
 
 import java.sql.Connection;
@@ -14,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 public class TopicDao {
-    private Topic getValueTopic(ResultSet rs){
+    private Topic getValueTopic(ResultSet rs) {
         try {
             return Topic.builder()
                     .topicId(rs.getInt(1))
@@ -25,31 +23,32 @@ public class TopicDao {
                     .createdDate(rs.getDate(6))
                     .updatedDate(rs.getDate(7))
                     .build();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace(System.out);
         }
         return null;
     }
-    public Topic getLastestPost(){
+
+    public Topic getLastestPost() {
         String query = "SELECT * FROM swp391_g2_project.topic where status = \"approved\" ORDER BY created_date DESC LIMIT 1 ;";
-        try(Connection con = MySqlConnection.getConnection();
-            PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;){
-            if(ps!=null){
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
                 ResultSet rs = ps.executeQuery();
                 while (rs != null && rs.next()) {
                     Topic topic = getValueTopic(rs);
                     return topic;
                 }
 
-            } else{
+            } else {
                 return null;
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace(System.out);
         }
         return null;
     }
+
     public List<Topic> searchTopicByStatus(String status) {
         String query = "SELECT * FROM topic WHERE status like '%" + status + "%' ";
 
@@ -68,11 +67,12 @@ public class TopicDao {
         }
         return null;
     }
-    public List<Topic> getListTopic(){
+
+    public List<Topic> getListTopic() {
         String query = "SELECT * FROM swp391_g2_project.topic where status not like \"reject\";";
-        try(Connection con = MySqlConnection.getConnection();
-            PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;){
-            if(ps!=null){
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
                 ResultSet rs = ps.executeQuery();
                 List<Topic> list = new ArrayList<>();
                 while (rs != null && rs.next()) {
@@ -80,31 +80,32 @@ public class TopicDao {
                 }
                 return list;
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace(System.out);
         }
         return null;
     }
-    public boolean addTopic(Topic topic){
+
+    public boolean addTopic(Topic topic) {
         int check = 0;
         String query = "INSERT INTO topic (`title`, `status`, `content`, `rate`, `created_date`, `updated_date`) VALUES (?,?,?,?,?,?)";
         try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
-             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;){
-        if(ps != null){
-            ps.setObject(1, topic.getTitle());
-            ps.setObject(2, topic.getStatus());
-            ps.setObject(3, topic.getContent());
-            ps.setObject(4, topic.getRate());
-            ps.setObject(5, new Date());
-            ps.setObject(6, new Date());
-            check = ps.executeUpdate();
-        }
-        } catch (Exception e){
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, topic.getTitle());
+                ps.setObject(2, topic.getStatus());
+                ps.setObject(3, topic.getContent());
+                ps.setObject(4, topic.getRate());
+                ps.setObject(5, new Date());
+                ps.setObject(6, new Date());
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
             e.printStackTrace(System.out);
         }
         return check > 0;
     }
+
     public boolean removeTopic(int topicId) {
         int check = 0;
         String query = "UPDATE topic SET status = ?, updated_date =?"
@@ -123,7 +124,8 @@ public class TopicDao {
         }
         return check > 0;
     }
-    public boolean updateTopic(int id, Topic topic){
+
+    public boolean updateTopic(int id, Topic topic) {
         int check = 0;
         String query = "UPDATE topic SET title=?" +
                 ", content = ?" +

@@ -24,7 +24,7 @@ public class MySqlConnection {
     static {
         URL = "jdbc:mysql://localhost:3306/swp391_g2_project?useSSL=false";
         USER = "root";
-        PASSWORD = "123456";
+        PASSWORD = "";
     }
 
     /**
@@ -43,7 +43,4 @@ public class MySqlConnection {
         return null;
     }
 
-//    public static void main(String[] args) {
-//        System.out.println(MySqlConnection.getConnection());
-//    }
 }

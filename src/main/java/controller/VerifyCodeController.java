@@ -34,9 +34,7 @@ public class VerifyCodeController extends HttpServlet {
             HttpSession session = request.getSession();
             String trueCode = (String) session.getAttribute("verifyCode");
             String email = (String) session.getAttribute("verifyEmail");
-
             String code = request.getParameter("verifyCode");
-
             if (trueCode.equals(code)) {
                 Account account = accountDao.getAccountByEmail(email);
                 if (account != null) {
