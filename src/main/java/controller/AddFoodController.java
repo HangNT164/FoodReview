@@ -1,9 +1,7 @@
 package controller;
 
 import bean.Food;
-import bean.Topic;
 import dao.FoodDao;
-import dao.TopicDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

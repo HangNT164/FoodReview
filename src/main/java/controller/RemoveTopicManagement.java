@@ -25,7 +25,6 @@ public class RemoveTopicManagement extends HttpServlet {
             } else {
                 response.sendRedirect("search-topic-status");
             }
-
         }
     }
 }

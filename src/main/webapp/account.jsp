@@ -21,9 +21,11 @@
 </head>
 <body class="app">
 <header class="app-header fixed-top">
-    <div class="row justify-content-between" style="align-items: baseline !important; margin-top: -10px; margin-left: 3px; width: 100%;">
+    <div class="row justify-content-between"
+         style="align-items: baseline !important; margin-top: -10px; margin-left: 3px; width: 100%;">
         <div class="app-branding" style="width: fit-content;">
-            <a class="app-logo" style=" text-decoration: none" href="home.jsp"><span class="logo-text" style="font-size: 27px;"><i>Food
+            <a class="app-logo" style=" text-decoration: none" href="home.jsp"><span class="logo-text"
+                                                                                     style="font-size: 27px;"><i>Food
                                 Review</i></span></a>
         </div>
         <div class="col-auto">
@@ -105,7 +107,8 @@
 
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link ${message1 == null && message2 == null ? " active" : ""}" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                    <a class="nav-link ${message1 == null && message2 == null ? " active" : ""}"
+                                       id="home-tab" data-toggle="tab" href="#home" role="tab"
                                        aria-controls="home" aria-selected="true">About</a>
                                 </li>
                             </ul>
@@ -113,7 +116,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="tab-content profile-tab p-1" id="myTabContent">
-                                    <div class="tab-pane fade ${message1 == null && message2 == null ? " show active" : ""}" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="tab-pane fade ${message1 == null && message2 == null ? " show active" : ""}"
+                                         id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <p style="text-align: center;color: limegreen;">${message}</p>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -164,7 +168,10 @@
                                             </div>
                                         </div>
                                         <div style="display: flex;justify-content: flex-end; padding-bottom: 20px; margin-top: 5px">
-                                            <a href="update-profile"><button type="button" class="btn btn-primary collapsed">Edit Profile</button></a>
+                                            <a href="update-profile">
+                                                <button type="button" class="btn btn-primary collapsed">Edit Profile
+                                                </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

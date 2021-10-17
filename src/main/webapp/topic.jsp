@@ -87,7 +87,7 @@
             <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
                 <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                     <li class="nav-item ">
-                        <a class="nav-link  " href="index.jsp">
+                        <a class="nav-link  " href="admin">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">

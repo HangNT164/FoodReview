@@ -18,5 +18,6 @@ public class Topic {
     private int rate;
     private Date createdDate;
     private Date updatedDate;
+    private String month;
 
 }

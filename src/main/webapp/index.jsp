@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,7 +81,7 @@
             <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
                 <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                     <li class="nav-item ">
-                        <a class="nav-link active " href="index.jsp">
+                        <a class="nav-link active " href="admin">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -96,8 +97,8 @@
                     </li>
                     <!--//nav-item-->
                     <c:if test="${sessionScope.account.role == 'Admin'}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="search-user-management">
+                        <li class="nav-item">
+                            <a class="nav-link" href="search-user-management">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -110,15 +111,15 @@
                                         <circle cx="3.5" cy="10.5" r=".5"/>
                                     </svg>
                                 </span>
-                            <span class="nav-link-text">User Management</span>
-                        </a>
-                        <!--//nav-link-->
-                    </li>
+                                <span class="nav-link-text">User Management</span>
+                            </a>
+                            <!--//nav-link-->
+                        </li>
                     </c:if>
                     <!--//nav-item-->
                     <c:if test="${sessionScope.account.role == 'Admin'}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="search-topic-status">
+                        <li class="nav-item">
+                            <a class="nav-link" href="search-topic-status">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -136,10 +137,10 @@
                                     <circle cx="3.5" cy="10.5" r=".5"/>
                                     </svg>
                                 </span>
-                            <span class="nav-link-text">Topic Management</span>
-                        </a>
-                        <!--//nav-link-->
-                    </li>
+                                <span class="nav-link-text">Topic Management</span>
+                            </a>
+                            <!--//nav-link-->
+                        </li>
                     </c:if>
 
                     <c:if test="${sessionScope.account.role == 'ShopOwner'}">
@@ -191,8 +192,8 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Apartment</h4>
-                            <div class="stats-figure">12,628</div>
+                            <h4 class="stats-type mb-1">Total Account</h4>
+                            <div class="stats-figure">${totalAccount}</div>
                         </div>
                         <!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
@@ -204,8 +205,8 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Resident</h4>
-                            <div class="stats-figure">2,250</div>
+                            <h4 class="stats-type mb-1">Total Shop Owner</h4>
+                            <div class="stats-figure">${accountListShopOwner}</div>
                         </div>
                         <!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
@@ -216,8 +217,8 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Employee</h4>
-                            <div class="stats-figure">23</div>
+                            <h4 class="stats-type mb-1">Total Topic</h4>
+                            <div class="stats-figure">${totalTopic}</div>
                         </div>
                         <!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
@@ -228,8 +229,8 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Department</h4>
-                            <div class="stats-figure">6</div>
+                            <h4 class="stats-type mb-1">Total Topic Approve</h4>
+                            <div class="stats-figure">${topicsApprove}</div>
                         </div>
                         <!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
@@ -239,68 +240,70 @@
                 <!--//col-->
             </div>
             <!--//row-->
-            <div class="row g-4 mb-4">
-                <div class="col-12 col-lg-6">
-                    <div class="app-card app-card-chart h-100 shadow-sm">
-                        <div class="app-card-header p-3">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto">
-                                    <h4 class="app-card-title">Line Chart Example</h4>
+            <form action="admin">
+                <div class="row g-4 mb-4">
+                    <div class="col-12 col-lg-6">
+                        <div class="app-card app-card-chart h-100 shadow-sm">
+                            <div class="app-card-header p-3">
+                                <div class="row justify-content-between align-items-center">
+                                    <div class="col-auto">
+                                        <h4 class="app-card-title">Total Topic</h4>
+                                    </div>
+                                </div>
+                                <!--//row-->
+                            </div>
+                            <!--//app-card-header-->
+                            <div class="app-card-body p-3 p-lg-4">
+                                <div class="mb-3 d-flex">
+                                    <select name="topicYear"
+                                            class="form-select form-select-sm ms-auto d-inline-flex w-auto"
+                                            onchange="doSubmit()">
+                                        <c:forEach items="${years}" var="year" varStatus="loop">
+                                            <option value="${year}" ${param.topicYear == year ? "selected" : ""}>${year}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="topicTotal" width="100%" height="30"></canvas>
                                 </div>
                             </div>
-                            <!--//row-->
+                            <!--//app-card-body-->
                         </div>
-                        <!--//app-card-header-->
-                        <div class="app-card-body p-3 p-lg-4">
-                            <div class="mb-3 d-flex">
-                                <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
-                                    <option value="1" selected>This week</option>
-                                    <option value="2">Today</option>
-                                    <option value="3">This Month</option>
-                                    <option value="3">This Year</option>
-                                </select>
-                            </div>
-                            <div class="chart-container">
-                                <canvas id="canvas-linechart"></canvas>
-                            </div>
-                        </div>
-                        <!--//app-card-body-->
+                        <!--//app-card-->
                     </div>
-                    <!--//app-card-->
-                </div>
-                <!--//col-->
-                <div class="col-12 col-lg-6">
-                    <div class="app-card app-card-chart h-100 shadow-sm">
-                        <div class="app-card-header p-3">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto">
-                                    <h4 class="app-card-title">Bar Chart Example</h4>
+                    <!--//col-->
+                    <div class="col-12 col-lg-6">
+                        <div class="app-card app-card-chart h-100 shadow-sm">
+                            <div class="app-card-header p-3">
+                                <div class="row justify-content-between align-items-center">
+                                    <div class="col-auto">
+                                        <h4 class="app-card-title">Total User</h4>
+                                    </div>
+                                </div>
+                                <!--//row-->
+                            </div>
+                            <!--//app-card-header-->
+                            <div class="app-card-body p-3 p-lg-4">
+                                <div class="mb-3 d-flex">
+                                    <select name="year" class="form-select form-select-sm ms-auto d-inline-flex w-auto"
+                                            onchange="doSubmit()">
+                                        <c:forEach items="${years}" var="year" varStatus="loop">
+                                            <option value="${year}" ${param.year == year ? "selected" : ""}>${year}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="myBarChart" width="100%" height="30"></canvas>
                                 </div>
                             </div>
-                            <!--//row-->
+                            <!--//app-card-body-->
                         </div>
-                        <!--//app-card-header-->
-                        <div class="app-card-body p-3 p-lg-4">
-                            <div class="mb-3 d-flex">
-                                <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
-                                    <option value="1" selected>This week</option>
-                                    <option value="2">Today</option>
-                                    <option value="3">This Month</option>
-                                    <option value="3">This Year</option>
-                                </select>
-                            </div>
-                            <div class="chart-container">
-                                <canvas id="canvas-barchart"></canvas>
-                            </div>
-                        </div>
-                        <!--//app-card-body-->
+                        <!--//app-card-->
                     </div>
-                    <!--//app-card-->
+                    <!--//col-->
                 </div>
-                <!--//col-->
-
-            </div>
-            <!--//row-->
+                <!--//row-->
+            </form>
         </div>
         <!--//container-fluid-->
     </div>
@@ -332,8 +335,106 @@
 
 <!-- Page Specific JS -->
 <script src="resources/js/custom/app.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+<script type="text/javascript">
+    function doSubmit() {
+        var opt = document.getElementsByName("year")[0];
+        var opt1 = document.getElementsByName("topicYear")[0];
+        document.forms[0].submit();
+    }
+</script>
+<%--User--%>
+<script>
+    Chart.defaults.global.defaultFontColor = '#252930';
+    var ctx = document.getElementById("myBarChart");
+    var myLineChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            datasets: [{
+                label: "Total User",
+                backgroundColor: "#15a362",
+                borderColor: "#15a362",
+                data: ["${monthJan}", "${monthFeb}", "${monthMar}", "${monthApr}", "${monthMay}", "${monthJun}", "${monthJul}", "${monthAug}", "${monthSep}", "${monthOct}", "${monthNov}", "${monthDec}"],
+            }],
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'month'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 12
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: ${totalAccount},
+                        maxTicksLimit: 12
+                    },
+                    gridLines: {
+                        display: true
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            }
+        }
+    });
+</script>
 
+<%--Topic--%>
+<script>
+    Chart.defaults.global.defaultFontColor = '#252930';
+    var ctx = document.getElementById("topicTotal");
+    var myLineChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            datasets: [{
+                label: "Total Topic",
+                backgroundColor: "#15a362",
+                borderColor: "#15a362",
+                data: ["${monthJanTopic}", "${monthFebTopic}", "${monthMarTopic}", "${monthAprTopic}", "${monthMayTopic}", "${monthJunTopic}", "${monthJulTopic}", "${monthAugTopic}", "${monthSepTopic}", "${monthOctTopic}", "${monthNovTopic}", "${monthDecTopic}"],
+            }],
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'month'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 12
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: ${totalTopic},
+                        maxTicksLimit: 12
+                    },
+                    gridLines: {
+                        display: true
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            }
+        }
+    });
+</script>
 </body>
 
 </html>
