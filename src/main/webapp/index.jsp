@@ -214,16 +214,27 @@
                         <div class="app-card-header p-3">
                             <div class="row justify-content-between align-items-center">
                                 <div class="col-auto">
-                                    <h4 class="app-card-title">Total topic by month</h4>
+                                    <h4 class="app-card-title">Total Topic</h4>
                                 </div>
                             </div>
                             <!--//row-->
                         </div>
                         <!--//app-card-header-->
                         <div class="app-card-body p-3 p-lg-4">
-
+                            <div class="mb-3 d-flex">
+                                <form action="admin">
+                                    <select name="topicYear"
+                                            class="form-select form-select-sm ms-auto d-inline-flex w-auto"
+                                            onchange="doSubmitSecond()">
+                                        <option value="${currentYear}">Current year</option>
+                                        <c:forEach items="${years}" var="year" varStatus="loop">
+                                            <option value="${year}" ${param.topicYear == year ? "selected" : ""}>${year}</option>
+                                        </c:forEach>
+                                    </select>
+                                </form>
+                            </div>
                             <div class="chart-container">
-                                <canvas id="canvas-linechart"></canvas>
+                                <canvas id="topicTotal" width="100%" height="30"></canvas>
                             </div>
                         </div>
                         <!--//app-card-body-->
@@ -265,7 +276,6 @@
                 <!--//col-->
             </div>
             <!--//row-->
-
         </div>
         <!--//container-fluid-->
     </div>
@@ -306,7 +316,15 @@
         document.forms[0].submit();
     }
 </script>
+<script type="text/javascript">
+    function doSubmitSecond() {
+        var opt = document.getElementsByName("topicYear")[0];
+        var v = opt.options[opt.selectedIndex].value;
+        document.forms[0].submit();
+    }
+</script>
 
+<%--User--%>
 <script>
     Chart.defaults.global.defaultFontColor = '#252930';
     var ctx = document.getElementById("myBarChart");
@@ -338,6 +356,52 @@
                     ticks: {
                         min: 0,
                         max: ${totalAccount},
+                        maxTicksLimit: 12
+                    },
+                    gridLines: {
+                        display: true
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            }
+        }
+    });
+</script>
+
+<%--Topic--%>
+<script>
+    Chart.defaults.global.defaultFontColor = '#252930';
+    var ctx = document.getElementById("topicTotal");
+    var myLineChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            datasets: [{
+                label: "Total Topic",
+                backgroundColor: "#15a362",
+                borderColor: "#15a362",
+                data: ["${monthJanTopic}", "${monthFebTopic}", "${monthMarTopic}", "${monthAprTopic}", "${monthMayTopic}", "${monthJunTopic}", "${monthJulTopic}", "${monthAugTopic}", "${monthSepTopic}", "${monthOctTopic}", "${monthNovTopic}", "${monthDecTopic}"],
+            }],
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'month'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 12
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: ${totalTopic},
                         maxTicksLimit: 12
                     },
                     gridLines: {
