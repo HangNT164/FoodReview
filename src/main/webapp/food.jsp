@@ -86,8 +86,9 @@
 
             <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
                 <ul class="app-menu list-unstyled accordion" id="menu-accordion">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="admin">
+                    <c:if test="${sessionScope.account.role == 'ShopOwner'}">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="shop">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -97,10 +98,11 @@
                                               d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                                     </svg>
                                 </span>
-                            <span class="nav-link-text">Dashboard</span>
-                        </a>
-                        <!--//nav-link-->
-                    </li>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                            <!--//nav-link-->
+                        </li>
+                    </c:if>
                     <!--//nav-item-->
                     <c:if test="${sessionScope.account.role == 'Admin'}">
                     <li class="nav-item">

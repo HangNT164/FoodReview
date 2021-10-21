@@ -55,7 +55,7 @@ public class LoginController extends HttpServlet {
                         response.sendRedirect("admin");
                     } else if (role.equals(RoleEnum.ShopOwner.toString())) {
                         // send toi trang shop nhung chua lam
-                        request.getRequestDispatcher("").forward(request, response);
+                        response.sendRedirect("shop");
                     } else {
                         response.sendRedirect("home");
                     }

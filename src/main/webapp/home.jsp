@@ -223,7 +223,8 @@
                             <div class="price"><h6>${l.rate} <i class="fas fa-heart fw"></i></h6></div>
                             <div class='info'>
                                 <h1 class='title'>${l.title}</h1>
-                                <p class="description" style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
+                                <p class="description"
+                                   style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
                                 <div class="main-text-button">
                                     <div class="scroll-to-section"><a href="#">More.. <i
                                             class="fa fa-angle-down"></i></a>
@@ -253,57 +254,28 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4">
-                <div class="chef-item">
-                    <div class="thumb">
-                        <div class="overlay"></div>
-                        <ul class="social-icons">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                        <img src="resources/images/home/chefs-01.jpg" alt="Chef #1">
-                    </div>
-                    <div class="down-content">
-                        <h4>Simdo</h4>
-                        <span>FPT University Canteen</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="chef-item">
-                    <div class="thumb">
-                        <div class="overlay"></div>
-                        <ul class="social-icons">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        </ul>
-                        <img src="resources/images/home/chefs-02.jpg" alt="Chef #2">
-                    </div>
-                    <div class="down-content">
-                        <h4>Hanoi Pho</h4>
-                        <span>FPT University Canteen</span>
+
+            <c:forEach items="${listShop}" var="l">
+                <div class="col-lg-4">
+                    <div class="chef-item">
+                        <div class="thumb">
+                            <div class="overlay"></div>
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                            <img src="resources/images/home/chefs-01.jpg" alt="Chef #1">
+                        </div>
+                        <div class="down-content">
+                            <h4>${l.shopName}</h4>
+                            <span>${l.address}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="chef-item">
-                    <div class="thumb">
-                        <div class="overlay"></div>
-                        <ul class="social-icons">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google"></i></a></li>
-                        </ul>
-                        <img src="resources/images/home/chefs-03.jpg" alt="Chef #3">
-                    </div>
-                    <div class="down-content">
-                        <h4>Quang Anh</h4>
-                        <span>FPT University Canteen</span>
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
+
+
         </div>
     </div>
 </section>
@@ -766,7 +738,7 @@
     }
 
     // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (!event.target.matches('.dropbtn')) {
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;

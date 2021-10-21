@@ -1,6 +1,7 @@
 package dao;
 
 import bean.Shop;
+import bean.Topic;
 import jdbc.MySqlConnection;
 
 import java.sql.Connection;
@@ -33,6 +34,23 @@ public class ShopDao {
 
     public List<Shop> getListShopByAccount(int accountId) {
         String query = "SELECT * FROM swp391_g2_project.shop where account_id = " + accountId;
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Shop> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueShop(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+    public List<Shop> getListShop() {
+        String query = "SELECT * FROM swp391_g2_project.shop  where status not like \"reject\"limit 3;";
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
