@@ -7,19 +7,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
-
 @Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Food {
-
+public class Food_Comment {
+    private int foodCommentId;
     private int foodId;
-    private int shopId;
-    private String foodName;
     private String status;
-    private String description;
+    private String content;
     private int rate;
     private Date createdDate;
     private Date updatedDate;
