@@ -31,8 +31,8 @@ public class ShopDao {
         return null;
     }
 
-    public List<Shop> getListShopByAccount(int accountId) {
-        String query = "SELECT * FROM swp391_g2_project.shop where account_id = " + accountId;
+    public List<Shop> getListShopByAccountAndActive(int accountId) {
+        String query = "SELECT * FROM swp391_g2_project.shop where status = 'active' and account_id = " + accountId;
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
