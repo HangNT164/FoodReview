@@ -52,7 +52,7 @@ public class TopicDao {
     }
 
     public List<Topic> searchTopicByStatus(String status) {
-        String query = "SELECT * FROM topic WHERE status like '%" + status + "%' ";
+        String query = "SELECT * FROM swp391_g2_project.topic WHERE status like '%" + status + "%' ";
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
