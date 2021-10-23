@@ -1,6 +1,6 @@
 package dao;
 
-import bean.Food_Comment;
+import bean.FoodComment;
 import jdbc.MySqlConnection;
 
 import java.util.Calendar;
@@ -11,10 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Food_CommentDao {
-    private Food_Comment getValueFood_Comment(ResultSet rs) {
+public class FoodCommentDao {
+    private FoodComment getValueFood_Comment(ResultSet rs) {
         try {
-            return Food_Comment.builder()
+            return FoodComment.builder()
                     .foodCommentId(rs.getInt(1))
                     .foodId(rs.getInt(2))
                     .status(rs.getString(3))
@@ -56,7 +56,7 @@ public class Food_CommentDao {
             if (ps != null) {
                 ps.setObject(1, month);
                 ResultSet rs = ps.executeQuery();
-                List<Food_Comment> list = new ArrayList<>();
+                List<FoodComment> list = new ArrayList<>();
                 while (rs != null && rs.next()) {
                     sum = rs.getInt("SumRate");
                 }
@@ -68,13 +68,13 @@ public class Food_CommentDao {
         return sum;
     }
 
-    public List<Food_Comment> getListFoodCmt() {
+    public List<FoodComment> getListFoodCmt() {
         String query = "SELECT * FROM swp391_g2_project.food_comment ";
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
                 ResultSet rs = ps.executeQuery();
-                List<Food_Comment> list = new ArrayList<>();
+                List<FoodComment> list = new ArrayList<>();
                 while (rs != null && rs.next()) {
                     list.add(getValueFood_Comment(rs));
                 }

@@ -1,8 +1,6 @@
 package dao;
 
-import bean.Account;
 import bean.Food;
-import bean.Topic;
 import jdbc.MySqlConnection;
 
 import java.sql.Connection;

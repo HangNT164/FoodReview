@@ -1,7 +1,6 @@
 package dao;
 
 import bean.Shop;
-import bean.Topic;
 import jdbc.MySqlConnection;
 
 import java.sql.Connection;
@@ -49,6 +48,7 @@ public class ShopDao {
         }
         return null;
     }
+
     public List<Shop> getListShop() {
         String query = "SELECT * FROM swp391_g2_project.shop  where status not like \"reject\"limit 3;";
         try (Connection con = MySqlConnection.getConnection();

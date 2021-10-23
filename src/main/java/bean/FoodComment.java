@@ -12,7 +12,7 @@ import java.sql.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Food_Comment {
+public class FoodComment {
     private int foodCommentId;
     private int foodId;
     private String status;

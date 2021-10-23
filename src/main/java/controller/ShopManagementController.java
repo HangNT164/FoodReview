@@ -1,11 +1,9 @@
 package controller;
 
 import bean.Food;
-import bean.Food_Comment;
+import bean.FoodComment;
 import dao.FoodDao;
-import dao.Food_CommentDao;
-import dao.ShopDao;
-import dao.TopicDao;
+import dao.FoodCommentDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,10 +17,9 @@ import java.util.List;
 
 @WebServlet(name = "ShopManagementController", value = "/shop")
 public class ShopManagementController extends HttpServlet {
+
     private FoodDao foodDao = new FoodDao();
-    private ShopDao shopDao = new ShopDao();
-    private TopicDao topicDao = new TopicDao();
-    private Food_CommentDao food_commentDao = new Food_CommentDao();
+    private FoodCommentDao foodCommentDao = new FoodCommentDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +27,7 @@ public class ShopManagementController extends HttpServlet {
         int topCmt = foodDao.totalCmt();
         int maxRate = 0;
         int maxRateT = 0;
-        List<Food_Comment> listT = food_commentDao.getListFoodCmt();
+        List<FoodComment> listT = foodCommentDao.getListFoodCmt();
         Food topFood = foodDao.getFoodTop();
 
         Calendar cal = Calendar.getInstance();
@@ -55,23 +52,22 @@ public class ShopManagementController extends HttpServlet {
             lists.add(String.valueOf(i));
         }
 
-        String[]  months = new String[] { "01/","02/","03/","04/","05/","06/","07/","08/","09/","10/","11/","12/"} ;
+        String[] months = new String[]{"01/", "02/", "03/", "04/", "05/", "06/", "07/", "08/", "09/", "10/", "11/", "12/"};
         int[] monthRate = new int[months.length];
         int[] rateMonth = new int[months.length];
 
-        for( int i = 0; i<months.length; i++){
-            monthRate[i] = food_commentDao.numOfCommentOfMonth(months[i] + yearTopic);
-            if(maxRate < monthRate[i]){
-                maxRate =  monthRate[i];
+        for (int i = 0; i < months.length; i++) {
+            monthRate[i] = foodCommentDao.numOfCommentOfMonth(months[i] + yearTopic);
+            if (maxRate < monthRate[i]) {
+                maxRate = monthRate[i];
             }
         }
-        for( int i = 0; i<months.length; i++){
+        for (int i = 0; i < months.length; i++) {
             rateMonth[i] = foodDao.rateByMonth(months[i] + year);
-            if(maxRateT < rateMonth[i]){
-                maxRateT =  rateMonth[i];
+            if (maxRateT < rateMonth[i]) {
+                maxRateT = rateMonth[i];
             }
         }
-
 
 
         request.setAttribute("monthJan", rateMonth[0]);
@@ -99,9 +95,6 @@ public class ShopManagementController extends HttpServlet {
         request.setAttribute("monthOctT", monthRate[9]);
         request.setAttribute("monthNovT", monthRate[10]);
         request.setAttribute("monthDecT", monthRate[11]);
-//
-//        request.setAttribute("accountListShopOwner", accountListShopOwner.size());
-//        request.setAttribute("topicsApprove", topicsApprove.size());
         request.setAttribute("years", lists);
 
         request.setAttribute("topRate", topRate);
