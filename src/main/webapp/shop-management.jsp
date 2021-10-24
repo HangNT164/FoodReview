@@ -2,10 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Food Review | Food Management</title>
-
+    <title>Food Review | Shop Management</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,18 +12,14 @@
     <link rel="stylesheet" href="resources/css/plugin/boostrap.min.css">
     <link rel="stylesheet" href="resources/css/plugin/bootstrap.css">
     <link rel="stylesheet" href="resources/css/plugin/dataTables.bootstrap4.min.css">
-
     <!-- FontAwesome JS-->
     <script defer src="resources/plugins/fontawesome/js/all.min.js"></script>
-
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
     <link rel="stylesheet" href="resources/css/custom/footer.css">
     <link rel="stylesheet" href="resources/css/plugin/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="resources/css/custom/user.css">
     <link rel="stylesheet" type="text/css" href="resources/css/plugin/query-ui.css">
-
-
 </head>
 
 <body class="app">
@@ -101,7 +95,6 @@
                         </a>
                         <!--//nav-link-->
                     </li>
-                    <!--//nav-item-->
                     <li class="nav-item">
                         <a class="nav-link " href="food-management">
                                 <span class="nav-icon">
@@ -158,122 +151,33 @@
 <div class="app-wrapper">
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-fuild">
-            <h1 class="app-page-title">Dashboard</h1>
-            <div class="row g-4 mb-4">
-                <div class="col-6 col-lg-4">
-                    <div class="app-card app-card-stat shadow-sm h-100">
-                        <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Total Rate</h4>
-                            <div class="stats-figure">${topRate}</div>
+            <h1 class="app-page-title">Food Management</h1>
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <a href="#" class="view mr-1" data-toggle="modal"
+                                       data-target="#add-food" title="Add topic" style="text-decoration: none">
+                                        <i class="fas fa-plus"></i><span>Add new </span></a>
+                                </div>
+                            </div>
                         </div>
-                        <!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
                     </div>
-                    <!--//app-card-->
                 </div>
-                <!--//col-->
-                <div class="col-6 col-lg-4">
-                    <div class="app-card app-card-stat shadow-sm h-100">
-                        <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">The Most favorite food </h4>
-                            <div class="stats-figure">${topFood.foodName}</div>
-                        </div>
-                        <!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
-                    </div>
-                    <!--//app-card-->
-                </div>
-                <!--//col-->
-                <div class="col-6 col-lg-4">
-                    <div class="app-card app-card-stat shadow-sm h-100">
-                        <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Total comment of shop</h4>
-                            <div class="stats-figure">${topCmt}</div>
-                        </div>
-                        <!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
-                    </div>
-                    <!--//app-card-->
-                </div>
-                <!--//col-->
             </div>
-            <!--//row-->
-            <form action="shop">
-                <div class="row g-4 mb-4">
-                    <div class="col-12 col-lg-6">
-                        <div class="app-card app-card-chart h-100 shadow-sm">
-                            <div class="app-card-header p-3">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-auto">
-                                        <h4 class="app-card-title">Total Comment</h4>
-                                    </div>
-                                </div>
-                                <!--//row-->
-                            </div>
-                            <!--//app-card-header-->
-                            <div class="app-card-body p-3 p-lg-4">
-                                <div class="mb-3 d-flex">
-                                    <select name="topicYear"
-                                            class="form-select form-select-sm ms-auto d-inline-flex w-auto"
-                                            onchange="doSubmit()">
-                                        <c:forEach items="${years}" var="year" varStatus="loop">
-                                            <option value="${year}" ${param.year == year ? "selected" : ""}>${year}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                                <div class="chart-container">
-                                    <canvas id="topicTotal" width="100%" height="30"></canvas>
-                                </div>
-                            </div>
-                            <!--//app-card-body-->
-                        </div>
-                        <!--//app-card-->
-                    </div>
-                    <!--//col-->
-                    <div class="col-12 col-lg-6">
-                        <div class="app-card app-card-chart h-100 shadow-sm">
-                            <div class="app-card-header p-3">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-auto">
-                                        <h4 class="app-card-title">Total Rate</h4>
-                                    </div>
-                                </div>
-                                <!--//row-->
-                            </div>
-                            <!--//app-card-header-->
-                            <div class="app-card-body p-3 p-lg-4">
-                                <div class="mb-3 d-flex">
-                                    <select name="year" class="form-select form-select-sm ms-auto d-inline-flex w-auto"
-                                            onchange="doSubmit()">
-                                        <c:forEach items="${years}" var="year" varStatus="loop">
-                                            <option value="${year}" ${param.topicYear == year ? "selected" : ""}>${year}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                                <div class="chart-container">
-                                    <canvas id="myBarChart" width="100%" height="30"></canvas>
-                                </div>
-                            </div>
-                            <!--//app-card-body-->
-                        </div>
-                        <!--//app-card-->
-                    </div>
-                    <!--//col-->
-                </div>
-                <!--//row-->
-            </form>
         </div>
         <!--//container-fluid-->
     </div>
     <!--//app-content-->
 </div>
+
 <footer class="footer ">
     <div class="container text-center py-3 ">
-        <small class="copyright " style="color: black; ">© 2021 Copyright <i class="fas fa-heart "
-                                                                             style="color: #fb866a; "></i> by <a
+        <small class="copyright " style="color: black; ">© 2021 Copyright <i class="fas fa-heart "style="color: #fb866a; "></i> by <a
                 class="app-link "
                 href="shop ">food.review.com</a></small>
-
     </div>
 </footer>
 <!--//app-footer-->
@@ -285,130 +189,11 @@
 <script src="resources/js/plugin/popper.min.js "></script>
 <script src="resources/plugins/popper.min.js "></script>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<!-- Charts JS -->
-<script src="resources/plugins/chart.js/chart.min.js"></script>
-<script src="resources/js/custom/index-charts.js"></script>
 <!-- Page Specific JS -->
-<script src="resources/js/custom/app.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="resources/js/custom/app.js "></script>
 <!--Bootstrap Datepicker [ OPTIONAL ]-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
-<script type="text/javascript">
-    function doSubmit() {
-        document.forms[0].submit();
-    }
-</script>
-<script>
-    $(document).ready(function () {
-        $('#user-management-table').DataTable();
-    });
-    function validateAddForm() {
-        if (document.getElementById('add-name').value == "") {
-            document.getElementById('add-name').style.borderColor = 'red'
-            document.getElementById('add-name-message').style.display = 'block'
-            return false;
-        } else {
-            document.getElementById('add-name').style.borderColor = '#e7e9ed'
-            document.getElementById('add-name-message').style.display = 'none'
-        }
-    }
-</script>
-<script>
-    Chart.defaults.global.defaultFontColor = '#252930';
-    var ctx = document.getElementById("myBarChart");
-    var myLineChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            datasets: [{
-                label: "Total Rate",
-                backgroundColor: "#15a362",
-                borderColor: "#15a362",
-                data: ["${monthJan}", "${monthFeb}", "${monthMar}", "${monthApr}", "${monthMay}", "${monthJun}", "${monthJul}", "${monthAug}", "${monthSep}", "${monthOct}", "${monthNov}", "${monthDec}"],
-            }],
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    time: {
-                        unit: 'month'
-                    },
-                    gridLines: {
-                        display: false
-                    },
-                    ticks: {
-                        maxTicksLimit: 12
-                    }
-                }],
-                yAxes: [{
-                    ticks: {
-                        min: 0,
-                        max: ${maxRateT},
-                        maxTicksLimit: 12
-                    },
-                    gridLines: {
-                        display: true
-                    }
-                }],
-            },
-            legend: {
-                display: false
-            }
-        }
-    });
-</script>
-<%--Topic--%>
-<script>
-    Chart.defaults.global.defaultFontColor = '#252930';
-    var ctx = document.getElementById("topicTotal");
-    var myLineChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            datasets: [{
-                label: "Total Comment",
-                backgroundColor: "rgba(255,99,132,0.2)",
-                borderColor: "rgba(255,99,132,1)",
-                borderWidth: 1,
-                hoverBackgroundColor: "rgba(255,99,132,0.4)",
-                hoverBorderColor: "rgba(255,99,132,1)",
-                data: ["${monthJanT}", "${monthFebT}", "${monthMarT}", "${monthAprT}", "${monthMayT}", "${monthJunT}", "${monthJulT}", "${monthAugT}", "${monthSepT}", "${monthOctT}", "${monthNovT}", "${monthDecT}"],
-            }],
-        },
-        options: {
-            scales: {
-                xAxes: [{
-                    time: {
-                        unit: 'month'
-                    },
-                    gridLines: {
-                        display: false
-                    },
-                    ticks: {
-                        maxTicksLimit: 12
-                    }
-                }],
-                yAxes: [{
-                    ticks: {
-                        min: 0,
-                        max: ${maxRate},
-                        stepSize: 6
-                    },
-                    gridLines: {
-                        display: true
-                    }
-                }],
-            },
-            legend: {
-                display: false
-            }
-        }
-    });
-</script>
 </body>
 </html>
