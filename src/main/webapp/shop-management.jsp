@@ -151,7 +151,7 @@
 <div class="app-wrapper">
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-fuild">
-            <h1 class="app-page-title">Food Management</h1>
+            <h1 class="app-page-title">Shop Management</h1>
             <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-12">
