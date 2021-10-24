@@ -2,10 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Food Review | Topic Management</title>
-
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,27 +12,21 @@
     <link rel="stylesheet" href="resources/css/plugin/boostrap.min.css">
     <link rel="stylesheet" href="resources/css/plugin/bootstrap.css">
     <link rel="stylesheet" href="resources/css/plugin/dataTables.bootstrap4.min.css">
-
     <!-- FontAwesome JS-->
     <script defer src="resources/plugins/fontawesome/js/all.min.js"></script>
-
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
     <link rel="stylesheet" href="resources/css/custom/footer.css">
     <link rel="stylesheet" href="resources/css/plugin/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="resources/css/custom/user.css">
     <link rel="stylesheet" type="text/css" href="resources/css/plugin/query-ui.css">
-
-
 </head>
-
 <body class="app">
 <header class="app-header fixed-top">
     <div class="app-header-inner">
         <div class="container-fluid py-2">
             <div class="app-header-content">
                 <div class="row justify-content-between align-items-center">
-
                     <div class="col-auto">
                         <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
@@ -580,5 +572,4 @@
     }
 </style>
 </body>
-
 </html>

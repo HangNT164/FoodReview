@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "AddFoodController", value = "/add-food")
 public class AddFoodController extends HttpServlet {
+
     private FoodDao foodDao = new FoodDao();
 
     @Override

@@ -1,32 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Food Review | Profile</title>
-
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="resources/images/avatar.png">
-
     <!-- FontAwesome JS-->
     <script defer src="resources/plugins/fontawesome/js/all.min.js"></script>
-
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
     <link rel="stylesheet" href="resources/css/custom/footer.css">
-
 </head>
 <body class="app">
 <header class="app-header fixed-top">
     <div class="row justify-content-between"
          style="align-items: baseline !important; margin-top: -10px; margin-left: 3px; width: 100%;">
         <div class="app-branding" style="width: fit-content;">
-            <a class="app-logo" style=" text-decoration: none" href="home.jsp"><span class="logo-text"
-                                                                                     style="font-size: 27px;"><i>Food
-                                Review</i></span></a>
+            <a class="app-logo" style=" text-decoration: none" href="#"><span class="logo-text" style="font-size: 27px;"><i>Food Review</i></span></a>
         </div>
         <div class="col-auto">
             <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
@@ -80,7 +73,6 @@
                             </svg>
                         </div>
                         <!--//icon-holder-->
-
                     </div>
                     <!--//col-->
                     <div class="col-auto">
@@ -104,7 +96,6 @@
                             <h5>
                                 <span>${account.name}</span>
                             </h5>
-
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link ${message1 == null && message2 == null ? " active" : ""}"
@@ -181,7 +172,6 @@
                     <div class="col-md-2">
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -201,7 +191,7 @@
         <small class="copyright" style="color: black;">© 2021 Copyright <i class="fas fa-heart"
                                                                            style="color: #fb866a;"></i> by <a
                 class="app-link"
-                href="home">food.review.com</a></small>
+                href="#">food.review.com</a></small>
     </div>
 </footer>
 <!--//app-footer-->
