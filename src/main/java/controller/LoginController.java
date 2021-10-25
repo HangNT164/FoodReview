@@ -2,7 +2,7 @@ package controller;
 
 import bean.Account;
 import constant.RoleEnum;
-import constant.StatusAccountEnum;
+import constant.StatusEnum;
 import dao.AccountDao;
 
 import javax.servlet.ServletException;
@@ -47,7 +47,7 @@ public class LoginController extends HttpServlet {
             Account user = accountDao.login(email, password);
             HttpSession session = request.getSession(true);
             if (user != null) {
-                if (user.getStatus().equals(StatusAccountEnum.active.toString())) {
+                if (user.getStatus().equals(StatusEnum.active.toString())) {
                     String role = user.getRole();
                     user.setDob(convertFormatDateYYYYMMDD(user.getDob()));
                     session.setAttribute("account", user);

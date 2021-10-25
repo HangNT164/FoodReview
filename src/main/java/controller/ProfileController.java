@@ -47,9 +47,6 @@ public class ProfileController extends HttpServlet {
             if (!accountCurrent.getEmail().equals(email) && !accountDao.isDulicapteEmail(email)) {
                 request.setAttribute("message1", "Email đã được đăng ký trước đó");
             }
-            if (!accountCurrent.getPhoneNumber().equals(phone) && !accountDao.isDulicaptePhone(phone)) {
-                request.setAttribute("message1", "Số điện thoại đã được đăng ký trước đó");
-            }
 
             Account account = Account.builder()
                     .name(name)
