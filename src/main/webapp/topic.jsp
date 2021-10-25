@@ -79,7 +79,7 @@
             <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
                 <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                     <li class="nav-item ">
-                        <a class="nav-link  " href="admin">
+                        <a class="nav-link " href="#">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -93,55 +93,6 @@
                         </a>
                         <!--//nav-link-->
                     </li>
-                    <!--//nav-item-->
-                    <c:if test="${sessionScope.account.role == 'Admin'}">
-                    <li class="nav-item">
-                        <a class="nav-link " href="search-user-management">
-                                <span class="nav-icon">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                              d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                                        <path fill-rule="evenodd"
-                                              d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
-                                        <circle cx="3.5" cy="5.5" r=".5"/>
-                                        <circle cx="3.5" cy="8" r=".5"/>
-                                        <circle cx="3.5" cy="10.5" r=".5"/>
-                                    </svg>
-                                </span>
-                            <span class="nav-link-text">User Management</span>
-                        </a>
-                        <!--//nav-link-->
-                    </li>
-                    </c:if>
-                    <!--//nav-item-->
-                    <c:if test="${sessionScope.account.role == 'Admin'}">
-                    <li class="nav-item">
-                        <a class="nav-link " href="search-topic-status">
-                                <span class="nav-icon">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                                d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z"/>
-                                        <path fill-rule="evenodd"
-                                              d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z"/>
-                                    </svg>
-                                    <path fill-rule="evenodd"
-                                          d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                                    <path fill-rule="evenodd"
-                                          d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
-                                    <circle cx="3.5" cy="5.5" r=".5"/>
-                                    <circle cx="3.5" cy="8" r=".5"/>
-                                    <circle cx="3.5" cy="10.5" r=".5"/>
-                                    </svg>
-                                </span>
-                            <span class="nav-link-text">Topic Management</span>
-                        </a>
-                        <!--//nav-link-->
-                    </li>
-                    </c:if>
-
-                    <c:if test="${sessionScope.account.role == 'ShopOwner'}">
                     <li class="nav-item">
                         <a class="nav-link " href="food-management">
                                 <span class="nav-icon">
@@ -165,7 +116,6 @@
                         </a>
                         <!--//nav-link-->
                     </li>
-                    </c:if>
                     <!--//nav-item-->
                 </ul>
                 <!--//app-menu-->
@@ -181,16 +131,11 @@
 <div class="app-wrapper">
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-fuild">
-
             <h1 class="app-page-title">Topic Management</h1>
             <div class="animated fadeIn">
-
                 <div class="row">
-
-
                     <div class="col-md-12">
                         <div class="card">
-
                             <div class="card-body">
                                 <div>
                                     <a href="#" class="view mr-1" data-toggle="modal"

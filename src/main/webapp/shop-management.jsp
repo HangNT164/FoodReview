@@ -158,9 +158,80 @@
                         <div class="card">
                             <div class="card-body">
                                 <div>
-                                    <a href="#" class="view mr-1" data-toggle="modal"
-                                       data-target="#add-food" title="Add topic" style="text-decoration: none">
-                                        <i class="fas fa-plus"></i><span>Add new </span></a>
+                                    <button type="button" data-bs-toggle="modal" class="btn btn-success"
+                                            data-bs-target="#exampleModal">
+                                        Add new
+                                    </button>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-md"
+                                             role="document">
+                                            <div class="modal-content">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <form action="add-shop" method="POST">
+                                                            <h5 class="mb-3">Add New Shop</h5>
+                                                            <p class="mb-3" id="add-shop-message"
+                                                               style="color: red;text-align: center;font-size: 15px;">${message}</p>
+                                                            <div class="row">
+                                                                <div class="form-group">
+                                                                    <div class="col-md-10">
+                                                                        <label>Shop Name: </label>
+                                                                        <input style="margin-left: 60px" type="text"
+                                                                               required="true"
+                                                                               pattern=".{1,50}"
+                                                                               oninvalid="setCustomValidity('Shop Name max 50 charter')"
+                                                                               name="shopName"
+                                                                               class="form-control"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group">
+                                                                    <div class="col-md-10">
+                                                                        <label>Shop Address: </label>
+                                                                        <input style="margin-left: 60px" type="text"
+                                                                               required="true"
+                                                                               pattern=".{1,200}"
+                                                                               oninvalid="setCustomValidity('Shop Address max 200 charter')"
+                                                                               name="address"
+                                                                               class="form-control"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group">
+                                                                    <div class="col-md-10">
+                                                                        <label>Shop Description: </label>
+                                                                        <input style="margin-left: 60px" type="text"
+                                                                               required="true"
+                                                                               pattern=".{1,1000}"
+                                                                               oninvalid="setCustomValidity('Shop Description max 1000 charter')"
+                                                                               name="description"
+                                                                               class="form-control"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br/>
+                                                            <div style="display: flex;justify-content: space-evenly">
+                                                                <button type="submit"
+                                                                        style="border: 1px solid;"
+                                                                        class="btn btn-success collapsed">
+                                                                    Add
+                                                                </button>
+                                                                <button type="button"
+                                                                        style="border: 1px solid;"
+                                                                        class="btn btn-outline-success"
+                                                                        data-bs-dismiss="modal"
+                                                                        data-dismiss="modal">Close
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +246,8 @@
 
 <footer class="footer ">
     <div class="container text-center py-3 ">
-        <small class="copyright " style="color: black; ">© 2021 Copyright <i class="fas fa-heart "style="color: #fb866a; "></i> by <a
+        <small class="copyright " style="color: black; ">© 2021 Copyright <i class="fas fa-heart "
+                                                                             style="color: #fb866a; "></i> by <a
                 class="app-link "
                 href="shop ">food.review.com</a></small>
     </div>

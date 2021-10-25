@@ -66,4 +66,25 @@ public class ShopDao {
         }
         return null;
     }
+
+    public boolean addAccount(Shop shop) {
+        int check = 0;
+        String query = "INSERT INTO `shop` (`account_id`,`shop_name`, `address`, `description`) " +
+                " VALUES (?,?,?,?);";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
+            if (ps != null) {
+                ps.setObject(1, shop.getAccountId());
+                ps.setObject(2, shop.getShopName());
+                ps.setObject(3, shop.getAddress());
+                ps.setObject(4, shop.getDescription());
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
+
 }
