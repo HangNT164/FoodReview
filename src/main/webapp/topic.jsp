@@ -2,10 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Food Review | Topic Management</title>
-
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,27 +12,21 @@
     <link rel="stylesheet" href="resources/css/plugin/boostrap.min.css">
     <link rel="stylesheet" href="resources/css/plugin/bootstrap.css">
     <link rel="stylesheet" href="resources/css/plugin/dataTables.bootstrap4.min.css">
-
     <!-- FontAwesome JS-->
     <script defer src="resources/plugins/fontawesome/js/all.min.js"></script>
-
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
     <link rel="stylesheet" href="resources/css/custom/footer.css">
     <link rel="stylesheet" href="resources/css/plugin/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="resources/css/custom/user.css">
     <link rel="stylesheet" type="text/css" href="resources/css/plugin/query-ui.css">
-
-
 </head>
-
 <body class="app">
 <header class="app-header fixed-top">
     <div class="app-header-inner">
         <div class="container-fluid py-2">
             <div class="app-header-content">
                 <div class="row justify-content-between align-items-center">
-
                     <div class="col-auto">
                         <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
@@ -79,7 +71,7 @@
         <div class="sidepanel-inner d-flex flex-column">
             <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
             <div class="app-branding" style="margin:auto;">
-                <a class="app-logo" href="index.jsp"><span class="logo-text" style="font-size: 27px;"><i>Food
+                <a class="app-logo" href="home"><span class="logo-text" style="font-size: 27px;"><i>Food
                                 Review</i></span></a>
             </div>
             <!--//app-branding-->
@@ -87,7 +79,7 @@
             <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
                 <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                     <li class="nav-item ">
-                        <a class="nav-link  " href="index.jsp">
+                        <a class="nav-link " href="#">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -101,30 +93,8 @@
                         </a>
                         <!--//nav-link-->
                     </li>
-                    <!--//nav-item-->
-
                     <li class="nav-item">
-                        <a class="nav-link " href="search-user-management">
-                                <span class="nav-icon">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                              d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                                        <path fill-rule="evenodd"
-                                              d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
-                                        <circle cx="3.5" cy="5.5" r=".5"/>
-                                        <circle cx="3.5" cy="8" r=".5"/>
-                                        <circle cx="3.5" cy="10.5" r=".5"/>
-                                    </svg>
-                                </span>
-                            <span class="nav-link-text">User Management</span>
-                        </a>
-                        <!--//nav-link-->
-                    </li>
-                    <!--//nav-item-->
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="search-topic-status">
+                        <a class="nav-link " href="food-management">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -142,7 +112,7 @@
                                     <circle cx="3.5" cy="10.5" r=".5"/>
                                     </svg>
                                 </span>
-                            <span class="nav-link-text">Topic Management</span>
+                            <span class="nav-link-text">Food Management</span>
                         </a>
                         <!--//nav-link-->
                     </li>
@@ -161,26 +131,71 @@
 <div class="app-wrapper">
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-fuild">
-
             <h1 class="app-page-title">Topic Management</h1>
             <div class="animated fadeIn">
-
                 <div class="row">
-
-
                     <div class="col-md-12">
                         <div class="card">
-
                             <div class="card-body">
-
-                                <form action="search-topic-status">
-                                    <div>
-                                        <span>Add new </span>
-                                        </br>
-                                        <a href="#" class="view mr-1" data-toggle="modal"
-                                           data-target="#add" title="">
-                                            <i class="fas fa-plus"></i></a>
+                                <div>
+                                    <a href="#" class="view mr-1" data-toggle="modal"
+                                       data-target="#add-topic" title="Add topic" style="text-decoration: none">
+                                        <i class="fas fa-plus"></i><span>Add new </span></a>
+                                    <%-- Su kien add--%>
+                                    <div class="modal fade" id="add-topic" tabindex="-1"
+                                         role="dialog" aria-labelledby="add-topic"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-md"
+                                             role="document">
+                                            <div class="modal-content">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <form action="add-topic" method="post" onchange="return validateAddForm()">
+                                                            <h5 class="mb-3">Add topic</h5>
+                                                            <div class="row">
+                                                                <div class="form-group">
+                                                                    <div class="col-md-10">
+                                                                        <label>Title: </label>
+                                                                        <input style="margin-left: 60px" type="text"
+                                                                               id="add-title"
+                                                                               name="title"
+                                                                               class="form-control"/>
+                                                                        <span id="add-title-message" style="display: none; color: red; font-size: 14px; text-align: center">Chủ đề không được để trống</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group">
+                                                                    <div class="col-md-10">
+                                                                        <label>Content: </label>
+                                                                        <input style="margin-left: 60px" type="text"
+                                                                               name="content"
+                                                                               class="form-control"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br/>
+                                                            <div style="display: flex;justify-content: space-evenly">
+                                                                <button type="submit"
+                                                                        onclick="return validateAddForm()"
+                                                                        style="border: 1px solid;"
+                                                                        class="btn btn-success collapsed">
+                                                                    Add
+                                                                </button>
+                                                                <button type="button"
+                                                                        style="border: 1px solid;"
+                                                                        class="btn btn-outline-success"
+                                                                        data-dismiss="modal">Close
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
+                                <form action="search-topic-status">
                                     <div class="row mt-3 mb-3">
                                         <div class="row" style="padding: 0px;margin: 0px;">
                                             <div class="col-md-2">
@@ -191,10 +206,8 @@
                                                             name="status">
                                                         <option value="">All
                                                         </option>
-                                                        <option value="approved">Approved
-                                                        </option>
-                                                        <option value="pending">Pending
-                                                        </option>
+                                                        <option value="approved">Approved</option>
+                                                        <option value="pending">Pending</option>
                                                         <option value="reject">Reject</option>
                                                     </select>
 
@@ -249,49 +262,6 @@
                                                                         class="fas fa-trash fa-fw"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <%-- Su kien add--%>
-                                                    <div class="modal fade" id="add" tabindex="-1"
-                                                         role="dialog" aria-labelledby=""
-                                                         aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-xl"
-                                                             role="document">
-                                                            <div class="modal-content">
-                                                                <div class="card">
-                                                                    <div class="card-body">
-                                                                        <h5 class="mb-3">Add New Topic</h5>
-                                                                        <form action="add-topic"
-                                                                              method="post">
-                                                                            <div class="form-group row">
-                                                                                <div class="col-sm-12">
-                                                                                    <label>Title</label>
-                                                                                    <input name="title"
-                                                                                           class="form-control"></input>
-                                                                                </div>
-                                                                                <div class="col-sm-12">
-                                                                                    <label>Content</label>
-                                                                                    <input name="content"
-                                                                                           class="form-control"></input>
-                                                                                </div>
-
-                                                                            </div>
-                                                                            <div style="display: flex;justify-content: space-evenly">
-                                                                                <button type="submit"
-                                                                                        style="border: 1px solid;"
-                                                                                        class="btn btn-outline-success">
-                                                                                    Submit
-                                                                                </button>
-                                                                                <button type="button"
-                                                                                        style="border: 1px solid;"
-                                                                                        class="btn btn-outline-success"
-                                                                                        data-dismiss="modal">Close
-                                                                                </button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     <!-- Su kien show chi tiet -->
                                                     <div class="modal fade" id="detail${l.topicId}" tabindex="-1"
                                                          role="dialog" aria-labelledby="detail${l.topicId}"
@@ -339,7 +309,7 @@
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
-                                                                                        <label>Create Date</label>
+                                                                                        <label>Created Date</label>
                                                                                         <span class="form-control"
                                                                                               disabled>${l.createdDate}</span>
                                                                                     </div>
@@ -392,23 +362,26 @@
                                                                             </div>
                                                                             <div class="form-group row">
                                                                                 <div class="col-sm-12">
-                                                                                    <label>Title</label>
+                                                                                    <label>Content</label>
                                                                                     <input class="form-control"
                                                                                               name="content"
                                                                                               value="${l.content}"> </input>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
-                                                                                <select id="statu" class="form-control"
-                                                                                        name="status">
+                                                                                <div class="col-sm-12">
+                                                                                    <label>Status</label>
+                                                                                    <select id="statu" class="form-control"
+                                                                                            name="status">
 
-                                                                                    <option value="approved">Approved
-                                                                                    </option>
-                                                                                    <option value="pending">Pending
-                                                                                    </option>
-                                                                                    <option value="reject">Reject
-                                                                                    </option>
-                                                                                </select>
+                                                                                        <option value="approved">Approved
+                                                                                        </option>
+                                                                                        <option value="pending">Pending
+                                                                                        </option>
+                                                                                        <option value="reject">Reject
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
                                                                             <div style="display: flex;justify-content: space-evenly">
                                                                                 <button type="submit"
@@ -485,7 +458,7 @@
         <small class="copyright " style="color: black; ">© 2021 Copyright <i class="fas fa-heart "
                                                                              style="color: #fb866a; "></i> by <a
                 class="app-link "
-                href="index.jsp ">food.review.com</a></small>
+                href="home ">food.review.com</a></small>
 
     </div>
 </footer>
@@ -518,7 +491,30 @@
         $('#user-management-table').DataTable();
     });
 
+    function validateAddForm() {
+        if (document.getElementById('add-title').value == "") {
+            document.getElementById('add-title').style.borderColor = 'red'
+            document.getElementById('add-title-message').style.display = 'block'
+            return false;
+        }else {
+            document.getElementById('add-title').style.borderColor = '#e7e9ed'
+            document.getElementById('add-title-message').style.display = 'none'
+        }
+    }
 </script>
-</body>
+<style>
+    .dataTables_paginate>span>a {
+        margin-bottom: 0px !important;
+        padding: 2px 2px !important;
+    }
 
+    .dataTables_paginate>a {
+        margin-bottom: 0px !important;
+        padding: 2px 2px !important;
+    }
+    .form-control {
+        height: 2.7rem;
+    }
+</style>
+</body>
 </html>

@@ -1,6 +1,5 @@
 package controller;
 
-;
 import bean.Account;
 import dao.AccountDao;
 import util.EmailUtil;
@@ -15,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "ResetPassword", value = "/reset-password")
-public class ResetPassword extends HttpServlet {
+public class ResetPasswordController extends HttpServlet {
 
     private EmailUtil emailUtil = new EmailUtil();
     private AccountDao accountDao = new AccountDao();
@@ -42,7 +41,7 @@ public class ResetPassword extends HttpServlet {
             String email = request.getParameter("email");
             Account account = accountDao.getAccountByEmail(email);
 
-            if(account != null) {
+            if (account != null) {
                 if (account.getEmail().equals(email)) {
                     emailUtil.sendVerifyCodeEmail(email, code);
                     session.setAttribute("verifyEmail", email);

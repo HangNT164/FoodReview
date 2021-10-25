@@ -1,6 +1,6 @@
 package constant;
 
-public enum StatusAccountEnum {
+public enum StatusEnum {
     inactive,
     active
 }

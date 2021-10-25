@@ -1,9 +1,13 @@
 package security;
 
-import javax.servlet.*;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
@@ -15,7 +19,7 @@ public class AuthenFilter implements Filter {
     private HttpServletRequest request;
     private static final String[] loginRequiredURLs = {
             "/admin", "/profile", "/search-user-management", "/search-topic-status", "/remove-user-management", "/remove-topic-management", "/search-topic-status",
-                    "/update-user-management", "/update-status-topic", "/add-topic"
+                    "/update-user-management", "/update-status-topic", "/add-topic", "/shop"
     };
 
     @Override

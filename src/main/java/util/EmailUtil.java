@@ -1,7 +1,5 @@
 package util;
 
-import java.util.Properties;
-import java.util.Random;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
@@ -9,11 +7,13 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.util.Properties;
+import java.util.Random;
 
 public class EmailUtil {
 
-    private final String fromEmail = "minhieu6799@gmail.com";
-    private final String password = "nmHieu0103";
+    private final String fromEmail = "noreply.reviewfood@gmail.com";
+    private final String password = "food.123";
 
     public String generate6DigitsRandom() {
         Random rnd = new Random();

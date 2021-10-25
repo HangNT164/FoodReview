@@ -2,7 +2,7 @@ package controller;
 
 import bean.Account;
 import constant.RoleEnum;
-import constant.StatusAccountEnum;
+import constant.StatusEnum;
 import dao.AccountDao;
 
 import javax.servlet.ServletException;
@@ -25,7 +25,9 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
         try (PrintWriter out = response.getWriter()) {
+            session.invalidate();
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
@@ -45,15 +47,14 @@ public class LoginController extends HttpServlet {
             Account user = accountDao.login(email, password);
             HttpSession session = request.getSession(true);
             if (user != null) {
-                if (user.getStatus().equals(StatusAccountEnum.active.toString())) {
+                if (user.getStatus().equals(StatusEnum.active.toString())) {
                     String role = user.getRole();
                     user.setDob(convertFormatDateYYYYMMDD(user.getDob()));
                     session.setAttribute("account", user);
                     if (role.equals(RoleEnum.Admin.toString())) {
                         response.sendRedirect("admin");
                     } else if (role.equals(RoleEnum.ShopOwner.toString())) {
-                        // send toi trang shop nhung chua lam
-                        request.getRequestDispatcher("").forward(request, response);
+                        response.sendRedirect("shop");
                     } else {
                         response.sendRedirect("home");
                     }

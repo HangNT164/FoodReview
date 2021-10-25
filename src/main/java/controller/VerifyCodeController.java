@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "VerifyCode", value = "/verify-code")
-public class VerifyCode extends HttpServlet {
+public class VerifyCodeController extends HttpServlet {
 
     private EmailUtil emailUtil = new EmailUtil();
     private AccountDao accountDao = new AccountDao();
@@ -34,9 +34,7 @@ public class VerifyCode extends HttpServlet {
             HttpSession session = request.getSession();
             String trueCode = (String) session.getAttribute("verifyCode");
             String email = (String) session.getAttribute("verifyEmail");
-
             String code = request.getParameter("verifyCode");
-
             if (trueCode.equals(code)) {
                 Account account = accountDao.getAccountByEmail(email);
                 if (account != null) {

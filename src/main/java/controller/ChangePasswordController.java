@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "ChangePassword", value = "/change-password")
-public class ChangePassword extends HttpServlet {
+public class ChangePasswordController extends HttpServlet {
 
     private AccountDao accountDao = new AccountDao();
 

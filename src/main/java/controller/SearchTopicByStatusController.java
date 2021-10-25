@@ -14,8 +14,9 @@ import java.util.List;
 @WebServlet(name = "SearchTopicByStatusController", value = "/search-topic-status")
 public class SearchTopicByStatusController extends HttpServlet {
     private TopicDao topicDao = new TopicDao();
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String status = request.getParameter("status");
         List<Topic> topicListByStatus;
         if (status == null) {

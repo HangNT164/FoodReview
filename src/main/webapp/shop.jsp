@@ -1,26 +1,40 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Food Review| Admin</title>
+    <title>Food Review | Food Management</title>
+
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="resources/images/avatar.png">
+    <link rel="stylesheet" href="resources/css/plugin/boostrap.min.css">
+    <link rel="stylesheet" href="resources/css/plugin/bootstrap.css">
+    <link rel="stylesheet" href="resources/css/plugin/dataTables.bootstrap4.min.css">
+
     <!-- FontAwesome JS-->
     <script defer src="resources/plugins/fontawesome/js/all.min.js"></script>
+
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
-    <link id="theme-style" rel="stylesheet" href="resources/css/custom/footer.css">
+    <link rel="stylesheet" href="resources/css/custom/footer.css">
+    <link rel="stylesheet" href="resources/css/plugin/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="resources/css/custom/user.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/plugin/query-ui.css">
+
+
 </head>
+
 <body class="app">
 <header class="app-header fixed-top">
     <div class="app-header-inner">
         <div class="container-fluid py-2">
             <div class="app-header-content">
                 <div class="row justify-content-between align-items-center">
+
                     <div class="col-auto">
                         <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
@@ -65,14 +79,15 @@
         <div class="sidepanel-inner d-flex flex-column">
             <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
             <div class="app-branding" style="margin:auto;">
-                <a class="app-logo" href="home"><span class="logo-text" style="font-size: 27px;"><i>Food
+                <a class="app-logo" href="admin"><span class="logo-text" style="font-size: 27px;"><i>Food
                                 Review</i></span></a>
             </div>
             <!--//app-branding-->
+
             <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
                 <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                     <li class="nav-item ">
-                        <a class="nav-link active " href="admin">
+                        <a class="nav-link" href="shop">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -88,26 +103,7 @@
                     </li>
                     <!--//nav-item-->
                     <li class="nav-item">
-                        <a class="nav-link" href="search-user-management">
-                                <span class="nav-icon">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                              d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                                        <path fill-rule="evenodd"
-                                              d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
-                                        <circle cx="3.5" cy="5.5" r=".5"/>
-                                        <circle cx="3.5" cy="8" r=".5"/>
-                                        <circle cx="3.5" cy="10.5" r=".5"/>
-                                    </svg>
-                                </span>
-                            <span class="nav-link-text">User Management</span>
-                        </a>
-                        <!--//nav-link-->
-                    </li>
-                    <!--//nav-item-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="search-topic-status">
+                        <a class="nav-link " href="food-management">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -125,32 +121,50 @@
                                     <circle cx="3.5" cy="10.5" r=".5"/>
                                     </svg>
                                 </span>
-                            <span class="nav-link-text">Topic Management</span>
+                            <span class="nav-link-text">Food Management</span>
                         </a>
                         <!--//nav-link-->
                     </li>
                     <!--//nav-item-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop-management">
+                                <span class="nav-icon">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
+                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                              d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
+                                        <circle cx="3.5" cy="5.5" r=".5"/>
+                                        <circle cx="3.5" cy="8" r=".5"/>
+                                        <circle cx="3.5" cy="10.5" r=".5"/>
+                                    </svg>
+                                </span>
+                            <span class="nav-link-text">Shop Management</span>
+                        </a>
+                        <!--//nav-link-->
+                    </li>
                 </ul>
                 <!--//app-menu-->
             </nav>
             <!--//app-nav-->
+            <!--//app-sidepanel-footer-->
         </div>
         <!--//sidepanel-inner-->
     </div>
     <!--//app-sidepanel-->
 </header>
 <!--//app-header-->
-
 <div class="app-wrapper">
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-fuild">
             <h1 class="app-page-title">Dashboard</h1>
             <div class="row g-4 mb-4">
-                <div class="col-6 col-lg-3">
+                <div class="col-6 col-lg-4">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Total Account</h4>
-                            <div class="stats-figure">${totalAccount}</div>
+                            <h4 class="stats-type mb-1">Total Rate</h4>
+                            <div class="stats-figure">${topRate}</div>
                         </div>
                         <!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
@@ -158,11 +172,11 @@
                     <!--//app-card-->
                 </div>
                 <!--//col-->
-                <div class="col-6 col-lg-3">
+                <div class="col-6 col-lg-4">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Total Shop Owner</h4>
-                            <div class="stats-figure">${accountListShopOwner}</div>
+                            <h4 class="stats-type mb-1">The Most favorite food </h4>
+                            <div class="stats-figure">${topFood.foodName}</div>
                         </div>
                         <!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
@@ -170,23 +184,11 @@
                     <!--//app-card-->
                 </div>
                 <!--//col-->
-                <div class="col-6 col-lg-3">
+                <div class="col-6 col-lg-4">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Total Topic</h4>
-                            <div class="stats-figure">${totalTopic}</div>
-                        </div>
-                        <!--//app-card-body-->
-                        <a class="app-card-link-mask" href="#"></a>
-                    </div>
-                    <!--//app-card-->
-                </div>
-                <!--//col-->
-                <div class="col-6 col-lg-3">
-                    <div class="app-card app-card-stat shadow-sm h-100">
-                        <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Total Topic Approve</h4>
-                            <div class="stats-figure">${topicsApprove}</div>
+                            <h4 class="stats-type mb-1">Total comment of shop</h4>
+                            <div class="stats-figure">${topCmt}</div>
                         </div>
                         <!--//app-card-body-->
                         <a class="app-card-link-mask" href="#"></a>
@@ -196,14 +198,14 @@
                 <!--//col-->
             </div>
             <!--//row-->
-            <form action="admin">
+            <form action="shop">
                 <div class="row g-4 mb-4">
                     <div class="col-12 col-lg-6">
                         <div class="app-card app-card-chart h-100 shadow-sm">
                             <div class="app-card-header p-3">
                                 <div class="row justify-content-between align-items-center">
                                     <div class="col-auto">
-                                        <h4 class="app-card-title">Total Topic</h4>
+                                        <h4 class="app-card-title">Total Comment</h4>
                                     </div>
                                 </div>
                                 <!--//row-->
@@ -215,7 +217,7 @@
                                             class="form-select form-select-sm ms-auto d-inline-flex w-auto"
                                             onchange="doSubmit()">
                                         <c:forEach items="${years}" var="year" varStatus="loop">
-                                            <option value="${year}" ${param.topicYear == year ? "selected" : ""}>${year}</option>
+                                            <option value="${year}" ${param.year == year ? "selected" : ""}>${year}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -233,7 +235,7 @@
                             <div class="app-card-header p-3">
                                 <div class="row justify-content-between align-items-center">
                                     <div class="col-auto">
-                                        <h4 class="app-card-title">Total User</h4>
+                                        <h4 class="app-card-title">Total Rate</h4>
                                     </div>
                                 </div>
                                 <!--//row-->
@@ -244,7 +246,7 @@
                                     <select name="year" class="form-select form-select-sm ms-auto d-inline-flex w-auto"
                                             onchange="doSubmit()">
                                         <c:forEach items="${years}" var="year" varStatus="loop">
-                                            <option value="${year}" ${param.year == year ? "selected" : ""}>${year}</option>
+                                            <option value="${year}" ${param.topicYear == year ? "selected" : ""}>${year}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -265,30 +267,57 @@
     </div>
     <!--//app-content-->
 </div>
-<footer class="footer">
-    <div class="container text-center py-3">
-        <small class="copyright" style="color: black;">© 2021 Copyright <i class="fas fa-heart"
-                                                                           style="color: #fb866a;"></i> by <a
-                class="app-link" href="#">food.review.com</a></small>
+<footer class="footer ">
+    <div class="container text-center py-3 ">
+        <small class="copyright " style="color: black; ">© 2021 Copyright <i class="fas fa-heart "
+                                                                             style="color: #fb866a; "></i> by <a
+                class="app-link "
+                href="shop ">food.review.com</a></small>
+
     </div>
 </footer>
+<!--//app-footer-->
 </div>
-<script src="resources/plugins/popper.min.js"></script>
-<script src="resources/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!--//app-wrapper-->
+<!-- Javascript -->
+<script src="resources/js/plugin/jquery-3.3.1.slim.min.js " type="text/javascript "></script>
+<script src="resources/js/plugin/jquery.min.js "></script>
+<script src="resources/js/plugin/popper.min.js "></script>
+<script src="resources/plugins/popper.min.js "></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <!-- Charts JS -->
 <script src="resources/plugins/chart.js/chart.min.js"></script>
 <script src="resources/js/custom/index-charts.js"></script>
 <!-- Page Specific JS -->
 <script src="resources/js/custom/app.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!--Bootstrap Datepicker [ OPTIONAL ]-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
 <script type="text/javascript">
     function doSubmit() {
-        var opt = document.getElementsByName("year")[0];
-        var opt1 = document.getElementsByName("topicYear")[0];
         document.forms[0].submit();
     }
 </script>
-<%--User--%>
+<script>
+    $(document).ready(function () {
+        $('#user-management-table').DataTable();
+    });
+    function validateAddForm() {
+        if (document.getElementById('add-name').value == "") {
+            document.getElementById('add-name').style.borderColor = 'red'
+            document.getElementById('add-name-message').style.display = 'block'
+            return false;
+        } else {
+            document.getElementById('add-name').style.borderColor = '#e7e9ed'
+            document.getElementById('add-name-message').style.display = 'none'
+        }
+    }
+</script>
 <script>
     Chart.defaults.global.defaultFontColor = '#252930';
     var ctx = document.getElementById("myBarChart");
@@ -297,7 +326,7 @@
         data: {
             labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             datasets: [{
-                label: "Total User",
+                label: "Total Rate",
                 backgroundColor: "#15a362",
                 borderColor: "#15a362",
                 data: ["${monthJan}", "${monthFeb}", "${monthMar}", "${monthApr}", "${monthMay}", "${monthJun}", "${monthJul}", "${monthAug}", "${monthSep}", "${monthOct}", "${monthNov}", "${monthDec}"],
@@ -319,7 +348,7 @@
                 yAxes: [{
                     ticks: {
                         min: 0,
-                        max: ${totalAccount},
+                        max: ${maxRateT},
                         maxTicksLimit: 12
                     },
                     gridLines: {
@@ -333,20 +362,22 @@
         }
     });
 </script>
-
 <%--Topic--%>
 <script>
     Chart.defaults.global.defaultFontColor = '#252930';
     var ctx = document.getElementById("topicTotal");
     var myLineChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             datasets: [{
-                label: "Total Topic",
-                backgroundColor: "#15a362",
-                borderColor: "#15a362",
-                data: ["${monthJanTopic}", "${monthFebTopic}", "${monthMarTopic}", "${monthAprTopic}", "${monthMayTopic}", "${monthJunTopic}", "${monthJulTopic}", "${monthAugTopic}", "${monthSepTopic}", "${monthOctTopic}", "${monthNovTopic}", "${monthDecTopic}"],
+                label: "Total Comment",
+                backgroundColor: "rgba(255,99,132,0.2)",
+                borderColor: "rgba(255,99,132,1)",
+                borderWidth: 1,
+                hoverBackgroundColor: "rgba(255,99,132,0.4)",
+                hoverBorderColor: "rgba(255,99,132,1)",
+                data: ["${monthJanT}", "${monthFebT}", "${monthMarT}", "${monthAprT}", "${monthMayT}", "${monthJunT}", "${monthJulT}", "${monthAugT}", "${monthSepT}", "${monthOctT}", "${monthNovT}", "${monthDecT}"],
             }],
         },
         options: {
@@ -365,8 +396,8 @@
                 yAxes: [{
                     ticks: {
                         min: 0,
-                        max: ${totalTopic},
-                        maxTicksLimit: 12
+                        max: ${maxRate},
+                        stepSize: 6
                     },
                     gridLines: {
                         display: true

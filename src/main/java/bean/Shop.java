@@ -13,20 +13,15 @@ import java.sql.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Account {
+public class Shop {
 
+    private int shopId;
     private int accountId;
-    private String name;
-    private String dob;
-    private Boolean gender;
-    private String address;
-    private String role;
-    private String email;
-    private String phoneNumber;
-    private String password;
+    private String shopName;
     private String status;
+    private String address;
+    private String description;
+    private int rate;
     private Date createdDate;
     private Date updatedDate;
-    private String month;
-
 }

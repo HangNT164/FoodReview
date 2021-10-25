@@ -1,7 +1,9 @@
 package bean;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
@@ -9,15 +11,17 @@ import java.sql.Date;
 @Builder
 @Getter
 @Setter
-public class Topic {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Food {
 
-    private int topicId;
-    private String title;
+    private int foodId;
+    private int shopId;
+    private String foodName;
     private String status;
-    private String content;
+    private String description;
     private int rate;
     private Date createdDate;
     private Date updatedDate;
     private String month;
-
 }

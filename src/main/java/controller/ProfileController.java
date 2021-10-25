@@ -20,7 +20,6 @@ public class ProfileController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         request.getRequestDispatcher("account.jsp").forward(request, response);
     }
 
@@ -51,10 +50,6 @@ public class ProfileController extends HttpServlet {
             if (!accountCurrent.getEmail().equals(email) && !accountDao.isDulicapteEmail(email)) {
                 flag =false;
                 request.setAttribute("message1", "Email đã được đăng ký trước đó");
-            }
-            if (!accountCurrent.getPhoneNumber().equals(phone) && !accountDao.isDulicaptePhone(phone)) {
-                flag =false;
-                request.setAttribute("message1", "Số điện thoại đã được đăng ký trước đó");
             }
 
             Account account = Account.builder()

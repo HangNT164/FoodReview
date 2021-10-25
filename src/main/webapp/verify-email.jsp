@@ -24,14 +24,14 @@
                     <p>Food Review</p>
                 </a><br/><br/>
             </div>
-            <form method="POST" action="verify-code" id="verify-code-form">
-                <p style="text-align: center; color: white;font-size: 14px;">Kiểm tra email đã đăng ký để lấy mã gồm 6 chữ số</p>
-                <p style="text-align: center; color: white;font-size: 12px;">${message}</p>
+            <form method="post" action="verify-email" id="verify-code-form">
+                <p style="text-align: center; color: white;font-size: 14px;">Check email get code</p>
+                <p style="text-align: center; color: #eb421c;font-size: 12px;">${message}</p>
                 <div class="form-group">
                     <label>
                         <i style="margin-top: 2px" class="fas fa-code fa-fw"></i>
                     </label>
-                    <input type="text" class="form-control" placeholder="Verify code" name="verifyCode" required/>
+                    <input type="text" class="form-control" placeholder="Verify mail" name="verifyEmail" required/>
                 </div>
                 <div class="form-group">
                     <div class="col">
