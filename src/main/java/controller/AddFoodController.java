@@ -39,7 +39,7 @@ public class AddFoodController extends HttpServlet {
             boolean addFood = foodDao.addFood(food);
             if (!addFood) {
                 request.setAttribute("message", "Tạo đồ ăn mới thất bại");
-                request.getRequestDispatcher("food.jsp").forward(request, response);
+                request.getRequestDispatcher("food-management.jsp").forward(request, response);
             }
             response.sendRedirect("food-management");
         }

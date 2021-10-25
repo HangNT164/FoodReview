@@ -29,7 +29,7 @@ public class FoodManagementController extends HttpServlet {
             Account accountCurrent = (Account) session.getAttribute("account");
             List<Shop> listShopByAccount = shopDao.getListShopByAccountAndActive(accountCurrent.getAccountId());
             request.setAttribute("listShopByAccount", listShopByAccount);
-            request.getRequestDispatcher("food.jsp").forward(request, response);
+            request.getRequestDispatcher("food-management.jsp").forward(request, response);
         }
     }
 }
