@@ -198,9 +198,6 @@
                                                                     <div class="col-md-10">
                                                                         <label>Description: </label>
                                                                         <textarea style="margin-left: 60px" name="description" class="form-control"></textarea>
-<%--                                                                        <input style="margin-left: 60px" type="textarea"--%>
-<%--                                                                               name="description"--%>
-<%--                                                                               class="form-control"/>--%>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -502,7 +499,6 @@
     </div>
 </footer>
 <!--//app-footer-->
-</div>
 <!--//app-wrapper-->
 <!-- Javascript -->
 <script src="resources/js/plugin/jquery-3.3.1.slim.min.js " type="text/javascript "></script>
@@ -520,19 +516,16 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
 <script>
-    $(document).ready(function () {
-        $('#user-management-table').DataTable();
-    });
     function validateAddForm() {
         if (document.getElementById('add-name').value == "") {
             document.getElementById('add-name').style.borderColor = 'red'
             document.getElementById('add-name-message').style.display = 'block'
             document.getElementById('add-name-message').innerHTML = 'Tên không được để trống'
             return false;
-        } else if (document.getElementById('add-name').value.length > 255) {
+        } else if (document.getElementById('add-name').value.length > 100) {
             document.getElementById('add-name').style.borderColor = 'red'
             document.getElementById('add-name-message').style.display = 'block'
-            document.getElementById('add-name-message').innerHTML = 'Tên không được dài quá 255 ký tự'
+            document.getElementById('add-name-message').innerHTML = 'Tên không được dài quá 100 ký tự'
         } else {
             document.getElementById('add-name').style.borderColor = '#e7e9ed'
             document.getElementById('add-name-message').style.display = 'none'

@@ -520,10 +520,10 @@
             document.getElementById('add-title-message').style.display = 'block'
             document.getElementById('add-title-message').innerHTML = 'Tên không được để trống'
             return false;
-        } else if (document.getElementById('add-title').value.length > 255) {
+        } else if (document.getElementById('add-title').value.length > 100) {
             document.getElementById('add-title').style.borderColor = 'red'
             document.getElementById('add-title-message').style.display = 'block'
-            document.getElementById('add-title-message').innerHTML = 'Tên không được dài quá 255 ký tự'
+            document.getElementById('add-title-message').innerHTML = 'Tên không được dài quá 100 ký tự'
         } else {
             document.getElementById('add-title').style.borderColor = '#e7e9ed'
             document.getElementById('add-title-message').style.display = 'none'
