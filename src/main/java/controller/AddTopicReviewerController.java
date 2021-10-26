@@ -1,5 +1,6 @@
 package controller;
 
+import bean.Account;
 import bean.Topic;
 import dao.TopicDao;
 import org.apache.commons.fileupload.FileItem;
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,6 +36,8 @@ public class AddTopicReviewerController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try (PrintWriter out = response.getWriter()) {
+            HttpSession session = request.getSession();
+            Account accountCurrent = (Account) session.getAttribute("account");
             boolean isMultiPart = ServletFileUpload.isMultipartContent(request);
             if (!isMultiPart) {
                 System.out.println("Error");
@@ -86,6 +90,7 @@ public class AddTopicReviewerController extends HttpServlet {
                         .content(content)
                         .image(lsFileName)
                         .status("pending")
+                        .accountId(accountCurrent.getAccountId())
                         .build();
                 boolean addTopic = topicDao.addTopicReviewer(topic);
                 if (!addTopic) {

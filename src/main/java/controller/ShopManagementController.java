@@ -69,7 +69,6 @@ public class ShopManagementController extends HttpServlet {
             }
         }
 
-
         request.setAttribute("monthJan", rateMonth[0]);
         request.setAttribute("monthFeb", rateMonth[1]);
         request.setAttribute("monthMar", rateMonth[2]);
