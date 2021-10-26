@@ -172,7 +172,7 @@ public class TopicDao {
 
     public boolean addTopicReviewer(Topic topic) {
         int check = 0;
-        String query = "INSERT INTO topic (`title`, `status`,`content`, `image`,`month`) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO topic (`title`, `status`,`content`, `image`,`month`,`account_id`) VALUES (?,?,?,?,?,?)";
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
@@ -181,6 +181,7 @@ public class TopicDao {
                 ps.setObject(3, topic.getContent());
                 ps.setObject(4, topic.getImage());
                 ps.setObject(5, currentMonth());
+                ps.setObject(6, topic.getAccountId());
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {

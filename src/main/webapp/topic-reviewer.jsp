@@ -80,7 +80,7 @@
     <div class="container">
         <div style="display: flex;justify-content: center;">
             <h3>Add Topic</h3>
-            <form action="add-topic-reviewer" method="post" enctype="multipart/form-data" style="margin-top: 50px;">
+            <form action="add-topic-reviewer" method="POST" enctype="multipart/form-data" style="margin-top: 50px;">
                 <div class="row">
                     <label for="title">Title: </label>
                     <input style="margin-left: 60px;" type="text"
@@ -102,6 +102,7 @@
                 <div class="row">
                     <label for="fileName">Choose Image:</label>
                     <input style="margin-left: 60px;" id="fileName" type="file" name="fileName" size="30" required
+                           accept="image/*"
                            class="form-control"/>
                 </div>
                 <br/>

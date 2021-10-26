@@ -20,5 +20,6 @@ public class Topic {
     private Date updatedDate;
     private String month;
     private String image;
+    private int accountId;
 
 }

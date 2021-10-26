@@ -18,6 +18,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
@@ -268,7 +271,6 @@
       <workItem from="1632747567989" duration="1900000" />
       <workItem from="1632763111117" duration="409000" />
       <workItem from="1632763947491" duration="38606000" />
-      <workItem from="1635227348751" duration="1031000" />
     </task>
     <task id="LOCAL-00001" summary="Innit">
       <created>1632732475089</created>
