@@ -39,6 +39,7 @@
                     </a>
                     <ul class="nav">
                         <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="add-topic-reviewer">Topic</a></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
                         <li class="scroll-to-section"><a href="#menu">Menu</a></li>
                         <li class="scroll-to-section"><a href="#">Contact Us</a></li>
