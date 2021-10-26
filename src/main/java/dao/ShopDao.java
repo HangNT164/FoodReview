@@ -1,6 +1,7 @@
 package dao;
 
 import bean.Shop;
+import bean.Topic;
 import jdbc.MySqlConnection;
 
 import java.sql.Connection;
@@ -8,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ShopDao {
@@ -33,6 +35,24 @@ public class ShopDao {
 
     public List<Shop> getListShopByAccountAndActive(int accountId) {
         String query = "SELECT * FROM swp391_g2_project.shop where status = 'active' and account_id = " + accountId;
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Shop> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueShop(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public List<Shop> getListShopByNameAndStatus(String shopName, String status) {
+        String query = "SELECT * FROM swp391_g2_project.shop where shop_name like '%"+ shopName +"%' and status like '%"+ status +"%' and status not like 'deleted'";
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
@@ -79,6 +99,51 @@ public class ShopDao {
                 ps.setObject(2, shop.getShopName());
                 ps.setObject(3, shop.getAddress());
                 ps.setObject(4, shop.getDescription());
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
+
+    public boolean updateShop(int shopId, Shop shop) {
+        int check = 0;
+        String query = "UPDATE shop SET " +
+                "shop_name = ? " +
+                ", address = ? " +
+                ", description = ? " +
+                ", status = ? " +
+                ", updated_date = ? " +
+                "WHERE shop_id = ? ";
+        try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, shop.getShopName());
+                ps.setObject(2, shop.getAddress());
+                ps.setObject(3, shop.getDescription());
+                ps.setObject(4, shop.getStatus());
+                ps.setObject(5, new Date());
+                ps.setObject(6, shopId);
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
+
+    public boolean removeShop(int shopId) {
+        int check = 0;
+        String query = "UPDATE shop SET status = ?, updated_date = ?"
+                + "WHERE shop_id = ?";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
+            if (ps != null) {
+                ps.setObject(1, "deleted");
+                ps.setObject(2, new Date());
+                ps.setObject(3, shopId);
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {

@@ -164,9 +164,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <div>
-                                    <a href="#" class="view mr-1" data-toggle="modal"
-                                       data-target="#add-food" title="Add topic" style="text-decoration: none">
-                                        <i class="fas fa-plus"></i><span>Add new </span></a>
+                                    <button type="button" data-bs-toggle="modal" class="btn btn-success"
+                                            data-bs-target="#add-food">
+                                        Add new
+                                    </button>
                                     <%-- Su kien add--%>
                                     <div class="modal fade" id="add-food" tabindex="-1"
                                          role="dialog" aria-labelledby="add-food"
@@ -188,7 +189,7 @@
                                                                                name="name"
                                                                                class="form-control"/>
                                                                         <span id="add-name-message"
-                                                                              style="display: none; color: red; font-size: 14px; text-align: center">Tên không được để trống</span>
+                                                                              style="display: none; color: red; font-size: 14px; text-align: center"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -196,9 +197,7 @@
                                                                 <div class="form-group">
                                                                     <div class="col-md-10">
                                                                         <label>Description: </label>
-                                                                        <input style="margin-left: 60px" type="text"
-                                                                               name="description"
-                                                                               class="form-control"/>
+                                                                        <textarea style="margin-left: 60px" name="description" class="form-control"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -228,6 +227,7 @@
                                                                 <button type="button"
                                                                         style="border: 1px solid;"
                                                                         class="btn btn-outline-success"
+                                                                        data-bs-dismiss="modal"
                                                                         data-dismiss="modal">Close
                                                                 </button>
                                                             </div>
@@ -499,7 +499,6 @@
     </div>
 </footer>
 <!--//app-footer-->
-</div>
 <!--//app-wrapper-->
 <!-- Javascript -->
 <script src="resources/js/plugin/jquery-3.3.1.slim.min.js " type="text/javascript "></script>
@@ -517,14 +516,16 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
 <script>
-    $(document).ready(function () {
-        $('#user-management-table').DataTable();
-    });
     function validateAddForm() {
         if (document.getElementById('add-name').value == "") {
             document.getElementById('add-name').style.borderColor = 'red'
             document.getElementById('add-name-message').style.display = 'block'
+            document.getElementById('add-name-message').innerHTML = 'Tên không được để trống'
             return false;
+        } else if (document.getElementById('add-name').value.length > 100) {
+            document.getElementById('add-name').style.borderColor = 'red'
+            document.getElementById('add-name-message').style.display = 'block'
+            document.getElementById('add-name-message').innerHTML = 'Tên không được dài quá 100 ký tự'
         } else {
             document.getElementById('add-name').style.borderColor = '#e7e9ed'
             document.getElementById('add-name-message').style.display = 'none'
