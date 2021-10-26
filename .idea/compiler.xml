@@ -8,7 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="FoodReview" />
-       <module name="food.review" />
+        <module name="anest.core2" />
+        <module name="anest.boarding.house" />
+        <module name="boarding-house-backend" />
+        <module name="boarding-house-backend-develop" />
       </profile>
     </annotationProcessing>
   </component>
