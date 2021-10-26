@@ -19,5 +19,6 @@ public class Topic {
     private Date createdDate;
     private Date updatedDate;
     private String month;
+    private String image;
 
 }
