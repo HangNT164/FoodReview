@@ -19,12 +19,13 @@ public class ShopController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String shopName = request.getParameter("name");
+        String status = request.getParameter("status");
 
         List<Shop> listShop;
-        if (shopName == null) {
-            listShop = shopDao.getListShopByName("");
+        if (shopName == null || status == null) {
+            listShop = shopDao.getListShopByNameAndStatus("" , "");
         } else {
-            listShop = shopDao.getListShopByName(shopName);
+            listShop = shopDao.getListShopByNameAndStatus(shopName, status);
         }
         request.setAttribute("listShopByName", listShop);
         request.getRequestDispatcher("shop-management.jsp").forward(request, response);

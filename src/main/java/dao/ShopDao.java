@@ -51,8 +51,8 @@ public class ShopDao {
         return null;
     }
 
-    public List<Shop> getListShopByName(String shopName) {
-        String query = "SELECT * FROM swp391_g2_project.shop where shop_name like '%" + shopName + "%' and status not like \"deleted\"";
+    public List<Shop> getListShopByNameAndStatus(String shopName, String status) {
+        String query = "SELECT * FROM swp391_g2_project.shop where shop_name like '%"+ shopName +"%' and status like '%"+ status +"%' and status not like 'deleted'";
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {

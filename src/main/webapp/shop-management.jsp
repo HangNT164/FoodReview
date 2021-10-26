@@ -240,8 +240,20 @@
                                         <div class="row" style="padding: 0px;margin: 0px;">
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <label for="name">Shop name:</label>
+                                                    <label for="name">Shop name: </label>
                                                     <input id="name" name="name" type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="name">Status: </label>
+                                                    <select id="status" class="form-control"
+                                                            name="status">
+                                                        <option value="">All
+                                                        </option>
+                                                        <option value="active">Active</option>
+                                                        <option value="inactive">Inactive</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-1" style="margin-top: 30px;">
