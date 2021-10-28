@@ -110,7 +110,7 @@
                             <div class="col-md-12">
                                 <div class="tab-content profile-tab p-1" id="myTabContent">
                                     <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <form action="profile" method="post">
+                                        <form action="update-profile" method="post">
                                             <p style="text-align: center;color: red;">${message1}</p>
                                             <div class="row">
                                                 <div class="form-group">

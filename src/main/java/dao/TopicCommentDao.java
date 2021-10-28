@@ -14,16 +14,19 @@ import java.util.Date;
 import java.util.List;
 
 public class TopicCommentDao {
+    private AccountDao accountDao = new AccountDao();
     private TopicComment getValueTopicComment(ResultSet rs){
         try {
             return TopicComment.builder()
                     .topicCommentId(rs.getInt(1))
                     .topicId(rs.getInt(2))
-                    .status(rs.getString(3))
-                    .content(rs.getString(4))
-                    .rate(rs.getInt(5))
-                    .createdDate(rs.getDate(6))
-                    .updatedDate(rs.getDate(7))
+                    .accountId(rs.getInt(3))
+                    .accountName(accountDao.getAccountNameById(rs.getInt(3)))
+                    .status(rs.getString(4))
+                    .content(rs.getString(5))
+                    .rate(rs.getInt(6))
+                    .createdDate(rs.getDate(7))
+                    .updatedDate(rs.getDate(8))
                     .build();
         } catch (SQLException e){
             e.printStackTrace(System.out);

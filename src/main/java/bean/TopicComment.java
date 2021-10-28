@@ -12,6 +12,8 @@ import java.sql.Date;
 public class TopicComment {
     private int topicCommentId;
     private int topicId;
+    private int accountId;
+    private String accountName;
     private String status;
     private String content;
     private int rate;

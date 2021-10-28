@@ -129,8 +129,7 @@
                 <div class="left-text-content">
                     <div class="section-heading">
                         <h6>New Post</h6>
-                        <form id="linkForm" action="topic-detail" method="post">
-                            <input type="text" name="topicId" hidden="true" value="${top1.topicId}"/>
+                        <form id="linkForm" action="topic-detail?topicId=${top1.topicId}" method="post">
                             <a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="font-family: none;"><h2>${top1.title}</h2></a>
                         </form>
                     </div>
@@ -142,9 +141,6 @@
                     <h5>Rate: ${top1.rate}</h5>
                     <br>
                     <br>
-                    <!--<i>Địa chỉ: 459-461 Lê Đại Hành, Quận 11
-                        <br>Giờ mở cửa: 9.00-19.00
-                        <br>Giá: 35.000VND</i>-->
                     <div class="row">
                         <div class="col-4">
                             <img src="resources/images/home/about-thumb-01.jpg" alt="">
@@ -197,9 +193,8 @@
                             <div class="price"><h6>${l.rate} <i class="fas fa-heart fw"></i></h6></div>
                             <div class='info'>
                                 <h1 class='title'>
-                                    <form id="linkForm" action="topic-detail" method="post">
-                                      <input type="text" name="topicId" hidden="true" value="${l.topicId}"/>
-                                      <a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="font-family: none;"><h2>${l.title}</h2></a>
+                                    <form id="linkForm${l.topicId}" action="topic-detail?topicId=${l.topicId}" method="post">
+                                      <a href="javascript:{}" onclick="document.getElementById('linkForm${l.topicId}').submit();" style="font-family: none; color:black;"><h2>${l.title}</h2></a>
                                     </form>
                                 </h1>
                                 <p class="description" style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>

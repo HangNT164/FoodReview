@@ -1,7 +1,7 @@
 package dao;
 
 import bean.Account;
-import constant.StatusEnum;
+import constant.StatusAccountEnum;
 import jdbc.MySqlConnection;
 import util.BCrypt;
 
@@ -100,6 +100,25 @@ public class AccountDao {
         return null;
     }
 
+    public String getAccountNameById(int id) {
+        String query = "SELECT * FROM account WHERE account_id = "+id;
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                Account account = null;
+                while (rs != null && rs.next()) {
+                    account = getValueAccount(rs);
+                }
+                return account.getName();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
     public boolean changeRoleAccount(int accountId, String role) {
         int check = 0;
         String query = "UPDATE account SET role = ? , updated_date =?"
@@ -111,7 +130,7 @@ public class AccountDao {
                 ps.setObject(1, role);
                 ps.setObject(2, new Date());
                 ps.setObject(3, accountId);
-                ps.setObject(4, StatusEnum.active.toString());
+                ps.setObject(4, StatusAccountEnum.active.toString());
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {

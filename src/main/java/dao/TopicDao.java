@@ -31,7 +31,7 @@ public class TopicDao {
     }
 
     public Topic getLastestPost() {
-        String query = "SELECT * FROM swp391_g2_project.topic where status = \"approved\" ORDER BY created_date DESC LIMIT 1 ;";
+        String query = "SELECT * FROM swp391_g2_project.topic where status NOT LIKE 'reject' ORDER BY created_date DESC LIMIT 1 ;";
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
@@ -51,7 +51,7 @@ public class TopicDao {
         return null;
     }
     public Topic getPostById(int id){
-        String query = "SELECT * FROM swp391_g2_project.topic WHERE status = \"approved\" AND topic_id = "+id+" ;";
+        String query = "SELECT * FROM swp391_g2_project.topic WHERE status NOT LIKE 'reject' AND topic_id = "+id+" ;";
         try(Connection con = MySqlConnection.getConnection();
             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;){
             if(ps!=null){
@@ -88,9 +88,16 @@ public class TopicDao {
         }
         return null;
     }
-    public List<Topic> getTopicsByIndexAndSearchString(String search, int index, float rateMin, float rateMax) {
-        String query = "SELECT * FROM topic WHERE status like '%approved%' AND title like '%"+search+"%' " +
-                "AND rate BETWEEN "+rateMin+" AND "+rateMax+" LIMIT "+((index-1)*8)+", 8";
+    public List<Topic> getTopicsByIndexAndSearchString(String search, int index, String sortType) {
+        String query = "";
+        if(sortType.equalsIgnoreCase("name")){
+            query = "SELECT * FROM topic WHERE status NOT LIKE 'reject' AND title like '%"+search+"%' " +
+                    " ORDER BY title ASC LIMIT "+((index-1)*8)+", 8";
+        }
+        else{
+            query = "SELECT * FROM topic WHERE status NOT LIKE 'reject' AND title like '%"+search+"%' " +
+                    " ORDER BY rate DESC LIMIT "+((index-1)*8)+", 8";
+        }
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
@@ -107,8 +114,8 @@ public class TopicDao {
         }
         return null;
     }
-    public int getTotalTopics(String search, float rateMin, float rateMax) {
-        String query = "SELECT COUNT(*) FROM topic WHERE title like '%"+search+"%' AND rate BETWEEN "+ rateMin+" AND "+rateMax;
+    public int getTotalTopics(String search) {
+        String query = "SELECT COUNT(*) FROM topic WHERE title like '%"+search+"%';";
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
@@ -126,7 +133,7 @@ public class TopicDao {
         return -1;
     }
     public List<Topic> getListTopic(){
-        String query = "SELECT * FROM swp391_g2_project.topic where status like \"approved\";";
+        String query = "SELECT * FROM swp391_g2_project.topic where status NOT LIKE 'reject';";
         try(Connection con = MySqlConnection.getConnection();
             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;){
             if(ps!=null){

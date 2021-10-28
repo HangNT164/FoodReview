@@ -46,38 +46,13 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="home.jsp" class="logo">
+                    <a href="#" class="logo">
                         <img height="80px" width="120px" src="resources/images/home/logo.png">
                     </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
-
-                        <!--
-                            <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
-                                <ul>
-                                    <li><a href="#">Drop Down Page 1</a></li>
-                                    <li><a href="#">Drop Down Page 2</a></li>
-                                    <li><a href="#">Drop Down Page 3</a></li>
-                                </ul>
-                            </li>
-                        -->
                         <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                        <!-- <li class="scroll-to-section"><a href="#chefs">Chefs</a></li>
-                        <li class="submenu">
-                            <a href="javascript:;">Features</a>
-                            <ul>
-                                <li><a href="#">Features Page 1</a></li>
-                                <li><a href="#">Features Page 2</a></li>
-                                <li><a href="#">Features Page 3</a></li>
-                                <li><a href="#">Features Page 4</a></li>
-                            </ul>
-                        </li> -->
-                        <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                         <li class="scroll-to-section"><a href="#">Contact Us</a></li>
                         <li class="scroll-to-section">
                             <% if (session.getAttribute("account") == null) {%>
@@ -93,7 +68,11 @@
                                     <a href="logout">Log out</a>
                                 </div>
                             </div>
-
+                            <%}%>
+                        </li>
+                        <li class="scroll-to-section">
+                            <% if (session.getAttribute("account") == null) {%>
+                            <a href="register">Sign up</a>
                             <%}%>
                         </li>
                     </ul>
@@ -105,7 +84,7 @@
             </div>
         </div>
     </div>
-</header>
+</header>r
 <!-- ***** Header Area End ***** -->
 
 <!-- ***** Main Banner Area Start ***** -->
@@ -166,8 +145,9 @@
                 <input class="form-control col-4" type="text"  name="search" placeholder="search..." value="${search}" onfocus="document.getElementById('type').value = 'search';"/>
                 <input hidden="true" id="type" name="type" value="move"/>
                 <button type="submit" class="btn btn-primary col-1" onclick="document.getElementById('type').value = 'search';"><i class="fa fa-search"></i></button>
-                <input class="form-control col-1" type="number" step="0.01" name="rateMin" value="${rateMin}"/>
-                <input class="form-control col-1" type="number" step="0.01" name="rateMax" value="${rateMax}"/>
+                <input hidden="true" id="sortType" name="sortType" value="${sortType}"/>
+                <button type="submit" class="btn" onclick="document.getElementById('sortType').value = 'name';">Order By Name</button>
+                <button type="submit" class="btn" onclick="document.getElementById('sortType').value = 'rate';">Order By Rate</button>
             </div>
 
             <div class="row">
@@ -185,7 +165,7 @@
                                 <p style="white-space: pre-line;">${l.content}</p>
                                 <br>
                                 <br>
-                                <h5>Rate: ${l.rate}</h5>
+                                <h6>Rate: ${l.rate}</h6>
                             </div>
                         </div>
                     </div>

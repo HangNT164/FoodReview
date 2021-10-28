@@ -45,38 +45,13 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="home.jsp" class="logo">
+                    <a href="#" class="logo">
                         <img height="80px" width="120px" src="resources/images/home/logo.png">
                     </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
-
-                        <!--
-                            <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
-                                <ul>
-                                    <li><a href="#">Drop Down Page 1</a></li>
-                                    <li><a href="#">Drop Down Page 2</a></li>
-                                    <li><a href="#">Drop Down Page 3</a></li>
-                                </ul>
-                            </li>
-                        -->
                         <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                        <!-- <li class="scroll-to-section"><a href="#chefs">Chefs</a></li>
-                        <li class="submenu">
-                            <a href="javascript:;">Features</a>
-                            <ul>
-                                <li><a href="#">Features Page 1</a></li>
-                                <li><a href="#">Features Page 2</a></li>
-                                <li><a href="#">Features Page 3</a></li>
-                                <li><a href="#">Features Page 4</a></li>
-                            </ul>
-                        </li> -->
-                        <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                         <li class="scroll-to-section"><a href="#">Contact Us</a></li>
                         <li class="scroll-to-section">
                             <% if (session.getAttribute("account") == null) {%>
@@ -92,7 +67,11 @@
                                     <a href="logout">Log out</a>
                                 </div>
                             </div>
-
+                            <%}%>
+                        </li>
+                        <li class="scroll-to-section">
+                            <% if (session.getAttribute("account") == null) {%>
+                            <a href="register">Sign up</a>
                             <%}%>
                         </li>
                     </ul>
@@ -161,17 +140,14 @@
             <div class="col-lg-6 col-md-6 col-xs-12">
                 <div class="left-text-content">
                     <div class="section-heading">
-                        <h2>${topic.title}</h2>
+                        <h1 style="font-family: none;">${topic.title}</h1>
                     </div>
-                    <p>${topic.createdDate}</p>
+                    <p>Created date ${topic.createdDate}</p>
                     <br>
                     <h5 style="white-space: pre-line; font-weight:normal;">${topic.content}
                     </h5>
                     <br>
                     <h5>Rate: ${topic.rate}</h5>
-                    <!--<i>Địa chỉ: 459-461 Lê Đại Hành, Quận 11
-                        <br>Giờ mở cửa: 9.00-19.00
-                        <br>Giá: 35.000VND</i>-->
                     <div class="row">
                         <div class="col-4">
                             <img src="resources/images/home/about-thumb-01.jpg" alt="">
@@ -196,13 +172,14 @@
         </div>
         <br>
         <div class="row">
+            <h2>Comments</h2>
             <div class="col-lg-10 col-md-10 col-xs-10">
                 <div class="left-text-content">
                     <c:forEach items="${topicCommentList}" var="t">
                         <br>
                         <div class="section-heading">
                             <hr>
-                            <h5>Anonymous</h5>
+                            <h5>${t.accountName}</h5>
                             <p>Rate: ${t.rate}</p>
                             <p style="white-space: pre-line; padding-left: 5%;">${t.content}
                             </p>

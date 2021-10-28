@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -323,15 +324,15 @@
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
-                                                                                        <label>Date of Birth</label>
-                                                                                        <span class="form-control">${a.updatedDate}</span>
+                                                                                        <label>Created Date</label>
+                                                                                        <span class="form-control"><fmt:formatDate pattern = "dd/MM/yyyy" value = "${a.createdDate}" /></span>
                                                                                     </div>
                                                                                 </div>
 
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label>Updated Date </label>
-                                                                                        <span class="form-control">${a.updatedDate}</span>
+                                                                                        <span class="form-control"><fmt:formatDate pattern = "dd/MM/yyyy" value = "${a.updatedDate}" /></span>
                                                                                     </div>
                                                                                 </div>
 
