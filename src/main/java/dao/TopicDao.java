@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 public class TopicDao {
+    private AccountDao accountDao = new AccountDao();
     private Topic getValueTopic(ResultSet rs) {
         try {
             return Topic.builder()
@@ -21,8 +22,12 @@ public class TopicDao {
                     .status(rs.getString(3))
                     .content(rs.getString(4))
                     .rate(rs.getInt(5))
-                    .createdDate(rs.getDate(6))
-                    .updatedDate(rs.getDate(7))
+                    .imgAddr(rs.getString(6))
+                    .createdDate(rs.getDate(7))
+                    .updatedDate(rs.getDate(8))
+                    .month(rs.getString(9))
+                    .accountId(rs.getInt(10))
+                    .accountName(accountDao.getAccountNameById(rs.getInt(10)))
                     .build();
         } catch (SQLException e) {
             e.printStackTrace(System.out);

@@ -16,8 +16,11 @@ public class Topic {
     private String status;
     private String content;
     private int rate;
+    private String imgAddr;
     private Date createdDate;
     private Date updatedDate;
     private String month;
+    private int accountId;
+    private String accountName;
 
 }

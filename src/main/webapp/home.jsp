@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -125,40 +126,22 @@
 <section class="section" id="about">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="col-12">
                 <div class="left-text-content">
                     <div class="section-heading">
                         <h6>New Post</h6>
                         <form id="linkForm" action="topic-detail?topicId=${top1.topicId}" method="post">
-                            <a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="font-family: none;"><h2>${top1.title}</h2></a>
+                            <a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="font-family: none;"><h1 style="color:black;">${top1.title}</h1></a>
                         </form>
                     </div>
-                    <p>${top1.createdDate}</p>
+                    <span><b>Author:</b> ${top1.accountName} | <fmt:formatDate pattern = "dd/MM/yyyy" value = "${top1.createdDate}" />. </span>
+                    <span><b>Rate:</b> ${top1.rate}</span>
+                    <br>
                     <br>
                     <h5 style="white-space: pre-line; font-weight:normal;">${top1.content}
                     <br>
-                    </h5>
-                    <h5>Rate: ${top1.rate}</h5>
-                    <br>
-                    <br>
                     <div class="row">
-                        <div class="col-4">
-                            <img src="resources/images/home/about-thumb-01.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img src="resources/images/home/about-thumb-02.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img src="resources/images/home/about-thumb-03.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-xs-12">
-                <div class="right-content">
-                    <div class="thumb">
-                        <a rel="nofollow" href="http://youtube.com"><i class="fa fa-play"></i></a>
-                        <img src="resources/images/home/about-video-bg.jpg" alt="">
+                        <img src="resources/images/topics/${top1.imgAddr}" alt=""/>
                     </div>
                 </div>
             </div>

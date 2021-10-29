@@ -152,19 +152,20 @@
 
             <div class="row">
                 <c:forEach items="${topicList}" var="l" varStatus="loop">
-                    <div class="col-6 border-bottom border-right rounded">
+                    <div class="col-6 border-bottom rounded">
                         <br>
                         <br>
                         <h2><a href="javascript:{}" onclick="document.getElementById('topicId').value = ${l.topicId}; document.getElementById('linkForm').submit();" style="color: black;">${l.title}</a></h2>
-
+                        <hr>
                         <div class="row">
                             <div class="col-6">
                                 <img src="resources/images/home/about-thumb-01.jpg" alt="">
                             </div>
-                            <div class="col-6">
+                            <div class="col-6 border-right rounded">
                                 <p style="white-space: pre-line;">${l.content}</p>
                                 <br>
                                 <br>
+                                <h6>Author: ${l.accountName}</h6>
                                 <h6>Rate: ${l.rate}</h6>
                             </div>
                         </div>

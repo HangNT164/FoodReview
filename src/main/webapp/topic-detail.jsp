@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -137,53 +138,52 @@
 <section class="section" id="about">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-xs-12">
                 <div class="left-text-content">
                     <div class="section-heading">
                         <h1 style="font-family: none;">${topic.title}</h1>
                     </div>
-                    <p>Created date ${topic.createdDate}</p>
+                    <br>
+                    <span><b>Author:</b> ${topic.accountName} | <fmt:formatDate pattern = "dd/MM/yyyy" value = "${topic.createdDate}" />. </span>
+                    <span><b>Rate:</b> ${topic.rate}</span>
+                    <br>
                     <br>
                     <h5 style="white-space: pre-line; font-weight:normal;">${topic.content}
                     </h5>
                     <br>
-                    <h5>Rate: ${topic.rate}</h5>
                     <div class="row">
-                        <div class="col-4">
-                            <img src="resources/images/home/about-thumb-01.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img src="resources/images/home/about-thumb-02.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img src="resources/images/home/about-thumb-03.jpg" alt="">
-                        </div>
+                        <img src="resources/images/topics/${topic.imgAddr}" alt=""/>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-xs-12">
+            <!--<div class="col-lg-6 col-md-6 col-xs-12">
                 <div class="right-content">
                     <div class="thumb">
                         <a rel="nofollow" href="http://youtube.com"><i class="fa fa-play"></i></a>
                         <img src="resources/images/home/about-video-bg.jpg" alt="">
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         <br>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
         <div class="row">
             <h2>Comments</h2>
-            <div class="col-lg-10 col-md-10 col-xs-10">
+        </div>
+        <div class="row">
+            <div class="col-1">
+            </div>
+            <div class="col-10">
                 <div class="left-text-content">
                     <c:forEach items="${topicCommentList}" var="t">
                         <br>
                         <div class="section-heading">
-                            <hr>
                             <h5>${t.accountName}</h5>
                             <p>Rate: ${t.rate}</p>
                             <p style="white-space: pre-line; padding-left: 5%;">${t.content}
                             </p>
                             <p> Create date: ${t.createdDate}</p>
+                            <hr>
                         </div>
                     </c:forEach>
                 </div>
@@ -215,9 +215,8 @@
                             <div class="price"><h6>${l.rate} <i class="fas fa-heart fw"></i></h6></div>
                             <div class='info'>
                                 <h1 class='title'>
-                                    <form id="linkForm" action="topic-detail" method="post">
-                                      <input type="text" name="topicId" hidden="true" value="${l.topicId}"/>
-                                      <a href="javascript:{}" style="color: black;" onclick="document.getElementById('linkForm').submit();" style="font-family: none;"><h2>${l.title}</h2></a>
+                                    <form id="linkForm${l.topicId}" action="topic-detail?topicId=${l.topicId}" method="post">
+                                      <a href="javascript:{}" onclick="document.getElementById('linkForm${l.topicId}').submit();" style="font-family: none; color:black;"><h2>${l.title}</h2></a>
                                     </form>
                                 </h1>
                                 <p class="description" style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>

@@ -111,7 +111,10 @@ public class AccountDao {
                 while (rs != null && rs.next()) {
                     account = getValueAccount(rs);
                 }
-                return account.getName();
+                if(account == null)
+                    return "Unknown";
+                else
+                    return  account.getName();
             }
         } catch (Exception e) {
             e.printStackTrace(System.out);
