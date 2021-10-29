@@ -415,6 +415,8 @@
                                                                                            name="shopName"
                                                                                            value="${shop.shopName}"
                                                                                     />
+                                                                                    <span id="update-name-message"
+                                                                                          style="display: none; color: red; font-size: 14px; text-align: center"></span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -466,6 +468,7 @@
                                                                                 <button type="button"
                                                                                         style="border: 1px solid;"
                                                                                         class="btn btn-outline-success"
+                                                                                        data-bs-dismiss="modal"
                                                                                         data-dismiss="modal">Close
                                                                                 </button>
                                                                             </div>
@@ -572,6 +575,7 @@
             document.getElementById('update-shop-name').style.borderColor = 'red'
             document.getElementById('update-name-message').style.display = 'block'
             document.getElementById('update-name-message').innerHTML = 'Tên không được dài quá 100 ký tự'
+            return false;
         } else {
             document.getElementById('update-shop-name').style.borderColor = '#e7e9ed'
             document.getElementById('update-name-message').style.display = 'none'
