@@ -22,10 +22,22 @@ public class ShopController extends HttpServlet {
         String status = request.getParameter("status");
 
         List<Shop> listShop;
-        if (shopName == null || status == null) {
-            listShop = shopDao.getListShopByNameAndStatus("" , "");
+        if (shopName != null && status != null) {
+            if (status.equals("")) {
+                listShop = shopDao.getListShopByName(shopName);
+            } else {
+                listShop = shopDao.getListShopByNameAndStatus(shopName, status);
+            }
+        } else if (shopName == null && status != null) {
+            if (status.equals("")) {
+                listShop = shopDao.getListShopByName("");
+            } else {
+                listShop = shopDao.getListShopByNameAndStatus("", status);
+            }
+        } else if (shopName != null) {
+            listShop = shopDao.getListShopByName(shopName);
         } else {
-            listShop = shopDao.getListShopByNameAndStatus(shopName, status);
+            listShop = shopDao.getListShopByName("");
         }
         request.setAttribute("listShopByName", listShop);
         request.getRequestDispatcher("shop-management.jsp").forward(request, response);
