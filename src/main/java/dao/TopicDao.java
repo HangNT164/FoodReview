@@ -22,18 +22,12 @@ public class TopicDao {
                     .status(rs.getString(3))
                     .content(rs.getString(4))
                     .rate(rs.getInt(5))
-<<<<<<< HEAD
-                    .image(rs.getString(6))
-                    .createdDate(rs.getDate(7))
-                    .updatedDate(rs.getDate(8))
-=======
                     .imgAddr(rs.getString(6))
                     .createdDate(rs.getDate(7))
                     .updatedDate(rs.getDate(8))
                     .month(rs.getString(9))
                     .accountId(rs.getInt(10))
                     .accountName(accountDao.getAccountNameById(rs.getInt(10)))
->>>>>>> e0ed5241d9b1ba0fec9ce3eb834b92cc4de4a237
                     .build();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
