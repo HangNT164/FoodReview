@@ -30,12 +30,13 @@ CREATE TABLE `shop` (
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `rate` int DEFAULT NULL,
+  `total_number_rate` int DEFAULT NULL,
   `created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`shop_id`),
   KEY `account_id` (`account_id`),
   CONSTRAINT `shop_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +45,7 @@ CREATE TABLE `shop` (
 
 LOCK TABLES `shop` WRITE;
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
-INSERT INTO `shop` VALUES (12,3,'shop1','active','abcd1','abcd11',3,'2021-10-26 13:34:45','2021-10-26 13:34:45'),(13,3,'shop2','active','abcd1','abcd1',2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(14,3,'shop3','active','abcd1','abcd1',1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(15,3,'shop4','active','abcd1','abcd1',1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(16,3,'shop5','active','abcd1','abcd1',1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(17,3,'shop6','active','abcd1','abcd1',2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(18,3,'shop7','active','abcd1','abcd1',3,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(19,3,'shop8','active','abcd1','abcd1',4,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(20,3,'shop9','active','abcd1','abcd1',5,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(21,3,'shop10','active','abcd1','abcd1',2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(22,3,'shop11','active','abcd1','abcd1',4,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(23,3,'shop12','active','abcd1','abcd1',3,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(24,3,'shop13','active','abcd1','abcd1',2,'2021-10-28 14:59:59','2021-10-28 14:59:59'),(25,3,'124','active','24','32',NULL,'2021-10-30 08:46:31','2021-10-30 08:46:31'),(26,3,'fff','active','ff','ff',0,'2021-10-30 08:52:58','2021-10-30 08:52:58');
+INSERT INTO `shop` VALUES (12,3,'shop1','active','abcd1','abcd11',3,1,'2021-10-26 13:34:45','2021-10-26 13:34:45'),(13,3,'shop2','active','abcd1','abcd1',3,2,'2021-10-28 14:59:07','2021-10-30 16:29:53'),(14,3,'shop3','active','abcd1','abcd1',1,1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(15,3,'shop4','active','abcd1','abcd1',1,1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(16,3,'shop5','active','abcd1','abcd1',1,1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(17,3,'shop6','active','abcd1','abcd1',2,1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(18,3,'shop7','active','abcd1','abcd1',3,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(19,3,'shop8','active','abcd1','abcd1',4,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(20,3,'shop9','active','abcd1','abcd1',5,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(21,3,'shop10','active','abcd1','abcd1',2,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(22,3,'shop11','active','abcd1','abcd1',4,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(23,3,'shop12','active','abcd1','abcd1',3,3,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(24,3,'shop13','active','abcd1','abcd1',2,1,'2021-10-28 14:59:59','2021-10-28 14:59:59'),(27,3,'123','active','123','123',1,1,'2021-10-30 15:42:53','2021-10-30 15:42:53');
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-30 16:59:05
+-- Dump completed on 2021-10-30 23:31:24

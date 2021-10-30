@@ -21,8 +21,9 @@ public class TopicDao {
                     .status(rs.getString(3))
                     .content(rs.getString(4))
                     .rate(rs.getInt(5))
-                    .createdDate(rs.getDate(6))
-                    .updatedDate(rs.getDate(7))
+                    .image(rs.getString(6))
+                    .createdDate(rs.getDate(7))
+                    .updatedDate(rs.getDate(8))
                     .build();
         } catch (SQLException e) {
             e.printStackTrace(System.out);

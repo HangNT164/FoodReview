@@ -55,9 +55,6 @@
                            value="${sessionScope.addressTemp}"/>
                 </div>
                 <div class="form-group">
-                    <label>
-                        <i class="fas fa-key fa-fw"></i>
-                    </label>
                     <select class="form-control"
                             name="gender">
                         <option value="true" style="color: black">Male
