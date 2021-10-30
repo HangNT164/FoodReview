@@ -206,7 +206,6 @@
                                                                         <label>Shop Description: </label>
                                                                         <input style="margin-left: 60px" type="text"
                                                                                required
-                                                                               required
                                                                                pattern=".{1,1000}"
                                                                                oninvalid="setCustomValidity('Shop Description max 1000 charter')"
                                                                                name="description"
