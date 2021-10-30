@@ -36,6 +36,9 @@ public class AddTopicReviewerController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try (PrintWriter out = response.getWriter()) {
+            response.setContentType("text/html;charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
             HttpSession session = request.getSession();
             Account accountCurrent = (Account) session.getAttribute("account");
             boolean isMultiPart = ServletFileUpload.isMultipartContent(request);

@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -10,13 +12,15 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
           rel="stylesheet">
-    <title>Food Review | Topic </title>
+    <title>Food Review | Shop </title>
     <link rel="stylesheet" type="text/css" href="resources/css/home/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="resources/css/home/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="resources/css/home/home.css">
     <link rel="stylesheet" href="resources/css/home/templatemo-klassy-cafe.css">
     <link rel="stylesheet" href="resources/css/home/owl-carousel.css">
     <link rel="stylesheet" href="resources/css/home/lightbox.css">
+    <link href="resources/css/home/custom-css.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
 <!-- ***** Preloader Start ***** -->
@@ -79,48 +83,50 @@
 <!-- ***** Main Banner Area Start ***** -->
 <div id="top">
     <div class="container">
-        <div style="display: flex;justify-content: center;">
-            <h3>Add Topic</h3>
-            <form action="add-topic-reviewer" method="POST" enctype="multipart/form-data" style="margin-top: 50px;">
-                <div class="row">
-                    <label for="title">Title: </label>
-                    <input style="margin-left: 60px;" type="text"
-                           name="title" id="title"
-                           required
-                           pattern=".{1,50}"
-                           oninvalid="setCustomValidity('Topic Title max 50 character')"
-                           class="form-control"/>
-                </div>
-                <div class="row">
-                    <label for="content">Content: </label>
-                    <input style="margin-left: 60px;" type="text"
-                           required id="content"
-                           pattern=".{1,4000}"
-                           oninvalid="setCustomValidity('Topic Content max 4000 character')"
-                           name="content"
-                           class="form-control"/>
-                </div>
-                <div class="row">
-                    <label for="fileName">Choose Image:</label>
-                    <input style="margin-left: 60px;" id="fileName" type="file" name="fileName" size="30" required
-                           accept="image/*"
-                           class="form-control"/>
+        <div class="row">
+            <c:forEach items="${listShopInAPage}" var="shop" varStatus="i">
+                <div class="col-md-3 col-sm-6" style="margin-bottom: 10px;">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="detail-shop?id=${shop.shopId}">
+                                <img class="pic-1" src="resources/images/users/hangnt.png">
+                                <img class="pic-2" src="resources/images/users/hangnt1.png">
+                            </a>
+                        </div>
+                        <ul class="rating">
+                            <c:set var="rateShops" scope="page" value="${shop.rate}"/>
+                            <%
+                                List<Integer> listRates = new ArrayList<>();
+                                int rate = (int) pageContext.getAttribute("rateShops");
+                                for (int i = 0; i < rate; i++) {
+                                    listRates.add(i + 1);
+                                }
+                                pageContext.setAttribute("listRates", listRates);
+                            %>
+                            <c:forEach items="${listRates}" var="rate">
+                                <li class="fa fa-star"></li>
+                            </c:forEach>
+                        </ul>
+                        <div class="product-content">
+                            <h3 class="title"><a href="#">${shop.shopName}</a></h3>
+                        </div>
+                    </div>
                 </div>
                 <br/>
-                <button type="submit"
-                        style="border: 1px solid;"
-                        class="btn btn-success collapsed">
-                    Add Topic
-                </button>
-            </form>
+            </c:forEach>
         </div>
+        <ul class="pagination" style="justify-content: center;">
+            <c:forEach items="${listPage}" var="page">
+                <li class="page-item"><a class="page-link" href="shop-reviewer?pageId=${page}">${page}</a></li>
+            </c:forEach>
+        </ul>
     </div>
 </div>
 <!-- ***** Main Banner Area End ***** -->
 
 <!-- ***** Footer Start ***** -->
 <footer>
-    <div class="container">
+    <div class=" container">
         <div class="row">
             <div class="col-lg-4 col-xs-12">
                 <div class="right-text-content">
@@ -144,6 +150,7 @@
                 </div>
             </div>
         </div>
+        <!-- /.Row 1 -->
     </div>
 </footer>
 

@@ -25,7 +25,6 @@ DROP TABLE IF EXISTS `shop_comment`;
 CREATE TABLE `shop_comment` (
   `shop_comment_id` int NOT NULL AUTO_INCREMENT,
   `shop_id` int DEFAULT NULL,
-  `account_id` int DEFAULT NULL,
   `status` varchar(25) DEFAULT 'active',
   `content` varchar(4000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `rate` int DEFAULT NULL,
@@ -33,8 +32,6 @@ CREATE TABLE `shop_comment` (
   `updated_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`shop_comment_id`),
   KEY `shop_id` (`shop_id`),
-  KEY `shop_comment_account_ibfk_1` (`account_id`),
-  CONSTRAINT `shop_comment_account_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`),
   CONSTRAINT `shop_comment_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shop_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -57,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-26 20:53:16
+-- Dump completed on 2021-10-30 23:31:24

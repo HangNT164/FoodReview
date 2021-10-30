@@ -36,7 +36,7 @@ public class AddShopController extends HttpServlet {
                 .build();
 
         // add shop
-        boolean addShop = shopDao.addAccount(shop);
+        boolean addShop = shopDao.addShop(shop);
         if (!addShop) {
             request.setAttribute("message", "Add New Shop Fail!");
             request.getRequestDispatcher("shop-management.jsp").forward(request, response);

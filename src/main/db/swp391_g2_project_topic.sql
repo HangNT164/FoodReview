@@ -36,7 +36,7 @@ CREATE TABLE `topic` (
   PRIMARY KEY (`topic_id`),
   KEY `topic_ibfk1_idx` (`account_id`),
   CONSTRAINT `topic_ibfk1` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `topic` (
 
 LOCK TABLES `topic` WRITE;
 /*!40000 ALTER TABLE `topic` DISABLE KEYS */;
-INSERT INTO `topic` VALUES (1,'Quán ngon Cầu Giấy?','approved','Mọi người cho mình hỏi ở chỗ cầu giấy có quán nào ngon mà rẻ không nhỉ?',50,NULL,'2021-10-10 22:33:04','2021-10-10 22:33:04','07/2021',2),(2,'Quán ngon giá rẻ?','approved','Có chỗ nào ăn lẩu mà ngon bổ rẻ không ạ?',60,NULL,'2021-10-13 22:33:04','2021-10-13 22:33:04','07/2021',NULL),(3,'Quán nhậu chất lượng?','pending','Cho hỏi có quán nhậu nào chất lượng ở khu Bách Khoa không?',0,NULL,'2021-10-15 22:33:04','2021-10-15 22:33:04','07/2021',3),(4,'Hàng ăn sáng rẻ?','reject','Quanh khu Hai Bà Trưng có những hàng ăn sáng nào chất lượng mà giá cả hợp lý không ạ, mọi người recommend giúp mình với?',0,NULL,'2021-10-08 22:33:04','2021-10-08 22:33:04','07/2021',3);
+INSERT INTO `topic` VALUES (1,'Quán ngon Cầu Giấy?','approved','Mọi người cho mình hỏi ở chỗ cầu giấy có quán nào ngon mà rẻ không nhỉ?',50,NULL,'2021-10-10 22:33:04','2021-10-10 22:33:04','07/2021',2),(2,'Quán ngon giá rẻ?','approved','Có chỗ nào ăn lẩu mà ngon bổ rẻ không ạ?',60,NULL,'2021-10-13 22:33:04','2021-10-13 22:33:04','07/2021',NULL),(3,'Quán nhậu chất lượng?','pending','Cho hỏi có quán nhậu nào chất lượng ở khu Bách Khoa không?',0,NULL,'2021-10-15 22:33:04','2021-10-15 22:33:04','07/2021',3),(4,'Hàng ăn sáng rẻ?','reject','Quanh khu Hai Bà Trưng có những hàng ăn sáng nào chất lượng mà giá cả hợp lý không ạ, mọi người recommend giúp mình với?',0,NULL,'2021-10-08 22:33:04','2021-10-08 22:33:04','07/2021',3),(48,'abcddd','pending','afdf',0,'a.jpeg','2021-10-30 08:44:26','2021-10-30 08:44:26','10/2021',2),(49,'ff','pending','ff',0,'a.jpeg','2021-10-30 09:03:26','2021-10-30 09:03:26','10/2021',2);
 /*!40000 ALTER TABLE `topic` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-26 20:53:16
+-- Dump completed on 2021-10-30 23:31:24
