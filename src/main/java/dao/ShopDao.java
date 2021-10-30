@@ -213,4 +213,21 @@ public class ShopDao {
         return null;
     }
 
+    public Shop getOne(int id) {
+        String query = "SELECT * FROM shop where shop_id = ? ";
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+                while (rs != null && rs.next()) {
+                    return getValueShop(rs);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
 }

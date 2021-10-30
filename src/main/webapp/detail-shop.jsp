@@ -12,9 +12,10 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
           rel="stylesheet">
-    <title>Food Review | Shop </title>
+    <title>Food Review | Detail Shop </title>
     <link rel="stylesheet" type="text/css" href="resources/css/home/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="resources/css/home/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/custom/detail.css">
     <link rel="stylesheet" type="text/css" href="resources/css/home/home.css">
     <link rel="stylesheet" href="resources/css/home/templatemo-klassy-cafe.css">
     <link rel="stylesheet" href="resources/css/home/owl-carousel.css">
@@ -84,44 +85,52 @@
 <div id="top">
     <div class="container">
         <div class="row">
-            <c:forEach items="${listShopInAPage}" var="shop" varStatus="i">
-                <div class="col-md-3 col-sm-6" style="margin-bottom: 10px;">
-                    <div class="product-grid">
-                        <div class="product-image">
-                            <a href="detail-shop?id=${shop.shopId}">
-                                <img class="pic-1" src="resources/images/users/hangnt.png">
-                                <img class="pic-2" src="resources/images/users/hangnt1.png">
-                            </a>
-                        </div>
-                        <ul class="rating">
-                            <c:set var="rateShops" scope="page" value="${shop.rate}"/>
-                            <%
-                                List<Integer> listRates = new ArrayList<>();
-                                int rate = (int) pageContext.getAttribute("rateShops");
-                                for (int i = 0; i < rate; i++) {
-                                    listRates.add(i + 1);
-                                }
-                                pageContext.setAttribute("listRates", listRates);
-                            %>
-                            <c:forEach items="${listRates}" var="rate">
-                                <li class="fa fa-star"></li>
-                            </c:forEach>
-                        </ul>
-                        <div class="product-content">
-                            <h3 class="title"><a href="#">${shop.shopName}</a></h3>
-                        </div>
-                    </div>
+            <div class="col-md-6">
+                <div class="pro-img-details">
+                    <img src="https://via.placeholder.com/550x380/FFB6C1/000000" alt="">
                 </div>
-                <br/>
-            </c:forEach>
+                <div class="pro-img-list" style="display: flex;justify-content: center;">
+                    <a href="#">
+                        <img src="https://via.placeholder.com/115x100/87CEFA/000000" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="https://via.placeholder.com/115x100/FF7F50/000000" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h4 class="pro-d-title">
+                    <a href="shop-reviewer" class="">
+                        ${shop.shopName}
+                    </a>
+                </h4>
+                <p>
+                    ${shop.description}
+                </p>
+                <div class="product_meta">
+                    <span class="posted_in"> <strong>Address:</strong> <a rel="tag" href="#">${shop.address}</a>.</span>
+                </div>
+                <div class="m-bot15" style="display: flex;"><strong>Star : </strong>
+                    <ul class="rating">
+                        <c:set var="rateShops" scope="page" value="${shop.rate}"/>
+                        <%
+                            List<Integer> listRates = new ArrayList<>();
+                            int rate = (int) pageContext.getAttribute("rateShops");
+                            for (int i = 0; i < rate; i++) {
+                                listRates.add(i + 1);
+                            }
+                            pageContext.setAttribute("listRates", listRates);
+                        %>
+                        <c:forEach items="${listRates}" var="rate">
+                            <li class="fa fa-star"></li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <ul class="pagination" style="justify-content: center;">
-            <c:forEach items="${listPage}" var="page">
-                <li class="page-item"><a class="page-link" href="shop-reviewer?pageId=${page}">${page}</a></li>
-            </c:forEach>
-        </ul>
     </div>
 </div>
+
 <!-- ***** Main Banner Area End ***** -->
 
 <!-- ***** Footer Start ***** -->
