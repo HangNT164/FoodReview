@@ -170,4 +170,50 @@ public class ShopDao {
         return check > 0;
     }
 
+    public List<Shop> listShop() {
+        String query = " SELECT * FROM shop  WHERE status NOT LIKE \"reject\" ";
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Shop> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueShop(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public List<Integer> getListPage(List<Shop> listShop, int number) {
+        List<Integer> listPage = new ArrayList<>();
+        double size = (double) listShop.size() / (double) number;
+        for (int i = 1; i <= Math.ceil(size); i++) {
+            listPage.add(i);
+        }
+        return listPage;
+    }
+
+    public List<Shop> getListShopInPage(int page, int numberInAPage) {
+        try (Connection con = MySqlConnection.getConnection();
+             CallableStatement cal = con.prepareCall("{call paggingShop(?,?)}")) {
+            if (cal != null) {
+                cal.setInt(1, numberInAPage * (page - 1));
+                cal.setInt(2, numberInAPage * page);
+                ResultSet rs = cal.executeQuery();
+                List<Shop> listInPage = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    listInPage.add(getValueShop(rs));
+                }
+                return listInPage;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
 }
