@@ -3,10 +3,7 @@ package dao;
 import bean.Shop;
 import jdbc.MySqlConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -51,7 +48,7 @@ public class ShopDao {
     }
 
     public List<Shop> getListShopByName(String shopName) {
-        String query = "SELECT * FROM swp391_g2_project.shop where shop_name like '%"+ shopName +"%' and status not like 'deleted'";
+        String query = "SELECT * FROM swp391_g2_project.shop where shop_name like '%" + shopName + "%' and status not like 'deleted'";
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
@@ -69,7 +66,7 @@ public class ShopDao {
     }
 
     public List<Shop> getListShopByNameAndStatus(String shopName, String status) {
-        String query = "SELECT * FROM swp391_g2_project.shop where shop_name like '%"+ shopName +"%' and status = '"+ status +"' and status not like 'deleted'";
+        String query = "SELECT * FROM swp391_g2_project.shop where shop_name like '%" + shopName + "%' and status = '" + status + "' and status not like 'deleted'";
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
@@ -104,18 +101,19 @@ public class ShopDao {
         return null;
     }
 
-    public boolean addAccount(Shop shop) {
+    public boolean addShop(Shop shop) {
         int check = 0;
-        String query = "INSERT INTO `shop` (`account_id`,`shop_name`, `address`, `description`) " +
-                " VALUES (?,?,?,?);";
+        String query = "INSERT INTO `shop` (`account_id`,`shop_name`, `rate`,`address`, `description`) " +
+                " VALUES (?,?,?,?,?);";
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
             if (ps != null) {
                 ps.setObject(1, shop.getAccountId());
                 ps.setObject(2, shop.getShopName());
-                ps.setObject(3, shop.getAddress());
-                ps.setObject(4, shop.getDescription());
+                ps.setObject(3, 0);
+                ps.setObject(4, shop.getAddress());
+                ps.setObject(5, shop.getDescription());
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {
