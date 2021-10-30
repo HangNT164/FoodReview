@@ -86,9 +86,8 @@
 
             <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
                 <ul class="app-menu list-unstyled accordion" id="menu-accordion">
-                    <c:if test="${sessionScope.account.role == 'ShopOwner'}">
-                        <li class="nav-item ">
-                            <a class="nav-link" href="shop">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="shop">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -98,15 +97,37 @@
                                               d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                                     </svg>
                                 </span>
-                                <span class="nav-link-text">Dashboard</span>
-                            </a>
-                            <!--//nav-link-->
-                        </li>
-                    </c:if>
+                            <span class="nav-link-text">Dashboard</span>
+                        </a>
+                        <!--//nav-link-->
+                    </li>
                     <!--//nav-item-->
-                    <c:if test="${sessionScope.account.role == 'Admin'}">
-                        <li class="nav-item">
-                            <a class="nav-link " href="search-user-management">
+                    <li class="nav-item">
+                        <a class="nav-link " href="food-management">
+                                <span class="nav-icon">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
+                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z"/>
+                                    </svg>
+                                    <path fill-rule="evenodd"
+                                          d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                                    <path fill-rule="evenodd"
+                                          d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
+                                    <circle cx="3.5" cy="5.5" r=".5"/>
+                                    <circle cx="3.5" cy="8" r=".5"/>
+                                    <circle cx="3.5" cy="10.5" r=".5"/>
+                                    </svg>
+                                </span>
+                            <span class="nav-link-text">Food Management</span>
+                        </a>
+                        <!--//nav-link-->
+                    </li>
+                    <!--//nav-item-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop-management">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -119,64 +140,10 @@
                                         <circle cx="3.5" cy="10.5" r=".5"/>
                                     </svg>
                                 </span>
-                                <span class="nav-link-text">User Management</span>
-                            </a>
-                            <!--//nav-link-->
-                        </li>
-                    </c:if>
-                    <!--//nav-item-->
-                    <c:if test="${sessionScope.account.role == 'Admin'}">
-                        <li class="nav-item">
-                            <a class="nav-link " href="search-topic-status">
-                                <span class="nav-icon">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                                d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z"/>
-                                        <path fill-rule="evenodd"
-                                              d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z"/>
-                                    </svg>
-                                    <path fill-rule="evenodd"
-                                          d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                                    <path fill-rule="evenodd"
-                                          d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
-                                    <circle cx="3.5" cy="5.5" r=".5"/>
-                                    <circle cx="3.5" cy="8" r=".5"/>
-                                    <circle cx="3.5" cy="10.5" r=".5"/>
-                                    </svg>
-                                </span>
-                                <span class="nav-link-text">Topic Management</span>
-                            </a>
-                            <!--//nav-link-->
-                        </li>
-                    </c:if>
-
-                    <c:if test="${sessionScope.account.role == 'ShopOwner'}">
-                        <li class="nav-item">
-                            <a class="nav-link " href="food-management">
-                                <span class="nav-icon">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                                d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z"/>
-                                        <path fill-rule="evenodd"
-                                              d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z"/>
-                                    </svg>
-                                    <path fill-rule="evenodd"
-                                          d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                                    <path fill-rule="evenodd"
-                                          d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
-                                    <circle cx="3.5" cy="5.5" r=".5"/>
-                                    <circle cx="3.5" cy="8" r=".5"/>
-                                    <circle cx="3.5" cy="10.5" r=".5"/>
-                                    </svg>
-                                </span>
-                                <span class="nav-link-text">Food Management</span>
-                            </a>
-                            <!--//nav-link-->
-                        </li>
-                    </c:if>
-                    <!--//nav-item-->
+                            <span class="nav-link-text">Shop Management</span>
+                        </a>
+                        <!--//nav-link-->
+                    </li>
                 </ul>
                 <!--//app-menu-->
             </nav>
@@ -191,9 +158,7 @@
 <div class="app-wrapper">
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-fuild">
-
             <h1 class="app-page-title">Dashboard</h1>
-
             <div class="row g-4 mb-4">
                 <div class="col-6 col-lg-4">
                     <div class="app-card app-card-stat shadow-sm h-100">
@@ -207,7 +172,6 @@
                     <!--//app-card-->
                 </div>
                 <!--//col-->
-
                 <div class="col-6 col-lg-4">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
@@ -232,13 +196,10 @@
                     <!--//app-card-->
                 </div>
                 <!--//col-->
-
-                <!--//col-->
             </div>
             <!--//row-->
             <form action="shop">
                 <div class="row g-4 mb-4">
-
                     <div class="col-12 col-lg-6">
                         <div class="app-card app-card-chart h-100 shadow-sm">
                             <div class="app-card-header p-3">
@@ -306,22 +267,18 @@
     </div>
     <!--//app-content-->
 </div>
-
 <footer class="footer ">
     <div class="container text-center py-3 ">
-        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
         <small class="copyright " style="color: black; ">© 2021 Copyright <i class="fas fa-heart "
                                                                              style="color: #fb866a; "></i> by <a
                 class="app-link "
-                href="admin ">food.review.com</a></small>
+                href="shop ">food.review.com</a></small>
 
     </div>
 </footer>
 <!--//app-footer-->
-
 </div>
 <!--//app-wrapper-->
-
 <!-- Javascript -->
 <script src="resources/js/plugin/jquery-3.3.1.slim.min.js " type="text/javascript "></script>
 <script src="resources/js/plugin/jquery.min.js "></script>
@@ -334,20 +291,15 @@
 <!-- Charts JS -->
 <script src="resources/plugins/chart.js/chart.min.js"></script>
 <script src="resources/js/custom/index-charts.js"></script>
-
 <!-- Page Specific JS -->
 <script src="resources/js/custom/app.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-
 <!--Bootstrap Datepicker [ OPTIONAL ]-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
 <script type="text/javascript">
     function doSubmit() {
-        var opt = document.getElementsByName("year")[0];
-        var opt1 = document.getElementsByName("topicYear")[0];
         document.forms[0].submit();
     }
 </script>
@@ -355,7 +307,6 @@
     $(document).ready(function () {
         $('#user-management-table').DataTable();
     });
-
     function validateAddForm() {
         if (document.getElementById('add-name').value == "") {
             document.getElementById('add-name').style.borderColor = 'red'
@@ -411,7 +362,6 @@
         }
     });
 </script>
-
 <%--Topic--%>
 <script>
     Chart.defaults.global.defaultFontColor = '#252930';
@@ -461,5 +411,4 @@
     });
 </script>
 </body>
-
 </html>

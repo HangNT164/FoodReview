@@ -41,7 +41,7 @@ public class ResetPasswordController extends HttpServlet {
             String email = request.getParameter("email");
             Account account = accountDao.getAccountByEmail(email);
 
-            if(account != null) {
+            if (account != null) {
                 if (account.getEmail().equals(email)) {
                     emailUtil.sendVerifyCodeEmail(email, code);
                     session.setAttribute("verifyEmail", email);

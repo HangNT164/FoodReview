@@ -75,11 +75,7 @@ public class RegisterController extends HttpServlet {
                 request.setAttribute("message", "Email này đã được đăng ký");
                 request.getRequestDispatcher("sigup.jsp").forward(request, response);
             }
-            boolean isDupilicatePhone = accountDao.isDulicaptePhone(phone);
-            if (isDupilicatePhone) {
-                request.setAttribute("message", "Số điện thoại này đã được đăng ký");
-                request.getRequestDispatcher("sigup.jsp").forward(request, response);
-            }
+
             // Add
             // Create Account
             Account account = Account.builder()

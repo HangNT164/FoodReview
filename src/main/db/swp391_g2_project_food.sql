@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.21, for macos10.15 (x86_64)
 --
 -- Host: localhost    Database: swp391_g2_project
 -- ------------------------------------------------------
--- Server version	8.0.16
+-- Server version	8.0.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8 ;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,16 +21,16 @@
 
 DROP TABLE IF EXISTS `food`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `food` (
-  `food_id` int(11) NOT NULL AUTO_INCREMENT,
-  `shop_id` int(11) NOT NULL,
-  `food_name` varchar(255) NOT NULL,
-  `status` varchar(25) DEFAULT 'inactive',
-  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `rate` int(11) DEFAULT NULL,
-  `created_date` datetime NOT NULL,
-  `updated_date` datetime DEFAULT NULL,
+  `food_id` int NOT NULL AUTO_INCREMENT,
+  `shop_id` int DEFAULT NULL,
+  `food_name` varchar(255) DEFAULT NULL,
+  `status` varchar(25) DEFAULT 'active',
+  `description` varchar(4000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `rate` int DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`food_id`),
   KEY `shop_id` (`shop_id`),
   CONSTRAINT `food_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shop_id`)
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-17 16:28:38
+-- Dump completed on 2021-10-26 20:53:16

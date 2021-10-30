@@ -27,9 +27,9 @@ public class FoodManagementController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
             Account accountCurrent = (Account) session.getAttribute("account");
-            List<Shop> listShopByAccount = shopDao.getListShopByAccount(accountCurrent.getAccountId());
+            List<Shop> listShopByAccount = shopDao.getListShopByAccountAndActive(accountCurrent.getAccountId());
             request.setAttribute("listShopByAccount", listShopByAccount);
-            request.getRequestDispatcher("food.jsp").forward(request, response);
+            request.getRequestDispatcher("food-management.jsp").forward(request, response);
         }
     }
 }

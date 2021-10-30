@@ -1,6 +1,5 @@
 package dao;
 
-import bean.Account;
 import bean.Topic;
 import jdbc.MySqlConnection;
 
@@ -169,6 +168,26 @@ public class TopicDao {
             e.printStackTrace(System.out);
         }
         return null;
+    }
+
+    public boolean addTopicReviewer(Topic topic) {
+        int check = 0;
+        String query = "INSERT INTO topic (`title`, `status`,`content`, `image`,`month`,`account_id`) VALUES (?,?,?,?,?,?)";
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, topic.getTitle());
+                ps.setObject(2, topic.getStatus());
+                ps.setObject(3, topic.getContent());
+                ps.setObject(4, topic.getImage());
+                ps.setObject(5, currentMonth());
+                ps.setObject(6, topic.getAccountId());
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
     }
 
     private String currentMonth() {

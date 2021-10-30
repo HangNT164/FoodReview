@@ -10,7 +10,6 @@ import java.sql.Date;
 @Getter
 @Setter
 public class Topic {
-
     private int topicId;
     private String title;
     private String status;
@@ -19,5 +18,6 @@ public class Topic {
     private Date createdDate;
     private Date updatedDate;
     private String month;
-
+    private String image;
+    private int accountId;
 }

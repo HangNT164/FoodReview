@@ -1,7 +1,7 @@
 package dao;
 
 import bean.Account;
-import constant.StatusAccountEnum;
+import constant.StatusEnum;
 import jdbc.MySqlConnection;
 import util.BCrypt;
 
@@ -41,7 +41,6 @@ public class AccountDao {
     public Account login(String email, String password) {
         String query = "SELECT * FROM account where email = ? ";
 
-
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
@@ -69,7 +68,7 @@ public class AccountDao {
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
-                ps.setObject(1, StatusAccountEnum.active.toString());
+                ps.setObject(1, StatusEnum.active.toString());
                 ResultSet rs = ps.executeQuery();
                 List<Account> list = new ArrayList<>();
                 while (rs != null && rs.next()) {
@@ -89,7 +88,7 @@ public class AccountDao {
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
-                ps.setObject(1, StatusAccountEnum.active.toString());
+                ps.setObject(1, StatusEnum.active.toString());
                 ResultSet rs = ps.executeQuery();
                 Account account = null;
                 while (rs != null && rs.next()) {
@@ -114,7 +113,7 @@ public class AccountDao {
                 ps.setObject(1, role);
                 ps.setObject(2, new Date());
                 ps.setObject(3, accountId);
-                ps.setObject(4, StatusAccountEnum.active.toString());
+                ps.setObject(4, StatusEnum.active.toString());
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {
@@ -131,10 +130,10 @@ public class AccountDao {
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
             if (ps != null) {
-                ps.setObject(1, StatusAccountEnum.inactive.toString());
+                ps.setObject(1, StatusEnum.inactive.toString());
                 ps.setObject(2, new Date());
                 ps.setObject(3, accountId);
-                ps.setObject(4, StatusAccountEnum.active.toString());
+                ps.setObject(4, StatusEnum.active.toString());
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {
@@ -142,7 +141,6 @@ public class AccountDao {
         }
         return check > 0;
     }
-
 
     public boolean addAccount(Account account) {
         int check = 0;
@@ -175,25 +173,6 @@ public class AccountDao {
              PreparedStatement ps = con.prepareStatement(sql);) {
             if (ps != null) {
                 ps.setObject(1, email);
-            }
-            ResultSet rs = ps != null ? ps.executeQuery() : null;
-
-            if (rs != null) {
-                return rs.next();
-            }
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-        }
-        return false;
-    }
-
-    public boolean isDulicaptePhone(String phone) {
-        String sql = "SELECT * FROM account WHERE phone_number = ? ";
-
-        try (Connection con = MySqlConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql);) {
-            if (ps != null) {
-                ps.setObject(1, phone);
             }
             ResultSet rs = ps != null ? ps.executeQuery() : null;
 
