@@ -141,7 +141,7 @@
                     <h5 style="white-space: pre-line; font-weight:normal;">${top1.content}
                     <br>
                     <div class="row">
-                        <img src="resources/images/topics/${top1.imgAddr}" alt=""/>
+                        <img src="server/uploads/${top1.imgAddr}" alt=""/>
                     </div>
                 </div>
             </div>

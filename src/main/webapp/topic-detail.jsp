@@ -152,7 +152,7 @@
                     </h5>
                     <br>
                     <div class="row">
-                        <img src="resources/images/topics/${topic.imgAddr}" alt=""/>
+                        <img src="server/uploads/${topic.imgAddr}" alt=""/>
                     </div>
                 </div>
             </div>
