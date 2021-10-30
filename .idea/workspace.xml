@@ -9,23 +9,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e05f9e78-227f-4d36-95e2-599cafc6b358" name="Default Changelist" comment="Rollback code">
-      <change afterPath="$PROJECT_DIR$/src/main/java/bean/Food_Comment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ShopManagementController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/Food_CommentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/shop.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="e05f9e78-227f-4d36-95e2-599cafc6b358" name="Default Changelist" comment="UserManagement + User profile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bean/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/FoodDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/FoodDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/ShopDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/ShopDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/TopicDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/TopicDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdbc/MySqlConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdbc/MySqlConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/security/AuthenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/security/AuthenFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/food.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/food.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,9 +60,15 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="cuongnv" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -317,6 +308,7 @@
       <workItem from="1632763111117" duration="409000" />
       <workItem from="1632763947491" duration="38606000" />
       <workItem from="1634829061518" duration="3367000" />
+      <workItem from="1634959800772" duration="930000" />
     </task>
     <task id="LOCAL-00001" summary="Innit">
       <created>1632732475089</created>
