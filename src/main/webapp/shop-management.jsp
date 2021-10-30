@@ -179,7 +179,7 @@
                                                                     <div class="col-md-10">
                                                                         <label>Shop Name: </label>
                                                                         <input style="margin-left: 60px" type="text"
-                                                                               required="true"
+                                                                               required
                                                                                pattern=".{1,50}"
                                                                                oninvalid="setCustomValidity('Shop Name max 50 charter')"
                                                                                name="shopName"
@@ -192,7 +192,7 @@
                                                                     <div class="col-md-10">
                                                                         <label>Shop Address: </label>
                                                                         <input style="margin-left: 60px" type="text"
-                                                                               required="true"
+                                                                               required
                                                                                pattern=".{1,200}"
                                                                                oninvalid="setCustomValidity('Shop Address max 200 charter')"
                                                                                name="address"
@@ -205,7 +205,7 @@
                                                                     <div class="col-md-10">
                                                                         <label>Shop Description: </label>
                                                                         <input style="margin-left: 60px" type="text"
-                                                                               required="true"
+                                                                               required
                                                                                pattern=".{1,1000}"
                                                                                oninvalid="setCustomValidity('Shop Description max 1000 charter')"
                                                                                name="description"

@@ -20,8 +20,9 @@ public class ShopDao {
                     .address(rs.getString(5))
                     .description(rs.getString(6))
                     .rate(rs.getInt(7))
-                    .createdDate(rs.getDate(8))
-                    .updatedDate(rs.getDate(9))
+                    .totalNumberRate(rs.getInt(8))
+                    .createdDate(rs.getDate(9))
+                    .updatedDate(rs.getDate(10))
                     .build();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
@@ -230,4 +231,41 @@ public class ShopDao {
         return null;
     }
 
+    public boolean updateNumberRate(int id, Shop shop) {
+        int check = 0;
+        String query = "UPDATE shop SET total_number_rate = ?, updated_date = ?"
+                + "WHERE shop_id = ?";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
+            if (ps != null) {
+                ps.setObject(1, shop.getTotalNumberRate() + 1);
+                ps.setObject(2, new Date());
+                ps.setObject(3, id);
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
+
+    public boolean updateRate(int id, int rate) {
+        int check = 0;
+        String query = "UPDATE shop SET rate = ?, updated_date = ?"
+                + "WHERE shop_id = ?";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
+            if (ps != null) {
+                ps.setObject(1, rate);
+                ps.setObject(2, new Date());
+                ps.setObject(3, id);
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
 }
