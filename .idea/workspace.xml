@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="FoodReview:war" />
+      <artifact name="FoodReview:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e05f9e78-227f-4d36-95e2-599cafc6b358" name="Default Changelist" comment="Rollback code">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/src/main/java/controller/AddShopController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/controller/AddTopicReviewerController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/controller/RemoveShopController.java" afterDir="false" />
@@ -60,6 +61,15 @@
       <change beforePath="$PROJECT_DIR$/src/main/webapp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/verify-code.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/verify-code.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/verify-email.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/verify-email.jsp" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LogoutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/home/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/TopicDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/TopicDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jdbc/MySqlConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdbc/MySqlConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
+>>>>>>> e0ed5241d9b1ba0fec9ce3eb834b92cc4de4a237
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,18 +211,60 @@
       <recent name="util" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="server" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.54" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="UPDATING_POLICY" value="restart-server" />
+  <component name="RunManager" selected="Tomcat Server.server">
+    <configuration name="AccountDao" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dao.AccountDao" />
+      <module name="FoodReview" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ValidateHelper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="util.ValidateHelper" />
+      <module name="FoodReview" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="server" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.22" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="update-resources" />
       <deployment>
+<<<<<<< HEAD
         <artifact name="food.review:war">
+=======
+        <artifact name="FoodReview:war exploded">
+>>>>>>> e0ed5241d9b1ba0fec9ce3eb834b92cc4de4a237
           <settings>
             <option name="CONTEXT_PATH" value="/server" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="c9725625-2f00-4784-a5f7-4e2722f2e58f" />
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_boarding-house-backend" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -220,7 +272,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="53674" />
+        <option name="DEBUG_PORT" value="63539" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -285,11 +337,29 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
+<<<<<<< HEAD
           <artifact name="FoodReview:war" />
           <artifact name="food.review:war" />
+=======
+          <artifact name="anest.core2:war exploded" />
+          <artifact name="anest.boarding.house:war exploded" />
+          <artifact name="boarding-house-backend:war exploded" />
+          <artifact name="FoodReview:war exploded" />
+>>>>>>> e0ed5241d9b1ba0fec9ce3eb834b92cc4de4a237
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.AccountDao" />
+      <item itemvalue="Application.ValidateHelper" />
+      <item itemvalue="Tomcat Server.server" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ValidateHelper" />
+        <item itemvalue="Application.AccountDao" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">

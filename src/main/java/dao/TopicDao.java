@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 public class TopicDao {
+    private AccountDao accountDao = new AccountDao();
     private Topic getValueTopic(ResultSet rs) {
         try {
             return Topic.builder()
@@ -21,9 +22,18 @@ public class TopicDao {
                     .status(rs.getString(3))
                     .content(rs.getString(4))
                     .rate(rs.getInt(5))
+<<<<<<< HEAD
                     .image(rs.getString(6))
                     .createdDate(rs.getDate(7))
                     .updatedDate(rs.getDate(8))
+=======
+                    .imgAddr(rs.getString(6))
+                    .createdDate(rs.getDate(7))
+                    .updatedDate(rs.getDate(8))
+                    .month(rs.getString(9))
+                    .accountId(rs.getInt(10))
+                    .accountName(accountDao.getAccountNameById(rs.getInt(10)))
+>>>>>>> e0ed5241d9b1ba0fec9ce3eb834b92cc4de4a237
                     .build();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
@@ -32,7 +42,7 @@ public class TopicDao {
     }
 
     public Topic getLastestPost() {
-        String query = "SELECT * FROM swp391_g2_project.topic where status = \"approved\" ORDER BY created_date DESC LIMIT 1 ;";
+        String query = "SELECT * FROM swp391_g2_project.topic where status NOT LIKE 'reject' ORDER BY created_date DESC LIMIT 1 ;";
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
@@ -42,7 +52,27 @@ public class TopicDao {
                     return topic;
                 }
 
-            } else {
+            } else{
+                return null;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+    public Topic getPostById(int id){
+        String query = "SELECT * FROM swp391_g2_project.topic WHERE status NOT LIKE 'reject' AND topic_id = "+id+" ;";
+        try(Connection con = MySqlConnection.getConnection();
+            PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;){
+            if(ps!=null){
+                ResultSet rs = ps.executeQuery();
+                while (rs != null && rs.next()) {
+                    Topic topic = getValueTopic(rs);
+                    return topic;
+                }
+
+            } else{
                 return null;
             }
         } catch (Exception e) {
@@ -69,12 +99,55 @@ public class TopicDao {
         }
         return null;
     }
+    public List<Topic> getTopicsByIndexAndSearchString(String search, int index, String sortType) {
+        String query = "";
+        if(sortType.equalsIgnoreCase("name")){
+            query = "SELECT * FROM topic WHERE status NOT LIKE 'reject' AND title like '%"+search+"%' " +
+                    " ORDER BY title ASC LIMIT "+((index-1)*8)+", 8";
+        }
+        else{
+            query = "SELECT * FROM topic WHERE status NOT LIKE 'reject' AND title like '%"+search+"%' " +
+                    " ORDER BY rate DESC LIMIT "+((index-1)*8)+", 8";
+        }
 
-    public List<Topic> getListTopic() {
-        String query = "SELECT * FROM swp391_g2_project.topic where status not like \"reject\";";
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Topic> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueTopic(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+    public int getTotalTopics(String search) {
+        String query = "SELECT COUNT(*) FROM topic WHERE title like '%"+search+"%';";
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                int result = -1;
+                while (rs.next()){
+                    result = rs.getInt(1);
+                }
+                return result;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return -1;
+    }
+    public List<Topic> getListTopic(){
+        String query = "SELECT * FROM swp391_g2_project.topic where status NOT LIKE 'reject';";
+        try(Connection con = MySqlConnection.getConnection();
+            PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;){
+            if(ps!=null){
                 ResultSet rs = ps.executeQuery();
                 List<Topic> list = new ArrayList<>();
                 while (rs != null && rs.next()) {

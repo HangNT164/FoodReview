@@ -12,6 +12,7 @@
 
     <!-- FontAwesome JS-->
     <script defer src="resources/plugins/fontawesome/js/all.min.js"></script>
+    <script src="resources/js/custom/genderScript.js"></script>
 
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
@@ -109,7 +110,7 @@
                             <div class="col-md-12">
                                 <div class="tab-content profile-tab p-1" id="myTabContent">
                                     <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <form action="profile" method="post">
+                                        <form action="update-profile" method="post">
                                             <p style="text-align: center;color: red;">${message1}</p>
                                             <div class="row">
                                                 <div class="form-group">
@@ -147,7 +148,13 @@
                                                 <div class="form-group">
                                                     <div class="col-md-10">
                                                         <label>Gender: </label>
-                                                        <input class="form-control" style="margin-left: 60px" type="text" name="gender" value="${sessionScope.account.gender}" />
+                                                        <input id='hiddenG' type='hidden' value='${sessionScope.account.gender}'/>
+                                                        <input style="margin-left: 60px" type="radio" id="genderMale" name="gender" value="0"/>
+                                                        <label for="genderMale">Male</label>
+                                                        <input type="radio" id="genderFemale" name="gender" value="1" />
+                                                        <label for="genderFemale">Female</label>
+                                                        <!-- <input type="radio" id="genderOther" name="gender" value="2" />
+                                                        <label for="genderOther">Other</label> -->
                                                     </div>
                                                 </div>
                                             </div>

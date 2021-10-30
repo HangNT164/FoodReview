@@ -22,15 +22,21 @@ public class RemoveUserManagementController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            String status = request.getParameter("listStatus");
             int accountId = ValidateHelper.getValidateID(request.getParameter("accountId"));
-            boolean update = accountDao.removeAccount(accountId);
-            if (!update) {
-                request.setAttribute("message", "Xóa tài khoản thất bại");
+
+            if (status == null) {
+                request.setAttribute("message", "No status was chosen");
                 request.getRequestDispatcher("user.jsp").forward(request, response);
             } else {
-                response.sendRedirect("search-user-management");
+                boolean update = accountDao.changeStatusAccount(accountId, status);
+                if (!update) {
+                    request.setAttribute("message", "Fail to change status");
+                    request.getRequestDispatcher("user.jsp").forward(request, response);
+                } else {
+                    response.sendRedirect("search-user-management");
+                }
             }
-
         }
     }
 

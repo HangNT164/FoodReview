@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -54,7 +55,7 @@
                             <div class="dropdown">
                                 <a onclick="myFunction()" class="dropbtn">${account.name}</a>
                                 <div id="myDropdown" class="dropdown-content" style="padding-bottom: 15px">
-                                    <a href="#">Profile</a>
+                                    <a href="account.jsp">Profile</a>
                                     <a href="logout">Log out</a>
                                 </div>
                             </div>
@@ -127,36 +128,22 @@
 <section class="section" id="about">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="col-12">
                 <div class="left-text-content">
                     <div class="section-heading">
                         <h6>New Post</h6>
-                        <a href="#" style="font-family: none;"><h2>${top1.title}</h2>
-                        </a>
+                        <form id="linkForm" action="topic-detail?topicId=${top1.topicId}" method="post">
+                            <a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="font-family: none;"><h1 style="color:black;">${top1.title}</h1></a>
+                        </form>
                     </div>
-                    <p>${top1.content}
-                    </p>
-                    <i>Địa chỉ: 459-461 Lê Đại Hành, Quận 11
-                        <br>Giờ mở cửa: 9.00-19.00
-                        <br>Giá: 35.000VND</i>
+                    <span><b>Author:</b> ${top1.accountName} | <fmt:formatDate pattern = "dd/MM/yyyy" value = "${top1.createdDate}" />. </span>
+                    <span><b>Rate:</b> ${top1.rate}</span>
+                    <br>
+                    <br>
+                    <h5 style="white-space: pre-line; font-weight:normal;">${top1.content}
+                    <br>
                     <div class="row">
-                        <div class="col-4">
-                            <img src="resources/images/home/about-thumb-01.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img src="resources/images/home/about-thumb-02.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img src="resources/images/home/about-thumb-03.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-xs-12">
-                <div class="right-content">
-                    <div class="thumb">
-                        <a rel="nofollow" href="http://youtube.com"><i class="fa fa-play"></i></a>
-                        <img src="resources/images/home/about-video-bg.jpg" alt="">
+                        <img src="server/uploads/${top1.imgAddr}" alt=""/>
                     </div>
                 </div>
             </div>
@@ -172,7 +159,11 @@
             <div class="col-lg-4">
                 <div class="section-heading">
                     <h6>All Post</h6>
-                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi</h2>
+                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi
+                    <form id="listTopicForm" action="list-topic-approved" method="get">
+                        <a href="javascript:{}" onclick="document.getElementById('listTopicForm').submit();" style="font-family: none;">Xem thêm >></a>
+                    </form>
+                    </h2>
                 </div>
             </div>
         </div>
@@ -186,9 +177,12 @@
                         <div class='card card1'>
                             <div class="price"><h6>${l.rate} <i class="fas fa-heart fw"></i></h6></div>
                             <div class='info'>
-                                <h1 class='title'>${l.title}</h1>
-                                <p class="description"
-                                   style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
+                                <h1 class='title'>
+                                    <form id="linkForm${l.topicId}" action="topic-detail?topicId=${l.topicId}" method="post">
+                                      <a href="javascript:{}" onclick="document.getElementById('linkForm${l.topicId}').submit();" style="font-family: none; color:black;"><h2>${l.title}</h2></a>
+                                    </form>
+                                </h1>
+                                <p class="description" style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
                                 <div class="main-text-button">
                                     <div class="scroll-to-section"><a href="#">More.. <i
                                             class="fa fa-angle-down"></i></a>
