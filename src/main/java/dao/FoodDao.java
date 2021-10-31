@@ -53,6 +53,48 @@ public class FoodDao {
         return null;
     }
 
+    public List<Food> allFood(int accountId, String foodName) {
+        String query = "SELECT f.* FROM swp391_g2_project.food f join swp391_g2_project.shop s" +
+                " ON f.shop_id = s.shop_id WHERE s.account_id = " + accountId + " AND f.food_name like '%" + foodName + "%'";
+        try (Connection con = MySqlConnection.getConnection();
+            PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Food> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueFood(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public boolean updateFood(int foodId, Food food) {
+        int check = 0;
+        String query = "UPDATE food SET food_name=?" +
+                ", status = ?" +
+                ", description = ?" +
+                ", updated_date = ?" +
+                "WHERE food_id = ?";
+        try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, food.getFoodName());
+                ps.setObject(2, food.getStatus());
+                ps.setObject(3, food.getDescription());
+                ps.setObject(4, new Date());
+                ps.setObject(5, foodId);
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
+
     public boolean addFood(Food food) {
         int check = 0;
         String query = "INSERT INTO food (`shop_id`, `food_name`, `status`, `description`, `rate`, `created_date`, `updated_date`) VALUES (?,?,?,?,?,?,?)";
