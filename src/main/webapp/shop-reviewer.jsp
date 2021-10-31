@@ -133,7 +133,9 @@
         </div>
         <ul class="pagination" style="justify-content: center;">
             <c:forEach items="${listPage}" var="page">
-                <li class="page-item"><a class="page-link" href="shop-reviewer?pageId=${page}">${page}</a></li>
+                <li class="page-item"><a class="page-link"
+                                         href="shop-reviewer?pageId=${page}&shopName=${sessionScope.shopName}">${page}</a>
+                </li>
             </c:forEach>
         </ul>
     </div>

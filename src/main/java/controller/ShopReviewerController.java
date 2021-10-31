@@ -26,28 +26,33 @@ public class ShopReviewerController extends HttpServlet {
         List<Shop> listShopInAPage;
         String pageIdStr = request.getParameter("pageId");
         String shopName = request.getParameter("shopName");
-        List<Shop> listShop = shopDao.getListShopByName(shopName);
-        List<Integer> listPage = shopDao.getListPage(listShop, ConstantNumber.pageNum);
+        List<Shop> listShop;
+        List<Integer> listPage;
         HttpSession session = request.getSession();
         session.setAttribute("shopName", shopName);
         if (pageIdStr == null) {
             if (shopName == null) {
                 listShopInAPage
                         = shopDao.getListShopInPage(1, ConstantNumber.pageNum, "");
+                listShop = shopDao.getListShopByName("");
             } else {
                 listShopInAPage
                         = shopDao.getListShopInPage(1, ConstantNumber.pageNum, shopName);
+                listShop = shopDao.getListShopByName(shopName);
             }
         } else {
             int pageID = Integer.valueOf(pageIdStr);
             if (shopName == null) {
                 listShopInAPage
                         = shopDao.getListShopInPage(pageID, ConstantNumber.pageNum, "");
+                listShop = shopDao.getListShopByName("");
             } else {
                 listShopInAPage
                         = shopDao.getListShopInPage(pageID, ConstantNumber.pageNum, shopName);
+                listShop = shopDao.getListShopByName(shopName);
             }
         }
+        listPage = shopDao.getListPage(listShop, ConstantNumber.pageNum);
 
         request.setAttribute("listShopInAPage", listShopInAPage);
         request.setAttribute("listPage", listPage);
