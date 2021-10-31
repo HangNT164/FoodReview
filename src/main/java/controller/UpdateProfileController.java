@@ -13,14 +13,14 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "ProfileController", value = "/profile")
-public class ProfileController extends HttpServlet {
+@WebServlet(name = "UpdateProfileController", value = "/update-profile")
+public class UpdateProfileController extends HttpServlet {
 
     private AccountDao accountDao = new AccountDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("account.jsp").forward(request, response);
+        request.getRequestDispatcher("update-profile.jsp").forward(request, response);
     }
 
     @Override

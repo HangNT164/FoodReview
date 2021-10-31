@@ -1,7 +1,7 @@
 package dao;
 
 import bean.Account;
-import constant.StatusEnum;
+import constant.StatusAccountEnum;
 import jdbc.MySqlConnection;
 import util.BCrypt;
 
@@ -63,12 +63,11 @@ public class AccountDao {
     }
 
     public List<Account> searchAccountByEmail(String email) {
-        String query = "SELECT * FROM account WHERE email like '%" + email + "%' AND status = ?";
+        String query = "SELECT * FROM account WHERE email like '%" + email + "%'";
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
-                ps.setObject(1, StatusEnum.active.toString());
                 ResultSet rs = ps.executeQuery();
                 List<Account> list = new ArrayList<>();
                 while (rs != null && rs.next()) {
@@ -83,18 +82,39 @@ public class AccountDao {
     }
 
     public Account getAccountByEmail(String email) {
-        String query = "SELECT * FROM account WHERE email = '" + email + "' AND status = ?";
+        String query = "SELECT * FROM account WHERE email = '"+ email + "'";
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
-                ps.setObject(1, StatusEnum.active.toString());
                 ResultSet rs = ps.executeQuery();
                 Account account = null;
                 while (rs != null && rs.next()) {
                     account = getValueAccount(rs);
                 }
                 return account;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public String getAccountNameById(int id) {
+        String query = "SELECT * FROM account WHERE account_id = "+id;
+
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                Account account = null;
+                while (rs != null && rs.next()) {
+                    account = getValueAccount(rs);
+                }
+                if(account == null)
+                    return "Unknown";
+                else
+                    return  account.getName();
             }
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -113,7 +133,7 @@ public class AccountDao {
                 ps.setObject(1, role);
                 ps.setObject(2, new Date());
                 ps.setObject(3, accountId);
-                ps.setObject(4, StatusEnum.active.toString());
+                ps.setObject(4, StatusAccountEnum.active.toString());
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {
@@ -122,18 +142,17 @@ public class AccountDao {
         return check > 0;
     }
 
-    public boolean removeAccount(int accountId) {
+    public boolean changeStatusAccount(int accountId, String status) {
         int check = 0;
         String query = "UPDATE account SET status = ?, updated_date =?"
-                + "WHERE account_id = ? AND status =?";
+                + "WHERE account_id = ?";
 
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
             if (ps != null) {
-                ps.setObject(1, StatusEnum.inactive.toString());
+                ps.setObject(1, status);
                 ps.setObject(2, new Date());
                 ps.setObject(3, accountId);
-                ps.setObject(4, StatusEnum.active.toString());
                 check = ps.executeUpdate();
             }
         } catch (Exception e) {

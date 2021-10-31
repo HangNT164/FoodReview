@@ -10,6 +10,8 @@
     <link rel="shortcut icon" href="resources/images/avatar.png">
     <!-- FontAwesome JS-->
     <script defer src="resources/plugins/fontawesome/js/all.min.js"></script>
+    <script src="resources/js/custom/genderScript.js"></script>
+
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
     <link rel="stylesheet" href="resources/css/custom/footer.css">
@@ -139,7 +141,7 @@
                                                 <label>Gender</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>${sessionScope.account.gender}</p>
+                                                <p id="genderName"></p>
                                             </div>
                                         </div>
                                         <div class="row">

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -227,7 +228,7 @@
                                                                data-target="#remove${a.accountId}"
                                                                title="Review">
                                                                 <i
-                                                                        class="fas fa-trash fa-fw"></i></a>
+                                                                        class="fas fa-check-square fa-fw"></i></a>
                                                         </td>
                                                     </tr>
 
@@ -293,15 +294,15 @@
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
-                                                                                        <label>Date of Birth</label>
-                                                                                        <span class="form-control">${a.updatedDate}</span>
+                                                                                        <label>Created Date</label>
+                                                                                        <span class="form-control"><fmt:formatDate pattern = "dd/MM/yyyy" value = "${a.createdDate}" /></span>
                                                                                     </div>
                                                                                 </div>
 
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label>Updated Date </label>
-                                                                                        <span class="form-control">${a.updatedDate}</span>
+                                                                                        <span class="form-control"><fmt:formatDate pattern = "dd/MM/yyyy" value = "${a.updatedDate}" /></span>
                                                                                     </div>
                                                                                 </div>
 
@@ -375,18 +376,27 @@
                                                                         <p style="text-align: center;color: red;">${message}</p>
                                                                         <form action="remove-user-management?accountId=${a.accountId}"
                                                                               method="post">
-                                                                            <p>Bạn có muốn xóa tài khoản này không?</p>
+                                                                            <p>Update User Status</p>
                                                                             <br/>
-                                                                            <div style="display: flex;justify-content: space-between">
+                                                                            <p style="text-align: center;color: red;">${message}</p>
+                                                                            <select class="form-control"
+                                                                                    name="listStatus">
+                                                                                <option value="active">Active
+                                                                                </option>
+                                                                                <option value="inactive">Inactive
+                                                                                </option>
+                                                                            </select>
+                                                                            <br/>
+                                                                            <div style="display: flex;justify-content: space-evenly">
                                                                                 <button type="submit"
                                                                                         style="border: 1px solid;"
                                                                                         class="btn btn-outline-success">
-                                                                                    Có
+                                                                                    Change
                                                                                 </button>
                                                                                 <button type="button"
                                                                                         style="border: 1px solid;"
                                                                                         class="btn btn-outline-success"
-                                                                                        data-dismiss="modal">Không
+                                                                                        data-dismiss="modal">Close
                                                                                 </button>
                                                                             </div>
                                                                         </form>

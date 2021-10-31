@@ -9,17 +9,14 @@ import java.sql.Date;
 @Builder
 @Getter
 @Setter
-public class Topic {
+public class TopicComment {
+    private int topicCommentId;
     private int topicId;
-    private String title;
+    private int accountId;
+    private String accountName;
     private String status;
     private String content;
     private int rate;
-    private String imgAddr;
     private Date createdDate;
     private Date updatedDate;
-    private String month;
-    private int accountId;
-    private String accountName;
-
 }

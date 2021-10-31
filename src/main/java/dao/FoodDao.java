@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 public class FoodDao {
-
+    private AccountDao accountDao = new AccountDao();
     private Food getValueFood(ResultSet rs) {
         try {
             return Food.builder()
@@ -25,14 +25,33 @@ public class FoodDao {
                     .rate(rs.getInt(6))
                     .createdDate(rs.getDate(7))
                     .updatedDate(rs.getDate(8))
-                    .month(rs.getString(9))
+                    .img(rs.getString(9))
+//                    .month(rs.getString(9))
+//                    .accountId(rs.getInt(10))
+//                    .accountName(accountDao.getAccountNameById(rs.getInt(10)))
                     .build();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
         }
         return null;
     }
-
+    public List<Food> getListFood() {
+        String query = "SELECT * FROM food  where status not like 'reject'  ORDER BY rate DESC limit 5";
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Food> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueFood(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
     public List<Food> listFoodByMonth(String month) {
         String query = "SELECT * FROM swp391_g2_project.food WHERE month=?";
 
