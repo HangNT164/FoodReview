@@ -112,6 +112,10 @@ public class TopicDao {
                 while (rs != null && rs.next()) {
                     list.add(getValueTopic(rs));
                 }
+                for(int i=0; i<list.size();i++){
+                    String temp = list.get(i).getContent();
+                    list.get(i).setContent(temp.substring(0,40) + "  ......");
+                }
                 return list;
             }
         } catch (Exception e) {
