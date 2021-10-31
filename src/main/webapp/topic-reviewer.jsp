@@ -88,7 +88,6 @@
                            name="title" id="title"
                            required
                            pattern=".{1,50}"
-                           oninvalid="setCustomValidity('Topic Title max 50 character')"
                            class="form-control"/>
                 </div>
                 <div class="row">
@@ -96,7 +95,6 @@
                     <input style="margin-left: 60px;" type="text"
                            required id="content"
                            pattern=".{1,4000}"
-                           oninvalid="setCustomValidity('Topic Content max 4000 character')"
                            name="content"
                            class="form-control"/>
                 </div>

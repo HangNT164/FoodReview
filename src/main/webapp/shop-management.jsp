@@ -181,7 +181,6 @@
                                                                         <input style="margin-left: 60px" type="text"
                                                                                required
                                                                                pattern=".{1,50}"
-                                                                               oninvalid="setCustomValidity('Shop Name max 50 charter')"
                                                                                name="shopName"
                                                                                class="form-control"/>
                                                                     </div>
@@ -194,7 +193,6 @@
                                                                         <input style="margin-left: 60px" type="text"
                                                                                required
                                                                                pattern=".{1,200}"
-                                                                               oninvalid="setCustomValidity('Shop Address max 200 charter')"
                                                                                name="address"
                                                                                class="form-control"/>
                                                                     </div>
@@ -207,7 +205,6 @@
                                                                         <input style="margin-left: 60px" type="text"
                                                                                required
                                                                                pattern=".{1,1000}"
-                                                                               oninvalid="setCustomValidity('Shop Description max 1000 charter')"
                                                                                name="description"
                                                                                class="form-control"/>
                                                                     </div>

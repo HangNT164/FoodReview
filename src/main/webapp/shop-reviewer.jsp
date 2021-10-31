@@ -93,20 +93,20 @@
                                 <img class="pic-2" src="resources/images/users/hangnt1.png">
                             </a>
                         </div>
-                        <ul class="rating">
-                            <c:set var="rateShops" scope="page" value="${shop.rate}"/>
-                            <%
-                                List<Integer> listRates = new ArrayList<>();
-                                int rate = (int) pageContext.getAttribute("rateShops");
-                                for (int i = 0; i < rate; i++) {
-                                    listRates.add(i + 1);
-                                }
-                                pageContext.setAttribute("listRates", listRates);
-                            %>
-                            <c:forEach items="${listRates}" var="rate">
-                                <li class="fa fa-star"></li>
-                            </c:forEach>
-                        </ul>
+<%--                        <ul class="rating">--%>
+<%--                            <c:set var="rateShops" scope="page" value="${shop.rate}"/>--%>
+<%--                            <%--%>
+<%--                                List<Integer> listRates = new ArrayList<>();--%>
+<%--                                int rate = (int) pageContext.getAttribute("rateShops");--%>
+<%--                                for (int i = 0; i < rate; i++) {--%>
+<%--                                    listRates.add(i + 1);--%>
+<%--                                }--%>
+<%--                                pageContext.setAttribute("listRates", listRates);--%>
+<%--                            %>--%>
+<%--                            <c:forEach items="${listRates}" var="rate">--%>
+<%--                                <li class="fa fa-star"></li>--%>
+<%--                            </c:forEach>--%>
+<%--                        </ul>--%>
                         <div class="product-content">
                             <h3 class="title"><a href="#">${shop.shopName}</a></h3>
                         </div>
