@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -84,11 +84,15 @@
             <div class="col-lg-4">
                 <div class="left-content">
                     <div class="inner-content">
-                        <h4>Food Review</h4>
-                        <h6>THE BEST EXPERIENCE</h6>
-                        <div class="main-white-button scroll-to-section">
-                            <a href="#"></a>
-                        </div>
+                        <h4 class="font-family: 'Dancing Script', cursive;
+    font-size: 54px;
+    font-weight: 700;">Food Review</h4>
+                        <h6 class="font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #d63384 !important;
+    letter-spacing: 3px;
+    margin-top: 5px;">THE BEST EXPERIENCE</h6>
                     </div>
                 </div>
             </div>
@@ -96,26 +100,14 @@
                 <div class="main-banner header-text">
                     <div class="Modern-Slider">
                         <!-- Item -->
-                        <div class="item">
-                            <div class="img-fill">
-                                <img src="resources/images/home/slide-01.jpg" alt="">
+                        <c:forEach items="${listShop}" var="ls">
+                            <div class="item">
+                                <div class="img-fill">
+                                    <img src="server/uploads/${ls.img}" alt="">
+                                </div>
                             </div>
-                        </div>
-                        <!-- // Item -->
-                        <!-- Item -->
-                        <div class="item">
-                            <div class="img-fill">
-                                <img src="resources/images/home/slide-02.jpg" alt="">
-                            </div>
-                        </div>
-                        <!-- // Item -->
-                        <!-- Item -->
-                        <div class="item">
-                            <div class="img-fill">
-                                <img src="resources/images/home/slide-03.jpg" alt="">
-                            </div>
-                        </div>
-                        <!-- // Item -->
+                        </c:forEach>
+
                     </div>
                 </div>
             </div>
@@ -128,24 +120,27 @@
 <section class="section" id="about">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-5">
                 <div class="left-text-content">
                     <div class="section-heading">
                         <h6>New Post</h6>
                         <form id="linkForm" action="topic-detail?topicId=${top1.topicId}" method="post">
-                            <a href="javascript:{}" onclick="document.getElementById('linkForm').submit();" style="font-family: none;"><h1 style="color:black;">${top1.title}</h1></a>
+                            <a href="javascript:{}" onclick="document.getElementById('linkForm').submit();"
+                               style="font-family: none;"><h1 style="color:black;">${top1.title}</h1></a>
                         </form>
                     </div>
-                    <span><b>Author:</b> ${top1.accountName} | <fmt:formatDate pattern = "dd/MM/yyyy" value = "${top1.createdDate}" />. </span>
+                    <span><b>Author:</b> ${top1.accountName} | <fmt:formatDate pattern="dd/MM/yyyy"
+                                                                               value="${top1.createdDate}"/>. </span>
                     <span><b>Rate:</b> ${top1.rate}</span>
                     <br>
                     <br>
                     <h5 style="white-space: pre-line; font-weight:normal;">${top1.content}
-                    <br>
-                    <div class="row">
-                        <img src="server/uploads/${top1.imgAddr}" alt=""/>
-                    </div>
+                        <br>
+
                 </div>
+            </div>
+            <div class="col-7">
+                <img src="server/uploads/${top1.imgAddr}" height="400px" alt=""/>
             </div>
         </div>
     </div>
@@ -160,9 +155,10 @@
                 <div class="section-heading">
                     <h6>All Post</h6>
                     <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi
-                    <form id="listTopicForm" action="list-topic-approved" method="get">
-                        <a href="javascript:{}" onclick="document.getElementById('listTopicForm').submit();" style="font-family: none;">Xem thêm >></a>
-                    </form>
+                        <form id="listTopicForm" action="list-topic-approved" method="get">
+                            <a href="javascript:{}" onclick="document.getElementById('listTopicForm').submit();"
+                               style="font-family: none;">Xem thêm >></a>
+                        </form>
                     </h2>
                 </div>
             </div>
@@ -174,15 +170,19 @@
             <div class="owl-menu-item owl-carousel">
                 <c:forEach items="${topicList}" var="l">
                     <div class="item">
-                        <div class='card card1'>
-                            <div class="price"><h6>${l.rate} <i class="fas fa-heart fw"></i></h6></div>
+                        <div class='card' style="background-image: url('server/uploads/${l.imgAddr}')">
+                            <div class="price"><h6>${l.rate}</h6></div>
                             <div class='info'>
                                 <h1 class='title'>
-                                    <form id="linkForm${l.topicId}" action="topic-detail?topicId=${l.topicId}" method="post">
-                                      <a href="javascript:{}" onclick="document.getElementById('linkForm${l.topicId}').submit();" style="font-family: none; color:black;"><h2>${l.title}</h2></a>
+                                    <form id="linkForm${l.topicId}" action="topic-detail?topicId=${l.topicId}"
+                                          method="post">
+                                        <a href="javascript:{}"
+                                           onclick="document.getElementById('linkForm${l.topicId}').submit();"
+                                           style="font-family: none; color:black;"><h2>${l.title}</h2></a>
                                     </form>
                                 </h1>
-                                <p class="description" style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
+                                <p class="description"
+                                   style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
                                 <div class="main-text-button">
                                     <div class="scroll-to-section"><a href="#">More.. <i
                                             class="fa fa-angle-down"></i></a>
@@ -218,12 +218,7 @@
                     <div class="chef-item">
                         <div class="thumb">
                             <div class="overlay"></div>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                            <img src="resources/images/home/chefs-01.jpg" alt="Chef #1">
+                            <img src="server/uploads/${l.img}" alt="">
                         </div>
                         <div class="down-content">
                             <h4>${l.shopName}</h4>
@@ -241,7 +236,7 @@
 <!-- ***** Reservation Area Ends ***** -->
 
 <!-- ***** Menu Area Starts ***** -->
-<section class="section" id="offers">
+<section class="section">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 offset-lg-4 text-center">
@@ -252,276 +247,22 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
-                <div class="row" id="tabs">
-                    <div class="col-lg-12">
-                        <div class="heading-tabs">
-                            <div class="row">
-                                <div class="col-lg-6 offset-lg-3">
-                                    <ul>
-                                        <li><a href='#tabs-1'><img src="resources/images/home/tab-icon-01.png" alt="">Breakfast</a>
-                                        </li>
-                                        <li><a href='#tabs-2'><img src="resources/images/home/tab-icon-02.png"
-                                                                   alt="">Lunch</a></li>
-                                        <li><a href='#tabs-3'><img src="resources/images/home/tab-icon-03.png"
-                                                                   alt="">Dinner</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <section class='tabs-content'>
-                            <article id='tabs-1'>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="left-list">
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-01.png" alt="">
-                                                        <h4>Fresh Chicken Salad</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-02.png" alt="">
-                                                        <h4>Orange Juice</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-03.png" alt="">
-                                                        <h4>Fruit Salad</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="right-list">
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-04.png" alt="">
-                                                        <h4>Eggs Omelette</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-05.png" alt="">
-                                                        <h4>Dollma Pire</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-06.png" alt="">
-                                                        <h4>Omelette & Cheese</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article id='tabs-2'>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="left-list">
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-04.png" alt="">
-                                                        <h4>Eggs Omelette</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-05.png" alt="">
-                                                        <h4>Dollma Pire</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-06.png" alt="">
-                                                        <h4>Omelette & Cheese</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="right-list">
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-01.png" alt="">
-                                                        <h4>Fresh Chicken Salad</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-02.png" alt="">
-                                                        <h4>Orange Juice</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-03.png" alt="">
-                                                        <h4>Fruit Salad</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                            <article id='tabs-3'>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="left-list">
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-05.png" alt="">
-                                                        <h4>Eggs Omelette</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-03.png" alt="">
-                                                        <h4>Orange Juice</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-02.png" alt="">
-                                                        <h4>Fruit Salad</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="row">
-                                            <div class="right-list">
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-06.png" alt="">
-                                                        <h4>Fresh Chicken Salad</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-01.png" alt="">
-                                                        <h4>Dollma Pire</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="resources/images/home/tab-item-04.png" alt="">
-                                                        <h4>Omelette & Cheese</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit,
-                                                            sed do.</p>
-                                                        <div class="price">
-                                                            <h6>10 <i class="fa fa-heart"></i></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </section>
+
+            <c:forEach items="${listFood}" var="ls">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-2">
+                    <img src="server/uploads/${ls.img}" alt="">
+                </div>
+                <div class="col-lg-4">
+                    <h4>${ls.foodName}</h4>
+                    <p>${ls.description}.</p>
+                    <div class="price">
+                        <h6>Rate: ${ls.rate}</h6>
                     </div>
                 </div>
-            </div>
+                <div class="col-lg-3"></div>
+            </c:forEach>
+
         </div>
     </div>
 </section>
@@ -534,10 +275,6 @@
             <div class="col-lg-4 col-xs-12">
                 <div class="right-text-content">
                     <ul class="social-icons">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>

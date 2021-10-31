@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ShopDao {
-
+    private AccountDao accountDao = new AccountDao();
     private Shop getValueShop(ResultSet rs) {
         try {
             return Shop.builder()
@@ -20,9 +20,11 @@ public class ShopDao {
                     .address(rs.getString(5))
                     .description(rs.getString(6))
                     .rate(rs.getInt(7))
-                    .totalNumberRate(rs.getInt(8))
-                    .createdDate(rs.getDate(9))
-                    .updatedDate(rs.getDate(10))
+//                    .totalNumberRate(rs.getInt(8))
+                    .createdDate(rs.getDate(8))
+                    .updatedDate(rs.getDate(9))
+                    .img(rs.getString(10))
+                    .accountName(accountDao.getAccountNameById(rs.getInt(2)))
                     .build();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
@@ -85,7 +87,7 @@ public class ShopDao {
     }
 
     public List<Shop> getListShop() {
-        String query = "SELECT * FROM swp391_g2_project.shop  where status not like \"reject\"limit 3;";
+        String query = "SELECT * FROM shop  where status not like 'reject' limit 3;";
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {

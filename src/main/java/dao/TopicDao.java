@@ -247,7 +247,7 @@ public class TopicDao {
                 ps.setObject(1, topic.getTitle());
                 ps.setObject(2, topic.getStatus());
                 ps.setObject(3, topic.getContent());
-                ps.setObject(4, topic.getImage());
+                ps.setObject(4, topic.getImgAddr());
                 ps.setObject(5, currentMonth());
                 ps.setObject(6, topic.getAccountId());
                 check = ps.executeUpdate();

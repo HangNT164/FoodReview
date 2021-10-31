@@ -681,7 +681,6 @@ banner
 }
 
 #top .left-content {
-    background-image: url(../images/top-left-bg.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -697,18 +696,18 @@ banner
     left: 50%;
 }
 
-#top .left-content h4 {
+top .left-content h4 {
     font-family: 'Dancing Script', cursive;
-    color: #fff;
+    color: #d63384;
     font-size: 54px;
     font-weight: 700;
 }
 
-#top .left-content h6 {
+top .left-content h6 {
     font-size: 15px;
     text-transform: uppercase;
     font-weight: 600;
-    color: #fff;
+    color: #d63384 !important;
     letter-spacing: 3px;
     margin-top: 5px;
 }
@@ -768,7 +767,7 @@ banner
 /* ==== Slider Style === */
 .Modern-Slider .item .img-fill {
     height: 100%;
-    max-height: 700px;
+    max-height: 500px;
     background: #000;
 }
 
@@ -1017,7 +1016,7 @@ menu
 }
 
 .card1 {
-    background-image: url(../../images/home/chefs-01.jpg);
+    background-image: url(../../../server/uploads/chefs-01.jpg);
 }
 
 .card2 {

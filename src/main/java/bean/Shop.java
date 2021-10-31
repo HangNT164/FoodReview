@@ -25,4 +25,6 @@ public class Shop {
     private int totalNumberRate;
     private Date createdDate;
     private Date updatedDate;
+    private String img;
+    private String accountName;
 }
