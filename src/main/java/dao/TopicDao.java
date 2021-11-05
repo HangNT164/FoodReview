@@ -22,7 +22,7 @@ public class TopicDao {
                     .status(rs.getString(3))
                     .content(rs.getString(4))
                     .rate(rs.getInt(5))
-                    .imgAddr(rs.getString(6))
+                    .img(rs.getString(6))
                     .createdDate(rs.getDate(7))
                     .updatedDate(rs.getDate(8))
                     .month(rs.getString(9))
@@ -251,7 +251,7 @@ public class TopicDao {
                 ps.setObject(1, topic.getTitle());
                 ps.setObject(2, topic.getStatus());
                 ps.setObject(3, topic.getContent());
-                ps.setObject(4, topic.getImgAddr());
+                ps.setObject(4, topic.getImg());
                 ps.setObject(5, currentMonth());
                 ps.setObject(6, topic.getAccountId());
                 check = ps.executeUpdate();
