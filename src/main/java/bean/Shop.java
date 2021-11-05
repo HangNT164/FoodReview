@@ -22,6 +22,9 @@ public class Shop {
     private String address;
     private String description;
     private int rate;
+    private int totalNumberRate;
     private Date createdDate;
     private Date updatedDate;
+    private String img;
+    private String accountName;
 }

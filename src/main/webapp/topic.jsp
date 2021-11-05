@@ -94,7 +94,26 @@
                         <!--//nav-link-->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="food-management">
+                        <a class="nav-link active" href="search-user-management">
+                                <span class="nav-icon">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list"
+                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                              d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
+                                        <circle cx="3.5" cy="5.5" r=".5"/>
+                                        <circle cx="3.5" cy="8" r=".5"/>
+                                        <circle cx="3.5" cy="10.5" r=".5"/>
+                                    </svg>
+                                </span>
+                            <span class="nav-link-text">User Management</span>
+                        </a>
+                        <!--//nav-link-->
+                    </li>
+                    <!--//nav-item-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="search-topic-status">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -112,7 +131,7 @@
                                     <circle cx="3.5" cy="10.5" r=".5"/>
                                     </svg>
                                 </span>
-                            <span class="nav-link-text">Food Management</span>
+                            <span class="nav-link-text">Topic Management</span>
                         </a>
                         <!--//nav-link-->
                     </li>
@@ -138,9 +157,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <div>
-                                    <a href="#" class="view mr-1" data-toggle="modal"
-                                       data-target="#add-topic" title="Add topic" style="text-decoration: none">
-                                        <i class="fas fa-plus"></i><span>Add new </span></a>
+                                    <button type="button" data-bs-toggle="modal" class="btn btn-success"
+                                            data-bs-target="#add-topic">
+                                        Add new
+                                    </button>
                                     <%-- Su kien add--%>
                                     <div class="modal fade" id="add-topic" tabindex="-1"
                                          role="dialog" aria-labelledby="add-topic"
@@ -150,7 +170,8 @@
                                             <div class="modal-content">
                                                 <div class="card">
                                                     <div class="card-body">
-                                                        <form action="add-topic" method="post" onchange="return validateAddForm()">
+                                                        <form action="add-topic" method="post"
+                                                              onchange="return validateAddForm()">
                                                             <h5 class="mb-3">Add topic</h5>
                                                             <div class="row">
                                                                 <div class="form-group">
@@ -160,7 +181,8 @@
                                                                                id="add-title"
                                                                                name="title"
                                                                                class="form-control"/>
-                                                                        <span id="add-title-message" style="display: none; color: red; font-size: 14px; text-align: center">Chủ đề không được để trống</span>
+                                                                        <span id="add-title-message"
+                                                                              style="display: none; color: red; font-size: 14px; text-align: center"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -168,9 +190,7 @@
                                                                 <div class="form-group">
                                                                     <div class="col-md-10">
                                                                         <label>Content: </label>
-                                                                        <input style="margin-left: 60px" type="text"
-                                                                               name="content"
-                                                                               class="form-control"/>
+                                                                        <textarea style="margin-left: 60px" name="content" class="form-control"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -355,26 +375,28 @@
                                                                                 <div class="col-sm-12">
                                                                                     <label>Title</label>
                                                                                     <input class="form-control"
-                                                                                              name="title"
+                                                                                           name="title"
                                                                                            value="${l.title}"
-                                                                                              > </input>
+                                                                                    > </input>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
                                                                                 <div class="col-sm-12">
                                                                                     <label>Content</label>
                                                                                     <input class="form-control"
-                                                                                              name="content"
-                                                                                              value="${l.content}"> </input>
+                                                                                           name="content"
+                                                                                           value="${l.content}"> </input>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
                                                                                 <div class="col-sm-12">
                                                                                     <label>Status</label>
-                                                                                    <select id="statu" class="form-control"
+                                                                                    <select id="statu"
+                                                                                            class="form-control"
                                                                                             name="status">
 
-                                                                                        <option value="approved">Approved
+                                                                                        <option value="approved">
+                                                                                            Approved
                                                                                         </option>
                                                                                         <option value="pending">Pending
                                                                                         </option>
@@ -425,6 +447,7 @@
                                                                                 <button type="button"
                                                                                         style="border: 1px solid;"
                                                                                         class="btn btn-outline-success"
+                                                                                        data-bs-dismiss="modal"
                                                                                         data-dismiss="modal">Không
                                                                                 </button>
                                                                             </div>
@@ -495,23 +518,29 @@
         if (document.getElementById('add-title').value == "") {
             document.getElementById('add-title').style.borderColor = 'red'
             document.getElementById('add-title-message').style.display = 'block'
+            document.getElementById('add-title-message').innerHTML = 'Tên không được để trống'
             return false;
-        }else {
+        } else if (document.getElementById('add-title').value.length > 100) {
+            document.getElementById('add-title').style.borderColor = 'red'
+            document.getElementById('add-title-message').style.display = 'block'
+            document.getElementById('add-title-message').innerHTML = 'Tên không được dài quá 100 ký tự'
+        } else {
             document.getElementById('add-title').style.borderColor = '#e7e9ed'
             document.getElementById('add-title-message').style.display = 'none'
         }
     }
 </script>
 <style>
-    .dataTables_paginate>span>a {
+    .dataTables_paginate > span > a {
         margin-bottom: 0px !important;
         padding: 2px 2px !important;
     }
 
-    .dataTables_paginate>a {
+    .dataTables_paginate > a {
         margin-bottom: 0px !important;
         padding: 2px 2px !important;
     }
+
     .form-control {
         height: 2.7rem;
     }

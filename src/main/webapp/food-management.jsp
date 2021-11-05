@@ -164,9 +164,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <div>
-                                    <a href="#" class="view mr-1" data-toggle="modal"
-                                       data-target="#add-food" title="Add topic" style="text-decoration: none">
-                                        <i class="fas fa-plus"></i><span>Add new </span></a>
+                                    <button type="button" data-bs-toggle="modal" class="btn btn-success"
+                                            data-bs-target="#add-food">
+                                        Add new
+                                    </button>
                                     <%-- Su kien add--%>
                                     <div class="modal fade" id="add-food" tabindex="-1"
                                          role="dialog" aria-labelledby="add-food"
@@ -188,7 +189,7 @@
                                                                                name="name"
                                                                                class="form-control"/>
                                                                         <span id="add-name-message"
-                                                                              style="display: none; color: red; font-size: 14px; text-align: center">Tên không được để trống</span>
+                                                                              style="display: none; color: red; font-size: 14px; text-align: center"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -196,9 +197,7 @@
                                                                 <div class="form-group">
                                                                     <div class="col-md-10">
                                                                         <label>Description: </label>
-                                                                        <input style="margin-left: 60px" type="text"
-                                                                               name="description"
-                                                                               class="form-control"/>
+                                                                        <textarea style="margin-left: 60px" name="description" class="form-control"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -228,6 +227,7 @@
                                                                 <button type="button"
                                                                         style="border: 1px solid;"
                                                                         class="btn btn-outline-success"
+                                                                        data-bs-dismiss="modal"
                                                                         data-dismiss="modal">Close
                                                                 </button>
                                                             </div>
@@ -238,22 +238,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form action="search-topic-status">
+                                <form action="food-management">
                                     <div class="row mt-3 mb-3">
                                         <div class="row" style="padding: 0px;margin: 0px;">
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <label for="status">Search by status</label><br>
-                                                    <select id="status" class="form-control"
-                                                            name="status">
-                                                        <option value="">All
-                                                        </option>
-                                                        <option value="approved">Approved
-                                                        </option>
-                                                        <option value="pending">Pending
-                                                        </option>
-                                                        <option value="reject">Reject</option>
-                                                    </select>
+                                                    <label for="foodName">Food name: </label>
+                                                    <input id="foodName" name="foodName" type="text" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-1" style="margin-top: 30px;">
@@ -269,11 +260,12 @@
                                 <div class="row">
                                     <div style="max-height: 600px; overflow: auto;">
                                         <div class="table-responsive">
-                                            <table id="user-management-table" class="table table-bordered w-100">
+                                            <table id="food-management-table" class="table table-bordered w-100">
                                                 <thead>
                                                 <tr>
                                                     <th class="w-stt">No</th>
-                                                    <th>Title</th>
+                                                    <th>Shop ID</th>
+                                                    <th>Food Name</th>
                                                     <th>Status</th>
                                                     <th>Created Date</th>
                                                     <th>Update Date</th>
@@ -281,46 +273,47 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${topicListByStatus}" var="l" varStatus="loop">
+                                                <c:forEach items="${foodList}" var="l" varStatus="loop">
                                                     <tr>
                                                         <td>${loop.count}</td>
-                                                        <td>${l.title}</td>
+                                                        <td>${l.shopId}</td>
+                                                        <td>${l.foodName}</td>
                                                         <td>${l.status}</td>
                                                         <td>${l.createdDate}</td>
                                                         <td>${l.updatedDate}</td>
                                                         <td style="text-align: center">
                                                             <a href="#" class="view mr-1" data-toggle="modal"
-                                                               data-target="#detail${l.topicId}" title="Detail">
+                                                               data-target="#detail${l.foodId}" title="Detail">
                                                                 <i
                                                                         class="fas fa-eye fa-fw"></i></a>
                                                             <a href="#" class="edit mr-1" data-toggle="modal"
-                                                               data-target="#update${l.topicId}" title="Update">
+                                                               data-target="#update${l.foodId}" title="Update">
                                                                 <i
                                                                         class="fas fa-pen fa-fw"></i></a>
-                                                            <a href="#" class="remove mr-1" data-toggle="modal"
-                                                               data-target="#remove${l.topicId}"
-                                                               title="Remove">
-                                                                <i
-                                                                        class="fas fa-trash fa-fw"></i></a>
+<%--                                                            <a href="#" class="remove mr-1" data-toggle="modal"--%>
+<%--                                                               data-target="#remove${l.foodId}"--%>
+<%--                                                               title="Remove">--%>
+<%--                                                                <i--%>
+<%--                                                                        class="fas fa-trash fa-fw"></i></a>--%>
                                                         </td>
                                                     </tr>
                                                     <!-- Su kien show chi tiet -->
-                                                    <div class="modal fade" id="detail${l.topicId}" tabindex="-1"
-                                                         role="dialog" aria-labelledby="detail${l.topicId}"
+                                                    <div class="modal fade" id="detail${l.foodId}" tabindex="-1"
+                                                         role="dialog" aria-labelledby="detail${l.foodId}"
                                                          aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-xl"
                                                              role="document">
                                                             <div class="modal-content">
                                                                 <div class="card">
                                                                     <div class="card-body">
-                                                                        <h5 class="mb-3">Detail Topic</h5>
+                                                                        <h5 class="mb-3">Detail Food</h5>
                                                                         <div class="row">
                                                                             <div class="col-6 pr-4">
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
-                                                                                        <label>Title</label>
+                                                                                        <label>Food Name</label>
                                                                                         <textarea class="form-control"
-                                                                                                  disabled>${l.title} </textarea>
+                                                                                                  disabled>${l.foodName} </textarea>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="form-group row">
@@ -332,10 +325,10 @@
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
-                                                                                        <label>Content</label>
+                                                                                        <label>Description</label>
                                                                                         <textarea class="form-control"
                                                                                                   disabled
-                                                                                                  style="height: 150px">${l.content}</textarea>
+                                                                                                  style="height: 150px">${l.description}</textarea>
                                                                                     </div>
                                                                                 </div>
 
@@ -381,46 +374,46 @@
                                                         </div>
                                                     </div>
                                                     <%--  Su kien update--%>
-                                                    <div class="modal fade" id="update${l.topicId}" tabindex="-1"
-                                                         role="dialog" aria-labelledby="update${l.topicId}"
+                                                    <div class="modal fade" id="update${l.foodId}" tabindex="-1"
+                                                         role="dialog" aria-labelledby="update${l.foodId}"
                                                          aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-xl"
                                                              role="document">
                                                             <div class="modal-content">
                                                                 <div class="card">
                                                                     <div class="card-body">
-                                                                        <h5 class="mb-3">Update Topic</h5>
-                                                                        <form action="update-status-topic?topicId=${l.topicId}"
+                                                                        <h5 class="mb-3">Update Food</h5>
+                                                                        <form action="food-management?foodId=${l.foodId}"
                                                                               method="post">
                                                                             <p style="text-align: center;color: red;">${message}</p>
                                                                             <div class="form-group row">
                                                                                 <div class="col-sm-12">
-                                                                                    <label>Title</label>
+                                                                                    <label>Food Name</label>
                                                                                     <input class="form-control"
-                                                                                           name="title"
-                                                                                           value="${l.title}"
+                                                                                           name="foodName"
+                                                                                           value="${l.foodName}"
                                                                                     > </input>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
                                                                                 <div class="col-sm-12">
-                                                                                    <label>Title</label>
+                                                                                    <label>Description</label>
                                                                                     <input class="form-control"
-                                                                                           name="content"
-                                                                                           value="${l.content}"> </input>
+                                                                                           name="description"
+                                                                                           value="${l.description}"> </input>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
-                                                                                <select id="statu" class="form-control"
-                                                                                        name="status">
-
-                                                                                    <option value="approved">Approved
-                                                                                    </option>
-                                                                                    <option value="pending">Pending
-                                                                                    </option>
-                                                                                    <option value="reject">Reject
-                                                                                    </option>
-                                                                                </select>
+                                                                                <div class="col-sm-12">
+                                                                                    <label>Status</label>
+                                                                                    <select id="statu" class="form-control"
+                                                                                            name="status">
+                                                                                        <option value="active">Active
+                                                                                        </option>
+                                                                                        <option value="inactive">Inactive
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
                                                                             <div style="display: flex;justify-content: space-evenly">
                                                                                 <button type="submit"
@@ -441,38 +434,38 @@
                                                         </div>
                                                     </div>
                                                     <%--  Su kien remove--%>
-                                                    <div class="modal fade" id="remove${l.topicId}" tabindex="-1"
-                                                         role="dialog" aria-labelledby="remove${l.topicId}"
-                                                         aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-sm"
-                                                             role="document">
-                                                            <div class="modal-content">
-                                                                <div class="card">
-                                                                    <div class="card-body">
-                                                                        <h5 class="mb-3">Remove Topic </h5>
-                                                                        <p style="text-align: center;color: red;">${message}</p>
-                                                                        <form action="remove-topic-management?topicId=${l.topicId}"
-                                                                              method="post">
-                                                                            <p>Bạn có muốn xóa topic này không?</p>
-                                                                            <br/>
-                                                                            <div style="display: flex;justify-content: space-between">
-                                                                                <button type="submit"
-                                                                                        style="border: 1px solid;"
-                                                                                        class="btn btn-outline-success">
-                                                                                    Có
-                                                                                </button>
-                                                                                <button type="button"
-                                                                                        style="border: 1px solid;"
-                                                                                        class="btn btn-outline-success"
-                                                                                        data-dismiss="modal">Không
-                                                                                </button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+<%--                                                    <div class="modal fade" id="remove${l.foodId}" tabindex="-1"--%>
+<%--                                                         role="dialog" aria-labelledby="remove${l.foodId}"--%>
+<%--                                                         aria-hidden="true">--%>
+<%--                                                        <div class="modal-dialog modal-dialog-centered modal-sm"--%>
+<%--                                                             role="document">--%>
+<%--                                                            <div class="modal-content">--%>
+<%--                                                                <div class="card">--%>
+<%--                                                                    <div class="card-body">--%>
+<%--                                                                        <h5 class="mb-3">Remove Food </h5>--%>
+<%--                                                                        <p style="text-align: center;color: red;">${message}</p>--%>
+<%--                                                                        <form action="food-management?foodId=${l.foodId}"--%>
+<%--                                                                              method="post">--%>
+<%--                                                                            <p>Bạn có muốn xóa món ăn này không?</p>--%>
+<%--                                                                            <br/>--%>
+<%--                                                                            <div style="display: flex;justify-content: space-between">--%>
+<%--                                                                                <button type="submit"--%>
+<%--                                                                                        style="border: 1px solid;"--%>
+<%--                                                                                        class="btn btn-outline-success">--%>
+<%--                                                                                    Có--%>
+<%--                                                                                </button>--%>
+<%--                                                                                <button type="button"--%>
+<%--                                                                                        style="border: 1px solid;"--%>
+<%--                                                                                        class="btn btn-outline-success"--%>
+<%--                                                                                        data-dismiss="modal">Không--%>
+<%--                                                                                </button>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </form>--%>
+<%--                                                                    </div>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+<%--                                                        </div>--%>
+<%--                                                    </div>--%>
                                                 </c:forEach>
                                                 </tbody>
                                             </table>
@@ -499,7 +492,6 @@
     </div>
 </footer>
 <!--//app-footer-->
-</div>
 <!--//app-wrapper-->
 <!-- Javascript -->
 <script src="resources/js/plugin/jquery-3.3.1.slim.min.js " type="text/javascript "></script>
@@ -518,18 +510,46 @@
         crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
-        $('#user-management-table').DataTable();
+        $('#food-management-table').DataTable();
+        $('.format-date').each(function (i, item) {
+            item.innerHTML = formatDate(item.value);
+        })
     });
+
+    function formatDate(date) {
+        return moment(date).format('DD/MM/YYYY');
+    }
+
     function validateAddForm() {
         if (document.getElementById('add-name').value == "") {
             document.getElementById('add-name').style.borderColor = 'red'
             document.getElementById('add-name-message').style.display = 'block'
+            document.getElementById('add-name-message').innerHTML = 'Tên không được để trống'
             return false;
+        } else if (document.getElementById('add-name').value.length > 100) {
+            document.getElementById('add-name').style.borderColor = 'red'
+            document.getElementById('add-name-message').style.display = 'block'
+            document.getElementById('add-name-message').innerHTML = 'Tên không được dài quá 100 ký tự'
         } else {
             document.getElementById('add-name').style.borderColor = '#e7e9ed'
             document.getElementById('add-name-message').style.display = 'none'
         }
     }
 </script>
+<style>
+    .dataTables_paginate > span > a {
+        margin-bottom: 0px !important;
+        padding: 2px 2px !important;
+    }
+
+    .dataTables_paginate > a {
+        margin-bottom: 0px !important;
+        padding: 2px 2px !important;
+    }
+
+    .form-control {
+        height: 2.7rem;
+    }
+</style>
 </body>
 </html>

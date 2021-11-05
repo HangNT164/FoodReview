@@ -10,6 +10,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e05f9e78-227f-4d36-95e2-599cafc6b358" name="Default Changelist" comment="Rollback code">
+<<<<<<< HEAD
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AddShopController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AddTopicReviewerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/RemoveShopController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ShopController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/UpdateShopController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/shop-management.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/topic-reviewer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/db/swp391_g2_project_account.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/db/swp391_g2_project_account.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/db/swp391_g2_project_food.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/db/swp391_g2_project_food.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/db/swp391_g2_project_food_comment.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/db/swp391_g2_project_food_comment.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/db/swp391_g2_project_shop.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/db/swp391_g2_project_shop.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/db/swp391_g2_project_shop_comment.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/db/swp391_g2_project_shop_comment.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/db/swp391_g2_project_topic.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/db/swp391_g2_project_topic.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/db/swp391_g2_project_topic_comment.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/db/swp391_g2_project_topic_comment.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Food_Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bean/FoodComment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bean/Topic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bean/Topic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/constant/StatusAccountEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/constant/StatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddFoodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddFoodController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FoodManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/FoodManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RemoveTopicManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RemoveTopicManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ResetPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ResetPasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SearchTopicByStatusController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SearchTopicByStatusController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ShopManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ShopManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AccountDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/FoodDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/FoodDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Food_CommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/FoodCommentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/ShopDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/ShopDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/TopicDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/TopicDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/change-password.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/change-password.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/food.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/food-management.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/reset-password.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/reset-password.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/shop.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/shop.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sigup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sigup.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/topic.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/topic.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/update-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/update-profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/verify-code.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/verify-code.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/verify-email.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/verify-email.jsp" afterDir="false" />
+=======
       <change afterPath="$PROJECT_DIR$/src/main/java/controller/LogoutController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/home/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -17,11 +69,15 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/jdbc/MySqlConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdbc/MySqlConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
+>>>>>>> e0ed5241d9b1ba0fec9ce3eb834b92cc4de4a237
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
@@ -65,10 +121,23 @@
       <find>setValueBoardingHouse</find>
     </findStrings>
   </component>
+  <component name="Git.Pull.Settings">
+    <option name="OPTIONS">
+      <set>
+        <option value="REBASE" />
+      </set>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="hangnt" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -184,7 +253,11 @@
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATING_POLICY" value="update-resources" />
       <deployment>
+<<<<<<< HEAD
+        <artifact name="food.review:war">
+=======
         <artifact name="FoodReview:war exploded">
+>>>>>>> e0ed5241d9b1ba0fec9ce3eb834b92cc4de4a237
           <settings>
             <option name="CONTEXT_PATH" value="/server" />
           </settings>
@@ -264,10 +337,15 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
+<<<<<<< HEAD
+          <artifact name="FoodReview:war" />
+          <artifact name="food.review:war" />
+=======
           <artifact name="anest.core2:war exploded" />
           <artifact name="anest.boarding.house:war exploded" />
           <artifact name="boarding-house-backend:war exploded" />
           <artifact name="FoodReview:war exploded" />
+>>>>>>> e0ed5241d9b1ba0fec9ce3eb834b92cc4de4a237
         </option>
       </method>
     </configuration>

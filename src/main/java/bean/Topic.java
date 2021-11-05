@@ -10,7 +10,6 @@ import java.sql.Date;
 @Getter
 @Setter
 public class Topic {
-
     private int topicId;
     private String title;
     private String status;

@@ -23,5 +23,8 @@ public class Food {
     private int rate;
     private Date createdDate;
     private Date updatedDate;
+    private String img;
     private String month;
+    private int accountId;
+    private String accountName;
 }

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="resources/css/plugin/dataTables.bootstrap4.min.css">
     <!-- FontAwesome JS-->
     <script defer src="resources/plugins/fontawesome/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
     <link rel="stylesheet" href="resources/css/custom/footer.css">
@@ -178,9 +179,8 @@
                                                                     <div class="col-md-10">
                                                                         <label>Shop Name: </label>
                                                                         <input style="margin-left: 60px" type="text"
-                                                                               required="true"
+                                                                               required
                                                                                pattern=".{1,50}"
-                                                                               oninvalid="setCustomValidity('Shop Name max 50 charter')"
                                                                                name="shopName"
                                                                                class="form-control"/>
                                                                     </div>
@@ -191,9 +191,8 @@
                                                                     <div class="col-md-10">
                                                                         <label>Shop Address: </label>
                                                                         <input style="margin-left: 60px" type="text"
-                                                                               required="true"
+                                                                               required
                                                                                pattern=".{1,200}"
-                                                                               oninvalid="setCustomValidity('Shop Address max 200 charter')"
                                                                                name="address"
                                                                                class="form-control"/>
                                                                     </div>
@@ -204,9 +203,8 @@
                                                                     <div class="col-md-10">
                                                                         <label>Shop Description: </label>
                                                                         <input style="margin-left: 60px" type="text"
-                                                                               required="true"
+                                                                               required
                                                                                pattern=".{1,1000}"
-                                                                               oninvalid="setCustomValidity('Shop Description max 1000 charter')"
                                                                                name="description"
                                                                                class="form-control"/>
                                                                     </div>
@@ -233,27 +231,309 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <form action="shop-management">
+                                    <div class="row mt-3 mb-3">
+                                        <div class="row" style="padding: 0px;margin: 0px;">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="name">Shop name: </label>
+                                                    <input id="name" name="name" type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="name">Status: </label>
+                                                    <select id="status" class="form-control"
+                                                            name="status">
+                                                        <option value="">All
+                                                        </option>
+                                                        <option value="active">Active</option>
+                                                        <option value="inactive">Inactive</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1" style="margin-top: 30px;">
+                                                <button type="submit"
+                                                        style="background-color: transparent;border-color: transparent;">
+                                                    <img src="resources/images/search.png" alt="Search"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <div class="row">
+                                    <div style="max-height: 600px; overflow: auto;">
+                                        <div class="table-responsive">
+                                            <table id="shop-management-table" class="table table-bordered w-100">
+                                                <thead>
+                                                <tr>
+                                                    <th class="w-stt">No</th>
+                                                    <th>Shop Name</th>
+                                                    <th>Address</th>
+                                                    <th>Description</th>
+                                                    <th>Status</th>
+                                                    <th>Created Date</th>
+                                                    <th>Update Date</th>
+                                                    <th class="w-action-3">Function</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <c:forEach items="${listShopByName}" var="shop" varStatus="loop">
+                                                    <tr>
+                                                        <td>${loop.count}</td>
+                                                        <td>${shop.shopName}</td>
+                                                        <td>${shop.address}</td>
+                                                        <td>${shop.description}</td>
+                                                        <td>${shop.status}</td>
+                                                        <td class="format-date">(${shop.createdDate})</td>
+                                                        <td class="format-date">${shop.updatedDate}</td>
+                                                        <td style="text-align: center">
+                                                            <a href="#" class="view mr-1" data-toggle="modal"
+                                                               data-target="#detail${shop.shopId}" title="Detail">
+                                                                <i
+                                                                        class="fas fa-eye fa-fw"></i></a>
+                                                            <a href="#" class="edit mr-1" data-toggle="modal"
+                                                               data-target="#update${shop.shopId}" title="Update">
+                                                                <i
+                                                                        class="fas fa-pen fa-fw"></i></a>
+                                                            <a href="#" class="remove mr-1" data-toggle="modal"
+                                                               data-target="#remove${shop.shopId}"
+                                                               title="Remove">
+                                                                <i
+                                                                        class="fas fa-trash fa-fw"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- Su kien show chi tiet -->
+                                                    <div class="modal fade" id="detail${shop.shopId}" tabindex="-1"
+                                                         role="dialog" aria-labelledby="detail${shop.shopId}"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-xl"
+                                                             role="document">
+                                                            <div class="modal-content">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Detail Shop</h5>
+                                                                        <div class="row">
+                                                                            <div class="col-6 pr-4">
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Shop name: </label>
+                                                                                        <textarea class="form-control"
+                                                                                                  disabled>${shop.shopName} </textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Address: </label>
+                                                                                        <textarea class="form-control"
+                                                                                                  disabled>${shop.address} </textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Description: </label>
+                                                                                        <textarea class="form-control"
+                                                                                                  disabled>${shop.description} </textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-6 pr-4">
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Rate</label>
+                                                                                        <span class="form-control"
+                                                                                              style="background-color: #e9ecef;"
+                                                                                              disabled>${shop.rate}</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Status</label>
+                                                                                        <span class="form-control"
+                                                                                              style="background-color: #e9ecef;"
+                                                                                              disabled>${shop.status}</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Create Date</label>
+                                                                                        <span class="form-control format-date"
+                                                                                              style="background-color: #e9ecef;"
+                                                                                              disabled>${shop.createdDate}</span>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <label>Updated Date </label>
+                                                                                        <span class="form-control format-date"
+                                                                                              style="background-color: #e9ecef;"
+                                                                                              disabled>${shop.updatedDate}</span>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
+                                                                                        data-dismiss="modal">Close
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <%--  Su kien update--%>
+                                                    <div class="modal fade" id="update${shop.shopId}" tabindex="-1"
+                                                         role="dialog" aria-labelledby="update${shop.shopId}"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-xl"
+                                                             role="document">
+                                                            <div class="modal-content">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Update Topic</h5>
+                                                                        <form action="update-shop?shopId=${shop.shopId}"
+                                                                              method="post"
+                                                                              onchange="return validateUpdateForm()">
+                                                                            <div class="form-group row">
+                                                                                <div class="col-sm-10">
+                                                                                    <label>Shop name:</label>
+                                                                                    <input id="update-shop-name"
+                                                                                           style="margin-left: 60px"
+                                                                                           type="text"
+                                                                                           class="form-control"
+                                                                                           name="shopName"
+                                                                                           value="${shop.shopName}"
+                                                                                    />
+                                                                                    <span id="update-name-message"
+                                                                                          style="display: none; color: red; font-size: 14px; text-align: center"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <div class="col-sm-10">
+                                                                                    <label>Address:</label>
+                                                                                    <input style="margin-left: 60px"
+                                                                                           type="text"
+                                                                                           class="form-control"
+                                                                                           name="address"
+                                                                                           value="${shop.address}"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <div class="col-sm-10">
+                                                                                    <label>Description:</label>
+                                                                                    <input style="margin-left: 60px"
+                                                                                           type="text"
+                                                                                           class="form-control"
+                                                                                           name="description"
+                                                                                           value="${shop.description}"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group row">
+                                                                                <div class="col-md-10">
+                                                                                    <label>Status: </label>
+                                                                                    <div style="display: block; margin-left: 60px">
+                                                                                        <input type="radio"
+                                                                                               id="status-active"
+                                                                                               name="status"
+                                                                                               value="active"
+                                                                                            ${shop.status == 'active' ? 'checked="checked"' : ''}>
+                                                                                        <label for="status-active">Active</label><br>
+                                                                                        <input type="radio"
+                                                                                               id="status-inactive"
+                                                                                               name="status"
+                                                                                               value="inactive"
+                                                                                            ${shop.status == 'inactive' ? 'checked="checked"' : ''}>
+                                                                                        <label for="status-inactive">Inactive</label><br>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div style="display: flex;justify-content: space-evenly">
+                                                                                <button type="submit"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
+                                                                                        onclick="return validateUpdateForm()">
+                                                                                    Change
+                                                                                </button>
+                                                                                <button type="button"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
+                                                                                        data-bs-dismiss="modal"
+                                                                                        data-dismiss="modal">Close
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <%--  Su kien remove--%>
+                                                    <div class="modal fade" id="remove${shop.shopId}" tabindex="-1"
+                                                         role="dialog" aria-labelledby="remove${shop.shopId}"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-sm"
+                                                             role="document">
+                                                            <div class="modal-content">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Remove Shop</h5>
+                                                                        <p style="text-align: center;color: red;">${message}</p>
+                                                                        <form action="remove-shop-management?shopId=${shop.shopId}"
+                                                                              method="post">
+                                                                            <p>Bạn có muốn xóa cửa hàng này không?</p>
+                                                                            <br/>
+                                                                            <div style="display: flex;justify-content: space-around">
+                                                                                <button type="submit"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success">
+                                                                                    Có
+                                                                                </button>
+                                                                                <button type="button"
+                                                                                        style="border: 1px solid;"
+                                                                                        class="btn btn-outline-success"
+                                                                                        data-dismiss="modal">Không
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <!--//container-fluid-->
     </div>
     <!--//app-content-->
 </div>
-
 <footer class="footer ">
     <div class="container text-center py-3 ">
         <small class="copyright " style="color: black; ">© 2021 Copyright <i class="fas fa-heart "
                                                                              style="color: #fb866a; "></i> by <a
                 class="app-link "
-                href="shop ">food.review.com</a></small>
+                href="#">food.review.com</a></small>
     </div>
 </footer>
 <!--//app-footer-->
-</div>
 <!--//app-wrapper-->
 <!-- Javascript -->
 <script src="resources/js/plugin/jquery-3.3.1.slim.min.js " type="text/javascript "></script>
@@ -261,11 +541,58 @@
 <script src="resources/js/plugin/popper.min.js "></script>
 <script src="resources/plugins/popper.min.js "></script>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <!-- Page Specific JS -->
 <script src="resources/js/custom/app.js "></script>
 <!--Bootstrap Datepicker [ OPTIONAL ]-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('#shop-management-table').DataTable();
+        $('.format-date').each(function (i, item) {
+            item.innerHTML = formatDate(item.value);
+        })
+    });
+
+    function formatDate(date) {
+        return moment(date).format('DD/MM/YYYY');
+    }
+
+    function validateUpdateForm() {
+        if (document.getElementById('update-shop-name').value == "") {
+            document.getElementById('update-shop-name').style.borderColor = 'red'
+            document.getElementById('update-name-message').style.display = 'block'
+            document.getElementById('update-name-message').innerHTML = 'Tên không được để trống'
+            return false;
+        } else if (document.getElementById('update-shop-name').value.length > 100) {
+            document.getElementById('update-shop-name').style.borderColor = 'red'
+            document.getElementById('update-name-message').style.display = 'block'
+            document.getElementById('update-name-message').innerHTML = 'Tên không được dài quá 100 ký tự'
+            return false;
+        } else {
+            document.getElementById('update-shop-name').style.borderColor = '#e7e9ed'
+            document.getElementById('update-name-message').style.display = 'none'
+        }
+    }
+</script>
+<style>
+    .dataTables_paginate > span > a {
+        margin-bottom: 0px !important;
+        padding: 2px 2px !important;
+    }
+
+    .dataTables_paginate > a {
+        margin-bottom: 0px !important;
+        padding: 2px 2px !important;
+    }
+
+    .dataTables_filter {
+        display: none;
+    }
+</style>
 </body>
 </html>
