@@ -51,6 +51,8 @@
                     </a>
                     <ul class="nav">
                         <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="add-topic-reviewer">Topic</a></li>
+                        <li class="scroll-to-section"><a href="shop-reviewer">Shop</a></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
                         <li class="scroll-to-section"><a href="#menu">Menu</a></li>
                         <li class="scroll-to-section"><a href="#">Contact Us</a></li>
@@ -94,11 +96,15 @@
             <div class="col-lg-4">
                 <div class="left-content">
                     <div class="inner-content">
-                        <h4>Food Review</h4>
-                        <h6>THE BEST EXPERIENCE</h6>
-                        <div class="main-white-button scroll-to-section">
-                            <a href="#"></a>
-                        </div>
+                        <h4 class="font-family: 'Dancing Script', cursive;
+    font-size: 54px;
+    font-weight: 700;">Food Review</h4>
+                        <h6 class="font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #d63384 !important;
+    letter-spacing: 3px;
+    margin-top: 5px;">THE BEST EXPERIENCE</h6>
                     </div>
                 </div>
             </div>
@@ -106,26 +112,14 @@
                 <div class="main-banner header-text">
                     <div class="Modern-Slider">
                         <!-- Item -->
-                        <div class="item">
-                            <div class="img-fill">
-                                <img src="resources/images/home/slide-01.jpg" alt="">
+                        <c:forEach items="${listShop}" var="ls">
+                            <div class="item">
+                                <div class="img-fill">
+                                    <img src="server/uploads/${ls.img}" alt="">
+                                </div>
                             </div>
-                        </div>
-                        <!-- // Item -->
-                        <!-- Item -->
-                        <div class="item">
-                            <div class="img-fill">
-                                <img src="resources/images/home/slide-02.jpg" alt="">
-                            </div>
-                        </div>
-                        <!-- // Item -->
-                        <!-- Item -->
-                        <div class="item">
-                            <div class="img-fill">
-                                <img src="resources/images/home/slide-03.jpg" alt="">
-                            </div>
-                        </div>
-                        <!-- // Item -->
+                        </c:forEach>
+
                     </div>
                 </div>
             </div>
@@ -152,7 +146,7 @@
                     </h5>
                     <br>
                     <div class="row">
-                        <img src="server/uploads/${topic.imgAddr}" alt=""/>
+                        <img src="server/uploads/${topic.img}" alt=""/>
                     </div>
                 </div>
             </div>
@@ -200,7 +194,12 @@
             <div class="col-lg-4">
                 <div class="section-heading">
                     <h6>All Post</h6>
-                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi</h2>
+                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi
+                        <form id="listTopicForm" action="list-topic-approved" method="get">
+                            <a href="javascript:{}" onclick="document.getElementById('listTopicForm').submit();"
+                               style="font-family: none;">Xem thêm >></a>
+                        </form>
+                    </h2>
                 </div>
             </div>
         </div>

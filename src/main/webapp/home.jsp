@@ -140,7 +140,7 @@
                 </div>
             </div>
             <div class="col-7">
-                <img src="server/uploads/${top1.imgAddr}" height="400px" alt=""/>
+                <img src="server/uploads/${top1.img}" height="400px" alt=""/>
             </div>
         </div>
     </div>
@@ -170,7 +170,7 @@
             <div class="owl-menu-item owl-carousel">
                 <c:forEach items="${topicList}" var="l">
                     <div class="item">
-                        <div class='card' style="background-image: url('server/uploads/${l.imgAddr}')">
+                        <div class='card' style="background-image: url('server/uploads/${l.img}')">
                             <div class="price"><h6>${l.rate}</h6></div>
                             <div class='info'>
                                 <h1 class='title'>
