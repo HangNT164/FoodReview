@@ -25,7 +25,7 @@ public class FoodDao {
                     .rate(rs.getInt(6))
                     .createdDate(rs.getDate(7))
                     .updatedDate(rs.getDate(8))
-                    .img(rs.getString(9))
+//                    .img(rs.getString(9))
 //                    .month(rs.getString(9))
 //                    .accountId(rs.getInt(10))
 //                    .accountName(accountDao.getAccountNameById(rs.getInt(10)))
@@ -237,5 +237,41 @@ public class FoodDao {
             billingMonthCurrent = (month + 1) + "/" + year;
         }
         return billingMonthCurrent;
+    }
+
+    public List<Food> listFoodByShopAndOddId(int shopId) {
+        String query = "SELECT * FROM swp391_g2_project.food WHERE shop_id = " + shopId + " AND food_id % 2 <> 0";
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Food> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueFood(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public List<Food> listFoodByShopAndEvenId(int shopId) {
+        String query = "SELECT * FROM swp391_g2_project.food WHERE shop_id = " + shopId + " AND food_id % 2 = 0";
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Food> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueFood(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
     }
 }
