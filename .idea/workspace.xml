@@ -9,11 +9,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e05f9e78-227f-4d36-95e2-599cafc6b358" name="Default Changelist" comment="Rollback code" />
+    <list default="true" id="e05f9e78-227f-4d36-95e2-599cafc6b358" name="Default Changelist" comment="Rollback code">
+      <change afterPath="$PROJECT_DIR$/src/main/java/bean/ShopComment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AddYourCommentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/RemoveYourCommentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/ShopCommentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DetailShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DetailShopController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LogoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LogoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/detail-shop.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/detail-shop.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,12 +57,11 @@
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.54" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.54" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/FoodReview_war_exploded/" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="FoodReview:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/FoodReview_war_exploded" />
+            <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
       </deployment>
@@ -143,7 +159,7 @@
       <option name="presentableId" value="Default" />
       <updated>1635823594455</updated>
       <workItem from="1635823594455" duration="1090000" />
-      <workItem from="1636251886541" duration="1601000" />
+      <workItem from="1636251886541" duration="21012000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
