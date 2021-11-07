@@ -200,7 +200,7 @@
                             <c:forEach items="${listFoodByShopAndEvenId}" var="f">
                                 <li class="col-lg-12 right-food" style="display: none">
                                     <div class="tab-item">
-                                        <a href="detail-food?foodId=${f.foodId}">
+                                        <a href="#" data-toggle="modal" data-target="#detail${f.foodId}">
                                             <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png"
                                                  alt="" style="width: 150px; height: 150px"><br>
                                             <span style="color: #fb5849; font-size: 26px; font-weight: bold;">${f.foodName}</span>
@@ -211,6 +211,47 @@
                                         </div>
                                     </div>
                                 </li>
+                                <div class="modal fade" id="detail${f.foodId}" tabindex="-1"
+                                     role="dialog" aria-labelledby="detail${f.foodId}"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg"
+                                         role="document">
+                                        <div class="modal-content">
+                                            <div class="card" style="margin: 0;">
+                                                <div class="card-body" style="padding-bottom: 0 !important;">
+                                                    <h5 class="mb-3">Detail Food</h5>
+                                                    <div class="col-6 pr-4">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png"
+                                                                     alt="" style="width: 150px; height: 150px"><br>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label>Food name</label>
+                                                                <span class="form-control">${f.foodName}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label>Description </label>
+                                                                <span class="form-control">${f.description}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button"
+                                                                style="border: 1px solid;"
+                                                                class="btn btn-outline-success"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </c:forEach>
                         </ul>
                     </div>
