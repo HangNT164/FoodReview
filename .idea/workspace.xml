@@ -11,9 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e05f9e78-227f-4d36-95e2-599cafc6b358" name="Default Changelist" comment="Rollback code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddTopicReviewerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddTopicReviewerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdbc/MySqlConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdbc/MySqlConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/user.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
