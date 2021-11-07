@@ -26,19 +26,4 @@ public class DetailShopController extends HttpServlet {
         request.getRequestDispatcher("detail-shop.jsp").forward(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String rate = request.getParameter("rate");
-        String id = request.getParameter("id");
-        int idInt = Integer.valueOf(id);
-        Shop shop = shopDao.getOne(idInt);
-        shopDao.updateNumberRate(idInt, shop);
-        Shop shopUpdate = shopDao.getOne(idInt);
-        int totalRate = Integer.valueOf(rate) + shopUpdate.getRate();
-        int rateNum = (int) Math.ceil(totalRate / shopUpdate.getTotalNumberRate());
-        shopDao.updateRate(idInt, rateNum);
-        shopUpdate.setRate(rateNum);
-        request.setAttribute("shop", shopUpdate);
-        request.getRequestDispatcher("detail-shop.jsp").forward(request, response);
-    }
 }

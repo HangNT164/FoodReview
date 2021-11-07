@@ -170,24 +170,6 @@ public class ShopDao {
         return check > 0;
     }
 
-    public List<Shop> listShop() {
-        String query = " SELECT * FROM shop  WHERE status NOT LIKE \"reject\" ";
-        try (Connection con = MySqlConnection.getConnection();
-             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
-            if (ps != null) {
-                ResultSet rs = ps.executeQuery();
-                List<Shop> list = new ArrayList<>();
-                while (rs != null && rs.next()) {
-                    list.add(getValueShop(rs));
-                }
-                return list;
-            }
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-        }
-        return null;
-    }
-
     public List<Integer> getListPage(List<Shop> listShop, int number) {
         List<Integer> listPage = new ArrayList<>();
         double size = (double) listShop.size() / (double) number;
@@ -197,12 +179,13 @@ public class ShopDao {
         return listPage;
     }
 
-    public List<Shop> getListShopInPage(int page, int numberInAPage) {
+    public List<Shop> getListShopInPage(int page, int numberInAPage, String shopName) {
         try (Connection con = MySqlConnection.getConnection();
-             CallableStatement cal = con.prepareCall("{call paggingShop(?,?)}")) {
+             CallableStatement cal = con.prepareCall("{call paggingShop(?,?,?)}")) {
             if (cal != null) {
-                cal.setInt(1, numberInAPage * (page - 1));
-                cal.setInt(2, numberInAPage * page);
+                cal.setObject(1, numberInAPage * (page - 1));
+                cal.setObject(2, numberInAPage * page);
+                cal.setObject(3, shopName);
                 ResultSet rs = cal.executeQuery();
                 List<Shop> listInPage = new ArrayList<>();
                 while (rs != null && rs.next()) {
@@ -233,41 +216,4 @@ public class ShopDao {
         return null;
     }
 
-    public boolean updateNumberRate(int id, Shop shop) {
-        int check = 0;
-        String query = "UPDATE shop SET total_number_rate = ?, updated_date = ?"
-                + "WHERE shop_id = ?";
-
-        try (Connection con = MySqlConnection.getConnection();
-             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
-            if (ps != null) {
-                ps.setObject(1, shop.getTotalNumberRate() + 1);
-                ps.setObject(2, new Date());
-                ps.setObject(3, id);
-                check = ps.executeUpdate();
-            }
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-        }
-        return check > 0;
-    }
-
-    public boolean updateRate(int id, int rate) {
-        int check = 0;
-        String query = "UPDATE shop SET rate = ?, updated_date = ?"
-                + "WHERE shop_id = ?";
-
-        try (Connection con = MySqlConnection.getConnection();
-             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null) {
-            if (ps != null) {
-                ps.setObject(1, rate);
-                ps.setObject(2, new Date());
-                ps.setObject(3, id);
-                check = ps.executeUpdate();
-            }
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-        }
-        return check > 0;
-    }
 }
