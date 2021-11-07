@@ -35,11 +35,11 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <a href="#" class="logo">
+                    <a href="/" class="logo">
                         <img height="80px" width="120px" src="resources/images/home/logo.png">
                     </a>
                     <ul class="nav">
-                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
                         <li class="scroll-to-section"><a href="add-topic-reviewer">Topic</a></li>
                         <li class="scroll-to-section"><a href="shop-reviewer">Shop</a></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
@@ -221,11 +221,17 @@
                             <img src="server/uploads/${l.img}" alt="">
                         </div>
                         <div class="down-content">
-                            <h4>${l.shopName}</h4>
+
+                            <a href="detail-shop?id=${l.shopId}"
+                            >
+                                <h4>${l.shopName}</h4>
+                            </a>
                             <span>${l.address}</span>
                         </div>
                     </div>
                 </div>
+
+
             </c:forEach>
 
 
@@ -315,11 +321,9 @@
 <!-- Global Init -->
 <script src="resources/js/custom.js"></script>
 <script>
-
     function myFunction() {
         document.getElementById("myDropdown").classList.toggle("show");
     }
-
     // Close the dropdown if the user clicks outside of it
     window.onclick = function (event) {
         if (!event.target.matches('.dropbtn')) {
@@ -343,10 +347,8 @@
                 $("." + selectedClass).fadeIn();
                 $("#portfolio").fadeTo(50, 1);
             }, 500);
-
         });
     });
-
 </script>
 </body>
 </html>

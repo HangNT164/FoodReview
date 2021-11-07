@@ -86,15 +86,9 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="pro-img-details">
-                    <img src="https://via.placeholder.com/550x380/FFB6C1/000000" alt="">
+                    <img src="server/uploads/${shop.img}" alt="">
                 </div>
                 <div class="pro-img-list" style="display: flex;justify-content: center;">
-                    <a href="#">
-                        <img src="https://via.placeholder.com/115x100/87CEFA/000000" alt="">
-                    </a>
-                    <a href="#">
-                        <img src="https://via.placeholder.com/115x100/FF7F50/000000" alt="">
-                    </a>
                 </div>
             </div>
             <div class="col-md-6">
@@ -109,22 +103,84 @@
                 <div class="product_meta">
                     <span class="posted_in"> <strong>Address:</strong> <a rel="tag" href="#">${shop.address}</a>.</span>
                 </div>
-                <%--                <div class="m-bot15" style="display: flex;"><strong>Star : </strong>--%>
-                <%--                    <ul class="rating">--%>
-                <%--                        <c:set var="rateShops" scope="page" value="${shop.rate}"/>--%>
-                <%--                        <%--%>
-                <%--                            List<Integer> listRates = new ArrayList<>();--%>
-                <%--                            int rate = (int) pageContext.getAttribute("rateShops");--%>
-                <%--                            for (int i = 0; i < rate; i++) {--%>
-                <%--                                listRates.add(i + 1);--%>
-                <%--                            }--%>
-                <%--                            pageContext.setAttribute("listRates", listRates);--%>
-                <%--                        %>--%>
-                <%--                        <c:forEach items="${listRates}" var="rate">--%>
-                <%--                            <li class="fa fa-star"></li>--%>
-                <%--                        </c:forEach>--%>
-                <%--                    </ul>--%>
-                <%--                </div>--%>
+                <div class="product_meta">
+                    <span class="posted_in"> <strong>Comment:</strong>
+                       <form action="add-your-comment" method="post"
+                             onchange="return validateAddForm()">
+                           <div class="row">
+                               <div class="form-group">
+                                   <div class="col-md-10">
+                                       <input style="margin-left: 60px" type="text"
+                                              id="add-your-comment"
+                                              name="content"
+                                              class="form-control"/>
+                                   </div>
+                               </div>
+                           </div>
+                           <br/>
+                           <div style="display: flex;justify-content: space-evenly">
+                               <button type="submit"
+                                       onclick="return validateAddForm()"
+                                       style="border: 1px solid;"
+                                       class="btn btn-success collapsed">
+                                   Add
+                               </button>
+                           </div>
+                       </form>
+                    </span>
+                </div>
+                <div class="product_meta">
+                    <c:forEach items="${listCommentShop}" var="lcm">
+                        <span class="posted_in">
+                            <strong>${lcm.accountName} :</strong>
+                        </span>
+                        <p>${lcm.content}</p>
+                    </c:forEach>
+                </div>
+                <div class="product_meta">
+                    <c:forEach items="${yourComment}" var="yc">
+                        <span class="posted_in">
+                            <strong>Your Comment:</strong>
+                        <a href="#" class="edit mr-1" data-toggle="modal"
+                           data-target="#remove${yc.shopCommentId}" title="Update">
+                            Xoá</a>
+                        </span>
+                        <p>${yc.content}</p>
+                        <%--  Su kien remove--%>
+                        <div class="modal fade" id="remove${yc.shopCommentId}" tabindex="-1"
+                             role="dialog1" aria-labelledby="remove${yc.shopCommentId}"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-sm"
+                                 role="document">
+                                <div class="modal-content">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="mb-3">Remove Comment </h5>
+                                            <form action="remove-your-comment?shopCommentId=${yc.shopCommentId}"
+                                                  method="post">
+                                                <p>Bạn có muốn xóa comment này không?</p>
+                                                <br/>
+                                                <div style="display: flex;justify-content: space-between">
+                                                    <button type="submit"
+                                                            style="border: 1px solid;"
+                                                            class="btn btn-outline-success">
+                                                        Có
+                                                    </button>
+                                                    <button type="button"
+                                                            style="border: 1px solid;"
+                                                            class="btn btn-outline-success"
+                                                            data-bs-dismiss="modal"
+                                                            data-dismiss="modal">Không
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
         </div>
         <div>
@@ -200,7 +256,7 @@
                             <c:forEach items="${listFoodByShopAndEvenId}" var="f">
                                 <li class="col-lg-12 right-food" style="display: none">
                                     <div class="tab-item">
-                                        <a href="#" data-toggle="modal" data-target="#detail${f.foodId}">
+                                        <a href="detail-food?foodId=${f.foodId}">
                                             <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png"
                                                  alt="" style="width: 150px; height: 150px"><br>
                                             <span style="color: #fb5849; font-size: 26px; font-weight: bold;">${f.foodName}</span>
@@ -211,47 +267,6 @@
                                         </div>
                                     </div>
                                 </li>
-                                <div class="modal fade" id="detail${f.foodId}" tabindex="-1"
-                                     role="dialog" aria-labelledby="detail${f.foodId}"
-                                     aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg"
-                                         role="document">
-                                        <div class="modal-content">
-                                            <div class="card" style="margin: 0;">
-                                                <div class="card-body" style="padding-bottom: 0 !important;">
-                                                    <h5 class="mb-3">Detail Food</h5>
-                                                    <div class="col-6 pr-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png"
-                                                                     alt="" style="width: 150px; height: 150px"><br>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label>Food name</label>
-                                                                <span class="form-control">${f.foodName}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label>Description </label>
-                                                                <span class="form-control">${f.description}</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button"
-                                                                style="border: 1px solid;"
-                                                                class="btn btn-outline-success"
-                                                                data-dismiss="modal">Close
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </c:forEach>
                         </ul>
                     </div>
@@ -351,13 +366,11 @@
         const leftSize = document.getElementsByClassName("left-food").length;
         const rightSize = document.getElementsByClassName("right-food").length;
         let defaultSize = 2;
-
         $('#left-list li:lt(' + defaultSize + ')').show();
         $('#right-list li:lt(' + defaultSize + ')').show();
         if (leftSize <= defaultSize && rightSize <= defaultSize) {
             $("#loadMore").hide();
         }
-
         $("#loadMore").on('click', function (e) {
             e.preventDefault();
             defaultSize = (defaultSize + 2 <= leftSize) ? defaultSize + 2 : leftSize;
@@ -370,19 +383,16 @@
                 $("#showLess").show();
             }
         });
-
         $("#showLess").on('click', function (e) {
             e.preventDefault();
             defaultSize = (defaultSize - 2 < 0) ? 2 : defaultSize - 2;
             $('#left-list li').not(':lt(' + defaultSize + ')').slideUp();
             $('#right-list li').not(':lt(' + defaultSize + ')').slideUp();
-
             if (defaultSize <= 2 && defaultSize <= 2) {
                 $("#loadMore").show();
                 $("#showLess").hide();
             }
         });
-
     });
 </script>
 </body>
