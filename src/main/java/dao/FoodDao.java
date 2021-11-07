@@ -25,7 +25,7 @@ public class FoodDao {
                     .rate(rs.getInt(6))
                     .createdDate(rs.getDate(7))
                     .updatedDate(rs.getDate(8))
-                    .img(rs.getString(9))
+//                    .img(rs.getString(9))
 //                    .month(rs.getString(9))
 //                    .accountId(rs.getInt(10))
 //                    .accountName(accountDao.getAccountNameById(rs.getInt(10)))
@@ -70,6 +70,48 @@ public class FoodDao {
             e.printStackTrace(System.out);
         }
         return null;
+    }
+
+    public List<Food> allFood(int accountId, String foodName) {
+        String query = "SELECT f.* FROM swp391_g2_project.food f join swp391_g2_project.shop s" +
+                " ON f.shop_id = s.shop_id WHERE s.account_id = " + accountId + " AND f.food_name like '%" + foodName + "%'";
+        try (Connection con = MySqlConnection.getConnection();
+            PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Food> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueFood(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public boolean updateFood(int foodId, Food food) {
+        int check = 0;
+        String query = "UPDATE food SET food_name=?" +
+                ", status = ?" +
+                ", description = ?" +
+                ", updated_date = ?" +
+                "WHERE food_id = ?";
+        try (Connection con = MySqlConnection.getConnection(); // mở kết nối đến DB
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, food.getFoodName());
+                ps.setObject(2, food.getStatus());
+                ps.setObject(3, food.getDescription());
+                ps.setObject(4, new Date());
+                ps.setObject(5, foodId);
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
     }
 
     public boolean addFood(Food food) {
@@ -195,5 +237,41 @@ public class FoodDao {
             billingMonthCurrent = (month + 1) + "/" + year;
         }
         return billingMonthCurrent;
+    }
+
+    public List<Food> listFoodByShopAndOddId(int shopId) {
+        String query = "SELECT * FROM swp391_g2_project.food WHERE shop_id = " + shopId + " AND food_id % 2 <> 0";
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Food> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueFood(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public List<Food> listFoodByShopAndEvenId(int shopId) {
+        String query = "SELECT * FROM swp391_g2_project.food WHERE shop_id = " + shopId + " AND food_id % 2 = 0";
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Food> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueFood(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
     }
 }
