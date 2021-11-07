@@ -12,6 +12,7 @@
         <module name="anest.boarding.house" />
         <module name="boarding-house-backend" />
         <module name="boarding-house-backend-develop" />
+        <module name="food.review" />
       </profile>
     </annotationProcessing>
   </component>
