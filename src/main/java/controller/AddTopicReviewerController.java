@@ -91,7 +91,7 @@ public class AddTopicReviewerController extends HttpServlet {
                 Topic topic = Topic.builder()
                         .title(title)
                         .content(content)
-                        .image(lsFileName)
+                        .imgAddr(lsFileName)
                         .status("pending")
                         .accountId(accountCurrent.getAccountId())
                         .build();
