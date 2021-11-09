@@ -131,7 +131,7 @@
                     </div>
                     <span><b>Author:</b> ${top1.accountName} | <fmt:formatDate pattern="dd/MM/yyyy"
                                                                                value="${top1.createdDate}"/>. </span>
-                    <span><b>Rate:</b> ${top1.rate}</span>
+
                     <br>
                     <br>
                     <h5 style="white-space: pre-line; font-weight:normal;">${top1.content}
@@ -171,7 +171,7 @@
                 <c:forEach items="${topicList}" var="l">
                     <div class="item">
                         <div class='card' style="background-image: url('server/uploads/${l.img}')">
-                            <div class="price"><h6>${l.rate}</h6></div>
+
                             <div class='info'>
                                 <h1 class='title'>
                                     <form id="linkForm${l.topicId}" action="topic-detail?topicId=${l.topicId}"
@@ -262,9 +262,7 @@
                 <div class="col-lg-4">
                     <h4>${ls.foodName}</h4>
                     <p>${ls.description}.</p>
-                    <div class="price">
-                        <h6>Rate: ${ls.rate}</h6>
-                    </div>
+
                 </div>
                 <div class="col-lg-3"></div>
             </c:forEach>
