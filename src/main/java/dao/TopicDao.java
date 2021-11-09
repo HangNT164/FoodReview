@@ -114,7 +114,9 @@ public class TopicDao {
                 }
                 for(int i=0; i<list.size();i++){
                     String temp = list.get(i).getContent();
-                    list.get(i).setContent(temp.substring(0,40) + "  ......");
+                    if(temp.length() > 40) {
+                        list.get(i).setContent(temp.substring(0, 40) + "  ......");
+                    }
                 }
                 return list;
             }
