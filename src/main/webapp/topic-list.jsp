@@ -106,25 +106,13 @@
                 <div class="main-banner header-text">
                     <div class="Modern-Slider">
                         <!-- Item -->
-                        <div class="item">
-                            <div class="img-fill">
-                                <img src="resources/images/home/slide-01.jpg" alt="">
+                        <c:forEach items="${listShop}" var="ls">
+                            <div class="item">
+                                <div class="img-fill">
+                                    <img src="server/uploads/${ls.img}" alt="">
+                                </div>
                             </div>
-                        </div>
-                        <!-- // Item -->
-                        <!-- Item -->
-                        <div class="item">
-                            <div class="img-fill">
-                                <img src="resources/images/home/slide-02.jpg" alt="">
-                            </div>
-                        </div>
-                        <!-- // Item -->
-                        <!-- Item -->
-                        <div class="item">
-                            <div class="img-fill">
-                                <img src="resources/images/home/slide-03.jpg" alt="">
-                            </div>
-                        </div>
+                        </c:forEach>
                         <!-- // Item -->
                     </div>
                 </div>
@@ -164,9 +152,8 @@
                             <div class="col-6 border-right rounded">
                                 <p style="white-space: pre-line;">${l.content}</p>
                                 <br>
-                                <br>
                                 <h6>Author: ${l.accountName}</h6>
-
+                            <h6>Date :${l.createdDate}</h6>
                             </div>
                         </div>
                     </div>

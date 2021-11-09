@@ -335,15 +335,19 @@
             <div class="owl-menu-item owl-carousel">
                 <c:forEach items="${topicList}" var="l">
                     <div class="item">
-                        <div class='card card1'>
+                        <div class='card' style="background-image: url('server/uploads/${l.img}')">
 
                             <div class='info'>
                                 <h1 class='title'>
-                                    <form id="linkForm${l.topicId}" action="topic-detail?topicId=${l.topicId}" method="post">
-                                      <a href="javascript:{}" onclick="document.getElementById('linkForm${l.topicId}').submit();" style="font-family: none; color:black;"><h2>${l.title}</h2></a>
+                                    <form id="linkForm${l.topicId}" action="topic-detail?topicId=${l.topicId}"
+                                          method="post">
+                                        <a href="javascript:{}"
+                                           onclick="document.getElementById('linkForm${l.topicId}').submit();"
+                                           style="font-family: none; color:black;"><h2>${l.title}</h2></a>
                                     </form>
                                 </h1>
-                                <p class="description" style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
+                                <p class="description"
+                                   style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
                                 <div class="main-text-button">
                                     <div class="scroll-to-section"><a href="#">More.. <i
                                             class="fa fa-angle-down"></i></a>
