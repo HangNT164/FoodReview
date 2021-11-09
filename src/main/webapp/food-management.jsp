@@ -17,7 +17,7 @@
 
     <!-- FontAwesome JS-->
     <script defer src="resources/plugins/fontawesome/js/all.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <!-- App CSS -->
     <link rel="stylesheet" href="resources/css/custom/portal.css">
     <link rel="stylesheet" href="resources/css/custom/footer.css">
@@ -247,6 +247,18 @@
                                                     <input id="foodName" name="foodName" type="text" class="form-control">
                                                 </div>
                                             </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="stat">Status: </label>
+                                                    <select id="stat" class="form-control"
+                                                            name="stat">
+                                                        <option value="">All
+                                                        </option>
+                                                        <option value="active">Active</option>
+                                                        <option value="inactive">Inactive</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <div class="col-md-1" style="margin-top: 30px;">
                                                 <button type="submit"
                                                         style="background-color: transparent;border-color: transparent;">
@@ -279,8 +291,8 @@
                                                         <td>${l.shopId}</td>
                                                         <td>${l.foodName}</td>
                                                         <td>${l.status}</td>
-                                                        <td>${l.createdDate}</td>
-                                                        <td>${l.updatedDate}</td>
+                                                        <td class="date">${l.createdDate}</td>
+                                                        <td class="date">${l.updatedDate}</td>
                                                         <td style="text-align: center">
                                                             <a href="#" class="view mr-1" data-toggle="modal"
                                                                data-target="#detail${l.foodId}" title="Detail">
@@ -344,8 +356,8 @@
                                                                                 </div>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
-                                                                                        <label>Create Date</label>
-                                                                                        <span class="form-control"
+                                                                                        <label>Created Date</label>
+                                                                                        <span class="form-control date"
                                                                                               disabled>${l.createdDate}</span>
                                                                                     </div>
                                                                                 </div>
@@ -353,7 +365,7 @@
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label>Updated Date </label>
-                                                                                        <span class="form-control"
+                                                                                        <span class="form-control date"
                                                                                               disabled>${l.updatedDate}</span>
                                                                                     </div>
                                                                                 </div>
@@ -511,7 +523,7 @@
 <script>
     $(document).ready(function () {
         $('#food-management-table').DataTable();
-        $('.format-date').each(function (i, item) {
+        $('.date').each(function (i, item) {
             item.innerHTML = formatDate(item.value);
         })
     });
