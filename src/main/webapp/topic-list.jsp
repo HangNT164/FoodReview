@@ -22,7 +22,7 @@
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="resources/css/home/bootstrap.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="resources/css/home/font-awesome.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="resources/plugins/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" type="text/css" href="resources/css/home/home.css">
     <link rel="stylesheet" href="resources/css/home/templatemo-klassy-cafe.css">
     <link rel="stylesheet" href="resources/css/home/owl-carousel.css">
@@ -147,7 +147,7 @@
                 <button type="submit" class="btn btn-primary col-1" onclick="document.getElementById('type').value = 'search';"><i class="fa fa-search"></i></button>
                 <input hidden="true" id="sortType" name="sortType" value="${sortType}"/>
                 <button type="submit" class="btn" onclick="document.getElementById('sortType').value = 'name';">Order By Name</button>
-                <button type="submit" class="btn" onclick="document.getElementById('sortType').value = 'rate';">Order By Rate</button>
+                <button type="submit" class="btn" onclick="document.getElementById('sortType').value = 'rate';">Order By Date</button>
             </div>
 
             <div class="row">
@@ -159,14 +159,14 @@
                         <hr>
                         <div class="row">
                             <div class="col-6">
-                                <img src="resources/images/home/about-thumb-01.jpg" alt="">
+                                <img src="server/uploads/${l.img}" alt="">
                             </div>
                             <div class="col-6 border-right rounded">
                                 <p style="white-space: pre-line;">${l.content}</p>
                                 <br>
                                 <br>
                                 <h6>Author: ${l.accountName}</h6>
-                                <h6>Rate: ${l.rate}</h6>
+
                             </div>
                         </div>
                     </div>
