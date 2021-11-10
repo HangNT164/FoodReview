@@ -19,7 +19,7 @@ public class ListTopicWithApprovedStatusController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         List<Topic> topicListByStatus;
         HttpSession session = request.getSession(true);
-        topicListByStatus = topicDao.getTopicsByIndexAndSearchString("",1, "name");
+        topicListByStatus = topicDao.getTopicsByIndexAndSearchString("",1, "date");
         //test under
         int totalTopics = topicDao.getTotalTopics("");
         int totalIndexes = (totalTopics/8)+1;

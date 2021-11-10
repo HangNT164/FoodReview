@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -137,7 +138,7 @@
                 <button type="submit" class="btn btn-primary col-1" onclick="document.getElementById('type').value = 'search';"><i class="fa fa-search"></i></button>
                 <input hidden="true" id="sortType" name="sortType" value="${sortType}"/>
                 <button type="submit" class="btn" onclick="document.getElementById('sortType').value = 'name';">Order By Name</button>
-                <button type="submit" class="btn" onclick="document.getElementById('sortType').value = 'rate';">Order By Date</button>
+                <button type="submit" class="btn" onclick="document.getElementById('sortType').value = 'date';">Order By Date</button>
             </div>
 
             <div class="row">
@@ -155,7 +156,7 @@
                                 <p style="white-space: pre-line;">${l.content}</p>
                                 <br>
                                 <h6>Author: ${l.accountName}</h6>
-                            <h6>Date :${l.createdDate}</h6>
+                            <h6>Date : <fmt:formatDate pattern = "dd/MM/yyyy" value = "${l.createdDate}" /></h6>
                             </div>
                         </div>
                     </div>
