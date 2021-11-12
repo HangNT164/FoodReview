@@ -35,17 +35,17 @@ public class TopicCommentController extends HttpServlet {
             int commentId = Integer.parseInt(request.getParameter("commentId"));
             String updateContent = request.getParameter("updateContent");
             boolean status = topicCommentDao.updateCommentByCommentId(commentId, updateContent);
-            request.setAttribute("checkIfCommented", true);
+            request.setAttribute("checkIfCommented", 1);
         }
         else if(action.equalsIgnoreCase("create")){
             String createContent = request.getParameter("createContent");
             boolean status = topicCommentDao.createComment(topicId, accountId, createContent);
-            request.setAttribute("checkIfCommented", true);
+            request.setAttribute("checkIfCommented", 1);
         }
         else{
             int commentId = Integer.parseInt(request.getParameter("commentId"));
             boolean status = topicCommentDao.deleteCommentByCommentId(commentId);
-            request.setAttribute("checkIfCommented", false);
+            request.setAttribute("checkIfCommented", 0);
         }
 
 

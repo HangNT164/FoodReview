@@ -27,19 +27,23 @@ public class TopicDetailController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("topicId"));
+        int checkIfCommented = -1;
         Topic topic = topicDao.getPostById(id);
         List<Topic> topicList = topicDao.getListTopic();
         List<TopicComment> topicCommentList = topicCommentDao.getAllCommentByTopicId(id);
         HttpSession session = request.getSession(true);
         Account account = (Account) session.getAttribute("account");
-        int accountId = account.getAccountId();
-        boolean checkIfCommented = false;
-        for (TopicComment c: topicCommentList) {
-            if(c.getAccountId() == accountId){
-                checkIfCommented = true;
-                break;
+        if(account !=null){
+            checkIfCommented = 0;
+            int accountId = account.getAccountId();
+            for (TopicComment c: topicCommentList) {
+                if(c.getAccountId() == accountId){
+                    checkIfCommented = 1;
+                    break;
+                }
             }
         }
+
         request.setAttribute("topicList",topicList);
         request.setAttribute("topicCommentList", topicCommentList);
         request.setAttribute("topic", topic);

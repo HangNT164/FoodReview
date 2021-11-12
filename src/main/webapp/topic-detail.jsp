@@ -47,12 +47,12 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <a href="#" class="logo">
+                    <a href="/" class="logo">
                         <img height="80px" width="120px" src="resources/images/home/logo.png">
                     </a>
                     <ul class="nav">
-                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="add-topic-reviewer">Topic</a></li>
+                        <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="list-topic-approved">Topic</a></li>
                         <li class="scroll-to-section"><a href="shop-reviewer">Shop</a></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
                         <li class="scroll-to-section"><a href="#menu">Menu</a></li>
@@ -167,7 +167,7 @@
                 <h2>Comments</h2>
             </div>
             <div class = "col-3">
-                <c:if test="${checkIfCommented == false}">
+                <c:if test="${checkIfCommented == 0}">
                     <a href="#" data-toggle="modal" data-target="#create">
                         <h5><i class="fas fa-plus"></i> Create new comment</h5>
                     </a>
@@ -219,7 +219,7 @@
                                 <div class="col-10">
                                     <h5>${t.accountName}</h5>
                                 </div>
-                                <c:if test="${checkIfCommented == true}">
+                                <c:if test="${checkIfCommented == 1}">
                                     <c:if test="${t.accountId == account.accountId}">
                                         <div class="col-1">
                                            <a href="#" data-toggle="modal"
@@ -321,11 +321,8 @@
             <div class="col-lg-4">
                 <div class="section-heading">
                     <h6>All Post</h6>
-                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi
-                        <form id="listTopicForm" action="list-topic-approved" method="get">
-                            <a href="javascript:{}" onclick="document.getElementById('listTopicForm').submit();"
-                               style="font-family: none;">Xem thêm >></a>
-                        </form>
+                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi.
+                        <a href="list-topic-approved" style="font-family: none;">Xem thêm >></a>
                     </h2>
                 </div>
             </div>

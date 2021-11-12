@@ -1,5 +1,6 @@
 package controller;
 
+import bean.Account;
 import bean.Topic;
 import dao.TopicDao;
 
@@ -19,14 +20,18 @@ public class ListTopicWithApprovedStatusController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         List<Topic> topicListByStatus;
         HttpSession session = request.getSession(true);
+        Account account = (Account) session.getAttribute("account");
+        boolean checkIfLogin = true;
+        if(account == null)
+            checkIfLogin = false;
         topicListByStatus = topicDao.getTopicsByIndexAndSearchString("",1, "date");
-        //test under
         int totalTopics = topicDao.getTotalTopics("");
         int totalIndexes = (totalTopics/8)+1;
         if(totalTopics%8 ==0)
             --totalIndexes;
         request.setAttribute("topicList", topicListByStatus);
-        request.setAttribute("sortType","name");
+        request.setAttribute("sortType","date");
+        request.setAttribute("checkIfLogin",checkIfLogin);
         session.setAttribute("totalTopicListIndexes", totalIndexes);
         session.setAttribute("currentTopicListIndex", 1);
         request.getRequestDispatcher("topic-list.jsp").forward(request, response);
@@ -35,6 +40,10 @@ public class ListTopicWithApprovedStatusController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         List<Topic> topicListByStatus;
         HttpSession session = request.getSession(true);
+        Account account = (Account) session.getAttribute("account");
+        boolean checkIfLogin = true;
+        if(account == null)
+            checkIfLogin = false;
         String search = request.getParameter("search");
         String sortType = request.getParameter("sortType");
         int totalIndexes =  (int) session.getAttribute("totalTopicListIndexes");
@@ -59,6 +68,7 @@ public class ListTopicWithApprovedStatusController extends HttpServlet {
         else{
             topicListByStatus = topicDao.getTopicsByIndexAndSearchString(search, index, sortType);
         }
+        request.setAttribute("checkIfLogin",checkIfLogin);
         request.setAttribute("search", search);
         request.setAttribute("sortType",sortType);
         request.setAttribute("topicList", topicListByStatus);

@@ -40,7 +40,7 @@
                     </a>
                     <ul class="nav">
                         <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="add-topic-reviewer">Topic</a></li>
+                        <li class="scroll-to-section"><a href="list-topic-approved">Topic</a></li>
                         <li class="scroll-to-section"><a href="shop-reviewer">Shop</a></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
                         <li class="scroll-to-section"><a href="#menu">Menu</a></li>
@@ -154,11 +154,8 @@
             <div class="col-lg-4">
                 <div class="section-heading">
                     <h6>All Post</h6>
-                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi
-                        <form id="listTopicForm" action="list-topic-approved" method="get">
-                            <a href="javascript:{}" onclick="document.getElementById('listTopicForm').submit();"
-                               style="font-family: none;">Xem thêm >></a>
-                        </form>
+                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi.
+                        <a href="list-topic-approved" style="font-family: none;">Xem thêm >></a>
                     </h2>
                 </div>
             </div>

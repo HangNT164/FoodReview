@@ -47,12 +47,12 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <a href="#" class="logo">
+                    <a href="/" class="logo">
                         <img height="80px" width="120px" src="resources/images/home/logo.png">
                     </a>
                     <ul class="nav">
-                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="add-topic-reviewer">Topic</a></li>
+                        <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="list-topic-approved">Topic</a></li>
                         <li class="scroll-to-section"><a href="shop-reviewer">Shop</a></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
                         <li class="scroll-to-section"><a href="#menu">Menu</a></li>
@@ -124,7 +124,10 @@
     </div>
 </div>
 <!-- ***** Main Banner Area End ***** -->
-
+<c:if test="${checkIfLogin == true}">
+    <div id="add-topic-form">
+    </div>
+</c:if>
 <!-- ***** Topic List Area Starts ***** -->
 <section class="section" id="about">
     <div class="container">
@@ -278,11 +281,10 @@
 <!-- Global Init -->
 <script src="resources/js/custom.js"></script>
 <script>
-
+    $("#add-topic-form").load("topic-reviewer.jsp #top");
     function myFunction() {
         document.getElementById("myDropdown").classList.toggle("show");
     }
-
     // Close the dropdown if the user clicks outside of it
     window.onclick = function(event) {
         if (!event.target.matches('.dropbtn')) {
