@@ -68,8 +68,26 @@ public class ShopDao {
         return null;
     }
 
-    public List<Shop> getListShopByNameAndStatus(String shopName, String status) {
-        String query = "SELECT * FROM swp391_g2_project.shop where shop_name like '%" + shopName + "%' and status = '" + status + "' and status not like 'deleted'";
+    public List<Shop> getListShopByAccountIdAndName(int accountId, String shopName) {
+        String query = "SELECT * FROM swp391_g2_project.shop where account_id = "+ accountId +" and shop_name like '%" + shopName + "%' and status not like 'deleted'";
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Shop> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueShop(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public List<Shop> getListShopByNameAndStatus(int accountId, String shopName, String status) {
+        String query = "SELECT * FROM swp391_g2_project.shop where account_id = "+ accountId +" and shop_name like '%" + shopName + "%' and status = '" + status + "' and status not like 'deleted'";
         try (Connection con = MySqlConnection.getConnection();
              PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
