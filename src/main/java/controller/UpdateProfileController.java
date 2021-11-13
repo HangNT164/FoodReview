@@ -53,6 +53,7 @@ public class UpdateProfileController extends HttpServlet {
             }
 
             Account account = Account.builder()
+                    .accountId(accountCurrent.getAccountId())
                     .name(name)
                     .email(email)
                     .phoneNumber(phone)
@@ -61,6 +62,7 @@ public class UpdateProfileController extends HttpServlet {
                     .dob(dob)
                     .build();
             Account updateAccount = Account.builder()
+                    .accountId(accountCurrent.getAccountId())
                     .name(name)
                     .email(email)
                     .phoneNumber(phone)

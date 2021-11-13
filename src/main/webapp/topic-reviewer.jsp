@@ -34,12 +34,12 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <a href="#" class="logo">
+                    <a href="/" class="logo">
                         <img height="80px" width="120px" src="resources/images/home/logo.png">
                     </a>
                     <ul class="nav">
-                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="add-topic-reviewer">Topic</a></li>
+                        <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="list-topic-approved">Topic</a></li>
                         <li class="scroll-to-section"><a href="shop-reviewer">Shop</a></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
                         <li class="scroll-to-section"><a href="#menu">Menu</a></li>

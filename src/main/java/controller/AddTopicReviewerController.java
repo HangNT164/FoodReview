@@ -98,9 +98,9 @@ public class AddTopicReviewerController extends HttpServlet {
                 boolean addTopic = topicDao.addTopicReviewer(topic);
                 if (!addTopic) {
                     request.setAttribute("message", "Add Topic Fail!");
-                    request.getRequestDispatcher("topic-reviewer.jsp").forward(request, response);
+//                    request.getRequestDispatcher("topic-reviewer.jsp").forward(request, response);
                 }
-                response.sendRedirect("add-topic-reviewer");
+                response.sendRedirect("list-topic-approved");
             }
         }
     }

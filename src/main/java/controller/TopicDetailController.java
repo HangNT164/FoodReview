@@ -1,5 +1,6 @@
 package controller;
 
+import bean.Account;
 import bean.Topic;
 import bean.TopicComment;
 import dao.TopicCommentDao;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -25,12 +27,27 @@ public class TopicDetailController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("topicId"));
+        int checkIfCommented = -1;
         Topic topic = topicDao.getPostById(id);
         List<Topic> topicList = topicDao.getListTopic();
         List<TopicComment> topicCommentList = topicCommentDao.getAllCommentByTopicId(id);
+        HttpSession session = request.getSession(true);
+        Account account = (Account) session.getAttribute("account");
+        if(account !=null){
+            checkIfCommented = 0;
+            int accountId = account.getAccountId();
+            for (TopicComment c: topicCommentList) {
+                if(c.getAccountId() == accountId){
+                    checkIfCommented = 1;
+                    break;
+                }
+            }
+        }
+
         request.setAttribute("topicList",topicList);
         request.setAttribute("topicCommentList", topicCommentList);
         request.setAttribute("topic", topic);
+        request.setAttribute("checkIfCommented", checkIfCommented);
         request.getRequestDispatcher("topic-detail.jsp").forward(request, response);
     }
 }

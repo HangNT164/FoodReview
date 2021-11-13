@@ -26,22 +26,26 @@ public class TopicCommentController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int commentId = Integer.parseInt(request.getParameter("commentId"));
         int topicId = Integer.parseInt(request.getParameter("topicId"));
         String action = request.getParameter("action");
         HttpSession session = request.getSession(true);
         Account account = (Account) session.getAttribute("account");
         int accountId = account.getAccountId();
         if(action.equalsIgnoreCase("edit")) {
+            int commentId = Integer.parseInt(request.getParameter("commentId"));
             String updateContent = request.getParameter("updateContent");
             boolean status = topicCommentDao.updateCommentByCommentId(commentId, updateContent);
+            request.setAttribute("checkIfCommented", 1);
         }
         else if(action.equalsIgnoreCase("create")){
             String createContent = request.getParameter("createContent");
             boolean status = topicCommentDao.createComment(topicId, accountId, createContent);
+            request.setAttribute("checkIfCommented", 1);
         }
         else{
+            int commentId = Integer.parseInt(request.getParameter("commentId"));
             boolean status = topicCommentDao.deleteCommentByCommentId(commentId);
+            request.setAttribute("checkIfCommented", 0);
         }
 
 
