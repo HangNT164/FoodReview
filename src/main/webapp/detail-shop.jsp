@@ -127,149 +127,78 @@
                 <%--                </div>--%>
             </div>
         </div>
-        <div>
-            <h3 style="margin-left: -40px; margin-top: 15px; color: #fb5849!important; height: fit-content"><span>List foods</span>
-            </h3>
+        <c:choose>
+            <c:when test="${listFoodByShopAndOddId == null || listFoodByShopAndOddId.size() <= 0}">
+                <div>
+                    <h3 style="margin-left: -40px; margin-top: 15px; color: #fb5849!important; height: fit-content"><span>Quán chưa có đồ ăn nào</span>
+                    </h3>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div>
+                    <h3 style="margin-left: -40px; margin-top: 15px; color: #fb5849!important; height: fit-content"><span>List foods</span>
+                    </h3>
 
-            <div class="row" style="margin-top: 30px; margin-left: 10px">
-                <div class="col-lg-6">
-                    <div class="row">
-                        <ul id="left-list" class="left-list">
-                            <c:forEach items="${listFoodByShopAndOddId}" var="food">
-                                <li class="col-lg-12 left-food" style="display: none">
-                                    <div class="tab-item">
-                                        <a href="#" data-toggle="modal" data-target="#detail${food.foodId}">
-                                            <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png"
-                                                 alt="" style="width: 150px; height: 150px"><br>
-                                            <span style="color: #fb5849; font-size: 26px; font-weight: bold;">${food.foodName}</span>
-                                        </a>
-                                        <p>${food.description}</p>
-                                        <div class="price">
-                                            <h6 style="color: #fb5849">${food.rate} <i class="fa fa-heart-o"></i></h6>
-                                        </div>
-                                    </div>
-                                </li>
-                                <div class="modal fade" id="detail${food.foodId}" tabindex="-1"
-                                     role="dialog" aria-labelledby="detail${food.foodId}"
-                                     aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg"
-                                         role="document">
-                                        <div class="modal-content">
-                                            <div class="card" style="margin: 0;">
-                                                <div class="card-body" style="padding-bottom: 0 !important;">
-                                                    <h5 class="mb-3">Detail Food</h5>
-                                                    <div class="col-6 pr-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png"
-                                                                     alt="" style="width: 150px; height: 150px"><br>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label>Food name</label>
-                                                                <span class="form-control">${food.foodName}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label>Description </label>
-                                                                <span class="form-control">${food.description}</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button"
-                                                                style="border: 1px solid;"
-                                                                class="btn btn-outline-success"
-                                                                data-dismiss="modal">Close
-                                                        </button>
-                                                    </div>
+                    <div class="row" style="margin-top: 30px; margin-left: 10px">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <ul id="left-list" class="left-list">
+                                    <c:forEach items="${listFoodByShopAndOddId}" var="food">
+                                        <li class="col-lg-12 left-food" style="display: none">
+                                            <div class="tab-item">
+                                                <a href="detail-food?foodId=${food.foodId}">
+                                                    <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png"
+                                                         alt="" style="width: 150px; height: 150px"><br>
+                                                    <span style="color: #fb5849; font-size: 26px; font-weight: bold;">${food.foodName}</span>
+                                                </a>
+                                                <p>${food.description}</p>
+                                                <div class="price">
+                                                    <h6 style="color: #fb5849">${food.rate} <i class="fa fa-heart-o"></i></h6>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="row">
-                        <ul id="right-list" class="right-list">
-                            <c:forEach items="${listFoodByShopAndEvenId}" var="f">
-                                <li class="col-lg-12 right-food" style="display: none">
-                                    <div class="tab-item">
-                                        <a href="#" data-toggle="modal" data-target="#detail${f.foodId}">
-                                            <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png"
-                                                 alt="" style="width: 150px; height: 150px"><br>
-                                            <span style="color: #fb5849; font-size: 26px; font-weight: bold;">${f.foodName}</span>
-                                        </a>
-                                        <p>${f.description}</p>
-                                        <div class="price">
-                                            <h6 style="color: #fb5849">${f.rate} <i class="fa fa-heart-o"></i></h6>
-                                        </div>
-                                    </div>
-                                </li>
-                                <div class="modal fade" id="detail${f.foodId}" tabindex="-1"
-                                     role="dialog" aria-labelledby="detail${f.foodId}"
-                                     aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg"
-                                         role="document">
-                                        <div class="modal-content">
-                                            <div class="card" style="margin: 0;">
-                                                <div class="card-body" style="padding-bottom: 0 !important;">
-                                                    <h5 class="mb-3">Detail Food</h5>
-                                                    <div class="col-6 pr-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png"
-                                                                     alt="" style="width: 150px; height: 150px"><br>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label>Food name</label>
-                                                                <span class="form-control">${f.foodName}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label>Description </label>
-                                                                <span class="form-control">${f.description}</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button"
-                                                                style="border: 1px solid;"
-                                                                class="btn btn-outline-success"
-                                                                data-dismiss="modal">Close
-                                                        </button>
-                                                    </div>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <ul id="right-list" class="right-list">
+                                    <c:forEach items="${listFoodByShopAndEvenId}" var="f">
+                                        <li class="col-lg-12 right-food" style="display: none">
+                                            <div class="tab-item">
+                                                <a href="detail-food?foodId=${f.foodId}">
+                                                    <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png"
+                                                         alt="" style="width: 150px; height: 150px"><br>
+                                                    <span style="color: #fb5849; font-size: 26px; font-weight: bold;">${f.foodName}</span>
+                                                </a>
+                                                <p>${f.description}</p>
+                                                <div class="price">
+                                                    <h6 style="color: #fb5849">${f.rate} <i class="fa fa-heart-o"></i></h6>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                        </ul>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: center; margin-top: 30px">
+                        <div id="loadMore" style="margin-left: -50px; margin-right: 20px;">
+                            <a href="#"
+                               style="padding: 10px; border-radius: 3px; color: #fff!important; background-color: #ec7211; border-color: #ec7211;">Load
+                                More</a>
+                        </div>
+                        <div id="showLess" style="display: none;">
+                            <a href="#"
+                               style="padding: 10px; border-radius: 3px; color: #fff!important; background-color: #ec7211; border-color: #ec7211;">Show
+                                Less</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div style="display: flex; justify-content: center; margin-top: 30px">
-                <div id="loadMore" style="margin-left: -50px; margin-right: 20px;">
-                    <a href="#"
-                       style="padding: 10px; border-radius: 3px; color: #fff!important; background-color: #ec7211; border-color: #ec7211;">Load
-                        More</a>
-                </div>
-                <div id="showLess" style="display: none;">
-                    <a href="#"
-                       style="padding: 10px; border-radius: 3px; color: #fff!important; background-color: #ec7211; border-color: #ec7211;">Show
-                        Less</a>
-                </div>
-            </div>
-        </div>
+            </c:otherwise>
+        </c:choose>
+
     </div>
     <br/><br/>
     <%--    <div class="container">--%>

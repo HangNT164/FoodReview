@@ -274,4 +274,21 @@ public class FoodDao {
         }
         return null;
     }
+
+    public Food findFoodById(int foodId) {
+        String query = "SELECT * FROM food where food_id = ? ";
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setInt(1, foodId);
+                ResultSet rs = ps.executeQuery();
+                if (rs != null && rs.next()) {
+                    return getValueFood(rs);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
 }
