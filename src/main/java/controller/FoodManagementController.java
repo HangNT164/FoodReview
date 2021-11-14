@@ -29,11 +29,24 @@ public class FoodManagementController extends HttpServlet {
         Account account = (Account) session.getAttribute("account");
         int accountId = account.getAccountId();
         String foodName = request.getParameter("foodName");
+        String status = request.getParameter("stat");
         List<Food> foodList;
-        if (foodName == null) {
-            foodList = foodDao.allFood(accountId, "");
-        } else {
+        if (foodName != null && status != null) {
+            if (status.equals("")) {
+                foodList = foodDao.allFood(accountId, foodName);
+            } else {
+                foodList = foodDao.allFoodByStatus(accountId, foodName, status);
+            }
+        } else if (foodName == null && status != null) {
+            if (status.equals("")) {
+                foodList = foodDao.allFood(accountId, "");
+            } else {
+                foodList = foodDao.allFoodByStatus(accountId, "", status);
+            }
+        } else if (foodName != null) {
             foodList = foodDao.allFood(accountId, foodName);
+        } else {
+            foodList = foodDao.allFood(accountId, "");
         }
         request.setAttribute("foodList", foodList);
         request.getRequestDispatcher("food-management.jsp").forward(request, response);
