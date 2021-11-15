@@ -81,8 +81,7 @@ public class AddTopicReviewerController extends HttpServlet {
                                 path.mkdirs();
                             }
 
-                            fileName = random + fileName;
-                            File saveFile = new File(path + "/" + fileName);
+                            File saveFile = new File(path + "/" + lsFileName);
                             item.write(saveFile);
 
                             System.out.println(saveFile.getAbsolutePath());
@@ -104,7 +103,7 @@ public class AddTopicReviewerController extends HttpServlet {
                 boolean addTopic = topicDao.addTopicReviewer(topic);
                 if (!addTopic) {
                     request.setAttribute("message", "Add Topic Fail!");
-//                    request.getRequestDispatcher("topic-reviewer.jsp").forward(request, response);
+                    request.getRequestDispatcher("topic-reviewer.jsp").forward(request, response);
                 }
                 response.sendRedirect("list-topic-approved");
             }
