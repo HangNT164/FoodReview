@@ -112,7 +112,7 @@
                         <c:forEach items="${listShop}" var="ls">
                             <div class="item">
                                 <div class="img-fill">
-                                    <img src="server/uploads/${ls.img}" alt="">
+                                    <img src="resources/images/home/${ls.img}" alt="">
                                 </div>
                             </div>
                         </c:forEach>
@@ -153,7 +153,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-6">
-                                <img src="server/uploads/${l.img}" alt="">
+                                <img src="resources/images/home/${l.img}" alt="">
                             </div>
                             <div class="col-6 border-right rounded">
                                 <p style="white-space: pre-line;">${l.content}</p>

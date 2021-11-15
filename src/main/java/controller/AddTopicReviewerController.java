@@ -8,6 +8,7 @@ import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import util.EmailUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,6 +59,7 @@ public class AddTopicReviewerController extends HttpServlet {
 
                 Iterator iter = items.iterator();
                 Hashtable params = new Hashtable();
+
                 while (iter.hasNext()) {
                     FileItem item = (FileItem) iter.next();
                     if (item.isFormField()) {
@@ -69,13 +71,17 @@ public class AddTopicReviewerController extends HttpServlet {
                             // get file name
                             String itemName = item.getName();
                             String fileName = itemName.substring(itemName.lastIndexOf("\\") + 1);
-                            lsFileName = fileName;
+                            String random = new EmailUtil().generate6DigitsRandom();
+                            lsFileName = random + fileName;
 
-                            String root = getServletContext().getRealPath("/");
-                            File path = new File(root + "/uploads");
+//                            String root = getServletContext().getRealPath("/");
+                            String root = "/Users/hangnt/Documents/Git/FoodReview/src/main/webapp/resources/images/home";
+                            File path = new File(root);
                             if (!path.exists()) {
                                 path.mkdirs();
                             }
+
+                            fileName = random + fileName;
                             File saveFile = new File(path + "/" + fileName);
                             item.write(saveFile);
 
