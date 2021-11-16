@@ -73,7 +73,7 @@ public class FoodDao {
     }
 
     public List<Food> allFood(int accountId, String foodName) {
-        String query = "SELECT f.* FROM swp391_g2_project.food f join swp391_g2_project.shop s" +
+        String query = "SELECT f.*, s.shop_name FROM swp391_g2_project.food f join swp391_g2_project.shop s" +
                 " ON f.shop_id = s.shop_id WHERE s.account_id = " + accountId + " AND f.food_name like '%" + foodName + "%'";
         try (Connection con = MySqlConnection.getConnection();
             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
@@ -81,7 +81,18 @@ public class FoodDao {
                 ResultSet rs = ps.executeQuery();
                 List<Food> list = new ArrayList<>();
                 while (rs != null && rs.next()) {
-                    list.add(getValueFood(rs));
+                    Food food = Food.builder()
+                            .foodId(rs.getInt(1))
+                            .shopId(rs.getInt(2))
+                            .foodName(rs.getString(3))
+                            .status(rs.getString(4))
+                            .description(rs.getString(5))
+                            .rate(rs.getInt(6))
+                            .createdDate(rs.getDate(7))
+                            .updatedDate(rs.getDate(8))
+                            .shopName(rs.getString(10))
+                            .build();
+                    list.add(food);
                 }
                 return list;
             }

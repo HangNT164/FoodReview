@@ -276,7 +276,7 @@
                                                 <thead>
                                                 <tr>
                                                     <th class="w-stt">No</th>
-                                                    <th>Shop ID</th>
+                                                    <th>Shop Name</th>
                                                     <th>Food Name</th>
                                                     <th>Status</th>
                                                     <th>Created Date</th>
@@ -288,7 +288,7 @@
                                                 <c:forEach items="${foodList}" var="l" varStatus="loop">
                                                     <tr>
                                                         <td>${loop.count}</td>
-                                                        <td>${l.shopId}</td>
+                                                        <td>${l.shopName}</td>
                                                         <td>${l.foodName}</td>
                                                         <td>${l.status}</td>
                                                         <td class="date">${l.createdDate}</td>

@@ -27,4 +27,5 @@ public class Food {
     private String month;
     private int accountId;
     private String accountName;
+    private String shopName;
 }
