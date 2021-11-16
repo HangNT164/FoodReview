@@ -20,7 +20,7 @@
          style="background: url(https://www.ieltsvietop.vn/wp-content/uploads/2020/07/hong_kong_skyline_green_building_in_asia.jpg);">
         <div class="login-panel">
             <div class="logo text-center"><br/>
-                <a href="#">
+                <a href="home">
                     <p>Food Review</p>
                 </a><br/><br/>
             </div>

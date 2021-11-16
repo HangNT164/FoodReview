@@ -429,7 +429,7 @@
         <small class="copyright " style="color: black; ">© 2021 Copyright <i class="fas fa-heart "
                                                                              style="color: #fb866a; "></i> by <a
                 class="app-link "
-                href="home ">food.review.com</a></small>
+                href="home">food.review.com</a></small>
 
     </div>
 </footer>

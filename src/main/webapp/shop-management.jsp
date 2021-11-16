@@ -74,7 +74,7 @@
         <div class="sidepanel-inner d-flex flex-column">
             <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
             <div class="app-branding" style="margin:auto;">
-                <a class="app-logo" href="admin"><span class="logo-text" style="font-size: 27px;"><i>Food
+                <a class="app-logo" href="home"><span class="logo-text" style="font-size: 27px;"><i>Food
                                 Review</i></span></a>
             </div>
             <!--//app-branding-->
@@ -528,7 +528,7 @@
         <small class="copyright " style="color: black; ">© 2021 Copyright <i class="fas fa-heart "
                                                                              style="color: #fb866a; "></i> by <a
                 class="app-link "
-                href="#">food.review.com</a></small>
+                href="home">food.review.com</a></small>
     </div>
 </footer>
 <!--//app-footer-->
