@@ -22,4 +22,5 @@ public class FoodComment {
     private Date createdDate;
     private Date updatedDate;
     private String month;
+    private String accountName;
 }

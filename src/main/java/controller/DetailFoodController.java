@@ -31,9 +31,7 @@ public class DetailFoodController extends HttpServlet {
             Food food = foodDao.findFoodById(foodId);
             request.setAttribute("food", food);
             List<FoodComment> foodCommentList = foodCommentDao.allCommentByFoodId(foodId);
-            List<FoodComment> myCommentList = foodCommentDao.allMyCommentByFoodId(foodId, account.getAccountId());
             request.setAttribute("foodCommentList", foodCommentList);
-            request.setAttribute("myCommentList", myCommentList);
         }
 
         request.getRequestDispatcher("detail-food.jsp").forward(request, response);

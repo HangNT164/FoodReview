@@ -21,7 +21,7 @@ public class UpdateFoodCommentController extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
             request.setCharacterEncoding("UTF-8");
             response.setCharacterEncoding("UTF-8");
-
+            Integer foodId = request.getParameter("foodId") != null ? Integer.parseInt(request.getParameter("foodId")) : null;
             int foodCommentId = ValidateHelper.getValidateID(request.getParameter("foodCommentId"));
             String updateContent = request.getParameter("updateContent");
             boolean update = foodCommentDao.updateFoodComment(foodCommentId, updateContent);
@@ -29,7 +29,7 @@ public class UpdateFoodCommentController extends HttpServlet {
                 request.setAttribute("message", "You can't update this comment!!!");
                 request.getRequestDispatcher("detail-food.jsp").forward(request, response);
             }
-            else response.sendRedirect("detail-food");
+            response.sendRedirect("detail-food?foodId=" + foodId);
         }
     }
 }

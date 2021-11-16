@@ -43,7 +43,7 @@ public class AddFoodCommentController extends HttpServlet {
                 request.setAttribute("message", "You can't comment to this food!!!");
                 request.getRequestDispatcher("detail-food.jsp").forward(request, response);
             }
-            else response.sendRedirect("detail-food");
+            response.sendRedirect("detail-food?foodId=" + foodId);
         }
     }
 }

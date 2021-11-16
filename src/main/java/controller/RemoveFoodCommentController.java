@@ -21,14 +21,14 @@ public class RemoveFoodCommentController extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
             request.setCharacterEncoding("UTF-8");
             response.setCharacterEncoding("UTF-8");
-
+            Integer foodId = request.getParameter("foodId") != null ? Integer.parseInt(request.getParameter("foodId")) : null;
             int foodCommentId = ValidateHelper.getValidateID(request.getParameter("foodCommentId"));
             boolean remove = foodCommentDao.removeFoodComment(foodCommentId);
             if (!remove) {
                 request.setAttribute("message", "You can't remove this comment!!!");
                 request.getRequestDispatcher("detail-food.jsp").forward(request, response);
             }
-            else response.sendRedirect("detail-food");
+            response.sendRedirect("detail-food?foodId=" + foodId);
         }
     }
 }

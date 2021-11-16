@@ -24,6 +24,7 @@ public class FoodCommentDao {
                     .rate(rs.getInt(6))
                     .createdDate(rs.getDate(7))
                     .updatedDate(rs.getDate(8))
+                    .accountName(rs.getString(10))
                     .build();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
@@ -51,29 +52,10 @@ public class FoodCommentDao {
         return null;
     }
 
-    public List<FoodComment> allMyCommentByFoodId(int foodId, int accountId) {
-        List <FoodComment> foodCommentList;
-        String query = "SELECT * FROM swp391_g2_project.food_comment fc join swp391_g2_project.account a on fc.account_id = a.account_id" +
-                " where food_id = " + foodId + " and fc.account_id = " + accountId + " and status = 'active' order by fc.updated_date desc";
-        try (Connection con = MySqlConnection.getConnection();
-            PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
-            if (ps != null) {
-                ResultSet rs = ps.executeQuery();
-                foodCommentList = new ArrayList<>();
-                while (rs != null && rs.next()) {
-                    foodCommentList.add(getValueFood_Comment(rs));
-                }
-                return foodCommentList;
-            }
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-        }
-        return null;
-    }
-
     public boolean addFoodComment(FoodComment foodComment) {
         int check = 0;
-        String query = "INSERT INTO swp391_g2_project.food_comment VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO swp391_g2_project.food_comment" +
+                " (`food_id`, `account_id`, `status`, `content`, `created_date`) VALUES(?,?,?,?,?)";
         try (Connection con = MySqlConnection.getConnection();
             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
             if (ps != null) {
