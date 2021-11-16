@@ -18,7 +18,7 @@
 <header class="app-header fixed-top">
     <div class="row justify-content-between" style="align-items: baseline !important; margin-top: -10px; margin-left: 3px; width: 100%;">
         <div class="app-branding" style="width: fit-content;">
-            <a class="app-logo" style=" text-decoration: none" href="home.jsp"><span class="logo-text" style="font-size: 27px;"><i>Food
+            <a class="app-logo" style=" text-decoration: none" href="home"><span class="logo-text" style="font-size: 27px;"><i>Food
                                 Review</i></span></a>
         </div>
         <div class="col-auto">
@@ -159,7 +159,7 @@
         <small class="copyright" style="color: black;">© 2021 Copyright <i class="fas fa-heart"
                                                                            style="color: #fb866a;"></i> by <a
                 class="app-link"
-                href="#">food.review.com</a></small>
+                href="home">food.review.com</a></small>
     </div>
 </footer>
 <!--//app-footer-->

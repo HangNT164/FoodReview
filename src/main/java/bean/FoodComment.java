@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
+import java.util.Date;
 @Builder
 @Getter
 @Setter
@@ -15,10 +15,12 @@ import java.sql.Date;
 public class FoodComment {
     private int foodCommentId;
     private int foodId;
+    private int accountId;
     private String status;
     private String content;
     private int rate;
     private Date createdDate;
     private Date updatedDate;
     private String month;
+    private String accountName;
 }

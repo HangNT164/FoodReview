@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FoodCommentDao {
@@ -17,16 +18,91 @@ public class FoodCommentDao {
             return FoodComment.builder()
                     .foodCommentId(rs.getInt(1))
                     .foodId(rs.getInt(2))
-                    .status(rs.getString(3))
-                    .content(rs.getString(4))
-                    .rate(rs.getInt(5))
-                    .createdDate(rs.getDate(6))
-                    .updatedDate(rs.getDate(7))
+                    .accountId(rs.getInt(3))
+                    .status(rs.getString(4))
+                    .content(rs.getString(5))
+                    .rate(rs.getInt(6))
+                    .createdDate(rs.getDate(7))
+                    .updatedDate(rs.getDate(8))
+                    .accountName(rs.getString(10))
                     .build();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
         }
         return null;
+    }
+
+    public List<FoodComment> allCommentByFoodId(int foodId) {
+        List <FoodComment> foodCommentList;
+        String query = "SELECT * FROM swp391_g2_project.food_comment fc join swp391_g2_project.account a on fc.account_id = a.account_id " +
+                "where fc.food_id = " + foodId + " and fc.status = 'active' order by fc.updated_date desc";
+        try (Connection con = MySqlConnection.getConnection();
+            PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                foodCommentList = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    foodCommentList.add(getValueFood_Comment(rs));
+                }
+                return foodCommentList;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public boolean addFoodComment(FoodComment foodComment) {
+        int check = 0;
+        String query = "INSERT INTO swp391_g2_project.food_comment" +
+                " (`food_id`, `account_id`, `status`, `content`, `created_date`) VALUES(?,?,?,?,?)";
+        try (Connection con = MySqlConnection.getConnection();
+            PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, foodComment.getFoodId());
+                ps.setObject(2, foodComment.getAccountId());
+                ps.setObject(3, foodComment.getStatus());
+                ps.setObject(4, foodComment.getContent());
+                ps.setObject(5, foodComment.getCreatedDate());
+                check = ps.executeUpdate();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
+
+    public boolean updateFoodComment(int foodCommentId, String content) {
+        int check = 0;
+        String query = "UPDATE swp391_g2_project.food_comment SET content = ?, updated_date = ? where food_comment.food_comment_id = ?";
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, content);
+                ps.setObject(2, new Date());
+                ps.setObject(3, foodCommentId);
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
+
+    public boolean removeFoodComment(int foodCommentId) {
+        int check = 0;
+        String query = "UPDATE swp391_g2_project.food_comment SET status = 'inactive' where food_comment.food_comment_id = ?";
+        try (Connection con = MySqlConnection.getConnection();
+            PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setObject(1, foodCommentId);
+                check = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
     }
 
     public int numOfCommentOfMonth(String month) {

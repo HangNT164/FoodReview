@@ -18,8 +18,10 @@ public class AuthenFilter implements Filter {
 
     private HttpServletRequest request;
     private static final String[] loginRequiredURLs = {
-            "/admin", "/profile", "/search-user-management", "/search-topic-status", "/remove-user-management", "/remove-topic-management", "/search-topic-status",
-                    "/update-user-management", "/update-status-topic", "/add-topic", "/shop"
+            "/admin", "/profile", "/search-user-management", "/search-topic-status", "/remove-user-management", "/remove-topic-management", "/update-user-management",
+            "/update-status-topic", "/add-topic", "/shop", "/add-food-comment", "/add-food", "/add-shop", "/add-topic-reviewer", "/add-your-comment", "/detail-food",
+            "/detail-shop", "/food-management", "/list-topic-approved", "/remove-food-comment", "/remove-shop-management", "/remove-your-comment", "/shop-management",
+            "/shop-reviewer", "/topic-comment", "/topic-detail", "/update-food-comment", "/update-profile", "/update-shop",
     };
 
     @Override
