@@ -91,6 +91,25 @@ public class FoodDao {
         return null;
     }
 
+    public List<Food> allFoodByStatus(int accountId, String foodName, String status) {
+        String query = "SELECT f.* FROM swp391_g2_project.food f join swp391_g2_project.shop s" +
+                " ON f.shop_id = s.shop_id WHERE s.account_id = " + accountId + " AND f.food_name like '%" + foodName + "%' and status = '" + status + "'";
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ResultSet rs = ps.executeQuery();
+                List<Food> list = new ArrayList<>();
+                while (rs != null && rs.next()) {
+                    list.add(getValueFood(rs));
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
     public boolean updateFood(int foodId, Food food) {
         int check = 0;
         String query = "UPDATE food SET food_name=?" +
@@ -268,6 +287,23 @@ public class FoodDao {
                     list.add(getValueFood(rs));
                 }
                 return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public Food findFoodById(int foodId) {
+        String query = "SELECT * FROM food where food_id = ? ";
+        try (Connection con = MySqlConnection.getConnection();
+             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
+            if (ps != null) {
+                ps.setInt(1, foodId);
+                ResultSet rs = ps.executeQuery();
+                if (rs != null && rs.next()) {
+                    return getValueFood(rs);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace(System.out);

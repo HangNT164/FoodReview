@@ -99,12 +99,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                       aria-controls="profile" aria-selected="false">Update Profile</a>
-                                </li>
-                            </ul>
+
                         </div>
                         <div class="row">
                             <div class="col-md-12">

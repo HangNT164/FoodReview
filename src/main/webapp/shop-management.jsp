@@ -271,7 +271,6 @@
                                                     <th class="w-stt">No</th>
                                                     <th>Shop Name</th>
                                                     <th>Address</th>
-                                                    <th>Description</th>
                                                     <th>Status</th>
                                                     <th>Created Date</th>
                                                     <th>Update Date</th>
@@ -284,7 +283,6 @@
                                                         <td>${loop.count}</td>
                                                         <td>${shop.shopName}</td>
                                                         <td>${shop.address}</td>
-                                                        <td>${shop.description}</td>
                                                         <td>${shop.status}</td>
                                                         <td class="format-date">(${shop.createdDate})</td>
                                                         <td class="format-date">${shop.updatedDate}</td>

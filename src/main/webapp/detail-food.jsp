@@ -10,13 +10,17 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
           rel="stylesheet">
-    <title>Food Review | Topic </title>
+    <title>Food Review | Detail Food </title>
     <link rel="stylesheet" type="text/css" href="resources/css/home/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="resources/css/home/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/custom/detail.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/custom/star.css">
     <link rel="stylesheet" type="text/css" href="resources/css/home/home.css">
     <link rel="stylesheet" href="resources/css/home/templatemo-klassy-cafe.css">
     <link rel="stylesheet" href="resources/css/home/owl-carousel.css">
     <link rel="stylesheet" href="resources/css/home/lightbox.css">
+    <link href="resources/css/home/custom-css.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
 <!-- ***** Preloader Start ***** -->
@@ -34,12 +38,12 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <a href="/" class="logo">
+                    <a href="#" class="logo">
                         <img height="80px" width="120px" src="resources/images/home/logo.png">
                     </a>
                     <ul class="nav">
-                        <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="list-topic-approved">Topic</a></li>
+                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="add-topic-reviewer">Topic</a></li>
                         <li class="scroll-to-section"><a href="shop-reviewer">Shop</a></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
                         <li class="scroll-to-section"><a href="#menu">Menu</a></li>
@@ -79,46 +83,37 @@
 <!-- ***** Main Banner Area Start ***** -->
 <div id="top">
     <div class="container">
-        <div style="display: flex;justify-content: center;">
-            <h3>Add Topic</h3>
-            <form action="add-topic-reviewer" method="POST" enctype="multipart/form-data" style="margin-top: 50px;">
-                <div class="row">
-                    <label for="title">Title: </label>
-                    <input style="margin-left: 60px;" type="text"
-                           name="title" id="title"
-                           required
-                           pattern=".{1,50}"
-                           class="form-control"/>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pro-img-details">
+                    <img src="https://png.pngtree.com/png-vector/20190830/ourlarge/pngtree-food-icon-design-vector-png-image_1708316.jpg" alt="" style="width: 500px; height: 370px">
                 </div>
-                <div class="row">
-                    <label for="content">Content: </label>
-                    <input style="margin-left: 60px;" type="text"
-                           required id="content"
-                           pattern=".{1,4000}"
-                           name="content"
-                           class="form-control"/>
+                <div class="pro-img-list" style="display: flex;justify-content: center;">
+                    <a href="#">
+                        <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png" alt="" style="width: 150px; height: 150px">
+                    </a>
+                    <a href="#">
+                        <img src="https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png" alt="" style="width: 150px; height: 150px">
+                    </a>
                 </div>
-                <div class="row">
-                    <label for="fileName">Choose Image:</label>
-                    <input style="margin-left: 60px;" id="fileName" type="file" name="fileName" size="30" required
-                           accept="image/*"
-                           class="form-control"/>
-                </div>
-                <br/>
-                <button type="submit"
-                        style="border: 1px solid;"
-                        class="btn btn-success collapsed">
-                    Add Topic
-                </button>
-            </form>
+            </div>
+            <div class="col-md-6">
+                <h2 style="color: #fb5849">
+                        ${food.foodName}
+                </h2>
+                <p style="font-size: 20px">
+                    ${food.description}
+                </p>
+            </div>
         </div>
     </div>
 </div>
+
 <!-- ***** Main Banner Area End ***** -->
 
 <!-- ***** Footer Start ***** -->
 <footer>
-    <div class="container">
+    <div class=" container">
         <div class="row">
             <div class="col-lg-4 col-xs-12">
                 <div class="right-text-content">
@@ -142,6 +137,7 @@
                 </div>
             </div>
         </div>
+        <!-- /.Row 1 -->
     </div>
 </footer>
 

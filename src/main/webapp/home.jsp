@@ -35,12 +35,12 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <a href="#" class="logo">
+                    <a href="/" class="logo">
                         <img height="80px" width="120px" src="resources/images/home/logo.png">
                     </a>
                     <ul class="nav">
-                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="add-topic-reviewer">Topic</a></li>
+                        <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="list-topic-approved">Topic</a></li>
                         <li class="scroll-to-section"><a href="shop-reviewer">Shop</a></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
                         <li class="scroll-to-section"><a href="#menu">Menu</a></li>
@@ -131,7 +131,7 @@
                     </div>
                     <span><b>Author:</b> ${top1.accountName} | <fmt:formatDate pattern="dd/MM/yyyy"
                                                                                value="${top1.createdDate}"/>. </span>
-                    <span><b>Rate:</b> ${top1.rate}</span>
+
                     <br>
                     <br>
                     <h5 style="white-space: pre-line; font-weight:normal;">${top1.content}
@@ -154,11 +154,8 @@
             <div class="col-lg-4">
                 <div class="section-heading">
                     <h6>All Post</h6>
-                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi
-                        <form id="listTopicForm" action="list-topic-approved" method="get">
-                            <a href="javascript:{}" onclick="document.getElementById('listTopicForm').submit();"
-                               style="font-family: none;">Xem thêm >></a>
-                        </form>
+                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi.
+                        <a href="list-topic-approved" style="font-family: none;">Xem thêm >></a>
                     </h2>
                 </div>
             </div>
@@ -171,7 +168,7 @@
                 <c:forEach items="${topicList}" var="l">
                     <div class="item">
                         <div class='card' style="background-image: url('server/uploads/${l.img}')">
-                            <div class="price"><h6>${l.rate}</h6></div>
+
                             <div class='info'>
                                 <h1 class='title'>
                                     <form id="linkForm${l.topicId}" action="topic-detail?topicId=${l.topicId}"
@@ -221,11 +218,17 @@
                             <img src="server/uploads/${l.img}" alt="">
                         </div>
                         <div class="down-content">
-                            <h4>${l.shopName}</h4>
+
+                            <a href="detail-shop?id=${l.shopId}"
+                            >
+                                <h4>${l.shopName}</h4>
+                            </a>
                             <span>${l.address}</span>
                         </div>
                     </div>
                 </div>
+
+
             </c:forEach>
 
 
@@ -256,9 +259,7 @@
                 <div class="col-lg-4">
                     <h4>${ls.foodName}</h4>
                     <p>${ls.description}.</p>
-                    <div class="price">
-                        <h6>Rate: ${ls.rate}</h6>
-                    </div>
+
                 </div>
                 <div class="col-lg-3"></div>
             </c:forEach>
@@ -315,11 +316,9 @@
 <!-- Global Init -->
 <script src="resources/js/custom.js"></script>
 <script>
-
     function myFunction() {
         document.getElementById("myDropdown").classList.toggle("show");
     }
-
     // Close the dropdown if the user clicks outside of it
     window.onclick = function (event) {
         if (!event.target.matches('.dropbtn')) {
@@ -343,10 +342,8 @@
                 $("." + selectedClass).fadeIn();
                 $("#portfolio").fadeTo(50, 1);
             }, 500);
-
         });
     });
-
 </script>
 </body>
 </html>

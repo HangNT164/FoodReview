@@ -1,5 +1,6 @@
 package controller;
 
+import bean.Account;
 import bean.Shop;
 import dao.ShopDao;
 
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -18,26 +20,28 @@ public class ShopController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         String shopName = request.getParameter("name");
         String status = request.getParameter("status");
+        Account account = (Account)session.getAttribute("account");
 
         List<Shop> listShop;
         if (shopName != null && status != null) {
             if (status.equals("")) {
-                listShop = shopDao.getListShopByName(shopName);
+                listShop = shopDao.getListShopByAccountIdAndName(account.getAccountId(), shopName);
             } else {
-                listShop = shopDao.getListShopByNameAndStatus(shopName, status);
+                listShop = shopDao.getListShopByNameAndStatus(account.getAccountId(), shopName, status);
             }
         } else if (shopName == null && status != null) {
             if (status.equals("")) {
-                listShop = shopDao.getListShopByName("");
+                listShop = shopDao.getListShopByAccountIdAndName(account.getAccountId(), "");
             } else {
-                listShop = shopDao.getListShopByNameAndStatus("", status);
+                listShop = shopDao.getListShopByNameAndStatus(account.getAccountId(), "", status);
             }
         } else if (shopName != null) {
-            listShop = shopDao.getListShopByName(shopName);
+            listShop = shopDao.getListShopByAccountIdAndName(account.getAccountId(), shopName);
         } else {
-            listShop = shopDao.getListShopByName("");
+            listShop = shopDao.getListShopByAccountIdAndName(account.getAccountId(), "");
         }
         request.setAttribute("listShopByName", listShop);
         request.getRequestDispatcher("shop-management.jsp").forward(request, response);

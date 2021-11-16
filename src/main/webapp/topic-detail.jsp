@@ -22,7 +22,8 @@
     -->
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="resources/css/home/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/home/font-awesome.css">
+    <!--<link rel="stylesheet" type="text/css" href="resources/css/home/font-awesome.css">-->
+    <script defer src="resources/plugins/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" type="text/css" href="resources/css/home/home.css">
     <link rel="stylesheet" href="resources/css/home/templatemo-klassy-cafe.css">
     <link rel="stylesheet" href="resources/css/home/owl-carousel.css">
@@ -46,12 +47,12 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <a href="#" class="logo">
+                    <a href="/" class="logo">
                         <img height="80px" width="120px" src="resources/images/home/logo.png">
                     </a>
                     <ul class="nav">
-                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="add-topic-reviewer">Topic</a></li>
+                        <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="list-topic-approved">Topic</a></li>
                         <li class="scroll-to-section"><a href="shop-reviewer">Shop</a></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
                         <li class="scroll-to-section"><a href="#menu">Menu</a></li>
@@ -139,7 +140,7 @@
                     </div>
                     <br>
                     <span><b>Author:</b> ${topic.accountName} | <fmt:formatDate pattern = "dd/MM/yyyy" value = "${topic.createdDate}" />. </span>
-                    <span><b>Rate:</b> ${topic.rate}</span>
+
                     <br>
                     <br>
                     <h5 style="white-space: pre-line; font-weight:normal;">${topic.content}
@@ -162,7 +163,48 @@
         <br>
         <hr style="height:2px;border-width:0;color:gray;background-color:gray">
         <div class="row">
-            <h2>Comments</h2>
+            <div class = "col-9">
+                <h2>Comments</h2>
+            </div>
+            <div class = "col-3">
+                <c:if test="${checkIfCommented == 0}">
+                    <a href="#" data-toggle="modal" data-target="#create">
+                        <h5><i class="fas fa-plus"></i> Create new comment</h5>
+                    </a>
+                    <!-- add comment modal -->
+                    <div class="modal fade" id="create" tabindex="-1"
+                    role="dialog" aria-labelledby="create"
+                    aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg"
+                             role="document">
+                            <div class="modal-content">
+                                <div class="modal-body" style="padding-left: 9%">
+                                    <h5 class="mb-3">Create comment </h5>
+                                    <form action="topic-comment?topicId=${topic.topicId}&action=create"
+                                     method="post" id ="create-topic-comment-form">
+                                        <p style="text-align: center;color: red;">${message}</p>
+                                        <textarea rows="6" cols="80" name="createContent"></textarea>
+                                        <br>
+                                        <br>
+                                        <div style="display: flex;justify-content: space-evenly">
+                                            <button type="submit"
+                                                    style="border: 1px solid;"
+                                                    class="btn btn-outline-success">
+                                                Create
+                                            </button>
+                                            <button type="button"
+                                                    style="border: 1px solid;"
+                                                    class="btn btn-outline-success"
+                                                    data-dismiss="modal">Close
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </c:if>
+            </div>
         </div>
         <div class="row">
             <div class="col-1">
@@ -171,13 +213,98 @@
                 <div class="left-text-content">
                     <c:forEach items="${topicCommentList}" var="t">
                         <br>
+
                         <div class="section-heading">
-                            <h5>${t.accountName}</h5>
-                            <p>Rate: ${t.rate}</p>
-                            <p style="white-space: pre-line; padding-left: 5%;">${t.content}
-                            </p>
-                            <p> Create date: ${t.createdDate}</p>
-                            <hr>
+                            <div class="row">
+                                <div class="col-10">
+                                    <h5>${t.accountName}</h5>
+                                </div>
+                                <c:if test="${checkIfCommented == 1}">
+                                    <c:if test="${t.accountId == account.accountId}">
+                                        <div class="col-1">
+                                           <a href="#" data-toggle="modal"
+                                           data-target="#update${t.topicCommentId}">
+                                                <h5><i class="fas fa-pen"></i></h5>
+                                           </a>
+                                        </div>
+                                        <div class="col-1">
+                                           <a href="#" data-toggle="modal"
+                                           data-target="#delete${t.topicCommentId}">
+                                                <h5><i class="fas fa-trash"></i></h5>
+                                           </a>
+                                        </div>
+                                    </c:if>
+                                </c:if>
+                            </div>
+                        </div>
+
+
+
+                        <p style="white-space: pre-line; padding-left: 5%;">${t.content}
+                        </p>
+                        <p> Create date: <fmt:formatDate pattern = "dd/MM/yyyy" value = "${t.createdDate}" /></p>
+                        <hr>
+
+                        <!-- Edit comment modal -->
+                        <div class="modal fade" id="update${t.topicCommentId}" tabindex="-1"
+                        role="dialog" aria-labelledby="update${t.topicCommentId}"
+                        aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg"
+                                 role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body" style="padding-left: 9%">
+                                        <h5 class="mb-3">Edit comment </h5>
+                                        <form action="topic-comment?commentId=${t.topicCommentId}&topicId=${topic.topicId}&action=edit" method="post"
+                                        id ="edit-topic-comment-form">
+                                            <p style="text-align: center;color: red;">${message}</p>
+                                            <textarea rows="6" cols="80" name="updateContent">${t.content}</textarea>
+                                            <br>
+                                            <br>
+                                            <div style="display: flex;justify-content: space-evenly">
+                                                <button type="submit"
+                                                        style="border: 1px solid;"
+                                                        class="btn btn-outline-success">
+                                                    Change
+                                                </button>
+                                                <button type="button"
+                                                        style="border: 1px solid;"
+                                                        class="btn btn-outline-success"
+                                                        data-dismiss="modal">Close
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- delete comment modal -->
+                        <div class="modal fade" id="delete${t.topicCommentId}" tabindex="-1" role="dialog" aria-labelledby="delete${t.topicCommentId}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md"
+                                 role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body" style="padding-left: 10%">
+                                            <h5 class="mb-3">Are you sure to delete your comment ?</h5>
+                                            <form action="topic-comment?commentId=${t.topicCommentId}&topicId=${topic.topicId}&action=delete"
+                                             method="post" id ="delete-topic-comment-form">
+                                                <p style="text-align: center;color: red;">${message}</p>
+                                                <br>
+                                                <br>
+                                                <div style="display: flex;justify-content: space-evenly">
+                                                    <button type="submit"
+                                                            style="border: 1px solid;"
+                                                            class="btn btn-outline-success">
+                                                        Delete
+                                                    </button>
+                                                    <button type="button"
+                                                            style="border: 1px solid;"
+                                                            class="btn btn-outline-success"
+                                                            data-dismiss="modal">Close
+                                                    </button>
+                                                </div>
+                                            </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </c:forEach>
                 </div>
@@ -194,11 +321,8 @@
             <div class="col-lg-4">
                 <div class="section-heading">
                     <h6>All Post</h6>
-                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi
-                        <form id="listTopicForm" action="list-topic-approved" method="get">
-                            <a href="javascript:{}" onclick="document.getElementById('listTopicForm').submit();"
-                               style="font-family: none;">Xem thêm >></a>
-                        </form>
+                    <h2 style="font-family: none;">Cùng khám phá vô vàn những bài viết của chúng tôi.
+                        <a href="list-topic-approved" style="font-family: none;">Xem thêm >></a>
                     </h2>
                 </div>
             </div>
@@ -210,15 +334,19 @@
             <div class="owl-menu-item owl-carousel">
                 <c:forEach items="${topicList}" var="l">
                     <div class="item">
-                        <div class='card card1'>
-                            <div class="price"><h6>${l.rate} <i class="fas fa-heart fw"></i></h6></div>
+                        <div class='card' style="background-image: url('server/uploads/${l.img}')">
+
                             <div class='info'>
                                 <h1 class='title'>
-                                    <form id="linkForm${l.topicId}" action="topic-detail?topicId=${l.topicId}" method="post">
-                                      <a href="javascript:{}" onclick="document.getElementById('linkForm${l.topicId}').submit();" style="font-family: none; color:black;"><h2>${l.title}</h2></a>
+                                    <form id="linkForm${l.topicId}" action="topic-detail?topicId=${l.topicId}"
+                                          method="post">
+                                        <a href="javascript:{}"
+                                           onclick="document.getElementById('linkForm${l.topicId}').submit();"
+                                           style="font-family: none; color:black;"><h2>${l.title}</h2></a>
                                     </form>
                                 </h1>
-                                <p class="description" style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
+                                <p class="description"
+                                   style="overflow: hidden; text-overflow: ellipsis;-webkit-line-clamp: 2; ">${l.content}</p>
                                 <div class="main-text-button">
                                     <div class="scroll-to-section"><a href="#">More.. <i
                                             class="fa fa-angle-down"></i></a>
@@ -319,6 +447,12 @@
             }, 500);
 
         });
+    });
+    $('.modal').on('shown.bs.modal', function() {
+      //Make sure the modal and backdrop are siblings (changes the DOM)
+      $(this).before($('.modal-backdrop'));
+      //Make sure the z-index is higher than the backdrop
+      $(this).css("z-index", parseInt($('.modal-backdrop').css('z-index')) + 1);
     });
 
 </script>
