@@ -34,7 +34,7 @@ public class FoodCommentDao {
 
     public List<FoodComment> allCommentByFoodId(int foodId) {
         List <FoodComment> foodCommentList;
-        String query = "SELECT * FROM swp391_g2_project.food_comment fc join swp391_g2_project.account a on fc.account_id = a.account_id " +
+        String query = "SELECT fc.*, a.name FROM swp391_g2_project.food_comment fc join swp391_g2_project.account a on fc.account_id = a.account_id " +
                 "where fc.food_id = " + foodId + " and fc.status = 'active' order by fc.updated_date desc";
         try (Connection con = MySqlConnection.getConnection();
             PreparedStatement ps = (con != null) ? con.prepareStatement(query) : null;) {
