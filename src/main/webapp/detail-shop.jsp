@@ -107,6 +107,7 @@
                     <span class="posted_in"> <strong>Comment:</strong>
                        <form action="add-your-comment" method="post"
                              onchange="return validateAddForm()">
+                           <input type="hidden" name="id" value="${param.id}">
                            <div class="row">
                                <div class="form-group">
                                    <div class="col-md-10">

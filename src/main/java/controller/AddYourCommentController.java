@@ -38,9 +38,9 @@ public class AddYourCommentController extends HttpServlet {
             Account accountCurrent = (Account) session.getAttribute("account");
             int accountId = accountCurrent.getAccountId();
             String content = request.getParameter("content");
-            Integer id = request.getParameter("id") != null ? Integer.parseInt(request.getParameter("id")) : null;
+            int id = request.getParameter("id") != null ? Integer.parseInt(request.getParameter("id")) : 0;
             ShopComment shopComment = ShopComment.builder()
-                    .shopId(12)
+                    .shopId(id)
                     .accountId(accountId)
                     .status("active")
                     .content(content)
@@ -51,7 +51,7 @@ public class AddYourCommentController extends HttpServlet {
                 request.setAttribute("message", "Add Shop Fail!");
                 request.getRequestDispatcher("home.jsp").forward(request, response);
             }
-            response.sendRedirect("home");
+            response.sendRedirect("detail-shop?id="+id);
         }
     }
 }
