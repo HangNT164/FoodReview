@@ -36,7 +36,7 @@ CREATE TABLE `shop` (
   PRIMARY KEY (`shop_id`),
   KEY `account_id` (`account_id`),
   CONSTRAINT `shop_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `shop` (
 
 LOCK TABLES `shop` WRITE;
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
-INSERT INTO `shop` VALUES (12,3,'shop1','active','abcd1','abcd11',3,1,'2021-10-26 13:34:45','2021-10-26 13:34:45'),(13,3,'shop2','active','abcd1','abcd1',3,2,'2021-10-28 14:59:07','2021-10-30 16:29:53'),(14,3,'shop3','active','abcd1','abcd1',1,1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(15,3,'shop4','active','abcd1','abcd1',1,1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(16,3,'shop5','active','abcd1','abcd1',1,1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(17,3,'shop6','active','abcd1','abcd1',2,1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(18,3,'shop7','active','abcd1','abcd1',3,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(19,3,'shop8','active','abcd1','abcd1',4,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(20,3,'shop9','active','abcd1','abcd1',5,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(21,3,'shop10','active','abcd1','abcd1',2,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(22,3,'shop11','active','abcd1','abcd1',4,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(23,3,'shop12','active','abcd1','abcd1',3,3,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(24,3,'shop13','active','abcd1','abcd1',2,1,'2021-10-28 14:59:59','2021-10-28 14:59:59'),(27,3,'123','active','123','123',1,1,'2021-10-30 15:42:53','2021-10-30 15:42:53');
+INSERT INTO `shop` VALUES (12,3,'shop1','active','abcd1','abcd11',3,1,'2021-10-26 13:34:45','2021-10-26 13:34:45'),(13,3,'shop2','active','abcd1','abcd1',3,2,'2021-10-28 14:59:07','2021-10-30 16:29:53'),(14,3,'shop3','active','abcd1','abcd1',1,1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(15,3,'shop4','active','abcd1','abcd1',1,1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(16,3,'shop5','active','abcd1','abcd1',1,1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(17,3,'shop6','active','abcd1','abcd1',2,1,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(18,3,'shop7','active','abcd1','abcd1',3,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(19,3,'shop8','active','abcd1','abcd1',4,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(20,3,'shop9','active','abcd1','abcd1',5,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(21,3,'shop10','active','abcd1','abcd1',2,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(22,3,'shop11','active','abcd1','abcd1',4,2,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(23,3,'shop12','active','abcd1','abcd1',3,3,'2021-10-28 14:59:07','2021-10-28 14:59:07'),(24,3,'shop13','active','abcd1','abcd1',2,1,'2021-10-28 14:59:59','2021-10-28 14:59:59'),(27,3,'123','active','123','123',1,1,'2021-10-30 15:42:53','2021-10-30 15:42:53'),(28,3,'abcd','active','acbd','f',0,NULL,'2021-10-31 05:44:14','2021-10-31 05:44:14'),(29,3,'s','active','s','s',0,NULL,'2021-10-31 05:50:48','2021-10-31 05:50:48'),(30,3,'shop1','active','shop2','shop3',0,NULL,'2021-11-07 13:59:25','2021-11-07 13:59:25'),(31,5,'Cường Shop1','active','Cường Địa chỉ 1','Cường Miêu tả 1',0,NULL,'2021-11-09 04:33:16','2021-11-09 04:33:16'),(32,3,'shoptest16','active','123','avid',0,NULL,'2021-11-15 17:02:10','2021-11-15 17:02:10');
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-30 23:31:24
+-- Dump completed on 2021-11-16 10:51:13

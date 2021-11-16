@@ -86,7 +86,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="pro-img-details">
-                    <img src="server/uploads/${shop.img}" alt="">
+                    <img src="resources/images/home/hangnt.png" alt="">
                 </div>
                 <div class="pro-img-list" style="display: flex;justify-content: center;">
                 </div>

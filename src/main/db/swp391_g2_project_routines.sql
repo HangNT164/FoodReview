@@ -16,35 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `food`
+-- Dumping routines for database 'swp391_g2_project'
 --
-
-DROP TABLE IF EXISTS `food`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `food` (
-  `food_id` int NOT NULL AUTO_INCREMENT,
-  `shop_id` int DEFAULT NULL,
-  `food_name` varchar(255) DEFAULT NULL,
-  `status` varchar(25) DEFAULT 'active',
-  `description` varchar(4000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `rate` int DEFAULT NULL,
-  `created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`food_id`),
-  KEY `shop_id` (`shop_id`),
-  CONSTRAINT `food_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `shop` (`shop_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `food`
---
-
-LOCK TABLES `food` WRITE;
-/*!40000 ALTER TABLE `food` DISABLE KEYS */;
-/*!40000 ALTER TABLE `food` ENABLE KEYS */;
-UNLOCK TABLES;
+/*!50003 DROP PROCEDURE IF EXISTS `paggingShop` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `paggingShop`(IN page INT, IN size INT,IN shopName VARCHAR(255))
+BEGIN
+	SELECT * FROM shop
+    where shop_name LIKE CONCAT('%', shopName , '%')
+    ORDER BY shop_id desc
+    LIMIT page,size;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -55,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-16 10:51:13
+-- Dump completed on 2021-11-16 10:51:14
