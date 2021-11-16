@@ -92,7 +92,7 @@
                 </div>
                 <div class="row">
                     <label for="content">Content: </label>
-                    <input style="margin-left: 60px;" type="text"
+                    <textarea style="margin-left: 60px;"
                            required id="content"
                            pattern=".{1,4000}"
                            name="content"

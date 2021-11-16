@@ -72,8 +72,8 @@ public class AddTopicReviewerController extends HttpServlet {
                             String itemName = item.getName();
                             String fileName = itemName.substring(itemName.lastIndexOf("\\") + 1);
                             String random = new EmailUtil().generate6DigitsRandom();
-                            lsFileName = random + fileName;
-
+                            lsFileName = fileName;
+                            String urlImg=random + fileName;
 //                            String root = getServletContext().getRealPath("/");
                             String root = "/Users/hangnt/Documents/Git/FoodReview/src/main/webapp/resources/images/home";
                             File path = new File(root);
@@ -81,7 +81,7 @@ public class AddTopicReviewerController extends HttpServlet {
                                 path.mkdirs();
                             }
 
-                            File saveFile = new File(path + "/" + lsFileName);
+                            File saveFile = new File(path + "/" + urlImg);
                             item.write(saveFile);
 
                             System.out.println(saveFile.getAbsolutePath());

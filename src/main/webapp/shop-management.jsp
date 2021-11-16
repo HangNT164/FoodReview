@@ -202,11 +202,11 @@
                                                                 <div class="form-group">
                                                                     <div class="col-md-10">
                                                                         <label>Shop Description: </label>
-                                                                        <input style="margin-left: 60px" type="text"
+                                                                        <textarea style="margin-left: 60px"
                                                                                required
                                                                                pattern=".{1,1000}"
                                                                                name="description"
-                                                                               class="form-control"/>
+                                                                                  class="form-control"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>

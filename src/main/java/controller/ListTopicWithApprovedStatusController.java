@@ -18,6 +18,9 @@ public class ListTopicWithApprovedStatusController extends HttpServlet {
     private TopicDao topicDao = new TopicDao();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         List<Topic> topicListByStatus;
         HttpSession session = request.getSession(true);
         Account account = (Account) session.getAttribute("account");
@@ -38,6 +41,9 @@ public class ListTopicWithApprovedStatusController extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         List<Topic> topicListByStatus;
         HttpSession session = request.getSession(true);
         Account account = (Account) session.getAttribute("account");
