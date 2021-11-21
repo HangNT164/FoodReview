@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -249,9 +250,9 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <label for="stat">Status: </label>
-                                                    <select id="stat" class="form-control"
-                                                            name="stat">
+                                                    <label for="status">Status: </label>
+                                                    <select id="status" class="form-control"
+                                                            name="status">
                                                         <option value="">All
                                                         </option>
                                                         <option value="active">Active</option>
@@ -291,8 +292,8 @@
                                                         <td>${l.shopName}</td>
                                                         <td>${l.foodName}</td>
                                                         <td>${l.status}</td>
-                                                        <td class="date">${l.createdDate}</td>
-                                                        <td class="date">${l.updatedDate}</td>
+                                                        <td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${l.createdDate}" /></td>
+                                                        <td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${l.updatedDate}" /></td>
                                                         <td style="text-align: center">
                                                             <a href="#" class="view mr-1" data-toggle="modal"
                                                                data-target="#detail${l.foodId}" title="Detail">
@@ -357,16 +358,16 @@
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label>Created Date</label>
-                                                                                        <span class="form-control date"
-                                                                                              disabled>${l.createdDate}</span>
+                                                                                        <span class="form-control"
+                                                                                              disabled><fmt:formatDate pattern = "dd/MM/yyyy" value = "${l.createdDate}" /></span>
                                                                                     </div>
                                                                                 </div>
 
                                                                                 <div class="form-group row">
                                                                                     <div class="col-sm-12">
                                                                                         <label>Updated Date </label>
-                                                                                        <span class="form-control date"
-                                                                                              disabled>${l.updatedDate}</span>
+                                                                                        <span class="form-control"
+                                                                                              disabled><fmt:formatDate pattern = "dd/MM/yyyy" value = "${l.updatedDate}" /></span>
                                                                                     </div>
                                                                                 </div>
 
@@ -410,9 +411,8 @@
                                                                             <div class="form-group row">
                                                                                 <div class="col-sm-12">
                                                                                     <label>Description</label>
-                                                                                    <input class="form-control"
-                                                                                           name="description"
-                                                                                           value="${l.description}"> </input>
+                                                                                    <textarea class="form-control" rows="6" cols="80"
+                                                                                           name="description">${l.description}</textarea>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">

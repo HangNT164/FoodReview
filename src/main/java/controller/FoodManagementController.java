@@ -36,7 +36,7 @@ public class FoodManagementController extends HttpServlet {
 
         int accountId = account.getAccountId();
         String foodName = request.getParameter("foodName");
-        String status = request.getParameter("stat");
+        String status = request.getParameter("status");
         List<Food> foodList;
         if (foodName != null && status != null) {
             if (status.equals("")) {
