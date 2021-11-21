@@ -524,6 +524,7 @@
             document.getElementById('add-title').style.borderColor = 'red'
             document.getElementById('add-title-message').style.display = 'block'
             document.getElementById('add-title-message').innerHTML = 'Tên không được dài quá 100 ký tự'
+            return false;
         } else {
             document.getElementById('add-title').style.borderColor = '#e7e9ed'
             document.getElementById('add-title-message').style.display = 'none'
