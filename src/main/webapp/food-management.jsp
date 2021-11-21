@@ -542,6 +542,7 @@
             document.getElementById('add-name').style.borderColor = 'red'
             document.getElementById('add-name-message').style.display = 'block'
             document.getElementById('add-name-message').innerHTML = 'Tên không được dài quá 100 ký tự'
+            return false;
         } else {
             document.getElementById('add-name').style.borderColor = '#e7e9ed'
             document.getElementById('add-name-message').style.display = 'none'

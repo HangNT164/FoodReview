@@ -2,7 +2,9 @@ package controller;
 
 import bean.Account;
 import bean.Food;
+import bean.Shop;
 import dao.FoodDao;
+import dao.ShopDao;
 import util.ValidateHelper;
 
 import javax.servlet.ServletException;
@@ -19,6 +21,7 @@ import java.util.List;
 public class FoodManagementController extends HttpServlet {
 
     private FoodDao foodDao = new FoodDao();
+    private ShopDao shopDao = new ShopDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,6 +30,10 @@ public class FoodManagementController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute("account");
+
+        List<Shop> listShopByAccount = shopDao.getListShopByAccountAndActive(account.getAccountId());
+        request.setAttribute("listShopByAccount", listShopByAccount);
+
         int accountId = account.getAccountId();
         String foodName = request.getParameter("foodName");
         String status = request.getParameter("stat");
